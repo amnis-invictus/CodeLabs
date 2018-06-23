@@ -13,25 +13,42 @@ ru:
   errors:
     messages:
       model_invalid: 'Возникли ошибки: %{errors}'
-      other_than: должно отличаться от %{count}
-      present: нужно оставить пустым
-      required: не может отсутствовать
-      exists: уже существует
+      other_than: 'должно отличаться от %{count}'
+      present: 'нужно оставить пустым'
+      required: 'не может отсутствовать'
+      exists: 'уже существует'
   header:
-    problems: Задачи
-    submissions: Посылки
-    new_session: Войти
+    problems: 'Задачи'
+    submissions: 'Посылки'
+    new_session: 'Войти'
+  activerecord:
+    errors:
+      messages:
+        confirmation: 'не совпадает'
+    attributes:
+      user:
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
   home:
     show:
       sections:
         first:
-          title: Докажи всем, что твой код круче!
-          subtitle: Мир должен знать своих героев.
+          title: 'Докажи всем, что твой код круче!'
+          subtitle: 'Мир должен знать своих героев.'
           list:
-            '0': Оно работает? Покажи!
-            '1': Пишеш через GoTo и это можно прочитать? Покажи!
-            '2': Копипастишь чужой код и об этом никто не знает? Покажи!
-            '3': Стоит на свой код? Нет, не показывай!
+            '0': 'Оно работает? Покажи!'
+            '1': 'Пишеш через GoTo и это можно прочитать? Покажи!'
+            '2': 'Копипастишь чужой код и об этом никто не знает? Покажи!'
+            '3': 'Стоит на свой код? Нет, не показывай!'
         second:
-          title: Регистрируйся сейчас!
-
+          title: 'Регистрируйся сейчас!'
+  helpers:
+    submit:
+      user:
+        create: 'Регистрация'
+  simple_form:
+    placeholders:
+      user:
+        email: 'one@users.com'
+        password: '****'
+        password_confirmation: '****'
