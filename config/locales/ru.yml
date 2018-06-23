@@ -1,0 +1,19 @@
+ru:
+  number:
+    human:
+      storage_units:
+        units:
+          pb: ПБ
+          eb: ЭБ
+    errors:
+      messages:
+        restrict_dependent_destroy:
+          has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
+          has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
+  errors:
+    messages:
+      model_invalid: 'Возникли ошибки: %{errors}'
+      other_than: должно отличаться от %{count}
+      present: нужно оставить пустым
+      required: не может отсутствовать
+      exists: уже существует
