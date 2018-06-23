@@ -11,5 +11,11 @@
 
   <div class="header-section">
     <%= link_to t('header.new_session'), %i(new session), class: 'header-section__item' %>
+
+    <% if params[:language] == 'en' %>
+      <%= link_to :ru, { language: :ru }, class: 'header-section__item' %>
+    <% else %>
+      <%= link_to :en, { language: :en }, class: 'header-section__item' %>
+    <% end %>
   </div>
 </div>
