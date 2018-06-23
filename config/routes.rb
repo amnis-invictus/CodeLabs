@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resource :session, only: %i(new create delete)
 
-  resources :users, only: %i(new create)
+  resource :profile, only: :show
+
+  resources :users, only: :create
 
   resources :problems, only: %i(index show) do
     resources :submissions, only: %i(index new create)

@@ -29,6 +29,10 @@ ru:
       user:
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
+  activemodel:
+    attributes:
+      session:
+        password: 'Пароль'
   home:
     show:
       sections:
@@ -46,6 +50,8 @@ ru:
     submit:
       user:
         create: 'Регистрация'
+      session:
+        create: 'Войти'
   simple_form:
     placeholders:
       user:

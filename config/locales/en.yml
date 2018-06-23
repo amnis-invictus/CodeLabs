@@ -20,6 +20,8 @@ en:
     submit:
       user:
         create: 'Sign up'
+      session:
+        create: 'Sign in'
   simple_form:
     placeholders:
       user:

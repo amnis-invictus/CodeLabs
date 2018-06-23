@@ -1,24 +1,26 @@
-class UsersController < ApplicationController
+class SessionsController < ApplicationController
   skip_before_action :authenticate!, only: %i(new create)
 
   def create
     render :new and return unless resource.save
 
-    redirect_to %i(new session)
+    session[:auth_token] = resource.auth_token.id
+
+    redirect_to :profile
   end
 
   private
   attr_reader :resource
 
   def resource_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:session).permit(:email, :password)
   end
 
   def initialize_resource
-    @resource = User.new
+    @resource = Session.new
   end
 
   def build_resource
-    @resource = User.new resource_params
+    @resource = Session.new resource_params
   end
 end

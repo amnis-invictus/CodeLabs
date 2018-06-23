@@ -1,0 +1,7 @@
+<%= simple_form_for resource, url: :session, remote: true do |f| %>
+  <%= f.input :email %>
+
+  <%= f.input :password %>
+
+  <%= f.submit class: 'btn btn-default' %>
+<% end %>
