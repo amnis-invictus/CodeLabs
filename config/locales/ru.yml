@@ -58,3 +58,6 @@ ru:
         email: 'one@users.com'
         password: '****'
         password_confirmation: '****'
+      session:
+        email: 'one@users.com'
+        password: '****'
