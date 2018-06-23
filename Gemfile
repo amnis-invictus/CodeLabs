@@ -19,6 +19,7 @@ gem 'email_validator'
 gem 'kaminari'
 gem 'russian'
 gem 'simple_form'
+gem 'pundit'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
