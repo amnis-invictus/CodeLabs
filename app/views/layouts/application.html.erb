@@ -20,12 +20,18 @@
     <%= stylesheet_link_tag 'bootstrap.min.css', media: :all, 'data-turbolinks-track': :reload %>
 
     <%= stylesheet_link_tag 'overlay.css', media: :all, 'data-turbolinks-track': :reload %>
+
+    <%= javascript_include_tag :application, 'data-turbolinks-track': :reload %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'widgets/header' %>
 
-    <%= javascript_include_tag :application, 'data-turbolinks-track': :reload %>
+    <div class="content">
+      <%= yield %>
+    </div>
+
+    <%= render 'widgets/footer' %>
 
     <%= yield :javascripts %>
   </body>

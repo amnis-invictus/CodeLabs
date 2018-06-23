@@ -1,0 +1,17 @@
+.home-section {
+  padding: 30px 20px;
+
+  .home-section__title {
+    margin-bottom: 40px;
+  }
+
+  .home-section__content {
+    .fa {
+      color: #ff7400;
+    }
+  }
+
+  &--bg {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}

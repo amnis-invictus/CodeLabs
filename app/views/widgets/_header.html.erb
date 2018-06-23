@@ -1,0 +1,15 @@
+<div class="header">
+  <%= link_to :root do %>
+    <%= image_tag 'codelabs.png', class: 'header__logo' %>
+  <% end %>
+
+  <div class="header-section">
+    <%= link_to t('header.problems'), :problems, class: 'header-section__item' %>
+
+    <%= link_to t('header.submissions'), :submissions, class: 'header-section__item' %>
+  </div>
+
+  <div class="header-section">
+    <%= link_to t('header.new_session'), %i(new session), class: 'header-section__item' %>
+  </div>
+</div>
