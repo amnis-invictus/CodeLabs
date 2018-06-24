@@ -1,17 +1,17 @@
 .btn-default {
   color: #ffffff;
-  background-color: #ff7400;
-  border-color: #ff7400;
+  background-color: #0093FF;
+  border-color: #0093FF;
   transition: all .2s ease-in-out;
 
   &:focus {
     color: #ffffff;
-    background-color: #ff7400;
-    border-color: #ff7400;
+    background-color: #0093FF;
+    border-color: #0093FF;
   }
 
   &:hover {
-    color: #ff7400;
+    color: #0093FF;
     background-color: #000000;
     border-color: #000000;
   }

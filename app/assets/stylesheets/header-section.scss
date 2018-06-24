@@ -13,7 +13,7 @@
 
     &:hover {
       color: #ffffff;
-      background-color: #ff7400;
+      background-color: #0093FF;
       text-decoration: none;
     }
 
@@ -23,10 +23,10 @@
     }
 
     &--active {
-      color: #ff7400;
+      color: #0093FF;
 
       &:focus {
-        color: #ff7400;
+        color: #0093FF;
       }
 
       &:hover {
