@@ -1,0 +1,34 @@
+.image-input {
+  position: relative;
+
+  input[type=file] {
+    display: none;
+  }
+
+  .image-input__prompt {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+
+    .image-input__prompt-icon {
+      text-align: center;
+      align-self: center;
+      width: 100%;
+      color: #ffffff;
+      font-size: 42px;
+    }
+  }
+
+  &:hover {
+    .image-input__prompt {
+      opacity: 1;
+    }
+  }
+}

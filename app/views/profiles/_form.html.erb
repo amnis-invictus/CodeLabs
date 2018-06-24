@@ -1,20 +1,42 @@
 <%= simple_form_for resource, url: :profile, wrapper: :horizontal_form, remote: true,
   html: { class: 'form-horizontal', id: 'profile-form' } do |f| %>
-  <%= f.input :name %>
+  <div class="col-xs-12 col-md-3">
+    <div class="image-input">
+      <%= f.file_field :avatar, direct_upload: true, class: 'image-input__input' %>
 
-  <%= f.input :skills, as: :select, collection: resource.skills, input_html: { multiple: true, 'data-role': 'tagsinput' } %>
+      <div class="image-input__prompt">
+        <i class="image-input__prompt-icon fas fa-upload"></i>
+      </div>
 
-  <%= f.input :password %>
+      <% if resource.avatar.attached? && resource.avatar.attachment.blob.image? %>
+        <%= image_tag resource.avatar.variant(resize: '300x400'), class: 'img-responsive'  %>
+      <% else %>
+        <%= image_tag 'placeholder.png', class: 'img-responsive' %>
+      <% end %>
+    </div>
+  </div>
 
-  <%= f.input :password_confirmation %>
+  <div class="col-xs-12 col-md-9">
+    <%= f.input :name %>
 
-  <%= f.input :score, readonly: true %>
+    <%= f.input :skills, as: :select, collection: resource.skills, input_html: { multiple: true, 'data-role': 'tagsinput' } %>
 
-  <%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) } %>
+    <%= f.input :password %>
 
-  <%= f.submit class: 'btn btn-default pull-right' %>
+    <%= f.input :password_confirmation %>
+
+    <%= f.input :score, readonly: true %>
+
+    <%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) } %>
+
+    <%= f.submit class: 'btn btn-default pull-right' %>
+  </div>
 <% end %>
 
 <% content_for :javascripts do %>
-  <script>$('#user_skills').tagsinput()</script>
+  <script>
+    $('#user_skills').tagsinput()
+
+    $('#profile-form .image-input').imageInput()
+  </script>
 <% end %>
