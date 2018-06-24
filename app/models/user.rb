@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates :email, presence: true, email: true
+  validates :email, presence: true, email: true, uniqueness: { case_sensitive: false }
 
   has_many :auth_tokens, dependent: :destroy
 
