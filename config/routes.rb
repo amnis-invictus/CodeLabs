@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resource :session, only: %i(new create destroy)
 
-  resource :profile, only: :show
+  resource :profile, only: %i(show update)
 
   resources :users, only: :create
 

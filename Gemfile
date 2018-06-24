@@ -21,6 +21,8 @@ gem 'russian'
 gem 'simple_form'
 gem 'pundit'
 gem 'jquery-rails'
+gem 'mini_magick'
+gem 'toastr-rails'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'

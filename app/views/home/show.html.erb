@@ -1,27 +1,25 @@
-<div class="container">
-  <div class="row mar">
-    <div class="col-md-7 home-section">
-      <div class="home-section__title">
-        <h1><%= t 'home.show.sections.first.title' %></h1>
+<div class="row">
+  <div class="col-md-7 home-section">
+    <div class="home-section__title">
+      <h1><%= t 'home.show.sections.first.title' %></h1>
 
-        <h4><%= t 'home.show.sections.first.subtitle' %></h4>
-      </div>
-
-      <div class="home-section__content">
-        <h4><i class="fa fa-check"></i> <%= t 'home.show.sections.first.list.0' %></h4>
-
-        <h4><i class="fa fa-check"></i> <%= t 'home.show.sections.first.list.1' %></h4>
-
-        <h4><i class="fa fa-check"></i> <%= t 'home.show.sections.first.list.2' %></h4>
-
-        <h4><i class="fa fa-check"></i> <%= t 'home.show.sections.first.list.3' %></h4>
-      </div>
+      <h4><%= t 'home.show.sections.first.subtitle' %></h4>
     </div>
 
-    <div class="col-md-5 home-section home-section--bg">
-      <h1 class="home-section__title"><%= t 'home.show.sections.second.title' %></h1>
+    <div class="home-section__content">
+      <h4><i class="fa fa-check"></i> <%= t 'home.show.sections.first.list.0' %></h4>
 
-      <%= render 'users/form', resource: User.new %>
+      <h4><i class="fa fa-check"></i> <%= t 'home.show.sections.first.list.1' %></h4>
+
+      <h4><i class="fa fa-check"></i> <%= t 'home.show.sections.first.list.2' %></h4>
+
+      <h4><i class="fa fa-check"></i> <%= t 'home.show.sections.first.list.3' %></h4>
     </div>
+  </div>
+
+  <div class="col-md-5 home-section bg-dark">
+    <h1 class="home-section__title"><%= t 'home.show.sections.second.title' %></h1>
+
+    <%= render 'users/form', resource: User.new %>
   </div>
 </div>

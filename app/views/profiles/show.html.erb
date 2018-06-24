@@ -1,0 +1,17 @@
+<div class="row bg-light">
+  <div class="col-xs-12">
+    <h1><%= t 'profile.show.title' %></h1>
+  </div>
+
+  <div class="col-xs-12 col-md-3">
+    <% if resource.avatar.attached? %>
+      <%= image_tag resource.avatar.variant(resize: '300x400'), class: 'img-responsive'  %>
+    <% else %>
+      <%= image_tag 'placeholder.png', class: 'img-responsive' %>
+    <% end %>
+  </div>
+
+  <div class="col-xs-12 col-md-9">
+    <%= render 'form' %>
+  </div>
+</div>

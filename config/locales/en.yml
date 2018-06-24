@@ -4,6 +4,10 @@ en:
     submissions: 'Submissions'
     signin: 'Sign in'
     signout: 'Sign out'
+  activerecord:
+    attributes:
+      user:
+      created_at: 'Register date'
   home:
     show:
       sections:
@@ -17,18 +21,21 @@ en:
             '3': "??? No, please don't show!"
         second:
           title: 'Sign up now!'
+  profile:
+    show:
+      title: 'Personal cabinet'
+    update:
+      success: 'Saved successfully'
   helpers:
     submit:
       user:
         create: 'Sign up'
+        update: 'Update profile'
       session:
         create: 'Sign in'
   simple_form:
     placeholders:
       user:
         email: 'one@users.com'
-        password: '****'
-        password_confirmation: '****'
       session:
         email: 'one@users.com'
-        password: '****'

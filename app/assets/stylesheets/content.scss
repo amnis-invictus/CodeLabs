@@ -1,0 +1,12 @@
+.content {
+  color: #ffffff;
+  margin-top: 30px;
+
+  > .row:first-child {
+    padding-top: 15px;
+  }
+
+  > .row:last-child {
+    padding-bottom: 15px;
+  }
+}

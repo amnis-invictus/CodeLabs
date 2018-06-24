@@ -1,5 +1,5 @@
 <div class="header">
-  <%= link_to :root do %>
+  <%= link_to current_user ? :profile : :root do %>
     <%= image_tag 'codelabs.png', class: 'header__logo' %>
   <% end %>
 

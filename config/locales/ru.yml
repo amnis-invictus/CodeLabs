@@ -30,6 +30,10 @@ ru:
       user:
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
+        name: 'Имя'
+        skills: 'Навыки'
+        created_at: 'Дата регистрации'
+        score: 'Балы'
   activemodel:
     attributes:
       session:
@@ -47,18 +51,21 @@ ru:
             '3': 'Стоит на свой код? Нет, не показывай!'
         second:
           title: 'Регистрируйся сейчас!'
+  profile:
+    show:
+      title: 'Личный кабинет'
+    update:
+      success: 'Успешно сохранено'
   helpers:
     submit:
       user:
         create: 'Регистрация'
+        update: 'Обновить профиль'
       session:
         create: 'Войти'
   simple_form:
     placeholders:
       user:
         email: 'one@users.com'
-        password: '****'
-        password_confirmation: '****'
       session:
         email: 'one@users.com'
-        password: '****'

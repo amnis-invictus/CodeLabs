@@ -1,0 +1,20 @@
+<%= simple_form_for resource, url: :profile, wrapper: :horizontal_form, remote: true,
+  html: { class: 'form-horizontal', id: 'profile-form' } do |f| %>
+  <%= f.input :name %>
+
+  <%= f.input :skills, as: :select, collection: resource.skills, input_html: { multiple: true, 'data-role': 'tagsinput' } %>
+
+  <%= f.input :password %>
+
+  <%= f.input :password_confirmation %>
+
+  <%= f.input :score, readonly: true %>
+
+  <%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) } %>
+
+  <%= f.submit class: 'btn btn-default pull-right' %>
+<% end %>
+
+<% content_for :javascripts do %>
+  <script>$('#user_skills').tagsinput()</script>
+<% end %>
