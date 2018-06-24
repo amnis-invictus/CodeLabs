@@ -11,8 +11,10 @@ class Session
 
   validate :password_must_pass_authentication
 
+  delegate :destroy, to: :auth_token
+
   def initialize params={}
-    @email, @password = params.values_at :email, :password
+    @email, @password, @auth_token = params.values_at :email, :password, :auth_token
   end
 
   def to_key; end

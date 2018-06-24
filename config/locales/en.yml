@@ -2,7 +2,8 @@ en:
   header:
     problems: 'Problems'
     submissions: 'Submissions'
-    new_session: 'Sign in'
+    signin: 'Sign in'
+    signout: 'Sign out'
   home:
     show:
       sections:

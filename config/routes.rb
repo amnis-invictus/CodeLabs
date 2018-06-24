@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root controller: :home, action: :show
 
-  resource :session, only: %i(new create delete)
+  resource :session, only: %i(new create destroy)
 
   resource :profile, only: :show
 

@@ -10,7 +10,11 @@
   </div>
 
   <div class="header-section">
-    <%= link_to t('header.new_session'), %i(new session), class: 'header-section__item' %>
+    <% if current_user %>
+      <%= link_to t('header.signout'), :session, method: :delete, class: 'header-section__item' %>
+    <% else %>
+      <%= link_to t('header.signin'), %i(new session), class: 'header-section__item' %>
+    <% end %>
 
     <% if params[:language] == 'en' %>
       <%= link_to :ru, { language: :ru }, class: 'header-section__item' %>

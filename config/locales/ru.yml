@@ -20,7 +20,8 @@ ru:
   header:
     problems: 'Задачи'
     submissions: 'Посылки'
-    new_session: 'Войти'
+    signin: 'Войти'
+    signout: 'Выйти'
   activerecord:
     errors:
       messages:

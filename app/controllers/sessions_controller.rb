@@ -9,8 +9,18 @@ class SessionsController < ApplicationController
     redirect_to :profile
   end
 
+  def destroy
+    resource.destroy
+
+    reset_session
+
+    redirect_to :root
+  end
+
   private
-  attr_reader :resource
+  def resource
+    @resource ||= Session.new auth_token: AuthToken.find(session[:auth_token])
+  end
 
   def resource_params
     params.require(:session).permit(:email, :password)
