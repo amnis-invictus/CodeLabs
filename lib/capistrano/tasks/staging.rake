@@ -1,22 +1,28 @@
 namespace :staging do
-  desc 'Stop application'
+  desc 'Stop staging application'
   task :stop do
-    within current_path do
-      execute 'sudo service staging stop'
+    on roles(:app), in: :sequence, wait: 5 do
+      within current_path do
+        execute 'sudo service staging stop'
+      end
     end
   end
 
-  desc 'Start application'
+  desc 'Start staging application'
   task :start do
-    within current_path do
-      execute 'sudo service staging start'
+    on roles(:app), in: :sequence, wait: 5 do
+      within current_path do
+        execute 'sudo service staging start'
+      end
     end
   end
 
-  desc 'Restart application'
+  desc 'Restart staging application'
   task :restart do
-    within current_path do
-      execute 'sudo service staging restart'
+    on roles(:app), in: :sequence, wait: 5 do
+      within current_path do
+        execute 'sudo service staging restart'
+      end
     end
   end
 end

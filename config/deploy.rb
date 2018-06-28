@@ -18,4 +18,4 @@ namespace :deploy do
   after :finishing, 'bundler:clean'
 end
 
-server 'codelabs.site', user: 'user'
+server 'codelabs.site', user: 'user', roles: %i(app web db)
