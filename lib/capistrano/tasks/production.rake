@@ -1,4 +1,4 @@
-namespace :staging do
+namespace :production do
   desc 'Stop production application'
   task :stop do
     on roles(:app), in: :sequence, wait: 5 do
