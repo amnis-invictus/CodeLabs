@@ -13,7 +13,7 @@ gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'pg'
 gem 'email_validator'
 gem 'kaminari'
