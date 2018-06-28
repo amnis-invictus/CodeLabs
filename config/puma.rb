@@ -15,3 +15,5 @@ if rails_env == 'production'
 else
   port ENV.fetch 'PORT', 3000
 end
+
+plugin :tmp_restart
