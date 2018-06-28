@@ -6,7 +6,7 @@ set :repo_url, 'git@gitlab.com:kostyanf14/CodeLabs.git'
 
 set :rails_env, :production
 
-append :linked_files, '.env'
+append :linked_files, '.env', 'config/master.key'
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'vendor/bundle'
 
