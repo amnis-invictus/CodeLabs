@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_24_142413) do
+ActiveRecord::Schema.define(version: 2018_07_03_110705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -44,6 +44,23 @@ ActiveRecord::Schema.define(version: 2018_06_24_142413) do
     t.index ["user_id"], name: "index_auth_tokens_on_user_id"
   end
 
+  create_table "problem_translations", force: :cascade do |t|
+    t.integer "language"
+    t.string "caption"
+    t.string "author"
+    t.text "text"
+    t.text "technical_text"
+    t.bigint "problem_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["problem_id"], name: "index_problem_translations_on_problem_id"
+  end
+
+  create_table "problems", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -55,4 +72,5 @@ ActiveRecord::Schema.define(version: 2018_06_24_142413) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "problem_translations", "problems"
 end
