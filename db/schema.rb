@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_03_110705) do
+ActiveRecord::Schema.define(version: 2018_07_03_112139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2018_07_03_110705) do
   end
 
   create_table "auth_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_auth_tokens_on_user_id"
@@ -72,5 +72,6 @@ ActiveRecord::Schema.define(version: 2018_07_03_110705) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "auth_tokens", "users"
   add_foreign_key "problem_translations", "problems"
 end
