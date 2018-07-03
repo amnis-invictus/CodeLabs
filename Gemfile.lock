@@ -29,6 +29,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.2.0)
       activesupport (= 5.2.0)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (5.2.0)
       activemodel (= 5.2.0)
       activesupport (= 5.2.0)
@@ -70,6 +74,12 @@ GEM
     dotenv-rails (2.5.0)
       dotenv (= 2.5.0)
       railties (>= 3.2, < 6.0)
+    draper (3.0.1)
+      actionpack (~> 5.0)
+      activemodel (~> 5.0)
+      activemodel-serializers-xml (~> 1.0)
+      activesupport (~> 5.0)
+      request_store (~> 1.0)
     email_validator (1.6.0)
       activemodel
     erubi (1.7.1)
@@ -165,8 +175,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redis (4.0.1)
-    redis-namespace (1.6.0)
-      redis (>= 3.0.4)
+    request_store (1.4.1)
+      rack (>= 1.4)
     rspec-activemodel-mocks (1.0.3)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -245,6 +255,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rbenv
   dotenv-rails
+  draper
   email_validator
   hiredis
   i18n-debug
@@ -259,7 +270,6 @@ DEPENDENCIES
   rails (~> 5.2.0)
   rails-controller-testing
   redis (~> 4.0)
-  redis-namespace
   rspec-activemodel-mocks
   rspec-its
   russian

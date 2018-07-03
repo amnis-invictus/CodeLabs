@@ -1,5 +1,7 @@
 class TestRequest < ApplicationRecord
-  validates :testing_type, :solution_compiler, presence: true
+  validates :solution_compiler, presence: true
+
+  validate :solution_must_be_attached
 
   belongs_to :problem
 
@@ -7,5 +9,12 @@ class TestRequest < ApplicationRecord
 
   enum solution_compiler: Compiler::ALL
 
-  delegate :checker_compiler, :testing_type, to: :problem
+  delegate :checker_compiler, to: :problem
+
+  delegate :as_json, to: :decorate
+
+  private
+  def solution_must_be_attached
+    errors.add :solution, :blank unless solution.attached?
+  end
 end
