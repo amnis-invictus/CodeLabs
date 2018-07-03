@@ -18,12 +18,12 @@ class ApplicationController < ActionController::Base
   private
   def current_user
     return unless session[:auth_token]
-    
+
     @current_user ||= User.joins(:auth_tokens).find_by(auth_tokens: { id: session[:auth_token] })
   end
 
   def authenticate!
-    head 401 unless current_user
+    redirect_to %i(new session) unless current_user
   end
 
   def authorize_resource
