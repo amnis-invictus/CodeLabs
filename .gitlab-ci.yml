@@ -5,6 +5,7 @@ deploy_staging:
     - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
     - eval $(ssh-agent -s)
     # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+    - echo -e "$TEST_VAR"
     - ssh-add <(echo -e "$SSH_PRIVATE_KEY")
     - gem install capistrano
     - cap staging deploy
