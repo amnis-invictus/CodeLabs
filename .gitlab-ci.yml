@@ -4,10 +4,10 @@ deploy_staging:
   script:
     - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
     - eval $(ssh-agent -s)
-    # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
-    - echo -e "$TEST_VAR"
     - ssh-add <(echo -e "$SSH_PRIVATE_KEY")
     - gem install capistrano
+    - gem install capistrano-rbenv
+    - gem install capistrano-rails
     - cap staging deploy
   only:
     - master
