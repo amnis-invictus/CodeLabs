@@ -1,6 +1,6 @@
 ru:
   submissions:
     new:
-      title: 'Отправка решения'
+      title: 'Отправить решение к задаче "%{problem_caption}"'
     show:
       title: 'Посылка №%{id}'

@@ -1,6 +1,6 @@
 en:
   submissions:
     new:
-      title: 'Submit a solution'
+      title: 'Submit a solution for the "%{problem_caption}" problem'
     show:
       title: 'Submission #%{id}'

@@ -1,6 +1,6 @@
 class Api::SubmissionsController < Api::ApplicationController
   private
   def collection
-    @collection ||= Submission.includes(:problem, :solution).page(params[:page])
+    @collection ||= Submission.with_attached_source.page(params[:page])
   end
 end

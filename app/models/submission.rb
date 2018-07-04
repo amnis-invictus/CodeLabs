@@ -1,20 +1,20 @@
 class Submission < ApplicationRecord
-  validates :solution_compiler, presence: true
+  validates :compiler, presence: true
 
-  validate :solution_must_be_attached
+  validate :source_must_be_attached
 
   belongs_to :problem
 
-  has_one_attached :solution
+  belongs_to :user
 
-  enum solution_compiler: Compiler::ALL
+  has_one_attached :source
 
-  delegate :checker_compiler, to: :problem
+  enum compiler: Compiler::ALL
 
   delegate :as_json, to: :decorate
 
   private
-  def solution_must_be_attached
-    errors.add :solution, :blank unless solution.attached?
+  def source_must_be_attached
+    errors.add :source, :blank unless source.attached?
   end
 end
