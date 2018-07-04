@@ -1,0 +1,5 @@
+ru:
+  activemodel:
+    attributes:
+      session:
+        password: 'Пароль'

@@ -1,31 +1,4 @@
 en:
-  header:
-    problems: 'Problems'
-    submissions: 'Submissions'
-    signin: 'Sign in'
-    signout: 'Sign out'
-  activerecord:
-    attributes:
-      user:
-      created_at: 'Register date'
-  home:
-    show:
-      sections:
-        first:
-          title: 'Prove to everybody that your code is cooler!'
-          subtitle: 'The world should know its heroes.'
-          list:
-            '0': 'It works? Show!'
-            '1': 'Using GoTo and the code is still readable? Show!'
-            '2': "Copypasting other's code and no one knows? Show!"
-            '3': "??? No, please don't show!"
-        second:
-          title: 'Sign up now!'
-  profile:
-    show:
-      title: 'Personal cabinet'
-    update:
-      success: 'Saved successfully'
   helpers:
     submit:
       user:
@@ -33,9 +6,5 @@ en:
         update: 'Update profile'
       session:
         create: 'Sign in'
-  simple_form:
-    placeholders:
-      user:
-        email: 'one@users.com'
-      session:
-        email: 'one@users.com'
+      submission:
+        create: 'Submit'

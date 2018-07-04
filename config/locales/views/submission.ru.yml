@@ -1,0 +1,6 @@
+ru:
+  submissions:
+    new:
+      title: 'Отправка решения'
+    show:
+      title: 'Посылка №%{id}'

@@ -1,0 +1,10 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        name: 'Имя'
+        skills: 'Навыки'
+        created_at: 'Дата регистрации'
+        score: 'Балы'

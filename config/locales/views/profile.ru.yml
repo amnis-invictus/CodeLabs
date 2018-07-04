@@ -1,0 +1,6 @@
+ru:
+  profile:
+    show:
+      title: 'Личный кабинет'
+    update:
+      success: 'Успешно сохранено'

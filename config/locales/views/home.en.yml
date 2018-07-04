@@ -1,0 +1,14 @@
+en:
+  home:
+    show:
+      sections:
+        first:
+          title: 'Prove to everybody that your code is cooler!'
+          subtitle: 'The world should know its heroes.'
+          list:
+            '0': 'It works? Show!'
+            '1': 'Using GoTo and the code is still readable? Show!'
+            '2': "Copypasting other's code and no one knows? Show!"
+            '3': "??? No, please don't show!"
+        second:
+          title: 'Sign up now!'

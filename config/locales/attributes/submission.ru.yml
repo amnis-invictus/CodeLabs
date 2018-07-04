@@ -1,0 +1,6 @@
+en:
+  activerecord:
+    attributes:
+      submission:
+        source: 'Исходный код'
+        compiler: 'Компилятор'

@@ -17,45 +17,10 @@ ru:
       present: 'нужно оставить пустым'
       required: 'не может отсутствовать'
       exists: 'уже существует'
-  header:
-    problems: 'Задачи'
-    submissions: 'Посылки'
-    signin: 'Войти'
-    signout: 'Выйти'
   activerecord:
     errors:
       messages:
         confirmation: 'не совпадает'
-    attributes:
-      user:
-        password: 'Пароль'
-        password_confirmation: 'Подтверждение пароля'
-        name: 'Имя'
-        skills: 'Навыки'
-        created_at: 'Дата регистрации'
-        score: 'Балы'
-  activemodel:
-    attributes:
-      session:
-        password: 'Пароль'
-  home:
-    show:
-      sections:
-        first:
-          title: 'Докажи всем, что твой код круче!'
-          subtitle: 'Мир должен знать своих героев.'
-          list:
-            '0': 'Оно работает? Покажи!'
-            '1': 'Пишеш через GoTo и это можно прочитать? Покажи!'
-            '2': 'Копипастишь чужой код и об этом никто не знает? Покажи!'
-            '3': 'Стоит на свой код? Нет, не показывай!'
-        second:
-          title: 'Регистрируйся сейчас!'
-  profile:
-    show:
-      title: 'Личный кабинет'
-    update:
-      success: 'Успешно сохранено'
   helpers:
     submit:
       user:
@@ -63,9 +28,5 @@ ru:
         update: 'Обновить профиль'
       session:
         create: 'Войти'
-  simple_form:
-    placeholders:
-      user:
-        email: 'one@users.com'
-      session:
-        email: 'one@users.com'
+      submission:
+        create: 'Отправить'

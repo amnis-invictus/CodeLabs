@@ -7,3 +7,6 @@ ru:
       mark: '*'
     error_notification:
       default_message: 'Пожалуйста, просмотрите приведенные ниже проблемы:'
+    placeholders:
+      defaults:
+        email: 'one@users.com'
