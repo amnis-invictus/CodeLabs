@@ -23,3 +23,5 @@ jQuery.fn.extend({
     })
   }
 })
+
+document.addEventListener('turbolinks:load', () => $('.image-input').imageInput())

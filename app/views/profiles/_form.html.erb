@@ -32,11 +32,3 @@
     <%= f.submit class: 'btn btn-default pull-right' %>
   </div>
 <% end %>
-
-<% content_for :javascripts do %>
-  <%= javascript_tag nonce: true do %>
-    $('#user_skills').tagsinput()
-
-    $('#profile-form .image-input').imageInput()
-  <% end %>
-<% end %>
