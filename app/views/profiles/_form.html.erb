@@ -34,9 +34,9 @@
 <% end %>
 
 <% content_for :javascripts do %>
-  <script>
+  <%= javascript_tag nonce: true do %>
     $('#user_skills').tagsinput()
 
     $('#profile-form .image-input').imageInput()
-  </script>
+  <% end %>
 <% end %>
