@@ -21,7 +21,6 @@ gem 'simple_form'
 gem 'pundit'
 gem 'jquery-rails'
 gem 'mini_magick'
-gem 'toastr-rails'
 gem 'hiredis'
 gem 'redis', '~> 4.0', require: %w(redis redis/connection/hiredis)
 gem 'draper'
