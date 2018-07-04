@@ -14,7 +14,7 @@ class Session
   delegate :destroy, to: :auth_token
 
   def initialize params={}
-    @email, @password, @auth_token = params.values_at :email, :password, :auth_token
+    @email, @password, @auth_token, @redirect = params.values_at :email, :password, :auth_token, :redirect
   end
 
   def to_key; end
@@ -35,6 +35,10 @@ class Session
 
   def user
     @user ||= User.find_by email: email
+  end
+
+  def redirect
+    @redirect.present? ? @redirect : :profile
   end
 
   private

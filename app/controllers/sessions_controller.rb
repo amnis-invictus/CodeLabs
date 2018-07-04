@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     session[:auth_token] = resource.auth_token.id
 
-    redirect_to :profile
+    redirect_to resource.redirect
   end
 
   def destroy
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
   end
 
   def resource_params
-    params.require(:session).permit(:email, :password)
+    params.require(:session).permit(:email, :password, :redirect)
   end
 
   def initialize_resource

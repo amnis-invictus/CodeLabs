@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    redirect_to %i(new session) unless current_user
+    redirect_to [:new, :session, redirect: request.fullpath] unless current_user
   end
 
   def authorize_resource

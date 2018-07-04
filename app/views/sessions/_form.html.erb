@@ -1,4 +1,6 @@
 <%= simple_form_for resource, url: :session do |f| %>
+  <%= f.hidden_field :redirect, value: params[:redirect] %>
+
   <%= f.input :email %>
 
   <%= f.input :password %>
