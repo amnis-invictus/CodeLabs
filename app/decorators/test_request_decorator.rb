@@ -1,4 +1,4 @@
-class TestRequestDecorator < Draper::Decorator
+class SubmissionDecorator < Draper::Decorator
   delegate_all
 
   def as_json *args

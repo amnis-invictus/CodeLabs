@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   resources :submissions, only: %i(index show)
 
   namespace :api do
-    resources :test_requests, only: :index
+    resources :submissions, only: :index
   end
 end

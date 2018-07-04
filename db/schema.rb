@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_03_174334) do
+ActiveRecord::Schema.define(version: 2018_07_04_110205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -61,12 +61,12 @@ ActiveRecord::Schema.define(version: 2018_07_03_174334) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "test_requests", force: :cascade do |t|
+  create_table "submissions", force: :cascade do |t|
     t.integer "solution_compiler", null: false
     t.bigint "problem_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["problem_id"], name: "index_test_requests_on_problem_id"
+    t.index ["problem_id"], name: "index_submissions_on_problem_id"
   end
 
   create_table "tests", force: :cascade do |t|
@@ -90,6 +90,6 @@ ActiveRecord::Schema.define(version: 2018_07_03_174334) do
 
   add_foreign_key "auth_tokens", "users"
   add_foreign_key "problem_translations", "problems"
-  add_foreign_key "test_requests", "problems"
+  add_foreign_key "submissions", "problems"
   add_foreign_key "tests", "problems"
 end

@@ -1,4 +1,4 @@
-class TestRequest < ApplicationRecord
+class Submission < ApplicationRecord
   validates :solution_compiler, presence: true
 
   validate :solution_must_be_attached
