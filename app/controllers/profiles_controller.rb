@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
   def update
-    render :edit unless resource.update resource_params
+    resource.update resource_params
+
+    render :show
   end
 
   alias_method :resource, :current_user
