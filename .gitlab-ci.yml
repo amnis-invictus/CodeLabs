@@ -9,3 +9,5 @@ deploy_staging:
     - cap staging deploy
   only:
     - master
+  variables:
+    GIT_STRATEGY: none
