@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   def update
-    resource.update resource_params
+    flash.now[:success] = I18n.t 'profile.update.success' if resource.update resource_params
 
     render :show
   end

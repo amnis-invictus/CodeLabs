@@ -20,7 +20,7 @@
     <%= javascript_include_tag :application, 'data-turbolinks-track': :reload %>
   </head>
 
-  <body>
+  <body data-flash="<%= flash.to_json %>">
     <%= render 'widgets/header' %>
 
     <div class="content container">
