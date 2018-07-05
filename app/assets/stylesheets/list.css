@@ -1,0 +1,38 @@
+.list {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+    .list h2.list_header,
+    .list h1.list_header {
+        color: #000000;
+        text-shadow: none;
+    }
+
+    .list .list_row,
+    .list .list_header_row {
+        padding: 2px;
+        margin: 0;
+    }
+
+        .list .list_header_row {
+            background-color: #303030;
+        }
+
+            .list .list_header_row p {
+                color: #ffffff;
+                text-transform: capitalize;
+                font-size: 1.125em;
+            }
+
+        .list .list_row:nth-child(odd) {
+            background-color: #ffe4ce;
+        }
+
+        .list .list_row:nth-child(even) {
+            background-color: #ffcea6;
+        }
+
+        .list .list_row .border {
+            border-right: 2px solid #ffffff;
+        }

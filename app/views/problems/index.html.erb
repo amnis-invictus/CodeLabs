@@ -1,0 +1,27 @@
+<div class="row bg-light">
+  <div class="col-xs-12">
+    <div class="list">
+      <h1 class="list_header"><%= t 'problems.index.title' %></h1>
+      <div class="row list_header_row">
+        <div class="col-md-1 center">
+          <p><%= t 'problems.index.number' %></p>
+        </div>
+
+        <div class="col-md-9 center">
+          <p><%= t 'problems.index.name' %></p>
+        </div>
+
+        <div class="col-md-2 center">
+          <p><%= t 'problems.index.difficult' %></p>
+        </div>
+      </div>
+
+      <%= render collection %>
+
+    </div>
+
+    TODO: pagination
+  
+  </div>
+
+</div>
