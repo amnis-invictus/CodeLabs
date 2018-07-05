@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_095143) do
+ActiveRecord::Schema.define(version: 2018_07_05_104902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2018_07_05_095143) do
   end
 
   add_foreign_key "auth_tokens", "users"
+  add_foreign_key "examples", "problems"
   add_foreign_key "problem_translations", "problems"
   add_foreign_key "submissions", "problems"
   add_foreign_key "submissions", "users"
