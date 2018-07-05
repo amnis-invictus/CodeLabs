@@ -1,0 +1,12 @@
+ru:
+  problems:
+    index:
+      title: 'Задачи'
+      number: '№'
+      name: 'Название'
+      difficult: 'Сложность'
+    show:
+      technical_text: 'Технические условия'
+      examples: 'Примеры'
+      example_input: 'Ввод'
+      example_output: 'Вывод'
