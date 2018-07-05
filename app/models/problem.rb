@@ -1,4 +1,6 @@
 class Problem < ApplicationRecord
+  has_many :examples
+
   has_many :tests
 
   has_many :translations, class_name: 'ProblemTranslation'
