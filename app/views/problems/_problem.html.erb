@@ -2,14 +2,14 @@
 
     <div class="col-md-1 center border">
       <%= link_to controller: "problems", action: "show", id: problem.id do %>
-        <p><%= t problem.id %></p>
+        <p><%= problem.id %></p>
       <% end %>
 
     </div>
 
     <div class="col-md-9 center border">
       <%= link_to controller: "problems", action: "show", id: problem.id do %>
-        <p><%= t problem.caption %></p>
+        <p><%= problem.caption %></p>
       <% end %>
     </div>
 
