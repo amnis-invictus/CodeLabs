@@ -1,5 +1,5 @@
 class Test < ApplicationRecord
-  validates :test_num, presence: true
+  validates :num, presence: true
 
   belongs_to :problem
 
