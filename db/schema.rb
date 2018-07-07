@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_104902) do
+ActiveRecord::Schema.define(version: 2018_07_05_154704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 2018_07_05_104902) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "problems_tags", force: :cascade do |t|
+    t.bigint "problem_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["problem_id"], name: "index_problems_tags_on_problem_id"
+    t.index ["tag_id"], name: "index_problems_tags_on_tag_id"
+  end
+
   create_table "submissions", force: :cascade do |t|
     t.integer "compiler", null: false
     t.bigint "problem_id", null: false
@@ -78,6 +87,20 @@ ActiveRecord::Schema.define(version: 2018_07_05_104902) do
     t.bigint "user_id", null: false
     t.index ["problem_id"], name: "index_submissions_on_problem_id"
     t.index ["user_id"], name: "index_submissions_on_user_id"
+  end
+
+  create_table "tag_translations", force: :cascade do |t|
+    t.integer "language"
+    t.string "name"
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_tag_translations_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tests", force: :cascade do |t|
@@ -102,7 +125,10 @@ ActiveRecord::Schema.define(version: 2018_07_05_104902) do
   add_foreign_key "auth_tokens", "users"
   add_foreign_key "examples", "problems"
   add_foreign_key "problem_translations", "problems"
+  add_foreign_key "problems_tags", "problems"
+  add_foreign_key "problems_tags", "tags"
   add_foreign_key "submissions", "problems"
   add_foreign_key "submissions", "users"
+  add_foreign_key "tag_translations", "tags"
   add_foreign_key "tests", "problems"
 end

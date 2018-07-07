@@ -1,0 +1,2 @@
+class ProblemsTag < ApplicationRecord
+end
