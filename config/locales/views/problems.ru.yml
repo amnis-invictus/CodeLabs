@@ -4,7 +4,7 @@ ru:
       title: 'Задачи'
       number: '№'
       name: 'Название'
-      difficult: 'Сложность'
+      difficulty: 'Сложность'
     show:
       technical_text: 'Технические условия'
       examples: 'Примеры'

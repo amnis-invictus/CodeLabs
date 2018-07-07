@@ -1,22 +1,15 @@
 class ProblemsController < ApplicationController
   skip_before_action :authenticate!, only: %i(index show)
+
   skip_before_action :authorize_collection, :authorize_resource
-
-  def index
-
-  end
-
-  def show
-
-  end
 
   private
   def collection
-    if params[:tag_id] then
-      @collection ||= (Tag.find params[:tag_id]).problems.page(params[:page])
-    else
-      @collection ||= Problem.page(params[:page])
-    end
+    @collection ||= (parent&.problems || Problem.all).page(params[:page])
+  end
+
+  def parent
+    @parent ||= Tag.find params[:tag_id] if params[:tag_id]
   end
 
   def resource

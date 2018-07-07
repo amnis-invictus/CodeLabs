@@ -1,20 +1,13 @@
-<div class="row list_row ">
+<div class="row list-row" data-href="<%= url_for problem %>">
+  <div class="list-row__col list-row__col--with-border col-md-1">
+    <%= problem.id %>
+  </div>
 
-    <div class="col-md-1 center border">
-      <%= link_to controller: "problems", action: "show", id: problem.id do %>
-        <p><%= problem.id %></p>
-      <% end %>
+  <div class="list-row__col list-row__col--with-border col-md-9">
+    <%= problem.caption %>
+  </div>
 
-    </div>
-
-    <div class="col-md-9 center border">
-      <%= link_to controller: "problems", action: "show", id: problem.id do %>
-        <p><%= problem.caption %></p>
-      <% end %>
-    </div>
-
-    <div class="col-md-2 center">
-      <p>0%</p>
-    </div>
-
+  <div class="list-row__col col-md-2">
+    0%
+  </div>
 </div>
