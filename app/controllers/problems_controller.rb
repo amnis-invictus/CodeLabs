@@ -12,7 +12,11 @@ class ProblemsController < ApplicationController
 
   private
   def collection
-    @collection ||= Problem.page(params[:page])
+    if params[:tag_id] then
+      @collection ||= (Tag.find params[:tag_id]).problems.page(params[:page])
+    else
+      @collection ||= Problem.page(params[:page])
+    end
   end
 
   def resource
