@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :submissions, only: %i(index new create)
   end
 
+  resources :tags do
+    resources :problems
+  end
+
   resources :submissions, only: %i(index show)
 
   namespace :api do

@@ -26,7 +26,7 @@
                 <h3><%= t 'problems.show.example_input' %></h3>
                 <% resource.examples.each do |example| %>
                   <p><%= example.input -%></p>
-               <% end %>
+                <% end %>
               </div>
               <div class="col-md-5 part">
                 <h3><%= t 'problems.show.example_output' %></h3>
@@ -44,10 +44,9 @@
       <div class="col-md-12">
         <p>
           <i class="fa fa-certificate" aria-hidden="true"></i>
-          <a href="/tags/@tag.Id/problems" class="tag">Translations</a>
-          <a href="/tags/@tag.Id/problems" class="tag">@tag</a>
-          <a href="/tags/@tag.Id/problems" class="tag">First()</a>
-          <a href="/tags/@tag.Id/problems" class="tag">Name</a>
+          <% resource.tags.each do |tag| %>
+            <%= link_to (tag.name), [tag, :problems], class: 'tag' %>
+          <% end %> 
         </p>
         <hr class="part_hr"/>
       </div>
