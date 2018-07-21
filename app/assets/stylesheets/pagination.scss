@@ -1,0 +1,27 @@
+.pagination {
+    > li > a {
+    color: #ffffff;
+    background-color: #fe7400;
+    border-color:#000000;
+
+    &:hover {
+      color: #ffffff;
+      background-color: #000000;
+      border-color: #000000;
+    }
+  }
+
+  > .active > a,
+  > .active > a:hover {
+    color: #fe7400;
+    background-color: #000000;
+    border-color: #000000;
+  }
+
+  > .disabled > a,
+  > .disabled > a:hover {
+    color: #000000;
+    background-color: #fe7400;
+    border-color:#000000;
+  }
+}
