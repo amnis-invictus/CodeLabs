@@ -3,13 +3,9 @@ class Session
 
   attr_reader :email, :password
 
-  validates :email, presence: true
+  validates :email, :password, presence: true
 
-  validates :password, presence: true
-
-  validate :user_must_be_present
-
-  validate :password_must_pass_authentication
+  validate :user_must_be_present, :password_must_pass_authentication
 
   delegate :destroy, to: :auth_token
 
@@ -19,14 +15,10 @@ class Session
 
   def to_key; end
 
-  def persisted?
-    false
-  end
+  def persisted?; false; end
 
   def save
-    return false unless valid?
-
-    auth_token.save
+    valid? ? auth_token.save : false
   end
 
   def auth_token
@@ -49,7 +41,7 @@ class Session
   end
 
   def password_must_pass_authentication
-    return if password.blank? || email.blank? || user.blank?
+    return if password.blank? || user.blank?
 
     errors.add :password, :invalid unless user.authenticate password
   end

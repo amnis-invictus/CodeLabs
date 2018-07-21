@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
-  before_action :set_locale
-
-  before_action :authenticate!
+  before_action :authenticate!, :set_locale
 
   before_action :initialize_resource, only: :new
 
