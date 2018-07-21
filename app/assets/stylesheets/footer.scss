@@ -7,4 +7,15 @@
   background-color: rgba(0, 0, 0, 0.25);
   line-height: 20px;
   padding: 20px;
+
+  &--revision {
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  &:hover {
+    .footer--revision {
+      color: rgba(255, 255, 255, 1);
+    }
+  }
 }
