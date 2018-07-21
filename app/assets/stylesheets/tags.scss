@@ -1,0 +1,16 @@
+.tags {
+  display: inline-block;
+  padding: 0 15px;
+  margin: 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+
+    &:not(:first-child)::before {
+      padding: 0 5px;
+      color: #ccc;
+      content: "\ff5c";
+    }
+  }
+}
