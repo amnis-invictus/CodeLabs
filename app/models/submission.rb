@@ -9,7 +9,7 @@ class Submission < ApplicationRecord
 
   has_one_attached :source
 
-  enum compiler: Compiler::ALL
+  enum compiler: Compiler::ALL, test_state: { pending: 0, in_progress: 1, done: 2 }
 
   delegate :as_json, to: :decorate
 
