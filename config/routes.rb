@@ -23,5 +23,7 @@ Rails.application.routes.draw do
 
       resource :release, only: :create
     end
+
+    resources :problems, only: :show
   end
 end
