@@ -6,4 +6,6 @@ class Test < ApplicationRecord
   has_one_attached :input
 
   has_one_attached :answer
+
+  delegate :as_json, to: :decorate
 end

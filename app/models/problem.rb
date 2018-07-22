@@ -3,7 +3,7 @@ class Problem < ApplicationRecord
 
   has_many :translations, class_name: 'ProblemTranslation'
 
-  has_many :tests
+  has_many :tests, -> { with_attached_input.with_attached_answer }
 
   has_many :examples
 
@@ -12,4 +12,6 @@ class Problem < ApplicationRecord
   default_scope { includes :translation }
 
   delegate :caption, :author, :text, :technical_text, to: :translation, allow_nil: true
+
+  delegate :as_json, to: :decorate
 end
