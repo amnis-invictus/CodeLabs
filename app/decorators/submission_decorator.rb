@@ -6,7 +6,8 @@ class SubmissionDecorator < Draper::Decorator
       id: id,
       compiler: compiler,
       problem_id: problem_id,
-      source_url: source_url
+      source_url: source_url,
+      test_state: test_state
     }
   end
 

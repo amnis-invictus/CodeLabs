@@ -1,6 +1,6 @@
 class Api::SubmissionsController < Api::ApplicationController
   private
   def collection
-    @collection ||= Submission.with_attached_source.page(params[:page])
+    @collection ||= Submission.pending.with_attached_source
   end
 end
