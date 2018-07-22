@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   resources :submissions, only: %i(index show)
 
   namespace :api do
-    resources :submissions, only: :index
+    resources :submissions, only: :index do
+      resource :take, only: :create
+
+      resource :release, only: :create
+    end
   end
 end

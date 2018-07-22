@@ -24,6 +24,7 @@ gem 'mini_magick'
 gem 'hiredis'
 gem 'redis', '~> 4.0', require: %w(redis redis/connection/hiredis)
 gem 'draper'
+gem 'aasm'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
