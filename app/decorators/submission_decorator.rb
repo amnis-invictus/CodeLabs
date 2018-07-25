@@ -11,7 +11,8 @@ class SubmissionDecorator < Draper::Decorator
       problem_id: problem_id,
       source_url: source_url,
       problem_updated_at: problem_updated_at,
-      test_state: test_state
+      test_state: test_state,
+      fails_count: fails_count
     }
   end
 
