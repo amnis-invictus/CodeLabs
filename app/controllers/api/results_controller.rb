@@ -9,7 +9,7 @@ class Api::ResultsController < Api::ApplicationController
   attr_reader :resource
 
   def resource_params
-    params.require(:result).permit(:status, :log, :test_id, :submission_id)
+    params.require(:result).permit(:status, :log, :memory, :time, :test_id, :submission_id)
   end
 
   def build_resource
