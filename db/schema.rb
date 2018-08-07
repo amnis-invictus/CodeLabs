@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_07_083125) do
+ActiveRecord::Schema.define(version: 2018_08_07_083719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -49,6 +49,10 @@ ActiveRecord::Schema.define(version: 2018_08_07_083125) do
     t.string "version", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "memory_a", null: false
+    t.float "memory_b", null: false
+    t.float "time_a", null: false
+    t.float "time_b", null: false
   end
 
   create_table "examples", force: :cascade do |t|
@@ -76,6 +80,8 @@ ActiveRecord::Schema.define(version: 2018_08_07_083125) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "checker_compiler_id", null: false
+    t.float "memory_limit", null: false
+    t.float "time_limit", null: false
     t.index ["checker_compiler_id"], name: "index_problems_on_checker_compiler_id"
   end
 

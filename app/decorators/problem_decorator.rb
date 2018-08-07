@@ -17,8 +17,18 @@ class ProblemDecorator < Draper::Decorator
         updated_at: updated_at,
         checker_compiler_id: checker_compiler_id
         checker_url: nil,
-        tests: tests
+        tests: tests,
+        memory_limit: memory_limit,
+        time_limit: time_limit
       }
     end
+  end
+
+  def memory_limit
+    memory_limit * compiler.memory_a + compiler.memory_b
+  end
+
+  def time_limit
+    time_limit * compiler.time_a + compiler.time_b
   end
 end
