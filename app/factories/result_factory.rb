@@ -9,7 +9,7 @@ class ResultFactory
 
   private
   def params
-    @params.slice(:test_id, :submission_id).merge(status: status)
+    @params.slice(:log, :test_id, :submission_id).merge(status: status)
   end
 
   def status
