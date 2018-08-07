@@ -4,12 +4,21 @@ class ProblemDecorator < Draper::Decorator
   decorates_association :tests
 
   def as_json *args
-    {
-      id: id,
-      updated_at: updated_at,
-      checker_compiler: nil,
-      checker_url: nil,
-      tests: tests
-    }
+    case context
+    when :submission
+      {
+        id: id,
+        updated_at: updated_at,
+        checker_compiler_id: checker_compiler_id
+      }
+    else
+      {
+        id: id,
+        updated_at: updated_at,
+        checker_compiler_id: checker_compiler_id
+        checker_url: nil,
+        tests: tests
+      }
+    end
   end
 end

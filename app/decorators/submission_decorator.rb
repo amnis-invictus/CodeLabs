@@ -1,16 +1,14 @@
 class SubmissionDecorator < Draper::Decorator
   delegate_all
 
-  delegate :updated_at, to: :problem, prefix: true
+  decorates_association :problem, context: :submission
 
   def as_json *args
     {
       id: id,
-      compiler: compiler,
-      checker_compiler: nil,
-      problem_id: problem_id,
+      compiler_id: compiler_id,
+      problem: problem
       source_url: source_url,
-      problem_updated_at: problem_updated_at,
       test_state: test_state,
       fails_count: fails_count
     }

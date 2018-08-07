@@ -1,4 +1,8 @@
 class Problem < ApplicationRecord
+  belongs_to :checker_compiler, class_name: 'Compiler'
+
+  has_one_attached :checker_source
+
   has_one :translation, -> { where language: I18n.locale }, class_name: 'ProblemTranslation'
 
   has_many :translations, class_name: 'ProblemTranslation'
