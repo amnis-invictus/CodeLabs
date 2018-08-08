@@ -15,7 +15,7 @@ class SubmissionsController < ApplicationController
   end
 
   def resource_params
-    params.require(:submission).permit(:compiler, :source).merge(problem: parent, user: current_user)
+    params.require(:submission).permit(:compiler_id, :source).merge(problem: parent, user: current_user)
   end
 
   def initialize_resource
