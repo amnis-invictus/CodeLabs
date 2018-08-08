@@ -4,6 +4,6 @@ class AddCompilerToSubmissions < ActiveRecord::Migration[5.2]
 
     add_foreign_key :submissions, :compilers
 
-    change_column_null :submissions, :compiler_id, false, 0
+    change_column_null :submissions, :compiler_id, false, 1
   end
 end
