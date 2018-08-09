@@ -23,14 +23,17 @@
   }
 
   &__col {
-    flex: 1;
     min-height: 34px;
-    padding: 7px 0 calc(7px + 100%) 0;
+    padding: 7px 7px calc(7px + 100%) 7px;
     text-align: center;
     margin-bottom: -100%;
 
     &--with-border {
       border-right: 1px solid #ffffff;
+    }
+
+    &--left {
+      text-align: left;
     }
   }
 }

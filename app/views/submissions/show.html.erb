@@ -5,23 +5,23 @@
 
   <div class="col-xs-12">
     <div class="row list-row">
-      <div class="list-row__col col-md-1 text-center">
+      <div class="list-row__col col-md-1">
         <%= t 'results.index.num' %>
       </div>
 
-      <div class="list-row__col col-md-2 text-center">
+      <div class="list-row__col col-md-2">
         <%= t 'results.index.status' %>
       </div>
 
-      <div class="list-row__col col-md-1 text-center">
+      <div class="list-row__col col-md-1">
         <%= t 'results.index.time' %>
       </div>
 
-      <div class="list-row__col col-md-1 text-center">
+      <div class="list-row__col col-md-1">
         <%= t 'results.index.memory' %>
       </div>
 
-      <div class="list-row__col col-md-7 text-center">
+      <div class="list-row__col col-md-7">
         <%= t 'results.index.log' %>
       </div>
     </div>
@@ -44,8 +44,8 @@
           <%= result.memory %> kb
         </div>
 
-        <div class="list-row__col col-md-7">
-          <%= result.log %>
+        <div class="list-row__col list-row__col--left col-md-7">
+          <%= simple_format result.log %>
         </div>
       </div>
     <% end %>
