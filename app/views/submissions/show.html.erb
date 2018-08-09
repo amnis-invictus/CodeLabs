@@ -4,6 +4,50 @@
   </div>
 
   <div class="col-xs-12">
-    TODO
+    <div class="row list-row">
+      <div class="list-row__col col-md-1 text-center">
+        <%= t 'results.index.num' %>
+      </div>
+
+      <div class="list-row__col col-md-1 text-center">
+        <%= t 'results.index.status' %>
+      </div>
+
+      <div class="list-row__col col-md-1 text-center">
+        <%= t 'results.index.time' %>
+      </div>
+
+      <div class="list-row__col col-md-1 text-center">
+        <%= t 'results.index.memory' %>
+      </div>
+
+      <div class="list-row__col col-md-8 text-center">
+        <%= t 'results.index.log' %>
+      </div>
+    </div>
+
+    <% resource.results.each do |result| %>
+      <div class="row list-row">
+        <div class="list-row__col list-row__col--with-border col-md-1">
+          <%= result.test_num %>
+        </div>
+
+        <div class="list-row__col list-row__col--with-border col-md-1">
+          <%= result.status %>
+        </div>
+
+        <div class="list-row__col list-row__col--with-border col-md-1">
+          <%= result.time %> ms
+        </div>
+
+        <div class="list-row__col list-row__col--with-border col-md-1">
+          <%= result.memory %> kb
+        </div>
+
+        <div class="list-row__col col-md-8">
+          <%= result.log %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

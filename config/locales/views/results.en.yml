@@ -1,0 +1,7 @@
+en:
+  index:
+    num: 'Test num'
+    status: 'Status'
+    time: 'Time'
+    memory: 'Memory'
+    log: 'Compiler log'

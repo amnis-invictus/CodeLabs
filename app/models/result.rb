@@ -19,4 +19,6 @@ class Result < ApplicationRecord
   belongs_to :submission
 
   belongs_to :test
+
+  delegate :num, to: :test, prefix: true
 end

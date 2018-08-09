@@ -11,6 +11,8 @@ class Submission < ApplicationRecord
 
   has_one_attached :source
 
+  has_many :results
+
   enum test_state: { pending: 0, in_progress: 1, done: 2, failed: 3 }
 
   delegate :as_json, to: :decorate
