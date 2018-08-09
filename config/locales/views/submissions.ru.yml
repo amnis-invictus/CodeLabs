@@ -4,3 +4,9 @@ ru:
       title: 'Отправить решение к задаче "%{problem_caption}"'
     show:
       title: 'Посылка №%{id}'
+    index:
+      title: 'Посылки'
+      problem_name: 'Название задачи'
+      user_name: 'Имя пользователя'
+      test_state: 'Статус тестирования'
+      id: 'ИД'

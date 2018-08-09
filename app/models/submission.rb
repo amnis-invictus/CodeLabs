@@ -17,6 +17,10 @@ class Submission < ApplicationRecord
 
   delegate :as_json, to: :decorate
 
+  delegate :name, to: :user, prefix: true
+
+  delegate :caption, to: :problem, prefix: true
+
   aasm column: :test_state, whiny_transitions: false, enum: true do
     state :pending, initial: true
 

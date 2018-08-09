@@ -6,6 +6,10 @@ class SubmissionsController < ApplicationController
   end
 
   private
+  def collection
+    @collection ||= Submission.order(created_at: :desc).page(params[:page])
+  end
+
   def parent
     @parent ||= Problem.find params[:problem_id]
   end
