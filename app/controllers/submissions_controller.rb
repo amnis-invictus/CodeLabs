@@ -6,6 +6,10 @@ class SubmissionsController < ApplicationController
   end
 
   private
+  def collection
+    @collection ||= Submission.order(created_at: :desc).page(params[:page])
+  end
+
   def parent
     @parent ||= Problem.find params[:problem_id]
   end
@@ -15,7 +19,7 @@ class SubmissionsController < ApplicationController
   end
 
   def resource_params
-    params.require(:submission).permit(:compiler, :source).merge(problem: parent, user: current_user)
+    params.require(:submission).permit(:compiler_id, :source).merge(problem: parent, user: current_user)
   end
 
   def initialize_resource

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_161854) do
+ActiveRecord::Schema.define(version: 2018_08_07_090413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 2018_07_25_161854) do
     t.index ["user_id"], name: "index_auth_tokens_on_user_id"
   end
 
+  create_table "compilers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "version", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "memory_a", null: false
+    t.float "memory_b", null: false
+    t.float "time_a", null: false
+    t.float "time_b", null: false
+  end
+
   create_table "examples", force: :cascade do |t|
     t.string "input"
     t.string "answer"
@@ -68,6 +79,10 @@ ActiveRecord::Schema.define(version: 2018_07_25_161854) do
   create_table "problems", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "checker_compiler_id", null: false
+    t.float "memory_limit", null: false
+    t.float "time_limit", null: false
+    t.index ["checker_compiler_id"], name: "index_problems_on_checker_compiler_id"
   end
 
   create_table "problems_tags", force: :cascade do |t|
@@ -79,14 +94,28 @@ ActiveRecord::Schema.define(version: 2018_07_25_161854) do
     t.index ["tag_id"], name: "index_problems_tags_on_tag_id"
   end
 
+  create_table "results", force: :cascade do |t|
+    t.integer "status", null: false
+    t.bigint "submission_id", null: false
+    t.bigint "test_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "log"
+    t.float "memory"
+    t.float "time"
+    t.index ["submission_id"], name: "index_results_on_submission_id"
+    t.index ["test_id"], name: "index_results_on_test_id"
+  end
+
   create_table "submissions", force: :cascade do |t|
-    t.integer "compiler", null: false
     t.bigint "problem_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.integer "test_state", default: 0, null: false
     t.integer "fails_count", default: 0, null: false
+    t.bigint "compiler_id", null: false
+    t.index ["compiler_id"], name: "index_submissions_on_compiler_id"
     t.index ["problem_id"], name: "index_submissions_on_problem_id"
     t.index ["test_state"], name: "index_submissions_on_test_state"
     t.index ["user_id"], name: "index_submissions_on_user_id"
@@ -128,8 +157,10 @@ ActiveRecord::Schema.define(version: 2018_07_25_161854) do
   add_foreign_key "auth_tokens", "users"
   add_foreign_key "examples", "problems"
   add_foreign_key "problem_translations", "problems"
+  add_foreign_key "problems", "compilers", column: "checker_compiler_id"
   add_foreign_key "problems_tags", "problems"
   add_foreign_key "problems_tags", "tags"
+  add_foreign_key "submissions", "compilers"
   add_foreign_key "submissions", "problems"
   add_foreign_key "submissions", "users"
   add_foreign_key "tag_translations", "tags"

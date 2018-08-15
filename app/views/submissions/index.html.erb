@@ -1,0 +1,29 @@
+<div class="row bg-light">
+  <div class="col-xs-12">
+    <h1><%= t 'submissions.index.title' %></h1>
+  </div>
+
+  <div class="col-xs-12">
+    <div class="row list-row">
+      <div class="list-row__col col-md-1">
+        <%= t 'submissions.index.id' %>
+      </div>
+
+      <div class="list-row__col col-md-6">
+        <%= t 'submissions.index.problem_name' %>
+      </div>
+
+      <div class="list-row__col col-md-3">
+        <%= t 'submissions.index.user_name' %>
+      </div>
+
+      <div class="list-row__col col-md-2">
+        <%= t 'submissions.index.test_state' %>
+      </div>
+    </div>
+
+    <%= render collection %>
+
+    <%= paginate collection %>
+  </div>
+</div>

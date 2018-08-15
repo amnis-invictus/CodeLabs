@@ -1,0 +1,17 @@
+<div class="row list-row" data-href="<%= url_for submission %>">
+    <div class="list-row__col list-row__col--with-border col-md-1">
+        <%= submission.id %>
+    </div>
+
+    <div class="list-row__col list-row__col--with-border col-md-6">
+        <%= submission.problem_caption %>
+    </div>
+
+    <div class="list-row__col list-row__col--with-border col-md-3">
+        <%= submission.user_name %>
+    </div>
+
+    <div class="list-row__col list-row__col--with-border col-md-2">
+        <%= submission.test_state %>
+    </div>
+</div>
