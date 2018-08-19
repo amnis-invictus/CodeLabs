@@ -10,3 +10,5 @@ ru:
       examples: 'Примеры'
       example_input: 'Ввод'
       example_output: 'Вывод'
+    new:
+      title: 'Создать задачу из архива'

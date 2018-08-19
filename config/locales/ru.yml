@@ -30,3 +30,5 @@ ru:
         create: 'Войти'
       submission:
         create: 'Отправить'
+      problem:
+        create: 'Загрузить архив'

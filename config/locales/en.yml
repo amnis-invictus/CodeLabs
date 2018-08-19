@@ -8,3 +8,5 @@ en:
         create: 'Sign in'
       submission:
         create: 'Submit'
+      problem:
+        create: 'Upload archive'

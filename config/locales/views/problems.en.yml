@@ -10,3 +10,5 @@ en:
       examples: 'Examples'
       example_input: 'Input'
       example_output: 'Output'
+    new:
+      title: 'Create a problem from an archive'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_07_090413) do
+ActiveRecord::Schema.define(version: 2018_08_19_160126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2018_08_07_090413) do
     t.float "memory_b", null: false
     t.float "time_a", null: false
     t.float "time_b", null: false
+    t.index ["name"], name: "index_compilers_on_name"
   end
 
   create_table "examples", force: :cascade do |t|
@@ -151,6 +152,7 @@ ActiveRecord::Schema.define(version: 2018_08_07_090413) do
     t.string "name"
     t.bigint "score", default: 0
     t.string "skills", default: [], array: true
+    t.boolean "administrator", default: false, null: false
     t.index ["email"], name: "index_users_on_email"
   end
 

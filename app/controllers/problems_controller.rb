@@ -1,7 +1,13 @@
 class ProblemsController < ApplicationController
   skip_before_action :authenticate!, only: %i(index show)
 
-  skip_before_action :authorize_collection, :authorize_resource
+  def create
+    name = File.join Dir.tmpdir, SecureRandom.uuid
+
+    FileUtils.copy params[:problem][:archive].path, name
+
+    ProcessProblemArchiveJob.perform_later name
+  end
 
   private
   def collection
@@ -15,4 +21,10 @@ class ProblemsController < ApplicationController
   def resource
     @resource ||= Problem.find params[:id]
   end
+
+  def initialize_resource
+    @resource = Problem.new
+  end
+
+  alias_method :build_resource, :initialize_resource
 end

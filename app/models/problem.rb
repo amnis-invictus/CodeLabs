@@ -1,4 +1,6 @@
 class Problem < ApplicationRecord
+  attr_accessor :archive
+
   validates :memory_limit, :time_limit, presence: true, numericality: true
 
   belongs_to :checker_compiler, class_name: 'Compiler'

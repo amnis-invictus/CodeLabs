@@ -25,6 +25,8 @@ gem 'hiredis'
 gem 'redis', '~> 4.0', require: %w(redis redis/connection/hiredis)
 gem 'draper'
 gem 'aasm'
+gem 'rubyzip', require: 'zip'
+gem 'nokogiri'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'

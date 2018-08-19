@@ -1,0 +1,5 @@
+ru:
+  activerecord:
+    attributes:
+      problem:
+        archive: 'Архив'
