@@ -1,4 +1,6 @@
 class SubmissionsController < ApplicationController
+  skip_before_action :authenticate!, only: :index
+
   def create
     render :new and return unless resource.save
 
