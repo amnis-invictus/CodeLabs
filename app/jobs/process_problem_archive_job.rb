@@ -20,6 +20,8 @@ class ProcessProblemArchiveJob < ApplicationJob
       build_tags
 
       build_tests
+
+      build_submissions
     end
   ensure
     FileUtils.remove archive_path
@@ -33,7 +35,7 @@ class ProcessProblemArchiveJob < ApplicationJob
         time_limit: @xml.at_xpath('problem/time_limit').content,
         # real_time_limit: @xml.at_xpath('problem/real_time_limit').content,
         checker_source: { io: io, filename: SecureRandom.uuid },
-        checker_compiler: find_checker_compiler
+        checker_compiler: find_compiler_by_file(@checker)
     end
   end
 
@@ -86,9 +88,20 @@ class ProcessProblemArchiveJob < ApplicationJob
     end.values.tap { |v| v.each &:save! }
   end
 
+  def build_submissions
+    @solutions.each do |solution|
+      solution.get_input_stream do |io|
+        Submission.create! \
+          problem: @problem,
+          compiler: find_compiler_by_file(solution),
+          source: { io: io, filename: SecureRandom.uuid }
+      end
+    end
+  end
+
   EXTENTION_TO_NAME = { '.cpp' => 'gcc' }.freeze
 
-  def find_checker_compiler
-    Compiler.find_by! name: EXTENTION_TO_NAME[File.extname(@checker.name)]
+  def find_compiler_by_file file
+    Compiler.find_by! name: EXTENTION_TO_NAME[File.extname(file.name)]
   end
 end
