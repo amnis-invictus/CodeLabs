@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :parent, :collection, :resource
 
+  rescue_from Pundit::NotAuthorizedError do
+    flash[:error] = 'You are not authorized to perform this action'
+
+    redirect_to :root
+  end
+
   private
   def current_user
     return unless session[:auth_token]
