@@ -1,6 +1,10 @@
 <div class="row bg-light">
   <div class="col-xs-12">
-    <h1><%= t 'problems.index.title' %></h1>
+    <h1>
+      <%= t 'problems.index.title' %>
+
+      <%= link_to 'New', %i(new problem), class: 'btn btn-default pull-right' if policy(Problem).new? %>
+    </h1>
   </div>
 
   <div class="col-xs-12">
