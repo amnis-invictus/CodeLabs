@@ -1,5 +1,7 @@
 class ProcessProblemArchiveJob < ApplicationJob
-  def perform archive_path, channel_id
+  def perform user, archive_path, channel_id
+    @user = user
+
     @channel_id = channel_id
 
     broadcast 'Job has started.'
@@ -118,6 +120,7 @@ class ProcessProblemArchiveJob < ApplicationJob
         Submission.create! \
           problem: @problem,
           compiler: find_compiler_by_file(solution),
+          user: @user,
           source: { io: io, filename: SecureRandom.uuid }
       end
     end

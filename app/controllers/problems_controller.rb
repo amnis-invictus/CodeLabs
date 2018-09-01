@@ -8,7 +8,7 @@ class ProblemsController < ApplicationController
 
     FileUtils.copy params[:problem][:archive].path, name
 
-    ProcessProblemArchiveJob.perform_later name, channel_id
+    ProcessProblemArchiveJob.perform_later current_user, name, channel_id
 
     head 204
   end
