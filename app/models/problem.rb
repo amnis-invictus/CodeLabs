@@ -9,11 +9,13 @@ class Problem < ApplicationRecord
 
   has_one :translation, -> { where language: I18n.locale }, class_name: 'ProblemTranslation'
 
-  has_many :translations, class_name: 'ProblemTranslation'
+  has_many :translations, dependent: :destroy, class_name: 'ProblemTranslation'
 
-  has_many :tests, -> { with_attached_input.with_attached_answer }
+  has_many :tests, -> { with_attached_input.with_attached_answer }, dependent: :destroy
 
-  has_many :examples
+  has_many :examples, dependent: :destroy
+
+  has_many :submissions, dependent: :destroy
 
   has_and_belongs_to_many :tags
 
