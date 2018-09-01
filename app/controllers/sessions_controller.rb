@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def create
     render :new and return unless resource.save
 
-    session[:auth_token] = resource.auth_token.id
+    cookies.encrypted[:auth_token] = resource.auth_token.id
 
     redirect_to resource.redirect
   end
@@ -12,14 +12,14 @@ class SessionsController < ApplicationController
   def destroy
     resource.destroy
 
-    reset_session
+    cookies.encrypted[:auth_token] = nil
 
     redirect_to :root
   end
 
   private
   def resource
-    @resource ||= Session.new auth_token: AuthToken.find(session[:auth_token])
+    @resource ||= Session.new auth_token: AuthToken.find(cookies.encrypted[:auth_token])
   end
 
   def resource_params
