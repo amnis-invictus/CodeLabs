@@ -25,6 +25,8 @@ document.addEventListener('turbolinks:before-render', () => {
   if (App.processProblemArchiveSubscription) {
     App.processProblemArchiveSubscription.unsubscribe()
 
+    App.processProblemArchiveSubscription.consumer.disconnect()
+
     App.processProblemArchiveSubscription = undefined
   }
 })
