@@ -9,7 +9,7 @@ class SubmissionsController < ApplicationController
 
   private
   def collection
-    @collection ||= Submission.visible.order(created_at: :desc).page(params[:page])
+    @collection ||= Submission.order(created_at: :desc).page(params[:page])
   end
 
   def parent

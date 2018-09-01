@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_31_211241) do
+ActiveRecord::Schema.define(version: 2018_08_19_160126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 2018_08_31_211241) do
     t.bigint "problem_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.integer "test_state", default: 0, null: false
     t.integer "fails_count", default: 0, null: false
     t.bigint "compiler_id", null: false
