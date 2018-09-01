@@ -1,5 +1,11 @@
 class ProcessProblemArchiveJob < ApplicationJob
-  def perform archive_path
+  def perform archive_path, channel_id
+    @channel_id = channel_id
+
+    broadcast 'Job has started.'
+
+    broadcast 'Reading zip file..'
+
     Zip::File.open archive_path do |zip|
       @checker = zip.glob('checker.*').first
 
@@ -23,12 +29,20 @@ class ProcessProblemArchiveJob < ApplicationJob
 
       build_submissions
     end
+  rescue => e
+    broadcast "An expection occured: #{ e }."
+
+    raise
   ensure
     FileUtils.remove archive_path
+
+    broadcast 'Done.'
   end
 
   private
   def build_problem
+    broadcast 'Building problem..'
+
     @checker.get_input_stream do |io|
       @problem = Problem.create! \
         memory_limit: @xml.at_xpath('problem/memory_limit').content,
@@ -40,6 +54,8 @@ class ProcessProblemArchiveJob < ApplicationJob
   end
 
   def build_translations
+    broadcast 'Building translations..'
+
     @xml.xpath('problem/translations/translation').each do |translation|
       ProblemTranslation.create! \
         language: translation.attribute('language').value,
@@ -52,6 +68,8 @@ class ProcessProblemArchiveJob < ApplicationJob
   end
 
   def build_examples
+    broadcast 'Building examples..'
+
     @xml.xpath('problem/examples/example').each do |example|
       Example.create! \
         input: example.at_xpath('input').content,
@@ -61,6 +79,8 @@ class ProcessProblemArchiveJob < ApplicationJob
   end
 
   def build_tags
+    broadcast 'Building tags..'
+
     @xml.xpath('problem/translations/translation').each do |translation|
       language = TagTranslation.languages[translation.attribute('language').value]
 
@@ -73,6 +93,8 @@ class ProcessProblemArchiveJob < ApplicationJob
   end
 
   def build_tests
+    broadcast 'Building tests..'
+
     Hash.new { |_, num| Test.new num: num, problem: @problem }.tap do |result|
       @tests.each do |test|
         test.get_input_stream do |io|
@@ -89,6 +111,8 @@ class ProcessProblemArchiveJob < ApplicationJob
   end
 
   def build_submissions
+    broadcast 'Building submissions..'
+
     @solutions.each do |solution|
       solution.get_input_stream do |io|
         Submission.create! \
@@ -103,5 +127,9 @@ class ProcessProblemArchiveJob < ApplicationJob
 
   def find_compiler_by_file file
     Compiler.find_by! name: EXTENTION_TO_NAME[File.extname(file.name)]
+  end
+
+  def broadcast message
+    ActionCable.server.broadcast "ProcessProblemArchive:#{ @channel_id }", message
   end
 end
