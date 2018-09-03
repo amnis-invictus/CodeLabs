@@ -87,9 +87,11 @@ class ProcessProblemArchiveJob < ApplicationJob
       language = TagTranslation.languages[translation.attribute('language').value]
 
       translation.xpath('tags/tag').each do |tag|
-        Tag.joins(:translations).find_or_create_by!(tag_translations: { language: language, name: tag.content }) do |tag|
-          tag.problem = @problem
-        end
+        t = TagTranslation.find_or_create_by!(language: language, name: tag.content) { |t| t.tag = Tag.create! }
+
+        t.tag.problems << @problem
+        
+        t.tag.save!
       end
     end
   end
