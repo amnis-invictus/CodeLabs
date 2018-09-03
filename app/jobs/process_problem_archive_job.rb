@@ -8,15 +8,13 @@ class ProcessProblemArchiveJob < ApplicationJob
 
     broadcast 'Reading zip file..'
 
-    Zip::File.open archive_path do |zip|
-      @checker = zip.glob('checker.*').first
+    @zip = Zip::File.open archive_path
 
-      @solutions = zip.glob 'solutions/*'
+    @checker = @zip.glob('checker.*').first
 
-      @tests = zip.glob 'tests/*'
+    @solutions = @zip.glob 'solutions/*'
 
-      @xml = zip.glob('problem.xml').first.get_input_stream { |s| Nokogiri::XML s }
-    end
+    @xml = @zip.glob('problem.xml').first.get_input_stream { |s| Nokogiri::XML s }
 
     ApplicationRecord.transaction do
       build_problem
@@ -36,6 +34,8 @@ class ProcessProblemArchiveJob < ApplicationJob
 
     raise
   ensure
+    @zip.close if @zip
+
     FileUtils.remove archive_path
 
     broadcast 'Done.'
@@ -53,12 +53,18 @@ class ProcessProblemArchiveJob < ApplicationJob
         checker_source: { io: io, filename: File.basename(@checker.name) },
         checker_compiler: find_compiler_by_file(@checker)
     end
+
+    broadcast 'Ok.'
   end
 
   def build_translations
     broadcast 'Building translations..'
 
+    i = 0
+
     @xml.xpath('problem/translations/translation').each do |translation|
+      i += 1
+
       ProblemTranslation.create! \
         language: translation.attribute('language').value,
         caption: translation.at_xpath('caption').content,
@@ -67,58 +73,84 @@ class ProcessProblemArchiveJob < ApplicationJob
         technical_text: translation.at_xpath('technical_text').content,
         problem: @problem
     end
+
+    broadcast "#{ i } ok."
   end
 
   def build_examples
     broadcast 'Building examples..'
 
+    i = 0
+
     @xml.xpath('problem/examples/example').each do |example|
+      i += 1
+
       Example.create! \
         input: example.at_xpath('input').content,
         answer: example.at_xpath('answer').content,
         problem: @problem
     end
+
+    broadcast "#{ i } ok."
   end
 
   def build_tags
-    broadcast 'Building tags..'
+    broadcast 'Building tags with translations..'
+
+    i = 0
 
     @xml.xpath('problem/translations/translation').each do |translation|
       language = TagTranslation.languages[translation.attribute('language').value]
 
       translation.xpath('tags/tag').each do |tag|
+        i += 1
+
         t = TagTranslation.find_or_create_by!(language: language, name: tag.content) { |t| t.tag = Tag.create! }
 
         t.tag.problems << @problem
-        
+
         t.tag.save!
       end
     end
+
+    broadcast "#{ i } ok."
   end
 
   def build_tests
     broadcast 'Building tests..'
 
-    Hash.new { |_, num| Test.new num: num, problem: @problem }.tap do |result|
-      @tests.each do |test|
-        test.get_input_stream do |io|
-          num, type = test.name[6..-1].split('_')
+    i = 0
 
-          if type == 'input.txt'
-            result[num].input = { io: io, filename: File.basename(test.name) }
-          else
-            result[num].answer = { io: io, filename: File.basename(test.name) }
-          end
-        end
+    @xml.xpath('problem/tests/test').each do |xml|
+      test = Test.new num: xml.attribute('num').value, problem: @problem
+
+      %w(input answer).each do |name|
+        next unless value = xml.attribute(name).value
+
+        next unless file = @zip.glob(value).first
+
+        file.get_input_stream { |io| test.public_send(name).attach(io: io, filename: File.basename(file.name)) }
       end
-    end.values.tap { |v| v.each &:save! }
+
+      i += 1
+
+      broadcast "Saving test #{ test.num }.."
+
+      test.save!
+    end
+
+    broadcast "#{ i } ok."
   end
 
   def build_submissions
     broadcast 'Building submissions..'
 
+    i = 0
+
     @solutions.each do |solution|
       solution.get_input_stream do |io|
+        i += 1
+
         Submission.create! \
           problem: @problem,
           compiler: find_compiler_by_file(solution),
@@ -126,6 +158,8 @@ class ProcessProblemArchiveJob < ApplicationJob
           source: { io: io, filename: File.basename(solution.name) }
       end
     end
+
+    broadcast "#{ i } ok."
   end
 
   EXTENTION_TO_NAME = { '.cpp' => 'gcc' }.freeze
