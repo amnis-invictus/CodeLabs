@@ -50,7 +50,7 @@ class ProcessProblemArchiveJob < ApplicationJob
         memory_limit: @xml.at_xpath('problem/memory_limit').content,
         time_limit: @xml.at_xpath('problem/time_limit').content,
         # real_time_limit: @xml.at_xpath('problem/real_time_limit').content,
-        checker_source: { io: io, filename: SecureRandom.uuid },
+        checker_source: { io: io, filename: File.basename(@checker.name) },
         checker_compiler: find_compiler_by_file(@checker)
     end
   end
@@ -105,9 +105,9 @@ class ProcessProblemArchiveJob < ApplicationJob
           num, type = test.name[6..-1].split('_')
 
           if type == 'input.txt'
-            result[num].input = { io: io, filename: SecureRandom.uuid }
+            result[num].input = { io: io, filename: File.basename(test.name) }
           else
-            result[num].answer = { io: io, filename: SecureRandom.uuid }
+            result[num].answer = { io: io, filename: File.basename(test.name) }
           end
         end
       end
@@ -123,7 +123,7 @@ class ProcessProblemArchiveJob < ApplicationJob
           problem: @problem,
           compiler: find_compiler_by_file(solution),
           user: @user,
-          source: { io: io, filename: SecureRandom.uuid }
+          source: { io: io, filename: File.basename(solution.name) }
       end
     end
   end
