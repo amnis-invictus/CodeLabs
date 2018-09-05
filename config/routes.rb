@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   namespace :api do
     resources :submissions, only: :index do
       resource :take, :release, :fail, only: :create
+
+      resources :logs, only: :create
     end
 
     resources :problems, only: :show

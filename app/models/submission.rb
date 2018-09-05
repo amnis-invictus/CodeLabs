@@ -11,7 +11,11 @@ class Submission < ApplicationRecord
 
   has_one_attached :source
 
+  has_one :log, -> { source }
+
   has_many :results
+
+  has_many :logs
 
   enum test_state: { pending: 0, in_progress: 1, done: 2, failed: 3 }
 
