@@ -1,58 +1,38 @@
-<div class="row bg-light">
+<div class="row bg-white">
   <div class="col-xs-12">
     <h1><%= t 'submissions.show.title', id: resource.id %></h1>
+
+    <p><%= t 'submissions.show.problem' %>: <%= link_to resource.problem_caption, resource.problem %></p>
+
+    <p><%= t 'submissions.show.user_name' %>: <%= resource.user_name %></p>
+
+    <p><%= t 'submissions.show.state' %>: <%= resource.state %></p>
   </div>
 
   <div class="col-xs-12">
-    <div class="row list-row">
-      <div class="list-row__col col-md-1">
-        <%= t 'results.index.num' %>
+    <% if resource.test_state_failed? || resource.test_result_testing_error? %>
+      <%= t 'submissions.show.failed' %>
+    <% elsif resource.test_result_compiler_error? %>
+      <ul class="nav nav-tabs">
+        <li><a disabled><%= t 'submissions.show.results' %></a></li>
+
+        <li class="active"><a href="#compiler-log"" data-toggle="tab"><%= t 'submissions.show.compiler_log' %></a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="compiler-log"><%= simple_format resource.log_data %></div>
       </div>
+    <% else %>
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#results" data-toggle="tab"><%= t 'submissions.show.results' %></a></li>
 
-      <div class="list-row__col col-md-3">
-        <%= t 'results.index.status' %>
-      </div>
+        <li><a href="#compiler-log"" data-toggle="tab"><%= t 'submissions.show.compiler_log' %></a></li>
+      </ul>
 
-      <div class="list-row__col col-md-2">
-        <%= t 'results.index.time' %>
-      </div>
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="results"><%= render 'results' %></div>
 
-      <div class="list-row__col col-md-2">
-        <%= t 'results.index.memory' %>
-      </div>
-    </div>
-
-    <% resource.results.each do |result| %>
-      <div class="row list-row">
-        <div class="list-row__col col-md-1">
-          <%= result.test_num %>
-        </div>
-
-        <div class="list-row__col col-md-3">
-          <%= result.status %>
-        </div>
-
-        <div class="list-row__col col-md-2">
-          <%= result.time %> ms
-        </div>
-
-        <div class="list-row__col col-md-2">
-          <%= result.memory %> kb
-        </div>
-
-        <% if result.log? %>
-          <div class="list-row__col col-md-4">
-            <button class="btn btn-default btn-xs pull-right" data-toggle="collapse" data-target="#<%= dom_id result %>-log">
-              +
-            </button>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-12 panel-collapse collapse" id="<%= dom_id result %>-log">
-              <div class="panel-body"><%= result.log %></div>
-            </div>
-          </div>
-        <% end %>
+        <div class="tab-pane fade" id="compiler-log"><%= simple_format resource.log_data %></div>
       </div>
     <% end %>
   </div>

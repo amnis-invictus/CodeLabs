@@ -18,11 +18,11 @@
       </div>
 
       <div class="list-row__col col-md-3">
-        <%= t 'submissions.index.test_state' %>
+        <%= t 'submissions.index.state' %>
       </div>
     </div>
 
-    <%= render collection %>
+    <%= render collection.decorate %>
 
     <%= paginate collection %>
   </div>

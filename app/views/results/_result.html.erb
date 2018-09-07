@@ -1,0 +1,23 @@
+<div class="row list-row">
+  <div class="list-row__col col-md-1"><%= result.test_num %></div>
+
+  <div class="list-row__col col-md-3"><%= result.status %></div>
+
+  <div class="list-row__col col-md-2"><%= result.time %> ms</div>
+
+  <div class="list-row__col col-md-2"><%= result.memory %> kb</div>
+
+  <% if result.log? %>
+    <div class="list-row__col col-md-4">
+      <button class="btn btn-default btn-xs pull-right" data-toggle="collapse" data-target="#<%= dom_id result %>-log">
+        +
+      </button>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 panel-collapse collapse" id="<%= dom_id result %>-log">
+        <div class="panel-body"><%= result.log %></div>
+      </div>
+    </div>
+  <% end %>
+</div>

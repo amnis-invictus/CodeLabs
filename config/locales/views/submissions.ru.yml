@@ -4,9 +4,15 @@ ru:
       title: 'Отправить решение к задаче "%{problem_caption}"'
     show:
       title: 'Посылка №%{id}'
+      failed: 'Ошибка тестирования решения'
+      results: 'Результаты'
+      compiler_log: 'Лог компиляции'
+      state: 'Статус'
+      problem: 'Задача'
+      user_name: 'Имя пользователя'
     index:
       title: 'Посылки'
       problem_name: 'Название задачи'
       user_name: 'Имя пользователя'
-      test_state: 'Статус тестирования'
+      state: 'Статус'
       id: 'ИД'

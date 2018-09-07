@@ -27,4 +27,15 @@ class SubmissionDecorator < Draper::Decorator
   def time_limit
     problem.time_limit * compiler.time_a + compiler.time_b
   end
+
+  def state
+    case
+    when submission.test_state_done? && submission.test_result_ok?
+      "#{ submission.test_result } (#{ submission.score }%)"
+    when submission.test_state_done?
+      submission.test_result
+    else
+      submission.test_state
+    end
+  end
 end

@@ -1,0 +1,22 @@
+.nav-tabs {
+  margin-bottom: 1rem;
+  border-color: #0093FF;
+
+  >li {
+    >a,
+    >a:focus,
+    >a:hover {
+      color: #000000;
+    }
+
+    &.active {
+      >a,
+      >a:focus,
+      >a:hover {
+        color: #ffffff;
+        background-color: #0093FF;
+        border-color: #0093FF;
+      }
+    }
+  }
+}

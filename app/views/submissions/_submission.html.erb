@@ -12,10 +12,6 @@
   </div>
 
   <div class="list-row__col col-md-3">
-    <% if submission.test_state_done? %>
-      <%= submission.test_result %> <%= "(#{ submission.score }%)" if submission.test_result_ok? %>
-    <% else %>
-      <%= submission.test_state %>
-    <% end %>
+      <%= submission.state %>
   </div>
 </div>

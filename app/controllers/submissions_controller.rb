@@ -17,7 +17,7 @@ class SubmissionsController < ApplicationController
   end
 
   def resource
-    @resource ||= Submission.find params[:id]
+    @resource ||= Submission.find(params[:id]).decorate
   end
 
   def resource_params
