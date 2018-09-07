@@ -1,5 +1,5 @@
 class Api::FailsController < Api::ApplicationController
-  skip_before_action :build_resource
+  skip_before_action :build_resource, :authorize_resource
 
   def create
     parent.fails_count += 1
