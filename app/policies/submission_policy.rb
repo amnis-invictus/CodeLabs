@@ -8,6 +8,8 @@ class SubmissionPolicy < ApplicationPolicy
   end
 
   def show?
-    user&.id == resource.user_id
+    return false if user.blank?
+
+    user.administrator? || user == resource.user
   end
 end
