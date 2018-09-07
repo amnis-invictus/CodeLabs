@@ -9,44 +9,50 @@
         <%= t 'results.index.num' %>
       </div>
 
-      <div class="list-row__col col-md-2">
+      <div class="list-row__col col-md-3">
         <%= t 'results.index.status' %>
       </div>
 
-      <div class="list-row__col col-md-1">
+      <div class="list-row__col col-md-2">
         <%= t 'results.index.time' %>
       </div>
 
-      <div class="list-row__col col-md-1">
+      <div class="list-row__col col-md-2">
         <%= t 'results.index.memory' %>
-      </div>
-
-      <div class="list-row__col col-md-7">
-        <%= t 'results.index.log' %>
       </div>
     </div>
 
     <% resource.results.each do |result| %>
       <div class="row list-row">
-        <div class="list-row__col list-row__col--with-border col-md-1">
+        <div class="list-row__col col-md-1">
           <%= result.test_num %>
         </div>
 
-        <div class="list-row__col list-row__col--with-border col-md-2">
+        <div class="list-row__col col-md-3">
           <%= result.status %>
         </div>
 
-        <div class="list-row__col list-row__col--with-border col-md-1">
+        <div class="list-row__col col-md-2">
           <%= result.time %> ms
         </div>
 
-        <div class="list-row__col list-row__col--with-border col-md-1">
+        <div class="list-row__col col-md-2">
           <%= result.memory %> kb
         </div>
 
-        <div class="list-row__col list-row__col--left col-md-7">
-          <%= simple_format result.log %>
-        </div>
+        <% if result.log? %>
+          <div class="list-row__col col-md-4">
+            <button class="btn btn-default btn-xs pull-right" data-toggle="collapse" data-target="#<%= dom_id result %>-log">
+              +
+            </button>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 panel-collapse collapse" id="<%= dom_id result %>-log">
+              <div class="panel-body"><%= result.log %></div>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
