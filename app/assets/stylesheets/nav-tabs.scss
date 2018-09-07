@@ -8,6 +8,10 @@
     >a:hover {
       color: #000000;
     }
+    
+    >a:hover {
+      border-color: #eee #eee #0093FF;
+    }
 
     &.active {
       >a,
