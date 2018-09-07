@@ -14,8 +14,8 @@ class Release
   private
   def score
     return unless test_result == 0
-    
-    @submission.results.where(status: :ok).count.to_f / @submission.results.count * 100
+
+    (@submission.results.where(status: :ok).count.to_f / @submission.results.count * 100).round(2)
   end
 
   def test_result
