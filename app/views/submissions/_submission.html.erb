@@ -1,17 +1,21 @@
 <div class="row list-row" data-href="<%= url_for submission %>">
-    <div class="list-row__col list-row__col--with-border col-md-1">
-        <%= submission.id %>
-    </div>
+  <div class="list-row__col list-row__col--with-border col-md-1">
+    <%= submission.id %>
+  </div>
 
-    <div class="list-row__col list-row__col--with-border col-md-6">
-        <%= submission.problem_caption %>
-    </div>
+  <div class="list-row__col list-row__col--with-border col-md-5">
+    <%= submission.problem_caption %>
+  </div>
 
-    <div class="list-row__col list-row__col--with-border col-md-3">
-        <%= submission.user_name %>
-    </div>
+  <div class="list-row__col list-row__col--with-border col-md-3">
+    <%= submission.user_name %>
+  </div>
 
-    <div class="list-row__col col-md-2">
-        <%= submission.test_state %>
-    </div>
+  <div class="list-row__col col-md-3">
+    <% if submission.test_state_done? %>
+      <%= submission.test_result %> <%= "(#{ submission.score }%)" if submission.test_result_ok? %>
+    <% else %>
+      <%= submission.test_state %>
+    <% end %>
+  </div>
 </div>
