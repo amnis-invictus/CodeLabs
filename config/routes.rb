@@ -27,5 +27,7 @@ Rails.application.routes.draw do
     resources :problems, only: :show
 
     resources :results, only: :create
+
+    resources :compilers, :constants, only: :index
   end
 end
