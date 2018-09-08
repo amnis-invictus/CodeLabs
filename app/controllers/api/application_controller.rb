@@ -3,6 +3,8 @@ class Api::ApplicationController < ApplicationController
 
   before_action -> { response.status = 201 }, only: :create
 
+  rescue_from(Pundit::NotAuthorizedError) { head 403 }
+
   private
   def authenticate!
     head 401 unless params[:access_token] == ENV['API_ACCESS_TOKEN']
