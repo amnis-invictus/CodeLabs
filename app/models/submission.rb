@@ -19,7 +19,7 @@ class Submission < ApplicationRecord
 
   enum test_state: { pending: 0, in_progress: 1, done: 2, failed: 3 }, _prefix: true
 
-  enum test_result: { ok: 0, compiler_error: 1, testing_error: 2 }, _prefix: true
+  enum test_result: { ok: 0, compiler_error: 1 }, _prefix: true
 
   delegate :as_json, to: :decorate
 
