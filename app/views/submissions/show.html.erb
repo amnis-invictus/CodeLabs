@@ -14,25 +14,31 @@
       <%= t 'submissions.show.failed' %>
     <% elsif resource.test_result_compiler_error? %>
       <ul class="nav nav-tabs">
-        <li><a disabled><%= t 'submissions.show.results' %></a></li>
+        <li class="active"><a href="#compiler-log" data-toggle="tab"><%= t 'submissions.show.compiler_log' %></a></li>
 
-        <li class="active"><a href="#compiler-log"" data-toggle="tab"><%= t 'submissions.show.compiler_log' %></a></li>
+        <li><a href="#source" data-toggle="tab"><%= t 'submissions.show.source' %></a></li>
       </ul>
 
       <div class="tab-content">
         <div class="tab-pane fade in active" id="compiler-log"><%= render 'compiler_log' %></div>
+
+        <div class="tab-pane fade" id="source"><%= render 'source' %></div>
       </div>
     <% else %>
       <ul class="nav nav-tabs">
         <li class="active"><a href="#results" data-toggle="tab"><%= t 'submissions.show.results' %></a></li>
 
-        <li><a href="#compiler-log"" data-toggle="tab"><%= t 'submissions.show.compiler_log' %></a></li>
+        <li><a href="#compiler-log" data-toggle="tab"><%= t 'submissions.show.compiler_log' %></a></li>
+
+        <li><a href="#source" data-toggle="tab"><%= t 'submissions.show.source' %></a></li>
       </ul>
 
       <div class="tab-content">
         <div class="tab-pane fade in active" id="results"><%= render 'results' %></div>
 
         <div class="tab-pane fade" id="compiler-log"><%= render 'compiler_log' %></div>
+
+        <div class="tab-pane fade" id="source"><%= render 'source' %></div>
       </div>
     <% end %>
   </div>

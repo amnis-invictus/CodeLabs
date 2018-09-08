@@ -10,6 +10,7 @@ ru:
       state: 'Статус'
       problem: 'Задача'
       user_name: 'Имя пользователя'
+      source: 'Исходный код'
     index:
       title: 'Посылки'
       problem_name: 'Название задачи'
