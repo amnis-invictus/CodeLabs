@@ -1,1 +1,1 @@
-document.addEventListener('turbolinks:load', () => $('[data-role="tagsinput"]').tagsinput())
+document.addEventListener('turbolinks:load', function () { $('[data-role="tagsinput"]').tagsinput() })

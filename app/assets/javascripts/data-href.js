@@ -1,13 +1,15 @@
 jQuery.fn.extend({
   datahref: function () {
     return this.each(function () {
-      const block = $(this),
-        url = block.data('href'),
-        target = block.data('target') || '_self'
+      var block = $(this)
 
-      block.click(() => window.open(url, target))
+      var url = block.data('href')
+
+      var target = block.data('target') || '_self'
+
+      block.click(function () { window.open(url, target) })
     })
   }
 })
 
-document.addEventListener('turbolinks:load', () => $('[data-href]').datahref())
+document.addEventListener('turbolinks:load', function () { $('[data-href]').datahref() })

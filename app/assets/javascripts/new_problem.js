@@ -1,7 +1,7 @@
 jQuery.fn.extend({
   newProblem: function () {
     return this.each(function () {
-      const form = $(this)
+      var form = $(this)
 
       form.find(':submit').on('click', function () {
         this.disabled = true
@@ -14,4 +14,4 @@ jQuery.fn.extend({
   }
 })
 
-document.addEventListener('turbolinks:load', () => $('form#new_problem').newProblem())
+document.addEventListener('turbolinks:load', function () { $('form#new_problem').newProblem() })

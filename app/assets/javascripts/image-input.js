@@ -1,21 +1,21 @@
 jQuery.fn.extend({
   imageInput: function () {
     return this.each(function () {
-      const block = $(this)
+      var block = $(this)
 
-      const input = block.children('input')
+      var input = block.children('input')
 
-      const image = block.children('img')
+      var image = block.children('img')
 
-      block.children('.image-input__prompt').click(() => input.click())
+      block.children('.image-input__prompt').click(function () { input.click() })
 
-      input.change(() => {
-        const files = input.prop('files')
+      input.change(function () {
+        var files = input.prop('files')
 
         if (files && files[0]) {
-          const reader = new FileReader()
+          var reader = new FileReader()
 
-          reader.onload = (e) => image.attr('src', e.target.result)
+          reader.onload = function (e) { image.attr('src', e.target.result) }
 
           reader.readAsDataURL(files[0])
         }
@@ -24,4 +24,4 @@ jQuery.fn.extend({
   }
 })
 
-document.addEventListener('turbolinks:load', () => $('.image-input').imageInput())
+document.addEventListener('turbolinks:load', function () { $('.image-input').imageInput() })

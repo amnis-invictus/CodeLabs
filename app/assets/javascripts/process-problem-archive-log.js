@@ -1,13 +1,13 @@
 jQuery.fn.extend({
   processProblemArchiveLog: function () {
     return this.each(function () {
-      const block = $(this)
+      var block = $(this)
 
       App.processProblemArchiveSubscription = App.cable.subscriptions.create(
         { channel: 'ProcessProblemArchiveChannel', id: block.data('channel-id') },
         {
-          received: data => {
-            block.append(`<p>${data}</p>`)
+          received: function (data) {
+            block.append('<p>' + data + '</p>')
 
             if (data == 'Done.') {
               $('form#new_problem :submit').prop('disabled', false)
@@ -19,9 +19,9 @@ jQuery.fn.extend({
   }
 })
 
-document.addEventListener('turbolinks:load', () => $('#process-problem-archive-log').processProblemArchiveLog())
+document.addEventListener('turbolinks:load', function () { $('#process-problem-archive-log').processProblemArchiveLog() })
 
-document.addEventListener('turbolinks:before-render', () => {
+document.addEventListener('turbolinks:before-render', function () {
   if (App.processProblemArchiveSubscription) {
     App.processProblemArchiveSubscription.unsubscribe()
 
