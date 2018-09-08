@@ -20,7 +20,7 @@
       </ul>
 
       <div class="tab-content">
-        <div class="tab-pane fade in active" id="compiler-log"><%= simple_format resource.log_data %></div>
+        <div class="tab-pane fade in active" id="compiler-log"><%= render 'compiler_log' %></div>
       </div>
     <% else %>
       <ul class="nav nav-tabs">
@@ -32,7 +32,7 @@
       <div class="tab-content">
         <div class="tab-pane fade in active" id="results"><%= render 'results' %></div>
 
-        <div class="tab-pane fade" id="compiler-log"><%= simple_format resource.log_data %></div>
+        <div class="tab-pane fade" id="compiler-log"><%= render 'compiler_log' %></div>
       </div>
     <% end %>
   </div>
