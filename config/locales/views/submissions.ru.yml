@@ -11,6 +11,8 @@ ru:
       problem: 'Задача'
       user_name: 'Имя пользователя'
       source: 'Исходный код'
+      memory_limit: 'Лимит памяти'
+      time_limit: 'Лимит времени'
     index:
       title: 'Посылки'
       problem_name: 'Название задачи'
