@@ -1,6 +1,6 @@
 class Api::ReleasesController < Api::ApplicationController
   skip_before_action :authorize_resource
-  
+
   def create
     head resource.save ? 204 : 422
   end
