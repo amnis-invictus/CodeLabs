@@ -1,4 +1,6 @@
-<div class="row list-row" data-href="<%= url_for submission %>">
+<% url = url_for submission if policy(submission).show? %>
+
+<%= content_tag :div, class: 'row list-row', 'data-href': url do %>
   <div class="list-row__col list-row__col--with-border col-md-1">
     <%= submission.id %>
   </div>
@@ -14,4 +16,4 @@
   <div class="list-row__col col-md-3">
       <%= submission.state %>
   </div>
-</div>
+<% end %>
