@@ -8,4 +8,4 @@
   <div class="list-row__col col-md-2"><%= t 'results.index.memory' %></div>
 </div>
 
-<%= render resource.results %>
+<%= render resource.results.includes(:test).order('tests.num') %>
