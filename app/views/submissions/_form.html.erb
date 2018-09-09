@@ -1,5 +1,5 @@
 <%= simple_form_for [parent, resource] do |f| %>
-  <%= f.input :compiler_id, collection: Compiler.all, include_blank: false %>
+  <%= f.input :compiler_id, collection: Compiler.visible, include_blank: false %>
 
   <%= f.input :source %>
 
