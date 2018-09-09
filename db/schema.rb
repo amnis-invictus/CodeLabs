@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_085443) do
+ActiveRecord::Schema.define(version: 2018_09_09_160839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -53,7 +53,9 @@ ActiveRecord::Schema.define(version: 2018_09_07_085443) do
     t.float "memory_b", null: false
     t.float "time_a", null: false
     t.float "time_b", null: false
+    t.boolean "visible", default: false, null: false
     t.index ["name"], name: "index_compilers_on_name"
+    t.index ["visible"], name: "index_compilers_on_visible"
   end
 
   create_table "examples", force: :cascade do |t|
