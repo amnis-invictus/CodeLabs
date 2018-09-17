@@ -69,8 +69,8 @@ class ProcessProblemArchiveJob < ApplicationJob
         language: translation.attribute('language').value,
         caption: translation.at_xpath('caption').content,
         author: translation.at_xpath('author').content,
-        text: translation.at_xpath('text').content,
-        technical_text: translation.at_xpath('technical_text').content,
+        text: translation.at_xpath('text').inner_html,
+        technical_text: translation.at_xpath('technical_text').inner_html,
         problem: @problem
     end
 
