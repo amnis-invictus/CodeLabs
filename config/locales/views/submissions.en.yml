@@ -1,12 +1,13 @@
+---
 en:
   submissions:
+    index:
+      id: ID
+      problem_name: Problem name
+      test_state: State
+      title: Submissions
+      user_name: User name
     new:
-      title: 'Submit a solution for the "%{problem_caption}" problem'
+      title: Submit a solution for the "%{problem_caption}" problem
     show:
       title: 'Submission #%{id}'
-    index:
-      title: 'Submissions'
-      problem_name: 'Problem name'
-      user_name: 'User name'
-      test_state: 'State'
-      id: 'ID'

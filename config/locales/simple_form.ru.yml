@@ -1,12 +1,13 @@
+---
 ru:
   simple_form:
-    "yes": 'Да'
-    "no": 'Нет'
-    required:
-      text: 'обязательно'
-      mark: '*'
     error_notification:
       default_message: 'Пожалуйста, просмотрите приведенные ниже проблемы:'
+    'no': Нет
     placeholders:
       defaults:
-        email: 'one@users.com'
+        email: one@users.com
+    required:
+      mark: "*"
+      text: обязательно
+    'yes': Да

@@ -1,6 +1,7 @@
+---
 ru:
   header:
-    problems: 'Задачи'
-    submissions: 'Посылки'
-    signin: 'Войти'
-    signout: 'Выйти'
+    problems: Задачи
+    signin: Войти
+    signout: Выйти
+    submissions: Посылки

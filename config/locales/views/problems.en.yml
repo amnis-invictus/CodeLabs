@@ -1,14 +1,15 @@
+---
 en:
   problems:
     index:
-      title: 'Problems'
-      number: '#'
-      name: 'Name'
-      difficulty: 'Difficulty'
-    show:
-      technical_text: 'Specifications'
-      examples: 'Examples'
-      example_input: 'Input'
-      example_output: 'Output'
+      difficulty: Difficulty
+      name: Name
+      number: "#"
+      title: Problems
     new:
-      title: 'Create a problem from an archive'
+      title: Create a problem from an archive
+    show:
+      example_input: Input
+      example_output: Output
+      examples: Examples
+      technical_text: Specifications

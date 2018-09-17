@@ -1,6 +1,7 @@
+---
 en:
   profile:
     show:
-      title: 'Personal cabinet'
+      title: Personal cabinet
     update:
-      success: 'Saved successfully'
+      success: Saved successfully

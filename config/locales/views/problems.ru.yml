@@ -1,14 +1,15 @@
+---
 ru:
   problems:
     index:
-      title: 'Задачи'
-      number: '№'
-      name: 'Название'
-      difficulty: 'Сложность'
-    show:
-      technical_text: 'Технические условия'
-      examples: 'Примеры'
-      example_input: 'Ввод'
-      example_output: 'Вывод'
+      difficulty: Сложность
+      name: Название
+      number: "№"
+      title: Задачи
     new:
-      title: 'Создать задачу из архива'
+      title: Создать задачу из архива
+    show:
+      example_input: Ввод
+      example_output: Вывод
+      examples: Примеры
+      technical_text: Технические условия

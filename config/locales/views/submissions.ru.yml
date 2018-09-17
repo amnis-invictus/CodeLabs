@@ -1,21 +1,22 @@
+---
 ru:
   submissions:
-    new:
-      title: 'Отправить решение к задаче "%{problem_caption}"'
-    show:
-      title: 'Посылка №%{id}'
-      failed: 'Ошибка тестирования решения'
-      results: 'Результаты'
-      compiler_log: 'Лог компиляции'
-      state: 'Статус'
-      problem: 'Задача'
-      user_name: 'Имя пользователя'
-      source: 'Исходный код'
-      memory_limit: 'Лимит памяти'
-      time_limit: 'Лимит времени'
     index:
-      title: 'Посылки'
-      problem_name: 'Название задачи'
-      user_name: 'Имя пользователя'
-      state: 'Статус'
-      id: 'ИД'
+      id: ИД
+      problem_name: Название задачи
+      state: Статус
+      title: Посылки
+      user_name: Имя пользователя
+    new:
+      title: Отправить решение к задаче "%{problem_caption}"
+    show:
+      compiler_log: Лог компиляции
+      failed: Ошибка тестирования решения
+      memory_limit: Лимит памяти
+      problem: Задача
+      results: Результаты
+      source: Исходный код
+      state: Статус
+      time_limit: Лимит времени
+      title: Посылка №%{id}
+      user_name: Имя пользователя

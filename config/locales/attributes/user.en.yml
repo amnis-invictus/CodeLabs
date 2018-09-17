@@ -1,5 +1,6 @@
+---
 en:
   activerecord:
     attributes:
       user:
-        created_at: 'Register date'
+        created_at: Register date

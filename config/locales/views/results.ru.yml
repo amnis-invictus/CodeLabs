@@ -1,7 +1,8 @@
+---
 ru:
   results:
     index:
-      num: 'Номер'
-      status: 'Статус'
-      time: 'Время'
-      memory: 'Память'
+      memory: Память
+      num: Номер
+      status: Статус
+      time: Время

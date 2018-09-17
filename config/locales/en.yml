@@ -1,13 +1,14 @@
+---
 en:
-  language: 'English'
   helpers:
     submit:
-      user:
-        create: 'Sign up'
-        update: 'Update profile'
-      session:
-        create: 'Sign in'
-      submission:
-        create: 'Submit'
       problem:
-        create: 'Upload archive'
+        create: Upload archive
+      session:
+        create: Sign in
+      submission:
+        create: Submit
+      user:
+        create: Sign up
+        update: Update profile
+  language: English
