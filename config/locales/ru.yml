@@ -1,4 +1,5 @@
 ru:
+  language: 'Русский'
   number:
     human:
       storage_units:

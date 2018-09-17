@@ -4,22 +4,32 @@
   <% end %>
 
   <div class="header-section">
-    <%= link_to t('header.problems'), :problems, class: 'header-section__item' %>
+    <div class="header-section__item">
+      <%= link_to t('header.problems'), :problems %>
+    </div>
 
-    <%= link_to t('header.submissions'), :submissions, class: 'header-section__item' %>
+    <div class="header-section__item">
+      <%= link_to t('header.submissions'), :submissions %>
+    </div>
   </div>
 
   <div class="header-section">
-    <% if current_user %>
-      <%= link_to t('header.signout'), :session, method: :delete, class: 'header-section__item' %>
-    <% else %>
-      <%= link_to t('header.signin'), %i(new session), class: 'header-section__item' %>
-    <% end %>
+    <div class="header-section__item">
+      <% if current_user %>
+        <%= link_to t('header.signout'), :session, method: :delete %>
+      <% else %>
+        <%= link_to t('header.signin'), %i(new session) %>
+      <% end %>
+    </div>
 
-    <% if params[:language] == 'en' %>
-      <%= link_to :ru, { language: :ru }, class: 'header-section__item' %>
-    <% else %>
-      <%= link_to :en, { language: :en }, class: 'header-section__item' %>
-    <% end %>
+    <div class="header-section__item dropdown">
+      <a data-toggle="dropdown"><%= I18n.locale %> <span class="caret"></span></a>
+
+      <ul class="dropdown-menu dropdown-menu-right">
+        <% I18n.available_locales.each do |locale| %>
+          <li><%= link_to t(:language, locale: locale), { language: locale } %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>

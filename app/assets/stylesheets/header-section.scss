@@ -2,7 +2,9 @@
   display: inline-flex;
   justify-content: space-between;
 
-  &__item {
+  &__item > a {
+    display: inline-block;
+    cursor: pointer;
     color: #ffffff;
     background-color: #000000;
     padding: 0 20px;
