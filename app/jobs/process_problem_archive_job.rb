@@ -125,9 +125,9 @@ class ProcessProblemArchiveJob < ApplicationJob
       test = Test.new num: xml.attribute('num').value, problem: @problem
 
       %w(input answer).each do |name|
-        next unless value = xml.attribute(name).value
+        next unless attr = xml.attribute(name)
 
-        next unless file = @zip.glob(value).first
+        next unless file = @zip.glob(attr.value).first
 
         file.get_input_stream { |io| test.public_send(name).attach(io: io, filename: File.basename(file.name)) }
       end
