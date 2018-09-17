@@ -162,7 +162,7 @@ class ProcessProblemArchiveJob < ApplicationJob
     broadcast "#{ i } ok."
   end
 
-  EXTENTION_TO_NAME = { '.cpp' => 'gcc' }.freeze
+  EXTENTION_TO_NAME = { '.cpp' => 'g++' }.freeze
 
   def find_compiler_by_file file
     Compiler.find_by! name: EXTENTION_TO_NAME[File.extname(file.name)]
