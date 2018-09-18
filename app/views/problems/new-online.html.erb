@@ -1,0 +1,84 @@
+<div class="row bg-light">
+    <div class="col-xs-12">
+        <h1><%= t 'problems.new.title' %></h1>
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+        <h3>Ограничения</h3>
+
+        <label for="memory">Память</label>
+        <div class="input-group">
+            <input id="memory" type="text" class="form-control" placeholder="Допустимые затраты памяти" value="32568">
+            <span class="input-group-addon">kb</span>
+        </div>
+
+        <label for="time">Время</label>
+        <div class="input-group">
+            <input id="time" type="text" class="form-control" placeholder="Время на выполнение" value="100">
+            <span class="input-group-addon">ms</span>
+        </div>
+
+        <label for="rtime">Настоящее время</label>
+        <div class="input-group">
+            <input id="rtime" type="text" class="form-control" placeholder="Время на выполнение" value="5000">
+            <span class="input-group-addon">ms</span>
+        </div>
+
+        <br>
+
+        <h3>Примеры входных / выходных данных</h3>
+
+        <div class="io">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <input type="text" class="form-control" title="">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <input type="text" class="form-control" title="">
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-warning"><b>+</b></button>
+        </div>
+
+        <br>
+
+        <h3>Переводы</h3>
+
+        <div class="form-group">
+            <label for="lang">Выберите язык</label>
+            <select class="form-control" id="lang">
+                <option>Украинский</option>
+                <option>Русский</option>
+                <option>Английский</option>
+            </select>
+        </div>
+
+        <label for="caption">Заголовок</label>
+        <div class="input-group">
+            <input id="caption" type="text" class="form-control">
+        </div>
+
+        <label for="text">Текст</label>
+        <div class="input-group">
+            <input id="text" type="text" class="form-control">
+        </div>
+
+        <label for="techtext">Технический текст</label>
+        <div class="input-group">
+            <input id="techtext" type="text" class="form-control">
+        </div>
+
+        <label for="author">Автор</label>
+        <div class="input-group">
+            <input id="author" type="text" class="form-control">
+        </div>
+
+        <label for="tags">Теги</label>
+        <div class="input-group">
+            <input id="tags" type="text" data-role="tagsinput" class="form-control">
+        </div>
+    </div>
+
+    <div id="process-problem-archive-log" class="col-xs-12 col-md-6" data-channel-id="<%= channel_id %>"></div>
+</div>
