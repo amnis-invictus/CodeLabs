@@ -30,4 +30,6 @@ Rails.application.routes.draw do
 
     resources :compilers, :constants, only: :index
   end
+
+  get '/v2/problems/new', to: "problems#new-online"
 end
