@@ -19,7 +19,7 @@
 
 $(document).ready(function () {
 	$("#examples").find(".btn").on('click', function (e) {
-		var el = $("#examlpes .btn");
+		var el = $("#examples .btn");
 		
 		$input_field = $("<input>").attr("type", "text").attr("class", "form-control");
 		$input_col = $("<div>").attr("class", "col-lg-6 col-md-6 col-sm-6");
