@@ -36,6 +36,29 @@ $(document).ready(function () {
 		
 		el.before($row);
 	});
+	
+	$("#tests_part").find(".btn").on('click', function (e) {
+		$table = $("#tests tbody");
+		
+		$num_field = $("<input>").attr("type", "text").attr("class", "form-control");
+		$num_cell = $("<td>");
+		$num_cell.append($num_field);
+
+		$input_field = $("<textarea>").attr("rows", "3").attr("class", "form-control");
+		$input_cell = $("<td>");
+		$input_cell.append($input_field);
+
+		$answer_field = $("<textarea>").attr("rows", "3").attr("class", "form-control");
+		$answer_cell = $("<td>");
+		$answer_cell.append($answer_field);
+
+		$row = $("<tr>")
+		$row.append($num_cell);
+		$row.append($input_cell);
+		$row.append($answer_cell);
+		
+		$table.append($row);
+	});
 });
 
 
