@@ -7,26 +7,32 @@
 			<h3>Ограничения</h3>
 
 			<label for="memory">Память</label>
-			<div class="input-group">
-				<input id="memory" type="text" class="form-control" placeholder="Допустимые затраты памяти"
-					value="32568" name="memory">
-				<span class="input-group-addon">kb</span>
+			<div class="form-group">
+				<div class="input-group">
+					<input id="memory" type="text" class="form-control" placeholder="Допустимые затраты памяти"
+						value="32568" name="memory">
+					<span class="input-group-addon">kb</span>
+				</div>
 			</div>
 
 			<label for="time">Время</label>
-			<div class="input-group">
-				<input id="time" type="text" class="form-control" placeholder="Время на выполнение" value="100"
-					name="time">
-				<span class="input-group-addon">ms</span>
+			<div class="form-group">
+				<div class="input-group">
+					<input id="time" type="text" class="form-control" placeholder="Время на выполнение" value="100"
+						name="time">
+					<span class="input-group-addon">ms</span>
+				</div>
 			</div>
 
 			<label for="rtime">Настоящее время</label>
-			<div class="input-group">
-				<input id="rtime" type="text" class="form-control" placeholder="Время на выполнение" value="5000"
-					name="rtime">
-				<span class="input-group-addon">ms</span>
+			<div class="form-group">
+				<div class="input-group">
+					<input id="rtime" type="text" class="form-control" placeholder="Время на выполнение" value="5000"
+						name="rtime">
+					<span class="input-group-addon">ms</span>
+				</div>
 			</div>
-
+			
 			<br>
 
 			<h3>Примеры входных / выходных данных</h3>
@@ -54,32 +60,45 @@
 			</div>
 
 			<label for="caption">Заголовок</label>
-			<div class="input-group">
+			<div class="form-group">
 				<input id="caption" type="text" class="form-control" name="caption">
 			</div>
 
 			<label for="text">Текст</label>
-			<div class="input-group">
-				<input id="text" type="text" class="form-control" name="text">
+			<div class="form-group">
+				<textarea id="text" rows="5" class="form-control" name="text"></textarea>
 			</div>
 
 			<label for="techtext">Технический текст</label>
-			<div class="input-group">
-				<input id="techtext" type="text" class="form-control" name="techtext">
+			<div class="form-group">
+				<textarea id="techtext" rows="5" class="form-control" name="techtext"></textarea>
 			</div>
 
 			<label for="author">Автор</label>
-			<div class="input-group">
+			<div class="form-group">
 				<input id="author" type="text" class="form-control" name="author">
 			</div>
 
 			<label for="tags">Теги</label>
-			<div class="input-group">
-				<input id="tags" type="text" data-role="tagsinput" class="form-control" name="tags">
+			<div class="form-group">
+				<textarea id="tags" type="text" rows="3" data-role="tagsinput" class="form-control" name="tags"></textarea>
+				<p class="help-block">Каждый тег с новой строки.</p>
 			</div>
 
+			<br>
+
+			<h3>Чекер</h3>
+			
 			<div class="form-group">
-				<label for="checker">Проверка</label>
+				<label for="checker_compiler">Выберите компилятор чекера</label>
+				<select class="form-control" id="checker_compiler" name="checker_compiler">
+					<option value="1">g++</option>
+					<option value="128">vc++</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="checker">Выберите файл чекера</label>
 				<input name="checker" type="file"/>
 			</div>
 		</div>
