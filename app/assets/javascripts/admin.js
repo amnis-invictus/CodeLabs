@@ -16,3 +16,28 @@
 
 //     form.submit();
 // };
+
+$(document).ready(function () {
+	$("#examples").find(".btn").on('click', function (e) {
+		var el = $("#examlpes .btn");
+		
+		$input_field = $("<input>").attr("type", "text").attr("class", "form-control");
+		$input_col = $("<div>").attr("class", "col-lg-6 col-md-6 col-sm-6");
+
+		$answer_field = $("<input>").attr("type", "text").attr("class", "form-control");
+		$answer_col = $("<div>").attr("class", "col-lg-6 col-md-6 col-sm-6");
+
+		$row = $("<div></div>").attr("class", "row");
+
+		$input_col.append($input_field);
+		$answer_col.append($answer_field);
+		$row.append($input_col);
+		$row.append($answer_col);
+		
+		el.before($row);
+	});
+});
+
+
+
+
