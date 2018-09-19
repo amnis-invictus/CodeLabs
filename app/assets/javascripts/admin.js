@@ -1,4 +1,4 @@
-form.onsubmit = (e) => {
+form.onsubmit = function (e) {
     e.preventDefault();
 
     if (isNaN(parseInt(memory.value)))
