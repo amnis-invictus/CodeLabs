@@ -1,0 +1,22 @@
+---
+uk:
+  submissions:
+    index:
+      id: ІД
+      problem_name: Назва задачі
+      state: Статус
+      title: Посилання
+      user_name: Ім'я користувача
+    new:
+      title: Відправити рішення до задачі "%{problem_caption}"
+    show:
+      compiler_log: Лог компіляції
+      failed: Помилка тестуваня рішення
+      memory_limit: Ліміт пам'яті
+      problem: Задача
+      results: Результати
+      source: Вихідний код
+      state: Статус
+      time_limit: Ліміт часу
+      title: Посилання №%{id}
+      user_name: Ім'я користувача

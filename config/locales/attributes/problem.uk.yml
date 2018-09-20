@@ -1,0 +1,6 @@
+---
+uk:
+  activerecord:
+    attributes:
+      problem:
+        archive: Архів

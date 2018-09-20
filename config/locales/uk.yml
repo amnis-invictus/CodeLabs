@@ -1,3 +1,36 @@
 ---
 uk:
+  activerecord:
+    errors:
+      messages:
+        confirmation: не співпадає
+  errors:
+    messages:
+      exists: вже існує
+      model_invalid: 'Виникли помилки: %{errors}'
+      other_than: має відрізнятися від %{count}
+      present: треба залишити пустим
+      required: не може бути відсутнім
+  helpers:
+    submit:
+      problem:
+        create: Завантажити архів
+      session:
+        create: Вхід
+      submission:
+        create: Надіслати
+      user:
+        create: Реєстрація
+        update: Оновити профіль
   language: Українська
+  number:
+    errors:
+      messages:
+        restrict_dependent_destroy:
+          has_many: 'Неможливо видалити записи, так як існують залежності: %{record}'
+          has_one: 'Неможливо видалити запис, так як існує залежність: %{record}'
+    human:
+      storage_units:
+        units:
+          eb: ЕБ
+          pb: ПБ

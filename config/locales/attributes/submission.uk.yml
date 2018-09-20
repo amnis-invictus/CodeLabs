@@ -1,0 +1,7 @@
+---
+uk:
+  activerecord:
+    attributes:
+      submission:
+        compiler_id: Компілятор
+        source: Вихідний код

@@ -1,0 +1,15 @@
+---
+uk:
+  problems:
+    index:
+      difficulty: Складність
+      name: Назва
+      number: "№"
+      title: Задачі
+    new:
+      title: Створити задачу з архіва
+    show:
+      example_input: Ввід
+      example_output: Вивід
+      examples: Приклади
+      technical_text: Технічні умови

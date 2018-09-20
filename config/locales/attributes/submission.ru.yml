@@ -3,5 +3,5 @@ ru:
   activerecord:
     attributes:
       submission:
-        compiler: Компилятор
+        compiler_id: Компилятор
         source: Исходный код

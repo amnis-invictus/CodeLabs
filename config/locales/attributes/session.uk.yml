@@ -1,0 +1,6 @@
+---
+uk:
+  activemodel:
+    attributes:
+      session:
+        password: Пароль

@@ -1,0 +1,13 @@
+---
+uk:
+  simple_form:
+    error_notification:
+      default_message: 'Будь ласка, продивіться наведені нижче проблеми:'
+    'no': Ні
+    placeholders:
+      defaults:
+        email: one@users.com
+    required:
+      mark: "*"
+      text: обов'язково
+    'yes': Так
