@@ -4,7 +4,7 @@ en:
     index:
       id: ID
       problem_name: Problem name
-      test_state: State
+      state: State
       title: Submissions
       user_name: User name
     new:
