@@ -3,139 +3,144 @@
         <h1><%= t 'problems.new.title' %></h1>
     </div>
     <form id="add_problem_form" action="">
-		<div class="col-xs-12 col-md-6">
-			<h3>Ограничения</h3>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <h3>Ограничения</h3>
 
-			<label for="memory">Память</label>
-			<div class="form-group">
-				<div class="input-group">
-					<input id="memory" type="text" class="form-control" placeholder="Допустимые затраты памяти"
-						value="32568" name="memory">
-					<span class="input-group-addon">kb</span>
-				</div>
-			</div>
+                <label for="memory">Память</label>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input id="memory" type="text" class="form-control" placeholder="Допустимые затраты памяти"
+                               value="32568" name="memory">
+                        <span class="input-group-addon">kb</span>
+                    </div>
+                </div>
 
-			<label for="time">Время</label>
-			<div class="form-group">
-				<div class="input-group">
-					<input id="time" type="text" class="form-control" placeholder="Время на выполнение" value="100"
-						name="time">
-					<span class="input-group-addon">ms</span>
-				</div>
-			</div>
+                <label for="time">Время</label>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input id="time" type="text" class="form-control" placeholder="Время на выполнение" value="100"
+                               name="time">
+                        <span class="input-group-addon">ms</span>
+                    </div>
+                </div>
 
-			<label for="rtime">Настоящее время</label>
-			<div class="form-group">
-				<div class="input-group">
-					<input id="rtime" type="text" class="form-control" placeholder="Время на выполнение" value="5000"
-						name="rtime">
-					<span class="input-group-addon">ms</span>
-				</div>
-			</div>
-			
-			<br>
+                <label for="rtime">Настоящее время</label>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input id="rtime" type="text" class="form-control" placeholder="Время на выполнение"
+                               value="5000"
+                               name="rtime">
+                        <span class="input-group-addon">ms</span>
+                    </div>
+                </div>
 
-			<h3>Примеры входных / выходных данных</h3>
+                <br>
 
-			<div id="examples">
-				
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-sm-12">
-						<button type="button" class="btn btn-warning"><strong>+</strong></button>
-					</div>
-				</div>
-			</div>
+                <h3>Примеры входных / выходных данных</h3>
 
-			<br>
+                <div id="examples">
 
-			<h3>Тесты</h3>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <button type="button" class="btn btn-warning"><strong>+</strong></button>
+                        </div>
+                    </div>
+                </div>
 
-			<div id="tests_part">
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-sm-12">
-						<table id="tests" class="table table-bordered table-hover">
-							<thead>
-								<tr>
-									<th>Num</th>
-									<th>Input</th>
-									<th>Answer</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-sm-12">
-						<button type="button" class="btn btn-warning"><strong>+</strong></button>
-					</div>
-				</div>
-			</div>
+                <br>
 
-			<br>
+                <h3>Тесты</h3>
 
-			<h3>Переводы</h3>
+                <div id="tests_part">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <table id="tests" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Num</th>
+                                    <th>Input</th>
+                                    <th>Answer</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
-			<div class="form-group">
-				<label for="lang">Выберите язык</label>
-				<select class="form-control" id="lang" name="lang">
-					<option value="uk">Украинский</option>
-					<option value="ru">Русский</option>
-					<option value="en">Английский</option>
-				</select>
-			</div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <button type="button" class="btn btn-warning"><strong>+</strong></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<label for="caption">Заголовок</label>
-			<div class="form-group">
-				<input id="caption" type="text" class="form-control" name="caption">
-			</div>
+            <br>
 
-			<label for="text">Текст</label>
-			<div class="form-group">
-                <textarea id="text" rows="2" class="form-control" name="text"></textarea>
-			</div>
+            <div class="col-xs-12 col-md-6">
 
-			<label for="techtext">Технический текст</label>
-			<div class="form-group">
-                <textarea id="techtext" rows="2" class="form-control" name="techtext"></textarea>
-			</div>
+                <h3>Переводы</h3>
 
-			<label for="author">Автор</label>
-			<div class="form-group">
-				<input id="author" type="text" class="form-control" name="author">
-			</div>
+                <div class="form-group">
+                    <label for="lang">Выберите язык</label>
+                    <select class="form-control" id="lang" name="lang">
+                        <option value="uk">Украинский</option>
+                        <option value="ru">Русский</option>
+                        <option value="en">Английский</option>
+                    </select>
+                </div>
 
-			<label for="tags">Теги</label>
-			<div class="form-group">
-				<textarea id="tags" rows="3" class="form-control" name="tags"></textarea>
-				<p class="help-block">Каждый тег с новой строки.</p>
-			</div>
+                <label for="caption">Заголовок</label>
+                <div class="form-group">
+                    <input id="caption" type="text" class="form-control" name="caption">
+                </div>
 
-			<br>
+                <label for="text">Текст</label>
+                <div class="form-group">
+                    <textarea id="text" rows="2" class="form-control" name="text"></textarea>
+                </div>
 
-			<h3>Чекер</h3>
-			
-			<div class="form-group">
-				<label for="checker_compiler">Выберите компилятор чекера</label>
-				<select class="form-control" id="checker_compiler" name="checker_compiler">
-					<option value="1">g++</option>
-					<option value="128">vc++</option>
-				</select>
-			</div>
-			
-			<div class="form-group">
-				<label for="checker">Выберите файл чекера</label>
-                <input name="checker" type="file" id="checker"/>
-			</div>
-		</div>
+                <label for="techtext">Технический текст</label>
+                <div class="form-group">
+                    <textarea id="techtext" rows="2" class="form-control" name="techtext"></textarea>
+                </div>
 
-        <br>
+                <label for="author">Автор</label>
+                <div class="form-group">
+                    <input id="author" type="text" class="form-control" name="author">
+                </div>
 
-        <button type="submit" class="btn btn-default">Создать</button>
+                <label for="tags">Теги</label>
+                <div class="form-group">
+                    <textarea id="tags" rows="3" class="form-control" name="tags"></textarea>
+                    <p class="help-block">Каждый тег с новой строки.</p>
+                </div>
 
-	</form>
+                <br>
 
-	<div id="process-problem-archive-log" class="col-xs-12 col-md-6" data-channel-id="<%= channel_id %>"></div>
+                <h3>Чекер</h3>
+
+                <div class="form-group">
+                    <label for="checker_compiler">Выберите компилятор чекера</label>
+                    <select class="form-control" id="checker_compiler" name="checker_compiler">
+                        <option value="1">g++</option>
+                        <option value="128">vc++</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="checker">Выберите файл чекера</label>
+                    <input name="checker" type="file" id="checker"/>
+                </div>
+            </div>
+
+            <br>
+
+            <button type="submit" class="btn btn-default">Создать</button>
+        </div>
+    </form>
+
+    <div id="process-problem-archive-log" class="col-xs-12 col-md-6" data-channel-id="<%= channel_id %>"></div>
 </div>
