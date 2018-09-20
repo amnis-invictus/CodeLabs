@@ -9,3 +9,15 @@ deploy_staging:
     - cap staging deploy
   only:
     - master
+
+deploy_production:
+  environment: production
+  stage: deploy
+  script:
+    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo -e "$SSH_PRIVATE_KEY")
+    - gem install capistrano capistrano-rbenv capistrano-rails
+    - cap production deploy
+  only:
+    - production

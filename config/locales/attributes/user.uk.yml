@@ -1,0 +1,11 @@
+---
+uk:
+  activerecord:
+    attributes:
+      user:
+        created_at: Дата реєстрації
+        name: Ім'я
+        password: Пароль
+        password_confirmation: Підтвердження пароля
+        score: Бали
+        skills: Навички

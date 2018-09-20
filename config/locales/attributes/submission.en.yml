@@ -1,0 +1,7 @@
+---
+en:
+  activerecord:
+    attributes:
+      submission:
+        compiler_id: Compiler
+        source: Source

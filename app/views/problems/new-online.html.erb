@@ -7,41 +7,71 @@
 			<h3>Ограничения</h3>
 
 			<label for="memory">Память</label>
-			<div class="input-group">
-				<input id="memory" type="text" class="form-control" placeholder="Допустимые затраты памяти"
-					   value="32568" name="memory">
-				<span class="input-group-addon">kb</span>
+			<div class="form-group">
+				<div class="input-group">
+					<input id="memory" type="text" class="form-control" placeholder="Допустимые затраты памяти"
+						value="32568" name="memory">
+					<span class="input-group-addon">kb</span>
+				</div>
 			</div>
 
 			<label for="time">Время</label>
-			<div class="input-group">
-				<input id="time" type="text" class="form-control" placeholder="Время на выполнение" value="100"
-					   name="time">
-				<span class="input-group-addon">ms</span>
+			<div class="form-group">
+				<div class="input-group">
+					<input id="time" type="text" class="form-control" placeholder="Время на выполнение" value="100"
+						name="time">
+					<span class="input-group-addon">ms</span>
+				</div>
 			</div>
 
 			<label for="rtime">Настоящее время</label>
-			<div class="input-group">
-				<input id="rtime" type="text" class="form-control" placeholder="Время на выполнение" value="5000"
-					   name="rtime">
-				<span class="input-group-addon">ms</span>
+			<div class="form-group">
+				<div class="input-group">
+					<input id="rtime" type="text" class="form-control" placeholder="Время на выполнение" value="5000"
+						name="rtime">
+					<span class="input-group-addon">ms</span>
+				</div>
 			</div>
-
+			
 			<br>
 
 			<h3>Примеры входных / выходных данных</h3>
 
-			<div class="io">
+			<div id="examples">
+				
 				<div class="row">
-					<div class="col-lg-6 col-md-6 col-sm-6">
-						<input type="text" class="form-control" title="">
-					</div>
-					<div class="col-lg-6 col-md-6 col-sm-6">
-						<input type="text" class="form-control" title="">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<button type="button" class="btn btn-warning"><strong>+</strong></button>
 					</div>
 				</div>
+			</div>
 
-				<button type="button" class="btn btn-warning"><b>+</b></button>
+			<br>
+
+			<h3>Тесты</h3>
+
+			<div id="tests_part">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<table id="tests" class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>Num</th>
+									<th>Input</th>
+									<th>Answer</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<button type="button" class="btn btn-warning"><strong>+</strong></button>
+					</div>
+				</div>
 			</div>
 
 			<br>
@@ -58,553 +88,46 @@
 			</div>
 
 			<label for="caption">Заголовок</label>
-			<div class="input-group">
+			<div class="form-group">
 				<input id="caption" type="text" class="form-control" name="caption">
 			</div>
 
 			<label for="text">Текст</label>
-			<div class="input-group">
-				<input id="text" type="text" class="form-control" name="text">
+			<div class="form-group">
+				<textarea id="text" rows="5" class="form-control" name="text"></textarea>
 			</div>
 
 			<label for="techtext">Технический текст</label>
-			<div class="input-group">
-				<input id="techtext" type="text" class="form-control" name="techtext">
+			<div class="form-group">
+				<textarea id="techtext" rows="5" class="form-control" name="techtext"></textarea>
 			</div>
 
 			<label for="author">Автор</label>
-			<div class="input-group">
+			<div class="form-group">
 				<input id="author" type="text" class="form-control" name="author">
 			</div>
 
 			<label for="tags">Теги</label>
-			<div class="input-group">
-				<input id="tags" type="text" data-role="tagsinput" class="form-control" name="tags">
+			<div class="form-group">
+				<textarea id="tags" rows="3" class="form-control" name="tags"></textarea>
+				<p class="help-block">Каждый тег с новой строки.</p>
 			</div>
 
+			<br>
+
+			<h3>Чекер</h3>
+			
 			<div class="form-group">
-				<label for="checker">Проверка</label>
-				<textarea class="form-control" rows="5" id="checker" name="checker">
-				#include &lt;stdio.h>
-				#include &lt;cstdlib>
-
-				#include &lt;ExLib\Types.h>
-
-				enum TestingResult : uint8
-				{
-					Ok = 0,
-					WrongAnswer = 1,
-					PresentationError = 2,
-					Dirt = 4,
-					Points = 5,
-					BadTest = 6,
-					UnexpectedEof = 8,
-					CompilerError = 9,
-					RunTimeError = 10,
-					TestingError = 13,
-					MemoryLimitExceded = 14,
-					TimeLimitExceded = 15,
-					PartillyCorrect = 16
-				};
-
-				#include &lt;ExLib\Types\String.h>
-				#include &lt;ExLib\Containers\Vector.h>
-
-				#define LF ('\n')
-				#define CR ('\r')
-				#define TAB ('\t')
-				#define SPACE (' ')
-				#define EOFC (255)
-
-				template&lt;typename C>
-				inline bool isBlanks(C c) { return (c == LF || c == CR || c == SPACE || c == TAB); }
-
-				ExLib::Types::String partString(ExLib::Types::String _str)
-				{
-					uint32 l = _str.GetLenght();
-					if (l < 128)
-						return _str;
-					else
-						return _str.SubString(0, 62) + L"..." + _str.SubString(l - 62, 62);
-				}
-
-				enum class FileType : uint8
-				{
-					None,
-					Input,
-					Answer,
-					Output,
-					Report,
-				};
-
-				inline void quit(TestingResult _result, const wchar_t * format, ...);
-
-				class FileStreamReader
-				{
-				private:
-					FILE * hFile = nullptr;
-					int line;
-					ExLib::Containers::Vector&lt;int> undoChars;
-
-					inline int postprocessGetc(int getcResult) { return getcResult == EOF ? EOFC : getcResult; }
-
-					int getc(FILE* file)
-					{
-						int c;
-						if (undoChars.empty())
-							c = ::getc(file);
-						else
-							c = undoChars.popBack();
-
-						if (c == LF)
-							line++;
-						return c;
-					}
-
-					int ungetc(int c/*, FILE* file*/)
-					{
-						if (c == LF)
-							line--;
-
-						undoChars.pushBack(c);
-						return c;
-					}
-
-				public:
-					FileStreamReader(FILE* file) : hFile(file), line(1) { }
-
-					FileStreamReader(const char* fileName) : line(1)
-					{
-						fopen_s(&hFile, fileName, "r");
-					}
-
-					int readCurrentChar()
-					{
-						if (feof(hFile))
-							return EOFC;
-						else
-						{
-							int c = getc(hFile);
-							ungetc(c);
-							return postprocessGetc(c);
-						}
-					}
-
-					int readNextChar() { return postprocessGetc(getc(hFile)); }
-
-					void skipChar() { getc(hFile); }
-					void unreadChar(int c) { ungetc(c); }
-
-					bool eof()
-					{
-						if (hFile == nullptr || feof(hFile))
-							return true;
-						else
-						{
-							int c = readNextChar();
-							if (c == EOFC || feof(hFile))
-								return true;
-
-							unreadChar(c);
-							return false;
-						}
-					}
-
-					void close()
-					{
-						if (hFile != nullptr)
-						{
-							fclose(hFile);
-							hFile = nullptr;
-						}
-					}
-				};
-
-				class InStream
-				{
-				private:
-					FileStreamReader * reader;
-					FileType type;
-					bool strict;
-
-					void skipBlanks()
-					{
-						while (isBlanks(reader->readCurrentChar()))
-							reader->skipChar();
-					}
-					bool eof()
-					{
-						if (!strict && reader == nullptr)
-							return true;
-
-						return reader->eof();
-					}
-					bool seekEof()
-					{
-						if (!strict && reader == nullptr)
-							return true;
-
-						skipBlanks();
-						return eof();
-					}
-
-					static inline bool equals(sint64 _int, ExLib::Types::String _s)
-					{
-						if (_int == LLONG_MIN)
-							return _s == L"-9223372036854775808";
-
-						if (_int == 0LL)
-							return _s == L"0";
-
-						size_t length = _s.GetLenght();
-
-						if (length == 0)
-							return false;
-
-						if (_int < 0 && _s[0] != L'-')
-							return false;
-
-						if (_int < 0)
-						{
-							_s = _s.SubString(1);
-							length--;
-							_int = -_int;
-						}
-
-						if (length == 0)
-							return false;
-
-						while (_int > 0)
-						{
-							int digit = int(_int % 10);
-
-							if (_s[length - 1] != L'0' + digit)
-								return false;
-
-							length--;
-							_int /= 10;
-						}
-
-						return length == 0;
-					}
-					static inline bool equals(uint64 _int, ExLib::Types::String _s)
-					{
-						if (_int == 18446744073709551615ULL)
-							return _s == L"18446744073709551615";
-
-						if (_int == 0ULL)
-							return _s == L"0";
-
-						size_t length = _s.GetLenght();
-
-						if (length == 0)
-							return false;
-
-						while (_int > 0)
-						{
-							int digit = int(_int % 10);
-
-							if (_s[length - 1] != L'0' + digit)
-								return false;
-
-							length--;
-							_int /= 10;
-						}
-
-						return length == 0;
-					}
-
-					inline uint64 convertStringToUint64(ExLib::Types::String _buffer)
-					{
-						size_t length = _buffer.GetLenght();
-
-						if (length > 20)
-							quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-								ExLib::Types::String(L"Expected unsigned integer, but \"") + partString(_buffer) + L"\" found");
-						if (length > 1 && _buffer[0] == L'0')
-							quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-								ExLib::Types::String(L"Expected unsigned integer, but \"") + partString(_buffer) + L"\" found");
-
-						unsigned long long retval = 0LL;
-						for (int i = 0; i < int(length); i++)
-						{
-							if (_buffer[i] < '0' || _buffer[i] > '9')
-								quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-									ExLib::Types::String(L"Expected unsigned integer, but \"") + partString(_buffer) + L"\" found");
-							retval = retval * 10 + (_buffer[i] - '0');
-						}
-
-						if (length < 19)
-							return retval;
-
-						if (length == 20 && ExLib::Types::String(L"18446744073709551615") < _buffer)
-							quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-								ExLib::Types::String(L"Expected unsigned int64, but \"") + partString(_buffer) + L"\" found");
-
-						if (equals(retval, _buffer))
-							return retval;
-						else
-							quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-								ExLib::Types::String(L"Expected unsigned int64, but \"") + partString(_buffer) + L"\" found");
-					}
-					inline sint64 convertStringToSint64(ExLib::Types::String _buffer)
-					{
-						if (_buffer == L"-9223372036854775808")
-							return LLONG_MIN;
-
-						bool minus = false;
-						size_t length = _buffer.GetLenght();
-
-						if (length > 1 && _buffer[0] == L'-')
-							minus = true;
-
-						if (length > 20)
-							quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-								ExLib::Types::String(L"Expected integer, but \"") + partString(_buffer) + L"\" found");
-
-						sint64 retval = 0LL;
-
-						int zeroes = 0;
-						int processingZeroes = true;
-
-						for (int i = (minus ? 1 : 0); i < int(length); i++)
-						{
-							if (_buffer[i] == L'0' && processingZeroes)
-								zeroes++;
-							else
-								processingZeroes = false;
-
-							if (_buffer[i] < L'0' || _buffer[i] > L'9')
-								quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-									ExLib::Types::String(L"Expected integer, but \"") + partString(_buffer) + L"\" found");
-
-							retval = retval * 10 + (_buffer[i] - L'0');
-						}
-
-						if (retval < 0)
-							quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-								ExLib::Types::String(L"Expected integer, but \"") + partString(_buffer) + L"\" found");
-
-						if ((zeroes > 0 && (retval != 0 || minus)) || zeroes > 1)
-							quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-								ExLib::Types::String(L"Expected integer, but \"") + partString(_buffer) + L"\" found");
-
-						retval = (minus ? -retval : +retval);
-
-						if (length < 19)
-							return retval;
-
-						if (equals(retval, _buffer))
-							return retval;
-						else
-							quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-								ExLib::Types::String(L"Expected int64, but \"") + partString(_buffer) + L"\" found");
-					}
-
-				public:
-					InStream()
-					{
-						reader = nullptr;
-						strict = false;
-					}
-					void Init(FILE * _f, FileType _type, bool _strict = false)
-					{
-						if (_type != FileType::Input &&
-							_type != FileType::Output &&
-							_type != FileType::Answer &&
-							_type != FileType::Report)
-							quit(TestingResult::TestingError,
-								ExLib::Types::String(L"InStream can't initialize with (FileType)") + (uint8)_type);
-
-						reader = new FileStreamReader(_f);
-						type = _type;
-						strict = _strict;
-					}
-					void Init(char * _fileName, FileType _type, bool _strict = false)
-					{
-						if (_type != FileType::Input &&
-							_type != FileType::Output &&
-							_type != FileType::Answer &&
-							_type != FileType::Report)
-							quit(TestingResult::TestingError,
-								ExLib::Types::String(L"InStream can't initialize with (FileType)") + (uint8)_type);
-
-						reader = new FileStreamReader(_fileName);
-						type = _type;
-						strict = _strict;
-					}
-
-					~InStream()
-					{
-						if (reader)
-							reader->close();
-					}
-
-					void mustBeEOF()
-					{
-						if (strict)
-						{
-							if (!eof())
-								quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-									L"End of file expected, but data found");
-						}
-						else
-						{
-							if (!seekEof())
-								quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-									L"End of file expected, but data found");
-						}
-					}
-
-					ExLib::Types::String readWord()
-					{
-						if (!strict) skipBlanks();
-
-						int cur = reader->readNextChar();
-
-						if (cur == EOFC)
-							quit((type == FileType::Output) ? TestingResult::UnexpectedEof : TestingResult::BadTest,
-								L"Unexpected end of file - data expected");
-
-						if (isBlanks(cur))
-							quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-								L"Unexpected white-space - data expected");
-
-						ExLib::Types::String result;
-						while (!isBlanks(cur) && cur != EOFC)
-						{
-							result += wchar_t(cur);
-							cur = reader->readNextChar();
-						}
-
-						reader->unreadChar(cur);
-						if (result.GetLenght() == 0)
-							quit((type == FileType::Output) ? TestingResult::UnexpectedEof : TestingResult::BadTest,
-								L"Unexpected end of file or white-space - data expected");
-
-						return result;
-					}
-					uint64 readUint64()
-					{
-						if (!strict && seekEof())
-							quit((type == FileType::Output) ? TestingResult::UnexpectedEof : TestingResult::BadTest,
-								L"Unexpected end of file - uint64 expected");
-
-						ExLib::Types::String word = readWord();
-						return convertStringToUint64(word);
-					}
-					sint64 readSint64()
-					{
-						if (!strict && seekEof())
-							quit((type == FileType::Output) ? TestingResult::UnexpectedEof : TestingResult::BadTest,
-								L"Unexpected end of file - int64 expected");
-
-						ExLib::Types::String word = readWord();
-						return convertStringToSint64(word);
-					}
-					sint64 readSint32()
-					{
-						if (!strict && seekEof())
-							quit((type == FileType::Output) ? TestingResult::UnexpectedEof : TestingResult::BadTest,
-								L"Unexpected end of file - int32 expected");
-
-						ExLib::Types::String word = readWord();
-
-						sint64 value = convertStringToSint64(word);
-						if (value < TYPE_INT32_MIN || value > TYPE_INT32_MAX)
-							quit((type == FileType::Output) ? TestingResult::PresentationError : TestingResult::BadTest,
-								ExLib::Types::String(L"Expected int32, but \"") + partString(word) + L"\" found");
-
-						return sint64(value);
-					}
-				};
-
-				InStream fin;
-				InStream fout;
-				InStream fans;
-				FILE * freport = stdout;
-
-				inline void quit(TestingResult _result, const wchar_t * format = L"", ...)
-				{
-					va_list args;
-					va_start(args, format);
-
-					fwprintf_s(freport, format, args);
-					fflush(freport);
-
-					va_end(args);
-					std::exit((int)_result);
-				}
-
-				bool InitializeChecker(int argc, char** argv)
-				{
-					//argv[0] must be currect file name
-					FileType fileType = FileType::None;
-					for (int i = 0; i < argc; i++)
-					{
-						switch (fileType)
-						{
-						case FileType::None:
-							//--input or -input or /input
-							if (strcmp(argv[i] + 1, "input") == 0 || strcmp(argv[i] + 2, "input") == 0)
-								fileType = FileType::Input;
-							if (strcmp(argv[i] + 1, "output") == 0 || strcmp(argv[i] + 2, "output") == 0)
-								fileType = FileType::Output;
-							if (strcmp(argv[i] + 1, "answer") == 0 || strcmp(argv[i] + 2, "answer") == 0)
-								fileType = FileType::Answer;
-							if (strcmp(argv[i] + 1, "report") == 0 || strcmp(argv[i] + 2, "report") == 0)
-								fileType = FileType::Report;
-							break;
-						case FileType::Input:
-							fin.Init(argv[i], fileType);
-							fileType = FileType::None;
-							break;
-						case FileType::Output:
-							fout.Init(argv[i], fileType);
-							fileType = FileType::None;
-							break;
-						case FileType::Answer:
-							fans.Init(argv[i], fileType);
-							fileType = FileType::None;
-							break;
-						case FileType::Report:
-				#ifdef _MSC_VER
-							fopen_s(&freport, argv[i], "w+");
-				#else
-							fopen(argv[i], "w+");
-				#endif
-							fileType = FileType::None;
-							break;
-
-						default:
-							break;
-						}
-
-					}
-
-					return true;
-				}
-
-				int main(int argc, char** argv)
-				{
-					InitializeChecker(argc, argv);
-
-					uint64 a = fans.readUint64();
-					uint64 b = fans.readUint64();
-					fans.mustBeEOF();
-
-					uint64 ra = fout.readUint64();
-					uint64 rb = fout.readUint64();
-					fout.mustBeEOF();
-
-					if (ra == a && rb == b)
-						quit(TestingResult::Ok, L"Number is correct");
-					else
-						quit(TestingResult::WrongAnswer, L"Number must be (%llu, %llu) but is (%llu, %llu)",
-							a, b, ra, rb);
-				}
-
-            </textarea>
+				<label for="checker_compiler">Выберите компилятор чекера</label>
+				<select class="form-control" id="checker_compiler" name="checker_compiler">
+					<option value="1">g++</option>
+					<option value="128">vc++</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="checker">Выберите файл чекера</label>
+				<input name="checker" type="file"/>
 			</div>
 		</div>
 
@@ -612,5 +135,3 @@
 
 	<div id="process-problem-archive-log" class="col-xs-12 col-md-6" data-channel-id="<%= channel_id %>"></div>
 </div>
-
-<script src="/app/assets/javascripts/admin.js"></script>
