@@ -3,9 +3,9 @@ en:
   activerecord:
     attributes:
       user:
-        password: 'Password'
-        password_confirmation: 'Password confirmation'
-        name: 'Name'
-        skills: 'Skills'
-        created_at: 'Registration date'
-        score: 'Score'
+        created_at: Registration date
+        name: Name
+        password: Password
+        password_confirmation: Password confirmation
+        score: Score
+        skills: Skills

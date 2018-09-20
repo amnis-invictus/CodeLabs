@@ -1,5 +1,16 @@
 ---
 en:
+  activerecord:
+    errors:
+      messages:
+        confirmation: does not match
+  errors:
+    messages:
+      exists: already exists
+      model_invalid: 'Errors ocured: %{errors}'
+      other_than: must be different from %{count}
+      present: must be empty
+      required: can not be absent
   helpers:
     submit:
       problem:
@@ -13,24 +24,13 @@ en:
         update: Update profile
   language: English
   number:
-    human:
-      storage_units:
-        units:
-          pb: PB
-          eb: EB
     errors:
       messages:
         restrict_dependent_destroy:
-          has_one: 'Can not delete the record, because there is a dependency: %{record}'
           has_many: 'Can not delete the record, because there are dependencies: %{record}'
-  errors:
-    messages:
-      model_invalid: 'Errors ocured: %{errors}'
-      other_than: 'must be different from %{count}'
-      present: 'must be empty'
-      required: 'can not be absent'
-      exists: 'already exists'
-  activerecord:
-    errors:
-      messages:
-        confirmation: 'does not match'
+          has_one: 'Can not delete the record, because there is a dependency: %{record}'
+    human:
+      storage_units:
+        units:
+          eb: EB
+          pb: PB

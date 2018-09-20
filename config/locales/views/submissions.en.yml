@@ -10,13 +10,13 @@ en:
     new:
       title: Submit a solution for the "%{problem_caption}" problem
     show:
+      compiler_log: Compiler log
+      failed: Failed testing solution
+      memory_limit: Memory limit exceeded
+      problem: Problem
+      results: Results
+      source: Source
+      state: State
+      time_limit: Time limit exceeded
       title: 'Submission #%{id}'
-      failed: 'Failed testing decision'
-      results: 'Results'
-      compiler_log: 'Compiler log'
-      state: 'State'
-      problem: 'Problem'
-      user_name: 'User name'
-      source: 'Source'
-      memory_limit: 'Memory limit exceeded'
-      time_limit: 'Time limit exceeded'
+      user_name: User name
