@@ -8,7 +8,7 @@
   }
 
   &:nth-child(even) {
-    background-color: #ffcea6;
+    background-color: #ffd7b6;
   }
 
   &:first-child {
@@ -19,7 +19,7 @@
   }
 
   &:not(:first-child):hover {
-    background-color: darken(#ffcea6, 10%)
+    background-color: darken(#ffd7b6, 10%)
   }
 
   &__col {

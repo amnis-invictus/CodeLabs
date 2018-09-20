@@ -6,3 +6,7 @@
 //= require bootstrap.min.js
 //= require bootstrap-tagsinput.min.js
 //= require_tree .
+
+$("input[readonly]").on('focus', () => {
+    $(this).blur();
+});

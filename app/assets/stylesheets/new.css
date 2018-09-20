@@ -1,0 +1,39 @@
+input[readonly] {
+    background: #e2e2e2 !important;
+}
+
+.bg-light {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 35px;
+}
+
+.problem-example {
+    box-shadow: 0 0 5px 1.2px #ffe4ce;
+    border-radius: 5px;
+    color: #933706;
+}
+
+.section {
+    background: #f6f6f6;
+}
+
+.section:nth-child(even) {
+    background: #efefef;
+}
+
+i.contact {
+    transform: scale(1.5);
+    padding-right: 5px;
+    vertical-align: 2px;
+}
+
+h4.author {
+    display: inline-block;
+    padding-left: 3px;
+}
