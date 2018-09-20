@@ -1,11 +1,11 @@
-<div class="row list-row">
-  <div class="list-row__col col-md-1"><%= t 'results.index.num' %></div>
+<tr style="margin: 0;">
+  <td class="list-row__col col-md-1"><%= t 'results.index.num' %></td>
 
-  <div class="list-row__col col-md-3"><%= t 'results.index.status' %></div>
+  <td class="list-row__col col-md-3"><%= t 'results.index.status' %></td>
 
-  <div class="list-row__col col-md-2"><%= t 'results.index.time' %></div>
+  <td class="list-row__col col-md-2"><%= t 'results.index.time' %></td>
 
-  <div class="list-row__col col-md-2"><%= t 'results.index.memory' %></div>
-</div>
+  <td class="list-row__col col-md-2"><%= t 'results.index.memory' %></td>
+</tr>
 
 <%= render resource.results.includes(:test).order('tests.num') %>
