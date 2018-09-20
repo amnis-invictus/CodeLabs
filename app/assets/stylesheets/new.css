@@ -45,6 +45,7 @@ h4.author {
 table {
     overflow-x: auto;
     margin: 0;
+    width: 100%;
 }
 
 .input-group {
