@@ -3,27 +3,27 @@
     <h1><%= t 'submissions.index.title' %></h1>
   </div>
 
-  <div class="col-xs-12">
-    <div class="row list-row">
-      <div class="list-row__col col-md-1">
+  <table class="col-xs-12">
+    <tr class="row list-row">
+      <th class="list-row__col col-md-1">
         <%= t 'submissions.index.id' %>
-      </div>
+      </th>
 
-      <div class="list-row__col col-md-5">
+      <th class="list-row__col col-md-5">
         <%= t 'submissions.index.problem_name' %>
-      </div>
+      </th>
 
-      <div class="list-row__col col-md-3">
+      <th class="list-row__col col-md-3">
         <%= t 'submissions.index.user_name' %>
-      </div>
+      </th>
 
-      <div class="list-row__col col-md-3">
+      <th class="list-row__col col-md-3">
         <%= t 'submissions.index.state' %>
-      </div>
-    </div>
+      </th>
+    </tr>
 
     <%= render collection.decorate %>
 
     <%= paginate collection %>
-  </div>
+  </table>
 </div>

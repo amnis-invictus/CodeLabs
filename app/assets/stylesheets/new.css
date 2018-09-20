@@ -39,3 +39,7 @@ h4.author {
     display: inline-block;
     padding-left: 3px;
 }
+
+table {
+    overflow-x: auto;
+}

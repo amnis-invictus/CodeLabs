@@ -1,19 +1,19 @@
 <% url = url_for submission if policy(submission).show? %>
 
-<%= content_tag :div, class: 'row list-row', 'data-href': url do %>
-  <div class="list-row__col list-row__col--with-border col-md-1">
+<%= content_tag :tr, class: 'row list-row', 'data-href': url do %>
+<td class="list-row__col list-row__col--with-border col-md-1 col-sm-1 col-xs-1">
     <%= submission.id %>
-  </div>
+</td>
 
-  <div class="list-row__col list-row__col--with-border col-md-5">
+<td class="list-row__col list-row__col--with-border col-md-5 col-sm-5 col-xs-5">
     <%= submission.problem_caption %>
-  </div>
+</td>
 
-  <div class="list-row__col list-row__col--with-border col-md-3">
+<td class="list-row__col list-row__col--with-border col-md-3 col-sm-3 col-xs-3">
     <%= submission.user_name %>
-  </div>
+</td>
 
-  <div class="list-row__col col-md-3">
+<td class="list-row__col col-md-3 col-sm-3 col-xs-3">
     <%= submission.state %>
-  </div>
+</td>
 <% end %>
