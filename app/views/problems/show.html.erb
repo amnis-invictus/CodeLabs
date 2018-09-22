@@ -1,26 +1,26 @@
 <div class="bg-white" style="background-color: transparent;">
   <div class="section">
-    <h2><%= resource.caption %></h2>
+    <h2 class="section__title"><%= resource.caption %></h2>
 
-    <p><%= simple_format resource.text if resource.text.present? %></p>
+    <%= simple_format resource.text, class: 'section__content' if resource.text.present? %>
   </div>
 
   <div class="section">
-    <h2><%= t 'problems.show.technical_text' %></h2>
+    <h3><%= t 'problems.show.technical_text' %></h3>
 
-    <p><%= simple_format resource.technical_text if resource.technical_text.present? %></p>
+    <%= simple_format resource.technical_text, class: 'section__content' if resource.technical_text.present? %>
   </div>
 
   <%= content_tag :div, class: 'section' do %>
-    <h2><%= t 'problems.show.examples' %></h2>
+    <h3><%= t 'problems.show.examples' %></h3>
 
     <div class="row">
       <div class="col-md-6 col-xs-12">
-        <h3><%= t 'problems.show.example_input' %></h3>
+        <h4><%= t 'problems.show.example_input' %></h4>
       </div>
 
       <div class="col-md-6 col-xs-12">
-        <h3><%= t 'problems.show.example_output' %></h3>
+        <h4><%= t 'problems.show.example_output' %></h4>
       </div>
     </div>
 
@@ -50,7 +50,7 @@
   <div class="section">
     <i class="far fa-address-book contact" aria-hidden="true"></i>
 
-    <h4 class="author"><%= resource.author %></h4>
+    <p class="author"><%= resource.author %></h4>
   </div>
 
   <%= content_tag :div, class: 'section' do %>

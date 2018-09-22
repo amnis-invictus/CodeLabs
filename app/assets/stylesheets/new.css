@@ -37,9 +37,10 @@ i.contact {
     vertical-align: 2px;
 }
 
-h4.author {
+P.author {
     display: inline-block;
     padding-left: 3px;
+    margin: 0;
 }
 
 table {
