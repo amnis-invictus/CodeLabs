@@ -17,4 +17,10 @@
   &__content {
     text-align: justify;
   }
+
+  &--warning {
+    text-align: center;
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+  }
 }

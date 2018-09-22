@@ -13,3 +13,7 @@ uk:
       example_output: Вивід
       examples: Приклади
       technical_text: Технічні умови
+      missing_translation: Переклад обраною мовою відсутній, умову відображено %{language} мовою.
+      languages:
+        en: англійською
+        ru: російською

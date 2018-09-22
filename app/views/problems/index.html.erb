@@ -1,31 +1,31 @@
 <div class="row bg-light">
-    <div class="col-xs-12">
-        <h1>
-            <%= t 'problems.index.title' %>
+  <div class="col-xs-12">
+    <h1>
+    <%= t 'problems.index.title' %>
 
-            <%= link_to 'New', %i(new problem), class: 'btn btn-default pull-right' if policy(Problem).new? %>
-        </h1>
-    </div>
+    <%= link_to 'New', %i(new problem), class: 'btn btn-default pull-right' if policy(Problem).new? %>
+    </h1>
+  </div>
 
-    <div class="col-xs-12">
-        <table>
-            <tr class="row list-row">
-                <th class="list-row__col col-md-1 col-sm-1 col-xs-1">
-                    <%= t 'problems.index.number' %>
-                </th>
+  <div class="col-xs-12">
+    <table>
+      <tr class="row list-row">
+        <th class="list-row__col col-md-1 col-sm-1 col-xs-1">
+          <%= t 'problems.index.number' %>
+        </th>
 
-                <th class="list-row__col col-md-9 col-sm-9 col-xs-9">
-                    <%= t 'problems.index.name' %>
-                </th>
+        <th class="list-row__col col-md-9 col-sm-9 col-xs-9">
+          <%= t 'problems.index.name' %>
+        </th>
 
-                <th class="list-row__col col-md-2 col-sm-2 col-xs-2">
-                    <%= t 'problems.index.difficulty' %>
-                </th>
-            </tr>
+        <th class="list-row__col col-md-2 col-sm-2 col-xs-2">
+          <%= t 'problems.index.difficulty' %>
+        </th>
+      </tr>
 
-            <%= render collection %>
-        </table>
+      <%= render collection.decorate %>
+    </table>
 
-        <%= paginate collection %>
-    </div>
+    <%= paginate collection %>
+  </div>
 </div>

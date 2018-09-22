@@ -1,14 +1,18 @@
-<div class="bg-white" style="background-color: transparent;">
+<div class="bg-transparent">
+  <%= content_tag :div, class: 'section section--warning' do %>
+    <%= t 'problems.show.missing_translation', language: I18n.t(resource.language, scope: 'problems.show.languages') %>
+  <% end if I18n.locale != resource.language %>
+
   <div class="section">
     <h2 class="section__title"><%= resource.caption %></h2>
 
-    <%= simple_format resource.text, class: 'section__content' if resource.text.present? %>
+    <%= simple_format resource.text, class: 'section__content' %>
   </div>
 
   <div class="section">
     <h3><%= t 'problems.show.technical_text' %></h3>
 
-    <%= simple_format resource.technical_text, class: 'section__content' if resource.technical_text.present? %>
+    <%= simple_format resource.technical_text, class: 'section__content' %>
   </div>
 
   <%= content_tag :div, class: 'section' do %>

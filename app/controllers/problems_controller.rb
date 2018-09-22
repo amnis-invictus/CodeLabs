@@ -25,7 +25,7 @@ class ProblemsController < ApplicationController
   end
 
   def resource
-    @resource ||= Problem.find params[:id]
+    @resource ||= Problem.find(params[:id]).decorate
   end
 
   def initialize_resource

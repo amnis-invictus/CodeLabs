@@ -3,6 +3,8 @@ class ProblemDecorator < Draper::Decorator
 
   decorates_association :tests
 
+  delegate :caption, :author, :text, :technical_text, to: :translation
+
   def as_json *args
     case context
     when :submission
@@ -24,5 +26,13 @@ class ProblemDecorator < Draper::Decorator
 
   def checker_source_url
     h.url_for checker_source if checker_source.attached?
+  end
+
+  def translation
+    super || default_translation
+  end
+
+  def language
+    translation.language.to_sym
   end
 end
