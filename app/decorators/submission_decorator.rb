@@ -33,11 +33,11 @@ class SubmissionDecorator < Draper::Decorator
   def state
     case
     when submission.test_state_done? && submission.test_result_ok?
-      "#{ submission.test_result } (#{ submission.score }%)"
+      "#{ submission.test_result.humanize } (#{ submission.score }%)"
     when submission.test_state_done?
-      submission.test_result
+      submission.test_result.humanize
     else
-      submission.test_state
+      submission.test_state.humanize
     end
   end
 end
