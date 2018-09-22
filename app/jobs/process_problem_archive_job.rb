@@ -66,6 +66,7 @@ class ProcessProblemArchiveJob < ApplicationJob
       i += 1
 
       ProblemTranslation.create! \
+        default: translation.attribute('default')&.value == 'true'
         language: translation.attribute('language').value,
         caption: translation.at_xpath('caption').content,
         author: translation.at_xpath('author').content,
