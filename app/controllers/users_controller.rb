@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate!, only: %i(new create)
 
+  skip_before_action :authorize_resource, only: :confirm
+
   def create
     render :new and return unless resource.save
 
