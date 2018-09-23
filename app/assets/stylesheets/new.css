@@ -54,7 +54,7 @@ table {
 }
 
 @media (max-width: 300px) {
-    .header_logo {
+    .header__logo {
         width: 80vw;
     }
 }
