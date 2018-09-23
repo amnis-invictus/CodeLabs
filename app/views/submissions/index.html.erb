@@ -1,29 +1,94 @@
 <div class="row bg-light" style="padding: 20px;">
-  <div class="col-xs-12" style="padding: 0;">
-    <h1><%= t 'submissions.index.title' %></h1>
-  </div>
+    <div class="col-xs-12" style="padding: 0;">
+        <h1><%= t 'submissions.index.title' %></h1>
+    </div>
 
-  <table class="col-xs-12">
-    <tr class="row list-row">
-      <th class="list-row__col col-md-1">
-        <%= t 'submissions.index.id' %>
-      </th>
+    <h3>Сортировать по </h3>
+    <ol>
+        <li>Пользователю: <input id="sortByUser" type="text" data-role="tagsinput"></li>
+        <li>Задаче: <input id="sortByTask" type="text" data-role="tagsinput"></li>
+        <li>Статусу: <input id="sortByStatus" type="text" data-role="tagsinput"></li>
+    </ol>
 
-      <th class="list-row__col col-md-5">
-        <%= t 'submissions.index.problem_name' %>
-      </th>
+    <table class="col-xs-12">
+        <tr class="row list-row">
+            <th class="list-row__col col-md-1">
+                <%= t 'submissions.index.id' %>
+            </th>
 
-      <th class="list-row__col col-md-3">
-        <%= t 'submissions.index.user_name' %>
-      </th>
+            <th class="list-row__col col-md-5">
+                <%= t 'submissions.index.problem_name' %>
+            </th>
 
-      <th class="list-row__col col-md-3">
-        <%= t 'submissions.index.state' %>
-      </th>
-    </tr>
+            <th class="list-row__col col-md-3">
+                <%= t 'submissions.index.user_name' %>
+            </th>
 
-    <%= render collection.decorate %>
-  </table>
+            <th class="list-row__col col-md-3">
+                <%= t 'submissions.index.state' %>
+            </th>
+        </tr>
 
-  <%= paginate collection %>
+        <%= render collection.decorate %>
+    </table>
+
+    <%= paginate collection %>
 </div>
+
+<script>
+    var usernames = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        prefetch: {
+            url: 'test/users.json'
+        },
+    });
+    usernames.initialize();
+
+    $('#sortByUser').tagsinput({
+        typeaheadjs: {
+            name: 'usernames',
+            displayKey: 'name',
+            valueKey: 'name',
+            source: usernames.ttAdapter()
+        }
+    });
+
+
+    var problems = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        prefetch: {
+            url: 'test/problems.json'
+        },
+    });
+    problems.initialize();
+
+    $('#sortByTask').tagsinput({
+        typeaheadjs: {
+            name: 'problems',
+            displayKey: 'name',
+            valueKey: 'name',
+            source: problems.ttAdapter()
+        }
+    });
+
+
+    var statuses = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        prefetch: {
+            url: 'test/statuses.json'
+        },
+    });
+    statuses.initialize();
+
+    $('#sortByStatus').tagsinput({
+        typeaheadjs: {
+            name: 'statuses',
+            displayKey: 'name',
+            valueKey: 'name',
+            source: statuses.ttAdapter()
+        }
+    });
+</script>
