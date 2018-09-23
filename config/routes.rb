@@ -32,4 +32,6 @@ Rails.application.routes.draw do
   end
 
   get '/v2/problems/new', to: "problems#new-online"
+
+  get '/v2/users/confirm', to: "users#confirm"
 end
