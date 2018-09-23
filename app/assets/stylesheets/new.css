@@ -57,6 +57,11 @@ table {
     background: rgba(255, 255, 255, 0.5) !important;
 }
 
+.translation {
+    box-shadow: #924301 0 0 5px -0.5px;
+    padding: 15px;
+}
+
 @media (max-width: 300px) {
     .header__logo {
         width: 80vw;
