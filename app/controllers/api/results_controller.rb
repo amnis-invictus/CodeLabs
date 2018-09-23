@@ -13,6 +13,6 @@ class Api::ResultsController < Api::ApplicationController
   end
 
   def build_resource
-    @resource = ResultFactory.build resource_params
+    @resource = Result.new resource_params
   end
 end
