@@ -82,9 +82,11 @@ $(function () {
     $("#tests_part").find(".btn").on('click', function () {
         const $table = $("#tests tbody"),
             $num_field = $("<input>").attr("type", "text").attr("class", "form-control"),
+            $btn = $('<button>').attr('class', 'btn btn-warning btn-switch');
             $num_cell = $("<td>");
 
         $num_cell.append($num_field);
+        $num_cell.append($btn);
 
         const $input_field = $("<textarea>").attr("rows", "2").attr("class", "form-control"),
             $input_cell = $("<td>");
@@ -142,5 +144,14 @@ $(function () {
             "                        </div></div>");
 
         $('#translations').append(newTranslation);
+    });
+
+    $('.btn-switch').on('click', function () {
+        $(this).parent().siblings().each(function () {
+            if ($(this).find('textarea').length === 0)
+                $(this).html("<input type='file' />");
+            else
+                $(this).html("<textarea rows='2' class='form-control'></textarea>");
+        });
     });
 });
