@@ -9,6 +9,7 @@ class Result < ApplicationRecord
     presentation_error: 2,
     dirt: 4,
     points: 5,
+    bad_test: 6,
     unexpected_eof: 8,
     runtime_error: 10,
     memory_limit_exceded: 14,
