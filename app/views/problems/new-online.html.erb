@@ -1,13 +1,13 @@
-<div class="row bg-light">
-    <div class="col-xs-12">
+<div class="row bg-light" style="padding: 15px">
+    <div class="col-xs-12" style="padding-left: 0">
         <h1><%= t 'problems.new.title' %></h1>
     </div>
     <form id="add_problem_form" action="">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#limit_block">Ограничения</a></li>
-            <li><a href="#test_block">Тесты</a></li>
-            <li><a href="#translation_block">Переводы</a></li>
-            <li><a href="#checker_block">Чекер</a></li>
+            <li class="active"><a data-toggle="tab" href="#limit_block">Ограничения</a></li>
+            <li><a data-toggle="tab" href="#test_block">Тесты</a></li>
+            <li><a data-toggle="tab" href="#translation_block">Переводы</a></li>
+            <li><a data-toggle="tab" href="#checker_block">Чекер</a></li>
         </ul>
 
         <div class="tab-content">
