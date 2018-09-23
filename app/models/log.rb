@@ -1,5 +1,5 @@
 class Log < ApplicationRecord
-  self.inheritance_column = nil
+  self.inheritance_column = ''
 
   validates :data, presence: true
 

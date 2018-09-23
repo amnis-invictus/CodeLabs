@@ -11,7 +11,7 @@ class Submission < ApplicationRecord
 
   has_one_attached :source
 
-  has_one :log, -> { source }
+  has_one :log, -> { where type: :source }
 
   has_many :results
 

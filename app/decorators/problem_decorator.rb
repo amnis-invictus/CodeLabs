@@ -25,7 +25,7 @@ class ProblemDecorator < Draper::Decorator
   end
 
   def checker_source_url
-    h.url_for checker_source if checker_source.attached?
+    helpers.url_for checker_source if checker_source.attached?
   end
 
   def translation
