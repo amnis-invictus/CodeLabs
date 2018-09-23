@@ -42,7 +42,7 @@ if (typeof add_problem_form !== "undefined")
             obj = translations.children;
 
         obj.forEach(item => {
-            console.log(item.);
+            console.log(item);
         });
 
         allTranslations = JSON.stringify(allTranslations);
