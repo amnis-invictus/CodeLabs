@@ -82,7 +82,7 @@ $(function () {
     $("#tests_part").find(".btn").on('click', function () {
         const $table = $("#tests tbody"),
             $num_field = $("<input>").attr("type", "text").attr("class", "form-control"),
-            $btn = $('<button>').attr('class', 'btn btn-warning btn-switch');
+            $btn = $('<button>').attr('class', 'btn btn-warning btn-switch').attr('type', 'button').text('Сменить тип теста');
             $num_cell = $("<td>");
 
         $num_cell.append($num_field);
