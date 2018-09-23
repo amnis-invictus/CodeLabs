@@ -66,9 +66,9 @@ $(function () {
     $("#examples").find(".btn").on('click', function () {
         const el = $("#examples .btn"),
             $input_field = $("<input>").attr("type", "text").attr("class", "form-control"),
-            $input_col = $("<div>").attr("class", "col-lg-6 col-md-6 col-sm-6"),
+            $input_col = $("<div>").attr("class", "col-lg-6 col-md-6 col-sm-6").css('margin-top', '5px'),
             $answer_field = $("<input>").attr("type", "text").attr("class", "form-control"),
-            $answer_col = $("<div>").attr("class", "col-lg-6 col-md-6 col-sm-6"),
+            $answer_col = $("<div>").attr("class", "col-lg-6 col-md-6 col-sm-6").css('margin-top', '5px'),
             $row = $("<div></div>").attr("class", "row");
 
         $input_col.append($input_field);
@@ -88,7 +88,7 @@ $(function () {
                         ?
                         $(this).html("<textarea rows='2' class='form-control'></textarea>")
                         :
-                        $(this).html("<input type='file' />")
+                        $(this).html("<input style='margin-right: -8px;' type='file' />")
                 });
             });
 
