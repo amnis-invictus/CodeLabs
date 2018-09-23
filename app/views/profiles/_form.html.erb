@@ -1,6 +1,6 @@
 <%= simple_form_for resource, url: :profile, wrapper: :horizontal_form,
   html: { class: 'form-horizontal', id: 'profile-form' } do |f| %>
-  <div class="col-xs-12 col-md-3">
+<div class="col-xs-12 col-md-3 avatar">
     <div class="image-input">
       <%= f.file_field :avatar, direct_upload: true, class: 'image-input__input' %>
 

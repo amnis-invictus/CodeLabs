@@ -49,14 +49,6 @@ table {
     width: 100%;
 }
 
-.input-group {
-    width: 200px;
-}
-
-.form-group {
-    width: 250px;
-}
-
 .half-opacity {
     background: rgba(255, 255, 255, 0.5) !important;
 }
@@ -70,5 +62,11 @@ table {
 @media (max-width: 470px) {
     .content.container .row.bg-light, .content.container .row.bg-dark {
         margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 990px) {
+    .avatar {
+        margin-bottom: 20px;
     }
 }
