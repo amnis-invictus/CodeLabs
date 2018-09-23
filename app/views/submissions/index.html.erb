@@ -60,8 +60,14 @@
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             prefetch: {
-                url: 'test/problems.json'
-            },
+                url: 'test/problems.json',
+                filter: function (list) {
+                    return $.map(list, function (cityname) {
+                        return {name: cityname};
+                    });
+
+                }
+            }
         });
         problems.initialize();
 
