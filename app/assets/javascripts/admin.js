@@ -86,9 +86,9 @@ $(function () {
                 $(this).parent().siblings().each(function () {
                     $(this).find('textarea').length === 0
                         ?
-                        $(this).html("<textarea rows='2' class='form-control'></textarea>");
+                        $(this).html("<textarea rows='2' class='form-control'></textarea>")
                         :
-                    $(this).html("<input type='file' />")
+                        $(this).html("<input type='file' />")
                 });
             });
 
