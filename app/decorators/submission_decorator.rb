@@ -11,7 +11,7 @@ class SubmissionDecorator < Draper::Decorator
       compiler_id: compiler_id,
       problem: problem,
       source_url: source_url,
-      test_state: test_state,
+      test_state: Submission.test_states[test_state],
       fails_count: fails_count,
       memory_limit: memory_limit,
       time_limit: time_limit
@@ -19,7 +19,7 @@ class SubmissionDecorator < Draper::Decorator
   end
 
   def source_url
-    h.url_for source if source.attached?
+    helpers.url_for source if source.attached?
   end
 
   def memory_limit
