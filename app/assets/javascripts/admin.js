@@ -104,43 +104,43 @@ $(function () {
 
         $table.append($row);
     });
+
+    $(translation_block).find('button').on('click', () => {
+        const newTranslation = $("<div class='translation'><div class=\"form-group\">\n" +
+            "                            <label for=\"lang\">Выберите язык</label>\n" +
+            "                            <select class=\"form-control\" id=\"lang\">\n" +
+            "                                <option value=\"uk\">Украинский</option>\n" +
+            "                                <option value=\"ru\">Русский</option>\n" +
+            "                                <option value=\"en\">Английский</option>\n" +
+            "                            </select>\n" +
+            "                        </div>\n" +
+            "\n" +
+            "                        <label for=\"caption\">Заголовок</label>\n" +
+            "                        <div class=\"form-group\">\n" +
+            "                            <input id=\"caption\" type=\"text\" class=\"form-control\">\n" +
+            "                        </div>\n" +
+            "\n" +
+            "                        <label for=\"text\">Текст</label>\n" +
+            "                        <div class=\"form-group\">\n" +
+            "                            <textarea id=\"text\" rows=\"2\" class=\"form-control\"></textarea>\n" +
+            "                        </div>\n" +
+            "\n" +
+            "                        <label for=\"techtext\">Технический текст</label>\n" +
+            "                        <div class=\"form-group\">\n" +
+            "                            <textarea id=\"techtext\" rows=\"2\" class=\"form-control\"></textarea>\n" +
+            "                        </div>\n" +
+            "\n" +
+            "                        <label for=\"author\">Автор</label>\n" +
+            "                        <div class=\"form-group\">\n" +
+            "                            <input id=\"author\" type=\"text\" class=\"form-control\">\n" +
+            "                        </div>\n" +
+            "\n" +
+            "                        <label for=\"tags\">Теги</label>\n" +
+            "                        <div class=\"form-group\">\n" +
+            "                            <textarea id=\"tags\" rows=\"3\" class=\"form-control\"></textarea>\n" +
+            "                            <p class=\"help-block\">Каждый тег с новой строки.</p>\n" +
+            "                        </div></div>");
+
+        $('#translations').append(newTranslation);
+    });
 });
-
-const addTranslation = () => {
-    const newTranslation = $("<div class='translation'><div class=\"form-group\">\n" +
-        "                            <label for=\"lang\">Выберите язык</label>\n" +
-        "                            <select class=\"form-control\" id=\"lang\">\n" +
-        "                                <option value=\"uk\">Украинский</option>\n" +
-        "                                <option value=\"ru\">Русский</option>\n" +
-        "                                <option value=\"en\">Английский</option>\n" +
-        "                            </select>\n" +
-        "                        </div>\n" +
-        "\n" +
-        "                        <label for=\"caption\">Заголовок</label>\n" +
-        "                        <div class=\"form-group\">\n" +
-        "                            <input id=\"caption\" type=\"text\" class=\"form-control\">\n" +
-        "                        </div>\n" +
-        "\n" +
-        "                        <label for=\"text\">Текст</label>\n" +
-        "                        <div class=\"form-group\">\n" +
-        "                            <textarea id=\"text\" rows=\"2\" class=\"form-control\"></textarea>\n" +
-        "                        </div>\n" +
-        "\n" +
-        "                        <label for=\"techtext\">Технический текст</label>\n" +
-        "                        <div class=\"form-group\">\n" +
-        "                            <textarea id=\"techtext\" rows=\"2\" class=\"form-control\"></textarea>\n" +
-        "                        </div>\n" +
-        "\n" +
-        "                        <label for=\"author\">Автор</label>\n" +
-        "                        <div class=\"form-group\">\n" +
-        "                            <input id=\"author\" type=\"text\" class=\"form-control\">\n" +
-        "                        </div>\n" +
-        "\n" +
-        "                        <label for=\"tags\">Теги</label>\n" +
-        "                        <div class=\"form-group\">\n" +
-        "                            <textarea id=\"tags\" rows=\"3\" class=\"form-control\"></textarea>\n" +
-        "                            <p class=\"help-block\">Каждый тег с новой строки.</p>\n" +
-        "                        </div></div>");
-
-    $('#translations').append(newTranslation);
-};
