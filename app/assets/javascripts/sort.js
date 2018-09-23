@@ -4,7 +4,7 @@ if (typeof sortByUser !== 'undefined') {
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             prefetch: {
-                url: '/v2/test/users.json'
+                url: '/v2/tests/users.json'
             },
         });
         usernames.initialize();
@@ -23,7 +23,7 @@ if (typeof sortByUser !== 'undefined') {
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             prefetch: {
-                url: '/v2/test/problems.json',
+                url: '/v2/tests/problems.json',
                 filter: function (list) {
                     return $.map(list, function (cityname) {
                         return {name: cityname};
@@ -48,7 +48,7 @@ if (typeof sortByUser !== 'undefined') {
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             prefetch: {
-                url: '/v2/test/statuses.json'
+                url: '/v2/tests/statuses.json'
             },
         });
         statuses.initialize();
