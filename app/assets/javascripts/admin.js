@@ -11,6 +11,24 @@ if (typeof add_problem_form !== "undefined")
         if (isNaN(parseInt(rtime.value)))
             return alert('В поле "Настоящее время" введено не число');
 
+        if (caption.value.length === 0)
+            return alert('Поле "Заголовок" должно быть заполнено');
+
+        if (text.innerText.length === 0)
+            return alert('Поле "Текст" должно быть заполнено');
+
+        if (techtext.innerText.length === 0)
+            return alert('Поле "Технический текст" должно быть заполнено');
+
+        if (caption.value.length === 0)
+            return alert('Поле "Автор" должно быть заполнено');
+
+        if (tags.innerText.length === 0)
+            return alert('Поле "Теги" должно быть заполнено');
+
+        if (checker.files.length === 0)
+            return alert('Загрузите файл-чекер');
+
         add_problem_form.submit();
     };
 
