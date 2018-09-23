@@ -57,20 +57,18 @@ table {
     width: 250px;
 }
 
-.image-input img {
-    /*border-radius: 5px;*/
-    -webkit-clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
-    clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
-}
-
-.image-input:hover img {
-    /*border-radius: 5px;*/
-    -webkit-clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
-    clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
+.half-opacity {
+    background: rgba(255, 255, 255, 0.5) !important;
 }
 
 @media (max-width: 300px) {
     .header_logo {
         width: 80vw;
+    }
+}
+
+@media (max-width: 470px) {
+    .content.container .row.bg-light, .content.container .row.bg-dark {
+        margin-bottom: 40px;
     }
 }
