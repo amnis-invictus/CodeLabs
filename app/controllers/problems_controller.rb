@@ -1,10 +1,13 @@
 class ProblemsController < ApplicationController
   skip_before_action :authenticate!, only: %i(index show)
 
-  helper_method :channel_id
-
   skip_before_action :authorize_resource, only: :'new-online'
 
+  helper_method :channel_id
+
+  #
+  # TODO: refactor, move to service class
+  #
   def create
     name = File.join Dir.tmpdir, SecureRandom.uuid
 
