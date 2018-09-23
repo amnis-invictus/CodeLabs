@@ -11,10 +11,10 @@ class TestDecorator < Draper::Decorator
   end
 
   def input_url
-    h.url_for input if input.attached?
+    helpers.url_for input if input.attached?
   end
 
   def answer_url
-    h.url_for answer if answer.attached?
+    helpers.url_for answer if answer.attached?
   end
 end
