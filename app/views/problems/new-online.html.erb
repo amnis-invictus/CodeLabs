@@ -92,40 +92,46 @@
             <div id="translation_block" class="tab-pane fade">
                 <h3>Переводы</h3>
 
-                <div class="form-group">
-                    <label for="lang">Выберите язык</label>
-                    <select class="form-control" id="lang" name="lang">
-                        <option value="uk">Украинский</option>
-                        <option value="ru">Русский</option>
-                        <option value="en">Английский</option>
-                    </select>
+                <div id="translations">
+                    <div>
+                        <div class="form-group">
+                            <label for="lang">Выберите язык</label>
+                            <select class="form-control" id="lang">
+                                <option value="uk">Украинский</option>
+                                <option value="ru">Русский</option>
+                                <option value="en">Английский</option>
+                            </select>
+                        </div>
+
+                        <label for="caption">Заголовок</label>
+                        <div class="form-group">
+                            <input id="caption" type="text" class="form-control">
+                        </div>
+
+                        <label for="text">Текст</label>
+                        <div class="form-group">
+                            <textarea id="text" rows="2" class="form-control"></textarea>
+                        </div>
+
+                        <label for="techtext">Технический текст</label>
+                        <div class="form-group">
+                            <textarea id="techtext" rows="2" class="form-control"></textarea>
+                        </div>
+
+                        <label for="author">Автор</label>
+                        <div class="form-group">
+                            <input id="author" type="text" class="form-control">
+                        </div>
+
+                        <label for="tags">Теги</label>
+                        <div class="form-group">
+                            <textarea id="tags" rows="3" class="form-control"></textarea>
+                            <p class="help-block">Каждый тег с новой строки.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <label for="caption">Заголовок</label>
-                <div class="form-group">
-                    <input id="caption" type="text" class="form-control" name="caption">
-                </div>
-
-                <label for="text">Текст</label>
-                <div class="form-group">
-                    <textarea id="text" rows="2" class="form-control" name="text"></textarea>
-                </div>
-
-                <label for="techtext">Технический текст</label>
-                <div class="form-group">
-                    <textarea id="techtext" rows="2" class="form-control" name="techtext"></textarea>
-                </div>
-
-                <label for="author">Автор</label>
-                <div class="form-group">
-                    <input id="author" type="text" class="form-control" name="author">
-                </div>
-
-                <label for="tags">Теги</label>
-                <div class="form-group">
-                    <textarea id="tags" rows="3" class="form-control" name="tags"></textarea>
-                    <p class="help-block">Каждый тег с новой строки.</p>
-                </div>
+                <button type="button" class="btn btn-warning" onclick="addTranslation()"><strong>+</strong></button>
             </div>
 
             <br>
@@ -150,7 +156,7 @@
 
         <br>
 
-        <button type="submit" class="btn btn-default" style="margin-left: 30px;">Создать</button>
+        <button type="submit" class="btn btn-default">Создать</button>
     </form>
 
     <div id="process-problem-archive-log" class="col-xs-12 col-md-6" data-channel-id="<%= channel_id %>"></div>

@@ -2,6 +2,9 @@ if (typeof add_problem_form !== "undefined")
     add_problem_form.onsubmit = function (e) {
         e.preventDefault();
 
+
+        // -------------- Validation --------------- //
+
         if (isNaN(parseInt(memory.value)))
             return alert('В поле "Память" введено не число');
 
@@ -29,10 +32,33 @@ if (typeof add_problem_form !== "undefined")
         if (checker.files.length === 0)
             return alert('Загрузите файл-чекер');
 
+        // ----------------------------------------- //
+
+
+        // ----------- Prepare data --------------- //
+
+        let allTranslations = {},
+            input = $('<input/>'),
+            obj = translations.children;
+
+        obj.forEach(item => {
+            console.log(item.);
+        });
+
+        allTranslations = JSON.stringify(allTranslations);
+
+        input.attr('type', 'hidden');
+        input.attr('value', allTranslations);
+        input.attr('name', 'translations');
+
+        // ---------------------------------------- //
+
+
+        //Success, submit
         add_problem_form.submit();
     };
 
-$(document).ready(function () {
+$(function () {
     $("#examples").find(".btn").on('click', function () {
         const el = $("#examples .btn"),
             $input_field = $("<input>").attr("type", "text").attr("class", "form-control"),
@@ -76,6 +102,43 @@ $(document).ready(function () {
     });
 });
 
+const addTranslation = () => {
+    const newTranslation = $("<div></div>");
 
+    newTranslation.innerHTML = "<div class=\"form-group\">\n" +
+        "                            <label for=\"lang\">Выберите язык</label>\n" +
+        "                            <select class=\"form-control\" id=\"lang\">\n" +
+        "                                <option value=\"uk\">Украинский</option>\n" +
+        "                                <option value=\"ru\">Русский</option>\n" +
+        "                                <option value=\"en\">Английский</option>\n" +
+        "                            </select>\n" +
+        "                        </div>\n" +
+        "\n" +
+        "                        <label for=\"caption\">Заголовок</label>\n" +
+        "                        <div class=\"form-group\">\n" +
+        "                            <input id=\"caption\" type=\"text\" class=\"form-control\">\n" +
+        "                        </div>\n" +
+        "\n" +
+        "                        <label for=\"text\">Текст</label>\n" +
+        "                        <div class=\"form-group\">\n" +
+        "                            <textarea id=\"text\" rows=\"2\" class=\"form-control\"></textarea>\n" +
+        "                        </div>\n" +
+        "\n" +
+        "                        <label for=\"techtext\">Технический текст</label>\n" +
+        "                        <div class=\"form-group\">\n" +
+        "                            <textarea id=\"techtext\" rows=\"2\" class=\"form-control\"></textarea>\n" +
+        "                        </div>\n" +
+        "\n" +
+        "                        <label for=\"author\">Автор</label>\n" +
+        "                        <div class=\"form-group\">\n" +
+        "                            <input id=\"author\" type=\"text\" class=\"form-control\">\n" +
+        "                        </div>\n" +
+        "\n" +
+        "                        <label for=\"tags\">Теги</label>\n" +
+        "                        <div class=\"form-group\">\n" +
+        "                            <textarea id=\"tags\" rows=\"3\" class=\"form-control\"></textarea>\n" +
+        "                            <p class=\"help-block\">Каждый тег с новой строки.</p>\n" +
+        "                        </div>";
 
-
+    $('#translations').append(newTranslation);
+};
