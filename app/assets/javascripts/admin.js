@@ -1,62 +1,66 @@
 if (typeof add_problem_form !== "undefined")
-    add_problem_form.onsubmit = function (e) {
-        e.preventDefault();
+    window.addEventListener('load', () => {
+        add_problem_form.onsubmit = function (e) {
+            e.preventDefault();
 
 
-        // -------------- Validation --------------- //
+            // -------------- Validation --------------- //
 
-        if (isNaN(parseInt(memory.value)))
-            return alert('В поле "Память" введено не число');
+            if (isNaN(parseInt(memory.value)))
+                return alert('В поле "Память" введено не число');
 
-        if (isNaN(parseInt(time.value)))
-            return alert('В поле "Время" введено не число');
+            if (isNaN(parseInt(time.value)))
+                return alert('В поле "Время" введено не число');
 
-        if (isNaN(parseInt(rtime.value)))
-            return alert('В поле "Настоящее время" введено не число');
+            if (isNaN(parseInt(rtime.value)))
+                return alert('В поле "Настоящее время" введено не число');
 
-        if (caption.value.length === 0)
-            return alert('Поле "Заголовок" должно быть заполнено');
+            if (caption.value.length === 0)
+                return alert('Поле "Заголовок" должно быть заполнено');
 
-        if (text.innerText.length === 0)
-            return alert('Поле "Текст" должно быть заполнено');
+            if (text.innerText.length === 0)
+                return alert('Поле "Текст" должно быть заполнено');
 
-        if (techtext.innerText.length === 0)
-            return alert('Поле "Технический текст" должно быть заполнено');
+            if (techtext.innerText.length === 0)
+                return alert('Поле "Технический текст" должно быть заполнено');
 
-        if (caption.value.length === 0)
-            return alert('Поле "Автор" должно быть заполнено');
+            if (caption.value.length === 0)
+                return alert('Поле "Автор" должно быть заполнено');
 
-        if (tags.innerText.length === 0)
-            return alert('Поле "Теги" должно быть заполнено');
+            if (tags.innerText.length === 0)
+                return alert('Поле "Теги" должно быть заполнено');
 
-        if (checker.files.length === 0)
-            return alert('Загрузите файл-чекер');
+            if (checker.files.length === 0)
+                return alert('Загрузите файл-чекер');
 
-        // ----------------------------------------- //
-
-
-        // ----------- Prepare data --------------- //
-
-        let allTranslations = {},
-            input = $('<input/>'),
-            obj = translations.children;
-
-        obj.forEach(item => {
-            console.log(item);
-        });
-
-        allTranslations = JSON.stringify(allTranslations);
-
-        input.attr('type', 'hidden');
-        input.attr('value', allTranslations);
-        input.attr('name', 'translations');
-
-        // ---------------------------------------- //
+            // ----------------------------------------- //
 
 
-        //Success, submit
-        add_problem_form.submit();
-    };
+            // ----------- Prepare data --------------- //
+
+            let allTranslations = {},
+                input = $('<input/>'),
+                obj = translations.children;
+
+            obj.forEach(item => {
+                console.log(item);
+            });
+
+            allTranslations = JSON.stringify(allTranslations);
+
+            input.attr('type', 'hidden');
+            input.attr('value', allTranslations);
+            input.attr('name', 'translations');
+
+            $(add_problem_form).append(input);
+
+            // ---------------------------------------- //
+
+
+            //Success, submit
+            add_problem_form.submit();
+        };
+    });
 
 $(function () {
     $("#examples").find(".btn").on('click', function () {
@@ -103,9 +107,7 @@ $(function () {
 });
 
 const addTranslation = () => {
-    const newTranslation = $("<div></div>");
-
-    newTranslation.innerHTML = "<div class=\"form-group\">\n" +
+    const newTranslation = $("<div class='translation'><div class=\"form-group\">\n" +
         "                            <label for=\"lang\">Выберите язык</label>\n" +
         "                            <select class=\"form-control\" id=\"lang\">\n" +
         "                                <option value=\"uk\">Украинский</option>\n" +
@@ -138,7 +140,7 @@ const addTranslation = () => {
         "                        <div class=\"form-group\">\n" +
         "                            <textarea id=\"tags\" rows=\"3\" class=\"form-control\"></textarea>\n" +
         "                            <p class=\"help-block\">Каждый тег с новой строки.</p>\n" +
-        "                        </div>";
+        "                        </div></div>");
 
     $('#translations').append(newTranslation);
 };

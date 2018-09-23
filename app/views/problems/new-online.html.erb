@@ -2,7 +2,7 @@
     <div class="col-xs-12" style="padding-left: 0">
         <h1><%= t 'problems.new.title' %></h1>
     </div>
-    <form id="add_problem_form" action="">
+    <form id="add_problem_form" action="" enctype='multipart/form-data' method="post">
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#limit_block">Ограничения</a></li>
             <li><a data-toggle="tab" href="#test_block">Тесты</a></li>
@@ -93,7 +93,7 @@
                 <h3>Переводы</h3>
 
                 <div id="translations">
-                    <div>
+                    <div class="translation">
                         <div class="form-group">
                             <label for="lang">Выберите язык</label>
                             <select class="form-control" id="lang">
