@@ -3,9 +3,9 @@
 
   <th class="list-row__col col-md-3"><%= t 'results.index.status' %></th>
 
-  <th class="list-row__col col-md-2"><%= t 'results.index.time' %></th>
+  <th class="list-row__col col-md-4"><%= t 'results.index.time' %></th>
 
-  <th class="list-row__col col-md-2"><%= t 'results.index.memory' %></th>
+  <th class="list-row__col col-md-4"><%= t 'results.index.memory' %></th>
 </tr>
 
 <%= render resource.results.includes(:test).order('tests.num') %>
