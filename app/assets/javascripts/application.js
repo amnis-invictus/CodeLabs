@@ -7,8 +7,11 @@
 //= require bootstrap-tagsinput.min.js
 //= require_tree .
 
-$("input[readonly]").on('focus', () => {
-    $(this).blur();
+$(function () {
+    $("input[readonly]").on('focus', () => {
+        $(this).blur();
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
-$('[data-toggle="tooltip"]').tooltip();
