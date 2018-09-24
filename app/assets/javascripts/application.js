@@ -10,3 +10,5 @@
 $("input[readonly]").on('focus', () => {
     $(this).blur();
 });
+
+$('[data-toggle="tooltip"]').tooltip();
