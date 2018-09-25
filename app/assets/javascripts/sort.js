@@ -14,9 +14,9 @@ if (typeof sortByUser !== 'undefined') {
             statuses: null
         };
 
-        local.users = getRemote('/v2/tests/users.json');
-        local.problems = getRemote('/v2/tests/problems.json');
-        local.statuses = getRemote('/v2/tests/statuses.json');
+        local.users = JSON.parse(getRemote('/v2/tests/users.json'));
+        local.problems = JSON.parse(getRemote('/v2/tests/problems.json'));
+        local.statuses = JSON.parse(getRemote('/v2/tests/statuses.json'));
 
         const usernames = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,

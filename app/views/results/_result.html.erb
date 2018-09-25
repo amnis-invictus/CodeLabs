@@ -14,10 +14,10 @@
             +
         </button>
 
-        <div id="log-<%= result.test_num %>">
-            <br>
+        <div id="log-<%= result.test_num %>" aria-expanded="false">
+            <br><br>
 
-            <code><%= result.log %></code>
+            <pre><%= result.log %></pre>
         </div>
     </td>
     <% end %>
