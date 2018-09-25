@@ -1,10 +1,15 @@
 if (typeof sortByUser !== 'undefined') {
-    window.addEventListener('load', () => {
+    window.addEventListener('turbolinks:load', () => {
         var usernames = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             prefetch: {
-                url: '/v2/tests/users.json'
+                url: '/v2/tests/users.json',
+                filter: function (list) {
+                    return list.map(cityname => {
+                        return {name: cityname}
+                    });
+                }
             },
         });
         usernames.initialize();
@@ -25,10 +30,9 @@ if (typeof sortByUser !== 'undefined') {
             prefetch: {
                 url: '/v2/tests/problems.json',
                 filter: function (list) {
-                    return $.map(list, function (cityname) {
-                        return {name: cityname};
+                    return list.map(cityname => {
+                        return {name: cityname}
                     });
-
                 }
             }
         });
@@ -48,7 +52,12 @@ if (typeof sortByUser !== 'undefined') {
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             prefetch: {
-                url: '/v2/tests/statuses.json'
+                url: '/v2/tests/statuses.json',
+                filter: function (list) {
+                    return list.map(cityname => {
+                        return {name: cityname}
+                    });
+                }
             },
         });
         statuses.initialize();
