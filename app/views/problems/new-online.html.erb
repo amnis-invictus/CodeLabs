@@ -91,40 +91,59 @@
 
                 <div id="translations">
                     <div class="translation">
-                        <div class="form-group">
-                            <label for="lang">Выберите язык</label>
-                            <select class="form-control" id="lang">
-                                <option value="uk">Украинский</option>
-                                <option value="ru">Русский</option>
-                                <option value="en">Английский</option>
-                            </select>
-                        </div>
-
-                        <label for="caption">Заголовок</label>
-                        <div class="form-group">
-                            <input id="caption" type="text" class="form-control">
-                        </div>
-
-                        <label for="text">Текст</label>
-                        <div class="form-group">
-                            <textarea id="text" rows="2" class="form-control"></textarea>
-                        </div>
-
-                        <label for="techtext">Технический текст</label>
-                        <div class="form-group">
-                            <textarea id="techtext" rows="2" class="form-control"></textarea>
-                        </div>
-
-                        <label for="author">Автор</label>
-                        <div class="form-group">
-                            <input id="author" type="text" class="form-control">
-                        </div>
-
-                        <label for="tags">Теги</label>
-                        <div class="form-group">
-                            <textarea id="tags" rows="3" class="form-control"></textarea>
-                            <p class="help-block">Каждый тег с новой строки.</p>
-                        </div>
+                    	<div class="row">
+                    		<div class="col-md-4">
+                    			<div class="form-group">
+                    				<label for="lang">Выберите язык</label>
+                    				<select class="form-control" id="lang">
+                    					<option value="uk">Украинский</option>
+                    					<option value="ru">Русский</option>
+                    					<option value="en">Английский</option>
+                    				</select>
+                    			</div>
+                    		</div>
+                    		<div class="col-md-4">
+                    			<div class="form-group">
+                    				<label for="caption">Заголовок</label>
+                    				<div class="form-group">
+                    					<input id="caption" class="form-control" type="text">
+                    				</div>
+                    			</div>
+                    		</div>
+                    		<div class="col-md-4">
+                    			<div class="form-group">
+                    				<label for="author">Автор</label>
+                    				<div class="form-group">
+                    					<input id="author" class="form-control" type="text">
+                    				</div>
+                    			</div>
+                    		</div>
+                    	</div>
+                    	
+                    	<div class="row">
+                    		<div class="col-md-6">
+                    			<div class="form-group">
+                    				<label for="text">Текст</label>
+                    				<div class="form-group">
+                    					<textarea id="text" rows="5" class="form-control"></textarea>
+                    				</div>
+                    			</div>
+                    		</div>
+                    		<div class="col-md-6">
+                    			<div class="form-group">
+                    				<label for="techtext">Технический текст</label>
+                    				<div class="form-group">
+                    					<textarea id="techtext" rows="5" class="form-control"></textarea>
+                    				</div>
+                    			</div>
+                    		</div>
+                    	</div>
+                    
+                    	<label for="tags">Теги</label>
+                    	<div class="form-group">
+                    		<textarea id="tags" rows="3" class="form-control"></textarea>
+                    		<p class="help-block">Каждый тег с новой строки.</p>
+                    	</div>
                     </div>
                 </div>
 
