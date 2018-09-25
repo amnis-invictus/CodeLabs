@@ -1,74 +1,38 @@
 if (typeof sortByUser !== 'undefined') {
     window.addEventListener('turbolinks:load', () => {
         var usernames = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: {
-                url: '/v2/tests/users.json',
-                filter: function (list) {
-                    return list.map(cityname => {
-                        return {name: cityname}
-                    });
-                }
-            },
+            prefetch: '/v2/tests/users.json'
         });
-        usernames.initialize();
 
-        $('#sortByUser').tagsinput({
-            typeaheadjs: {
+        $('#sortByUser').typeahead(null, {
                 name: 'usernames',
-                displayKey: 'name',
-                valueKey: 'name',
-                source: usernames.ttAdapter()
-            }
+            source: usernames
         });
 
 
         var problems = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: {
-                url: '/v2/tests/problems.json',
-                filter: function (list) {
-                    return list.map(cityname => {
-                        return {name: cityname}
-                    });
-                }
-            }
+            prefetch: '/v2/tests/problems.json'
         });
-        problems.initialize();
 
-        $('#sortByTask').tagsinput({
-            typeaheadjs: {
+        $('#sortByTask').typeahead(null, {
                 name: 'problems',
-                displayKey: 'name',
-                valueKey: 'name',
-                source: problems.ttAdapter()
-            }
+            source: problems
         });
 
 
         var statuses = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: {
-                url: '/v2/tests/statuses.json',
-                filter: function (list) {
-                    return list.map(cityname => {
-                        return {name: cityname}
-                    });
-                }
-            },
+            prefetch: '/v2/tests/statuses.json'
         });
-        statuses.initialize();
 
-        $('#sortByStatus').tagsinput({
-            typeaheadjs: {
+        $('#sortByStatus').typeahead(null, {
                 name: 'statuses',
-                displayKey: 'name',
-                valueKey: 'name',
-                source: statuses.ttAdapter()
-            }
+            source: statuses
         });
     });
 }
