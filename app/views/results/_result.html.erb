@@ -7,11 +7,18 @@
 
     <td class="list-row__col col-md-4 col-sm-4 col-xs-4"><%= result.memory %> kb</td>
 
-  <% if result.log? %>
+    <% if result.log? %>
     <td class="list-row__col col-md-4">
-        <button class="btn btn-default btn-xs pull-right" data-toggle="tooltip" title="<%= result.log %>">
-        +
-      </button>
+        <button class="btn btn-default btn-xs pull-right" data-toggle="collapse"
+                data-target="#log-<%= result.test_num %>">
+            +
+        </button>
+
+        <div id="log-<%= result.test_num %>">
+            <br>
+
+            <code><%= result.log %></code>
+        </div>
     </td>
     <% end %>
 </tr>

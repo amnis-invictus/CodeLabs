@@ -1,37 +1,55 @@
+function getRemote(remote_url) {
+    return $.ajax({
+        type: "GET",
+        url: remote_url,
+        async: false
+    }).responseText;
+}
+
 if (typeof sortByUser !== 'undefined') {
     window.addEventListener('turbolinks:load', () => {
-        var usernames = new Bloodhound({
+        let local = {
+            users: null,
+            problems: null,
+            statuses: null
+        };
+
+        local.users = getRemote('/v2/tests/users.json');
+        local.problems = getRemote('/v2/tests/problems.json');
+        local.statuses = getRemote('/v2/tests/statuses.json');
+
+        const usernames = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: '/v2/tests/users.json'
+            local: local.users
         });
 
         $('#sortByUser').typeahead(null, {
-                name: 'usernames',
+            name: 'usernames',
             source: usernames
         });
 
 
-        var problems = new Bloodhound({
+        const problems = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: '/v2/tests/problems.json'
+            local: local.problems
         });
 
         $('#sortByTask').typeahead(null, {
-                name: 'problems',
+            name: 'problems',
             source: problems
         });
 
 
-        var statuses = new Bloodhound({
+        const statuses = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: '/v2/tests/statuses.json'
+            local: local.statuses
         });
 
         $('#sortByStatus').typeahead(null, {
-                name: 'statuses',
+            name: 'statuses',
             source: statuses
         });
     });
