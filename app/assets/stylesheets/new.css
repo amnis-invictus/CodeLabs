@@ -68,11 +68,19 @@ table {
     height: 400px;
 }
 
+ul {
+    list-style-type: none;
+}
+
 .tt-menu {
     width: 100%;
     border-radius: 5px;
     background: #fff;
     box-shadow: 2px 2px 5px 2px #eee;
+}
+
+.tt-input {
+    background: #fff !important;
 }
 
 .tt-suggestion {
