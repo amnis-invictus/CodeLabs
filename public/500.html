@@ -1,66 +1,675 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+    <title>We're sorry, but something went wrong (500)</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        html, body {
+            background: #1f1f1f;
+        }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+        h2 {
+            color: crimson;
+            font-size: 215px;
+            font-weight: 900;
+            text-align: center;
+            margin-top: -127px;
+            text-shadow: 5px 5px 0 #720000, 10px 10px 5px #000;
+            z-index: 3;
+        }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+        h4 {
+            color: crimson;
+            font-size: 35px;
+            font-weight: 900;
+            text-align: center;
+            margin-top: -200px;
+            text-shadow: 3px 3px 0 #720000, 10px 10px 5px #000;
+            font-style: italic;
+        }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+        .container {
+            width: 320px;
+            height: 460px;
+            position: relative;
+            text-align: center;
+            margin: 10vh auto 10vh 44.5%;
+        }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+        .container .left-ear {
+            position: absolute;
+            top: -0px;
+            width: 36px;
+            height: 160px;
+            left: 48px;
+            background: #fed823;
+            border-bottom-left-radius: 80px 70%;
+            border-top-left-radius: 100%;
+            border-top-right-radius: 100%;
+            -webkit-transform: rotateZ(25deg);
+            transform: rotateZ(25deg);
+            border-left: 3px solid #0A0A0A;
+            border-right: 3px solid #0A0A0A;
+            border-top: 1px solid #0A0A0A;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .container .left-ear .punta {
+            position: absolute;
+            content: '';
+            display: block;
+            left: 4px;
+            width: 38px;
+            height: 50px;
+            background: #231815;
+            -webkit-transform: rotateZ(12deg);
+            transform: rotateZ(12deg);
+            border-top-right-radius: 250%;
+            border-bottom-left-radius: 15px;
+            border-bottom: 3px solid #0A0A0A;
+        }
+
+        .container .right-ear {
+            position: absolute;
+            top: 69px;
+            right: 80px;
+            width: 30px;
+            height: 140px;
+            background: #231815;
+            border-bottom-left-radius: 80px 150%;
+            border-top-left-radius: 190%;
+            border-top-right-radius: 150%;
+            -webkit-transform: rotateZ(80deg);
+            transform: rotateZ(80deg);
+            border: 3px solid #0A0A0A;
+            border-bottom: none;
+            z-index: 500;
+            overflow: hidden;
+        }
+
+        .container .right-ear .fillear {
+            position: absolute;
+            bottom: 0px;
+            background: #fed823;
+            width: 40px;
+            height: 110px;
+            border-radius: 0 80% 0 0;
+            border-top: 3px solid #0A0A0A;
+        }
+
+        .container .pik-body {
+            border-top-left-radius: 130px 120px;
+            border-top-right-radius: 150px 100px;
+            border-bottom-left-radius: 100px 130px;
+            border-bottom-right-radius: 150px 100px;
+            width: 185px;
+            height: 340px;
+            position: absolute;
+            border: 3px solid rgba(0, 0, 0, 0);
+            bottom: 0;
+            -webkit-transform: rotateZ(-1deg);
+            transform: rotateZ(-1deg);
+            z-index: 300;
+        }
+
+        .container .pik-body .pik-head {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            background: #fed823;
+            right: 7px;
+            border-top-left-radius: 130px 120px;
+            border-top-right-radius: 150px 100px;
+            border-bottom-left-radius: 80px 80px;
+            border-bottom-right-radius: 25px 120px;
+            border: 3px solid #0A0A0A;
+            border-bottom: none;
+        }
+
+        .container .pik-body .pik-head:before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 30px;
+            height: 70px;
+            background: #fed823;
+            border-left: 4px solid #0A0A0A;
+            left: -14px;
+            top: 81px;
+            -webkit-transform: rotateZ(-28deg);
+            transform: rotateZ(-28deg);
+            border-top-left-radius: 150% 90px;
+            border-bottom-left-radius: 150% 90px;
+        }
+
+        .container .pik-body .pik-head:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 23px;
+            height: 40px;
+            background: #e94e24;
+            border-radius: 50%;
+            left: -18px;
+            top: 80px;
+            border-right: 3px solid #0A0A0A;
+            border-top: 3px solid #0A0A0A;
+            border-bottom: 3px solid #0A0A0A;
+        }
+
+        .container .pik-body .pik-head .cheek-right {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e94e24;
+            border: 3px solid #0A0A0A;
+            top: 90px;
+            right: 18px;
+        }
+
+        .container .pik-body .pik-head .eye-right {
+            position: absolute;
+            width: 30px;
+            height: 33px;
+            background: #0A0A0A;
+            border-radius: 50%;
+            top: 57px;
+            right: 36px;
+        }
+
+        .container .pik-body .pik-head .eye-right:before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 10px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            left: 8px;
+            top: 5px;
+        }
+
+        .container .pik-body .pik-head .eye-right:after {
+            content: '';
+            position: absolute;
+            right: 3px;
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #0A0A0A;
+            -webkit-transform: rotateZ(-28deg);
+            transform: rotateZ(-28deg);
+        }
+
+        .container .pik-body .pik-head .eye-left {
+            position: absolute;
+            width: 20px;
+            height: 32px;
+            background: #0A0A0A;
+            border-radius: 50%;
+            -webkit-transform: rotateZ(10deg);
+            transform: rotateZ(10deg);
+            top: 50px;
+            left: 10px;
+        }
+
+        .container .pik-body .pik-head .eye-left:before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 8px;
+            height: 13px;
+            background: white;
+            border-radius: 50%;
+            -webkit-transform: rotateZ(8deg);
+            transform: rotateZ(8deg);
+            left: 10px;
+            top: 5px;
+        }
+
+        .container .pik-body .pik-head .eye-left:after {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 3px;
+            background: #0A0A0A;
+            -webkit-transform: rotateZ(28deg);
+            transform: rotateZ(28deg);
+        }
+
+        .container .pik-body .pik-head .nose {
+            position: absolute;
+            width: 10px;
+            height: 11px;
+            background: #0A0A0A;
+            top: 75px;
+            left: 40px;
+            border-radius: 0% 50% 30% 50%;
+            -webkit-transform: rotateZ(-36deg);
+            transform: rotateZ(-36deg);
+        }
+
+        .container .pik-body .pik-head .mouth {
+            position: absolute;
+            width: 25px;
+            height: 20px;
+            border-radius: 0% 0% 100% 0%;
+            border-bottom: 4px solid #0A0A0A;
+            border-right: 3px solid #0A0A0A;
+            top: 90px;
+            left: 48px;
+            -webkit-transform: rotateZ(55deg);
+            transform: rotateZ(55deg);
+        }
+
+        .container .pik-body .pik-head .mouth:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 17px;
+            height: 15px;
+            border-radius: 0% 0% 90% 0%;
+            border-bottom: 4px solid #0A0A0A;
+            border-right: 3px solid #0A0A0A;
+            top: 22px;
+            right: 20px;
+            -webkit-transform: rotateZ(-10deg);
+            transform: rotateZ(-10deg);
+        }
+
+        .container .pik-body .mid {
+            position: absolute;
+            width: 160px;
+            height: 150px;
+            top: 165px;
+            background: #fed823;
+            left: 30px;
+            border-top-right-radius: 70px 140px;
+            border-bottom-right-radius: 50px;
+            border-bottom-left-radius: 30px;
+            border-bottom: 3px solid #0A0A0A;
+            border-right: 3px solid #0A0A0A;
+            z-index: 1;
+        }
+
+        .container .pik-body .mid:before {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 150px;
+            height: 40px;
+            border-right: 3px solid #0A0A0A;
+            background: #fed823;
+            right: 15px;
+            -webkit-transform: rotateZ(-8deg);
+            transform: rotateZ(-8deg);
+        }
+
+        .container .pik-body .mid:after {
+            position: absolute;
+            content: '';
+            display: block;
+            bottom: -2px;
+            left: -20px;
+            width: 70px;
+            height: 100px;
+            border-radius: 90% 30% 0 80%;
+            background: #fed823;
+            border-bottom: 3px solid #0A0A0A;
+            border-left: 3px solid #0A0A0A;
+        }
+
+        .container .pik-body .mid .mark1 {
+            position: absolute;
+            width: 18px;
+            height: 12px;
+            border-top-left-radius: 50px 100%;
+            border-bottom-left-radius: 50px 100%;
+            background: #c76e29;
+            border: 2px solid #0A0A0A;
+            border-right: none;
+            -webkit-transform: rotateZ(-15deg);
+            transform: rotateZ(-15deg);
+            right: 13px;
+            top: 27px;
+            z-index: 20;
+        }
+
+        .container .pik-body .mid .mark2 {
+            position: absolute;
+            width: 28px;
+            height: 16px;
+            border-top-left-radius: 100px 190%;
+            border-bottom-left-radius: 50px 130%;
+            background: #c76e29;
+            border: 2px solid #0A0A0A;
+            border-right: none;
+            -webkit-transform: rotateZ(-10deg);
+            transform: rotateZ(-10deg);
+            right: 0px;
+            top: 82px;
+            z-index: 20;
+        }
+
+        .container .pik-body .mid .left-hand {
+            position: absolute;
+            width: 65px;
+            height: 65px;
+            left: -20px;
+            top: -10px;
+            border-radius: 70% 50% 80% 60%;
+            border-left: 3px solid #0A0A0A;
+            border-bottom: 3px solid #0A0A0A;
+            background: #fed823;
+            z-index: 5;
+        }
+
+        .container .pik-body .mid .left-hand:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 40px;
+            height: 10px;
+            border-radius: 40%;
+            border-top: 2px solid #0A0A0A;
+            -webkit-transform: rotateZ(17deg);
+            transform: rotateZ(17deg);
+            top: 16px;
+            left: 17px;
+        }
+
+        .container .pik-body .mid .right-hand {
+            position: absolute;
+            width: 85px;
+            height: 65px;
+            right: 45px;
+            top: -5px;
+            border-top-left-radius: 150px 150%;
+            border-bottom-left-radius: 50px 70%;
+            border-bottom-right-radius: 50px 70%;
+            border-left: 3px solid #0A0A0A;
+            border-bottom: 2px solid #0A0A0A;
+            z-index: 25;
+            background: #fed823;
+        }
+
+        .container .pik-body .left-foot {
+            position: absolute;
+            bottom: 0;
+            width: 70px;
+            height: 30px;
+            background: #fed823;
+            border-radius: 75%;
+            -webkit-transform: rotateZ(-18deg);
+            transform: rotateZ(-18deg);
+            border: 3px solid #0A0A0A;
+        }
+
+        .container .pik-body .left-foot:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 25px;
+            height: 6px;
+            border-top: 3px solid #0A0A0A;
+            border-radius: 40%;
+            -webkit-transform: rotateZ(-15deg);
+            transform: rotateZ(-15deg);
+            bottom: 8px;
+        }
+
+        .container .pik-body .left-foot:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 25px;
+            height: 8px;
+            border-top: 3px solid #0A0A0A;
+            border-radius: 50%;
+            -webkit-transform: rotateZ(-15deg);
+            transform: rotateZ(-15deg);
+            bottom: 12px;
+            left: -1px;
+        }
+
+        .container .pik-body .right-foot {
+            position: absolute;
+            bottom: 0;
+            width: 70px;
+            height: 27px;
+            right: -12px;
+            background: #fed823;
+            border-radius: 85%;
+            -webkit-transform: rotateZ(17deg);
+            transform: rotateZ(17deg);
+            border-bottom: 3px solid #0A0A0A;
+        }
+
+        .container .pik-body .right-foot:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 25px;
+            height: 6px;
+            border-top: 3px solid #0A0A0A;
+            border-radius: 40%;
+            -webkit-transform: rotateZ(15deg);
+            transform: rotateZ(15deg);
+            bottom: 3px;
+            right: 0;
+        }
+
+        .container .pik-body .right-foot:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 25px;
+            height: 8px;
+            border-top: 3px solid #0A0A0A;
+            border-radius: 50%;
+            -webkit-transform: rotateZ(15deg);
+            transform: rotateZ(15deg);
+            bottom: 8px;
+            right: -1px;
+        }
+
+        .container .tail {
+            position: absolute;
+            width: 150px;
+            height: 250px;
+            right: 0;
+            top: 140px;
+            -webkit-transform-origin: 0 bottom;
+            transform-origin: 0 bottom;
+            -webkit-animation: tailmove 3s ease infinite;
+            animation: tailmove 3s ease infinite;
+        }
+
+        .container .tail .part1 {
+            position: absolute;
+            bottom: 18px;
+            width: 60px;
+            height: 15px;
+            border-bottom: 2px solid #0A0A0A;
+            border-top: 2px solid #0A0A0A;
+            background: #983c0d;
+            -webkit-transform: rotateZ(-50deg);
+            transform: rotateZ(-50deg);
+        }
+
+        .container .tail .part2 {
+            position: absolute;
+            bottom: 49px;
+            width: 50px;
+            height: 18px;
+            left: 9px;
+            border-top: 2px solid #0A0A0A;
+            background: #983c0d;
+            -webkit-transform: rotateZ(40deg);
+            transform: rotateZ(40deg);
+            border-right: 2px solid #0A0A0A;
+        }
+
+        .container .tail .part2:before {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 9px solid #fed823;
+            border-right: 9px solid rgba(0, 0, 0, 0);
+            border-bottom: 5px solid rgba(0, 0, 0, 0);
+            border-top: 5px solid rgba(0, 0, 0, 0);
+            left: 15px;
+            top: -1px;
+        }
+
+        .container .tail .part2:after {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 9px solid #fed823;
+            border-right: 9px solid rgba(0, 0, 0, 0);
+            border-bottom: 5px solid rgba(0, 0, 0, 0);
+            border-top: 5px solid rgba(0, 0, 0, 0);
+            left: 14px;
+            top: 8px;
+        }
+
+        .container .tail .part3 {
+            position: absolute;
+            bottom: 78px;
+            width: 70px;
+            height: 25px;
+            border-top: 2px solid #0A0A0A;
+            background: #fed823;
+            -webkit-transform: rotateZ(-45deg);
+            transform: rotateZ(-45deg);
+        }
+
+        .container .tail .part4 {
+            position: absolute;
+            bottom: 105px;
+            width: 80px;
+            height: 35px;
+            border-top: 2px solid #0A0A0A;
+            background: #fed823;
+            -webkit-transform: rotateZ(45deg);
+            transform: rotateZ(45deg);
+            left: -10px;
+        }
+
+        .container .tail .part5 {
+            position: absolute;
+            bottom: 145px;
+            width: 150px;
+            height: 85px;
+            border-top: 3px solid #0A0A0A;
+            border-left: 2px solid #0A0A0A;
+            background: #fed823;
+            -webkit-transform: rotateZ(-7deg);
+            transform: rotateZ(-7deg);
+            left: -16px;
+            border-top-left-radius: 100% 30px;
+            border-bottom-right-radius: 20% 10px;
+            border-right: 2px solid #0A0A0A;
+        }
+
+        .shock-left {
+            position: absolute;
+            left: -130px;
+            top: 80px;
+            -webkit-transform: rotateZ(140deg);
+            transform: rotateZ(140deg);
+            width: 140px;
+            z-index: 10;
+        }
+
+        .shock-right {
+            position: absolute;
+            right: -110px;
+            top: 100px;
+            -webkit-transform: rotateZ(-14deg);
+            transform: rotateZ(-14deg);
+            z-index: 10;
+        }
+
+        @-webkit-keyframes tailmove {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+            }
+            50% {
+                -webkit-transform: rotateZ(15deg);
+                transform: rotateZ(15deg);
+            }
+            100% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+            }
+        }
+
+        @keyframes tailmove {
+            0% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+            }
+            50% {
+                -webkit-transform: rotateZ(15deg);
+                transform: rotateZ(15deg);
+            }
+            100% {
+                -webkit-transform: rotateZ(0deg);
+                transform: rotateZ(0deg);
+            }
+        }
+
+    </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+<body>
+<div class="container">
+    <div class="left-ear">
+        <div class="punta"></div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+    <div class="right-ear">
+        <div class="fillear"></div>
+    </div>
+    <div class="pik-body">
+        <img class="shock-left" src="/app/assets/images/lighting.gif">
+        <img class="shock-right" src="/app/assets/images/lighting.gif">
+        <div class="pik-head">
+            <div class="eye-left"></div>
+            <div class="eye-right"></div>
+            <div class="cheek-right"></div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+        </div>
+
+        <div class="mid">
+            <div class="left-hand"></div>
+            <div class="right-hand"></div>
+            <div class="mark1"></div>
+            <div class="mark2"></div>
+        </div>
+
+        <div class="left-foot"></div>
+        <div class="right-foot"></div>
+    </div>
+    <div class="tail">
+        <div class="part1"></div>
+        <div class="part2"></div>
+        <div class="part3"></div>
+        <div class="part4"></div>
+        <div class="part5"></div>
+    </div>
+</div>
+
+<h2>500</h2>
+<h4>throw new InternalServerErrorException();</h4>
 </body>
 </html>

@@ -1,3 +1,7 @@
+::selection {
+    background: #93440180;
+}
+
 :focus {
     outline: none;
 }
