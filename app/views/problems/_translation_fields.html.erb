@@ -2,8 +2,7 @@
 <div class="translation">
   <div class="row">
     <div class="col-xs-4">
-      <%= f.input :language, collection: ProblemTranslation.languages.map { |a, b| [I18n.t(:language, locale: a), b] },
-        include_blank: false %>
+      <%= f.input :language, collection: language_select_options, include_blank: false %>
     </div>
 
     <div class="col-xs-4">
