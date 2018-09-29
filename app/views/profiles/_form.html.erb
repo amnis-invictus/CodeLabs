@@ -19,7 +19,7 @@
   <div class="col-xs-12 col-md-9">
     <%= f.input :name %>
 
-    <%= f.input :skills, as: :select, collection: resource.skills, input_html: { multiple: true, 'data-role': :tagsinput } %>
+    <%= f.input :skills, input_html: { 'data-role': :tagsinput } %>
 
     <%= f.input :password %>
 
