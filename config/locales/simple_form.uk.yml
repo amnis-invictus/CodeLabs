@@ -7,6 +7,10 @@ uk:
     placeholders:
       defaults:
         email: one@users.com
+      problem:
+        memory_limit: Допустимі затрати пам'яті
+        time_limit: Час на виконання
+        real_time_limit: Час до смерті
     required:
       mark: "*"
       text: обов'язково

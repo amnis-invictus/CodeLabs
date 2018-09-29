@@ -14,7 +14,7 @@ uk:
   helpers:
     submit:
       problem:
-        create: Завантажити архів
+        create: Створити
       session:
         create: Вхід
       submission:

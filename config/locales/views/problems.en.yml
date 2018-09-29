@@ -7,7 +7,7 @@ en:
       number: "#"
       title: Problems
     new:
-      title: Create a problem from an archive
+      title: Create a problem
     show:
       example_input: Input
       example_output: Output

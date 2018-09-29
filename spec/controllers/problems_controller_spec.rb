@@ -9,6 +9,8 @@ RSpec.describe ProblemsController, type: :controller do
 
   pending '#create'
 
+  pending '#resource_params'
+
   describe '#collection' do
     context do
       before { subject.instance_variable_set :@collection, :collection }
@@ -88,34 +90,12 @@ RSpec.describe ProblemsController, type: :controller do
   end
 
   describe '#build_resource' do
-    before { expect(Problem).to receive(:new).and_return(:resource) }
+    before { expect(subject).to receive(:resource_params).and_return(:resource_params) }
+
+    before { expect(Problem).to receive(:new).with(:resource_params).and_return(:resource) }
 
     before { subject.send :build_resource }
 
     its(:resource) { should eq :resource }
-  end
-
-  describe '#channel_id' do
-    let(:uuid) { SecureRandom.uuid }
-
-    context do
-      before { subject.instance_variable_set :@channel_id, uuid }
-
-      its(:channel_id) { should eq uuid }
-    end
-
-    context do
-      before { expect(subject).to receive(:params).and_return(problem: { channel_id: uuid }) }
-
-      its(:channel_id) { should eq uuid }
-    end
-
-    context do
-      before { expect(subject).to receive(:params).and_return({}) }
-
-      before { expect(SecureRandom).to receive(:uuid).and_return(uuid) }
-
-      its(:channel_id) { should eq uuid }
-    end
   end
 end

@@ -1,0 +1,34 @@
+<div id="translations" class="tab-pane fade">
+  <h3><%= t 'problems.new.translations.title' %></h3>
+
+  <div class="translations">
+    <div class="translation">
+      <div class="row">
+        <%= f.simple_fields_for :translations do |t| %>
+          <div class="col-md-4">
+            <%= t.input :language, collection: ProblemTranslation.languages.map { |a, b| [I18n.t(:language, locale: a), b] },
+              include_blank: false %>
+          </div>
+
+          <div class="col-md-4">
+            <%= t.input :caption %>
+          </div>
+
+          <div class="col-md-4">
+            <%= t.input :author %>
+          </div>
+
+          <div class="col-md-6">
+            <%= t.input :text, as: :text %>
+          </div>
+
+          <div class="col-md-6">
+            <%= t.input :technical_text, as: :text %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-warning"><strong>+</strong></button>
+</div>

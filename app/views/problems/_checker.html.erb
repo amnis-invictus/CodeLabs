@@ -1,0 +1,7 @@
+<div id="checker" class="tab-pane fade">
+  <h3><%= t 'problems.new.checker.title' %></h3>
+
+  <%= f.input :checker_compiler_id, collection: Compiler.visible, include_blank: false %>
+
+  <%= f.input :checker_source %>
+</div>

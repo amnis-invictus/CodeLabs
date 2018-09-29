@@ -1,21 +1,10 @@
 class ProblemsController < ApplicationController
   skip_before_action :authenticate!, only: %i(index show)
 
-  skip_before_action :authorize_resource, only: :'new-online'
-
-  helper_method :channel_id
-
-  #
-  # TODO: refactor, move to service class
-  #
   def create
-    name = File.join Dir.tmpdir, SecureRandom.uuid
+    render :new unless resource.save
 
-    FileUtils.copy params[:problem][:archive].path, name
-
-    ProcessProblemArchiveJob.perform_later current_user, name, channel_id
-
-    head 204
+    redirect_to resource
   end
 
   private
@@ -31,13 +20,15 @@ class ProblemsController < ApplicationController
     @resource ||= Problem.find(params[:id]).decorate
   end
 
+  def resource_params
+    params.require(:problem).permit(:memory_limit, :time_limit, :real_time_limit, :checker_compiler_id, :checker_source)
+  end
+
   def initialize_resource
     @resource = Problem.new
   end
 
-  def channel_id
-    @channel_id ||= params.dig(:problem, :channel_id) || SecureRandom.uuid
+  def build_resource
+    @resource = Problem.new resource_params
   end
-
-  alias_method :build_resource, :initialize_resource
 end

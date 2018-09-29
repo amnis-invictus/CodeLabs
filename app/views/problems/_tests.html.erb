@@ -1,0 +1,59 @@
+<div id="tests" class="tab-pane fade">
+  <h3><%= t 'problems.new.tests.title' %></h3>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div id="examples">
+        <%= f.simple_fields_for :examples do |e| %>
+          <div class="row">
+            <div class="col-xs-6">
+              <%= e.input :input, label: false %>
+            </div>
+
+            <div class="col-xs-6">
+              <%= e.input :answer, label: false %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <button type="button" class="btn btn-warning"><strong>+</strong></button>
+    </div>
+  </div>
+
+  <br>
+
+  <h3><%= t 'problems.new.tests.title' %></h3>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <%= f.simple_fields_for :tests do |t| %>
+        <table id="tests" class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Num</th>
+
+              <th>Input</th>
+
+              <th>Answer</th>
+            </tr>
+          </thead>
+
+          <tbody id="tests">
+            <tr>
+              <td><%= t.input :num, label: false %></td>
+
+              <td><%= t.input :input, label: false %></td>
+
+              <td><%= t.input :answer, label: false %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-warning"><strong>+</strong></button>
+    </div>
+  </div>
+</div>

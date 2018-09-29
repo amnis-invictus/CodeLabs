@@ -7,7 +7,7 @@ uk:
       number: "№"
       title: Задачі
     new:
-      title: Створити задачу з архіва
+      title: Створити задачу
     show:
       example_input: Введення
       example_output: Виведення
