@@ -33,10 +33,7 @@ Rails.application.routes.draw do
     resources :compilers, :constants, only: :index
   end
 
-  get '/v2/problems/new', to: "problems#new-online"
-
   get '/v2/users/confirm', to: "users#confirm"
-
   get '/v2/tests/problems.json', to: 'tests#problems'
   get '/v2/tests/statuses.json', to: 'tests#statuses'
   get '/v2/tests/users.json', to: 'tests#users'
