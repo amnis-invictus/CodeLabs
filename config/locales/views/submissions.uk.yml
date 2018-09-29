@@ -11,11 +11,11 @@ uk:
       title: Відправити рішення до задачі "%{problem_caption}"
     show:
       compiler_log: Лог компіляції
-      failed: Помилка тестуваня рішення
+      failed: Помилка тестування рішення
       memory_limit: Ліміт пам'яті
       problem: Задача
       results: Результати
-      source: Вихідний код
+      source: Код програми
       state: Статус
       time_limit: Ліміт часу
       title: Посилання №%{id}

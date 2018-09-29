@@ -9,8 +9,8 @@ uk:
     new:
       title: Створити задачу з архіва
     show:
-      example_input: Ввід
-      example_output: Вивід
+      example_input: Введення
+      example_output: Виведення
       examples: Приклади
       technical_text: Технічні умови
       missing_translation: Переклад обраною мовою відсутній, умову відображено %{language} мовою.

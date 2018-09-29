@@ -153,7 +153,7 @@
       return this.each(function () {
         const form = $(this);
 
-          form.on('submit', submitProblemForm);
+          // form.on('submit', submitProblemForm);
 
         form.find('#examples').find('.btn').on('click', addExample);
 

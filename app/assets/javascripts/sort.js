@@ -66,6 +66,7 @@ $(document).on('turbolinks:load', () => {
                 name: 'groups',
                 source: groups
             });
+
+
         })();
-})
-;
+});
