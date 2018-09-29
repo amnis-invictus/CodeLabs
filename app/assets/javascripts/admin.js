@@ -1,5 +1,5 @@
 (function () {
-  function submitProblemFrom(e) {
+    function submitProblemForm(e) {
     e.preventDefault();
 
     // -------------- Validation --------------- //
@@ -20,7 +20,7 @@
       return alert('Поле "Текст" должно быть заполнено');
 
     if (techtext.innerText.length === 0)
-      return alert('Поле "Технический текст" должно быть заполнено');
+        return alert('Поле "Технические условия" должно быть заполнено');
 
     if (caption.value.length === 0)
       return alert('Поле "Автор" должно быть заполнено');
@@ -129,7 +129,7 @@
       '                            <textarea id="text" rows="2" class="form-control"></textarea>\n' +
       '                        </div>\n' +
       '\n' +
-      '                        <label for="techtext">Технический текст</label>\n' +
+        '                        <label for="techtext">Технические условия</label>\n' +
       '                        <div class="form-group">\n' +
       '                            <textarea id="techtext" rows="2" class="form-control"></textarea>\n' +
       '                        </div>\n' +
@@ -149,11 +149,11 @@
   }
 
   jQuery.fn.extend({
-    initializeProblemFrom: function () {
+      initializeProblemForm: function () {
       return this.each(function () {
         const form = $(this);
 
-        form.on('submit', submitProblemFrom);
+          form.on('submit', submitProblemForm);
 
         form.find('#examples').find('.btn').on('click', addExample);
 
@@ -164,5 +164,7 @@
     }
   });
 
-  document.addEventListener('turbolinks:load', function () { $('#add_problem_form').initializeProblemFrom() })
-})()
+    document.addEventListener('turbolinks:load', function () {
+        $('#add_problem_form').initializeProblemForm()
+    });
+})();

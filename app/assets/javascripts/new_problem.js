@@ -1,17 +1,19 @@
 jQuery.fn.extend({
   newProblem: function () {
     return this.each(function () {
-      var form = $(this)
+        var form = $(this);
 
       form.find(':submit').on('click', function () {
-        this.disabled = true
+          this.disabled = true;
 
-        $('#process-problem-archive-log').html('')
+          $('#process-problem-archive-log').html('');
 
-        form.submit()
-      })
-    })
+          form.submit();
+      });
+    });
   }
-})
+});
 
-document.addEventListener('turbolinks:load', function () { $('form#new_problem').newProblem() })
+document.addEventListener('turbolinks:load', function () {
+    $('form#new_problem').newProblem()
+});

@@ -1,5 +1,5 @@
 class Cookie {
-    constructor(name, value, options = {}) {
+    constructor(name, value = '', options = {}) {
         this.name = name;
         this.value = value;
         this.options = options;
@@ -8,7 +8,7 @@ class Cookie {
     delete() {
         this.options.expires = -1;
 
-        this.setCookie();
+        this.set();
 
         return false;
     }
@@ -37,10 +37,10 @@ class Cookie {
         let value = encodeURIComponent(this.value),
             updatedCookie = name + "=" + value;
 
-        for (let propName in options) {
+        for (let propName in this.options) {
             updatedCookie += "; " + propName;
 
-            let propValue = options[propName];
+            let propValue = this.options[propName];
 
             if (propValue !== true) {
                 updatedCookie += "=" + propValue;

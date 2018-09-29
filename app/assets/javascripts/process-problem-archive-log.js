@@ -1,32 +1,34 @@
 jQuery.fn.extend({
   processProblemArchiveLog: function () {
     return this.each(function () {
-      var block = $(this)
+        var block = $(this);
 
       App.processProblemArchiveSubscription = App.cable.subscriptions.create(
         { channel: 'ProcessProblemArchiveChannel', id: block.data('channel-id') },
         {
           received: function (data) {
-            block.append('<p>' + data + '</p>')
+              block.append('<p>' + data + '</p>');
 
-            if (data == 'Done.') {
-              $('form#new_problem :submit').prop('disabled', false)
+              if (data === 'Done.') {
+                  $('form#new_problem :submit').prop('disabled', false);
             }
           }
         }
       )
     })
   }
-})
+});
 
-document.addEventListener('turbolinks:load', function () { $('#process-problem-archive-log').processProblemArchiveLog() })
+document.addEventListener('turbolinks:load', function () {
+    $('#process-problem-archive-log').processProblemArchiveLog()
+});
 
 document.addEventListener('turbolinks:before-render', function () {
   if (App.processProblemArchiveSubscription) {
-    App.processProblemArchiveSubscription.unsubscribe()
+      App.processProblemArchiveSubscription.unsubscribe();
 
-    App.processProblemArchiveSubscription.consumer.disconnect()
+      App.processProblemArchiveSubscription.consumer.disconnect();
 
-    App.processProblemArchiveSubscription = undefined
+      App.processProblemArchiveSubscription = undefined;
   }
-})
+});

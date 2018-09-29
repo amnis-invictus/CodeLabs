@@ -1,15 +1,19 @@
 jQuery.fn.extend({
   datahref: function () {
     return this.each(function () {
-      var block = $(this)
+        var block = $(this);
 
-      var url = block.data('href')
+        var url = block.data('href');
 
-      var target = block.data('target') || '_self'
+        var target = block.data('target') || '_self';
 
-      block.click(function () { window.open(url, target) })
+        block.click(function () {
+            window.open(url, target)
+        });
     })
   }
-})
+});
 
-document.addEventListener('turbolinks:load', function () { $('[data-href]').datahref() })
+document.addEventListener('turbolinks:load', function () {
+    $('[data-href]').datahref()
+});
