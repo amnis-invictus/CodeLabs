@@ -1,4 +1,4 @@
-class ChangeSkillsField < ActiveRecord::Migration[5.2]
+class ChangeUsersSkills < ActiveRecord::Migration[5.2]
   def change
     remove_column(:users, :skills)
 
