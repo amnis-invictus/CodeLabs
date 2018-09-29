@@ -1,5 +1,5 @@
 class Problem < ApplicationRecord
-  validates :memory_limit, :time_limit, presence: true, numericality: true
+  validates :memory_limit, :time_limit, :real_time_limit, presence: true, numericality: true
 
   belongs_to :checker_compiler, class_name: 'Compiler'
 

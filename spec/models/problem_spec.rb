@@ -5,9 +5,13 @@ RSpec.describe Problem, type: :model do
 
   it { should validate_presence_of :time_limit }
 
+  it { should validate_presence_of :real_time_limit }
+
   it { should validate_numericality_of :memory_limit }
 
   it { should validate_numericality_of :time_limit }
+
+  it { should validate_numericality_of :real_time_limit }
 
   pending { should have_one_attached :checker_source }
 
