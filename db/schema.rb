@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_22_075414) do
+ActiveRecord::Schema.define(version: 2018_09_29_141465) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -53,9 +53,8 @@ ActiveRecord::Schema.define(version: 2018_09_22_075414) do
     t.float "memory_b", null: false
     t.float "time_a", null: false
     t.float "time_b", null: false
-    t.boolean "visible", default: false, null: false
+    t.integer "status", default: 0
     t.index ["name"], name: "index_compilers_on_name"
-    t.index ["visible"], name: "index_compilers_on_visible"
   end
 
   create_table "examples", force: :cascade do |t|
@@ -95,6 +94,7 @@ ActiveRecord::Schema.define(version: 2018_09_22_075414) do
     t.bigint "checker_compiler_id", null: false
     t.float "memory_limit", null: false
     t.float "time_limit", null: false
+    t.float "real_time_limit", null: false
     t.index ["checker_compiler_id"], name: "index_problems_on_checker_compiler_id"
   end
 
@@ -165,8 +165,8 @@ ActiveRecord::Schema.define(version: 2018_09_22_075414) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.bigint "score", default: 0
-    t.string "skills", default: [], array: true
     t.boolean "administrator", default: false, null: false
+    t.string "skills"
     t.index ["email"], name: "index_users_on_email"
   end
 
