@@ -9,7 +9,7 @@
       </div>
 
       <% if resource.avatar.attached? && resource.avatar.attachment.blob&.image? %>
-        <%= image_tag resource.avatar.variant(resize: '300x400'), class: 'img-responsive'  %>
+        <%= image_tag resource.avatar.variant(resize: '300x400^', crop: '300x400+0+0', gravity: 'center'), class: 'img-responsive' %>
       <% else %>
         <%= image_tag 'placeholder.png', class: 'img-responsive' %>
       <% end %>
