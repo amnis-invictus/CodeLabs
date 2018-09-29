@@ -39,4 +39,6 @@ Rails.application.routes.draw do
   get '/v2/tests/statuses.json', to: 'tests#statuses'
   get '/v2/tests/users.json', to: 'tests#users'
   get '/v2/tests/groups.json', to: 'tests#groups'
+
+  resources :tests, only: :create
 end
