@@ -22,4 +22,6 @@ class Problem < ApplicationRecord
   default_scope { includes :translation, :default_translation }
 
   delegate :as_json, to: :decorate
+
+  accepts_nested_attributes_for :examples, :tests, :translations, allow_destroy: true
 end

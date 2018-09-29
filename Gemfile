@@ -28,6 +28,7 @@ gem 'rubyzip', require: 'zip'
 gem 'nokogiri'
 gem 'rails-i18n'
 gem 'russian'
+gem 'cocoon'
 
 group :development, :test do
   gem 'rspec-rails'

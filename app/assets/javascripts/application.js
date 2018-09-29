@@ -5,6 +5,7 @@
 //= require toastr/toastr
 //= require bootstrap.min.js
 //= require bootstrap-tagsinput.min.js
+//= require cocoon
 //= require_tree .
 
 $(function () {
@@ -14,4 +15,3 @@ $(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
 });
-

@@ -1,0 +1,22 @@
+<div id="examples-tab" class="tab-pane fade">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Input</th>
+
+        <th>Answer</th>
+
+        <th style="width: 52px"></th>
+      </tr>
+    </thead>
+
+    <tbody id="examples">
+      <%= f.simple_fields_for :examples do |builder| %>
+        <%= render 'example_fields', f: builder %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to_add_association '+', f, :examples, class: 'btn btn-warning',
+    data: { association_insertion_node: '#examples', association_insertion_method: :append } %>
+</div>

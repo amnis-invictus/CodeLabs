@@ -1,0 +1,21 @@
+
+<div class="translation">
+  <div class="row">
+    <div class="col-xs-4">
+      <%= f.input :language, collection: ProblemTranslation.languages.map { |a, b| [I18n.t(:language, locale: a), b] },
+        include_blank: false %>
+    </div>
+
+    <div class="col-xs-4">
+      <%= f.input :caption %>
+    </div>
+
+    <div class="col-xs-4">
+      <%= f.input :author %>
+    </div>
+  </div>
+
+  <%= f.input :text, as: :text %>
+
+  <%= f.input :technical_text, as: :text %>
+</div>
