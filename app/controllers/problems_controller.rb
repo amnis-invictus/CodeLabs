@@ -20,7 +20,7 @@ class ProblemsController < ApplicationController
 
   private
   def collection
-    @collection ||= (parent&.problems || Problem.all).page(params[:page])
+    @collection ||= (parent&.problems || Problem.all).order(:id).page(params[:page])
   end
 
   def parent
