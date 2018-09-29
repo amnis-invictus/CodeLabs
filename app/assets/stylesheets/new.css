@@ -1,3 +1,7 @@
+::selection {
+    background: #93440180;
+}
+
 :focus {
     outline: none;
 }
@@ -116,4 +120,9 @@ table pre {
     .avatar {
         margin-bottom: 20px;
     }
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('../CenturyGothic.ttf') format('truetype');
 }
