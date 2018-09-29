@@ -12,14 +12,12 @@ $(document).on('turbolinks:load', () => {
             let local = {
                 users: null,
                 problems: null,
-                statuses: null,
                 groups: null
             };
 
             local.users = JSON.parse(getRemote('/v2/tests/users.json'));
             local.groups = JSON.parse(getRemote('/v2/tests/groups.json'));
             local.problems = JSON.parse(getRemote('/v2/tests/problems.json'));
-            local.statuses = JSON.parse(getRemote('/v2/tests/statuses.json'));
 
             const usernames = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.whitespace,
@@ -44,18 +42,6 @@ $(document).on('turbolinks:load', () => {
                 source: problems
             });
 
-
-            const statuses = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.whitespace,
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                local: local.statuses
-            });
-
-            $('#sortByStatus').typeahead(null, {
-                name: 'statuses',
-                source: statuses
-            });
-
             const groups = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.whitespace,
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -67,6 +53,44 @@ $(document).on('turbolinks:load', () => {
                 source: groups
             });
 
+            // --------------- Process the selection -------------- //
 
+            let data = {status: null, user: null, problem: null, group: null};
+
+            $('#sortByStatus').change(function () {
+                data.status = $(this).find("option:selected").val();
+
+                sortTheTable(data);
+            });
+
+            $('#sortByTask').bind('typeahead:select', function (e) {
+                data.problem = e.target.value;
+
+                sortTheTable(data);
+            });
+
+            $('#sortByUser').bind('typeahead:select', function (e) {
+                data.user = e.target.value;
+
+                sortTheTable(data);
+            });
+
+            $('#sortByGroup').bind('typeahead:select', function (e) {
+                data.group = e.target.value;
+
+                sortTheTable(data);
+            });
+
+            function sortTheTable(data) {
+                $.ajax({
+                    url: '',
+                    data: JSON.stringify(data),
+                    success: (result) => {
+                        $('table tbody').html(result);
+                    }
+                });
+            }
+
+            // ---------------------------------------------------- //
         })();
 });
