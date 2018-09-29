@@ -13,8 +13,6 @@ RSpec.describe ProblemDecorator do
 
   subject { resource.decorate }
 
-  its(:language) { should eq :ru }
-
   it { should delegate_method(:caption).to(:translation) }
 
   it { should delegate_method(:author).to(:translation) }
@@ -70,6 +68,18 @@ RSpec.describe ProblemDecorator do
       let(:translation) { nil }
 
       its(:translation) { should eq default_translation }
+    end
+  end
+
+  describe '#language' do
+    its(:language) { should eq :ru }
+
+    context do
+      let(:translation) { nil }
+
+      let(:default_translation) { nil }
+
+      its(:language) { should be_nil }
     end
   end
 end

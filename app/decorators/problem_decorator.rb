@@ -3,7 +3,7 @@ class ProblemDecorator < Draper::Decorator
 
   decorates_association :tests
 
-  delegate :caption, :author, :text, :technical_text, to: :translation
+  delegate :caption, :author, :text, :technical_text, to: :translation, allow_nil: true
 
   def as_json *args
     case context
@@ -33,6 +33,6 @@ class ProblemDecorator < Draper::Decorator
   end
 
   def language
-    translation.language.to_sym
+    translation.language.to_sym if translation
   end
 end
