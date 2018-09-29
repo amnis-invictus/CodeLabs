@@ -121,8 +121,3 @@ table pre {
         margin-bottom: 20px;
     }
 }
-
-@font-face {
-    font-family: 'Century Gothic';
-    src: url('../CenturyGothic.ttf') format('truetype');
-}
