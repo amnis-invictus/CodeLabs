@@ -6,7 +6,7 @@ jQuery.fn.extend({
       var data = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        prefetch: block.data('path')
+        prefetch: { url: block.data('path'), cache: false }
       });
 
       data.initialize();
