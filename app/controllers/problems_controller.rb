@@ -2,9 +2,11 @@ class ProblemsController < ApplicationController
   skip_before_action :authenticate!, only: %i(index show)
 
   def create
-    render :new and return unless resource.save
+    redirect_to resource and return if resource.save
 
-    redirect_to resource
+    flash.now[:error] = 'Validation Errors'
+
+    render :new
   end
 
   private
