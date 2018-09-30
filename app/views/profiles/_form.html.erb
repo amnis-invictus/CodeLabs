@@ -1,20 +1,19 @@
 <%= simple_form_for resource, url: :profile, wrapper: :horizontal_form,
 html: { class: 'form-horizontal row', id: 'profile-form', style: 'margin-left: 0' } do |f| %>
 <div class="col-xs-12 col-md-3 col-3 avatar">
-    <div class="image-input">
-        <%= f.file_field :avatar, direct_upload: true, class: 'image-input__input' %>
+  <div class="image-input">
+    <%= f.file_field :avatar, direct_upload: true, class: 'image-input__input' %>
 
-        <div class="image-input__prompt">
-            <i class="image-input__prompt-icon fas fa-upload"></i>
-        </div>
-
-        <% if resource.avatar.attached? && resource.avatar.attachment.blob&.image? %>
-        <%= image_tag resource.avatar.variant(resize: '300x400^', crop: '300x400+0+0', gravity: 'center'), class:
-        'img-fluid' %>
-        <% else %>
-        <%= image_tag 'placeholder.png', class: 'img-fluid' %>
-        <% end %>
+    <div class="image-input__prompt">
+      <i class="image-input__prompt-icon fas fa-upload"></i>
     </div>
+
+    <% if resource.avatar.attached? && resource.avatar.attachment.blob&.image? %>
+    <%= image_tag resource.avatar.variant(resize: '300x400^', crop: '300x400+0+0', gravity: 'center'), class: 'img-fluid' %>
+    <% else %>
+    <%= image_tag 'placeholder.png', class: 'img-fluid' %>
+    <% end %>
+  </div>
 </div>
 
 <div class="col-xs-12 col-md-9 col-9">
