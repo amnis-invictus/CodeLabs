@@ -1,7 +1,7 @@
 <div id="limits-tab" class="tab-pane fade active in">
-  <%= f.input :memory_limit, hint: 'kb', wrapper: :hint_as_addon, input_html: { value: 32768 } %>
+  <%= f.input :memory_limit, hint: 'kb', wrapper: :hint_as_addon, as: :string, input_html: { value: 32768 } %>
 
-  <%= f.input :time_limit, hint: 'ms', wrapper: :hint_as_addon, input_html: { value: 100 } %>
+  <%= f.input :time_limit, hint: 'ms', wrapper: :hint_as_addon, as: :string, input_html: { value: 100 } %>
 
-  <%= f.input :real_time_limit, hint: 'ms', wrapper: :hint_as_addon, input_html: { value: 5000 } %>
+  <%= f.input :real_time_limit, hint: 'ms', wrapper: :hint_as_addon, as: :string, input_html: { value: 5000 } %>
 </div>

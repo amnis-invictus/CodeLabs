@@ -3,13 +3,13 @@
     <%= t 'problems.show.missing_translation', language: I18n.t(resource.language, scope: 'problems.show.languages') %>
   <% end if I18n.locale != resource.language %>
 
-  <div class="section">
+  <div class="section section-striped">
     <h2 class="section__title"><%= resource.caption %></h2>
 
     <%= simple_format resource.text, class: 'section__content' %>
   </div>
 
-  <div class="section">
+  <div class="section section-striped">
     <h3><%= t 'problems.show.technical_text' %></h3>
 
     <%= simple_format resource.technical_text, class: 'section__content' %>
@@ -41,7 +41,7 @@
     <% end %>
   <% end if resource.examples.any? %>
 
-  <div class="section">
+  <div class="section section-striped">
     <i class="fa fa-certificate" aria-hidden="true"></i>
 
     <ol class="tags">
@@ -51,13 +51,13 @@
     </ol>
   </div>
 
-  <div class="section">
+  <div class="section section-striped">
     <i class="far fa-address-book contact" aria-hidden="true"></i>
 
     <p class="author"><%= resource.author %></h4>
   </div>
 
-  <%= content_tag :div, class: 'section' do %>
+  <%= content_tag :div, class: 'section section-striped' do %>
     <%= render 'submissions/form', parent: resource, resource: Submission.new %>
   <% end if current_user %>
 </div>
