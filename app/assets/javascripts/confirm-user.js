@@ -1,5 +1,5 @@
 $(function () {
-    if (confirm_users_page)
+    if (typeof confirm_users_page !== 'undefined')
         (() => {
             $('.confirm-user').click(function () {
                 const $btn = $(this).button('loading');
