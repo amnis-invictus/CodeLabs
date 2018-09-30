@@ -18,12 +18,10 @@
         <%= t 'submissions.show.failed' %>
         <% elsif resource.test_result_compiler_error? %>
         <ul class="nav nav-tabs">
-            <li class="nav-item"><a href="#compiler-log" class="nav-link active" data-toggle="tab"><%= t
-                'submissions.show.compiler_log' %></a>
+            <li class="nav-item"><a href="#compiler-log" class="nav-link active" data-toggle="tab"><%= t 'submissions.show.compiler_log' %></a>
             </li>
 
-            <li class="nav-item"><a href="#source" class="nav-link" data-toggle="tab"><%= t 'submissions.show.source'
-                %></a></li>
+            <li class="nav-item"><a href="#source" class="nav-link" data-toggle="tab"><%= t 'submissions.show.source' %></a></li>
         </ul>
 
         <div class="tab-content">
@@ -33,14 +31,11 @@
         </div>
         <% else %>
         <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" href="#results" data-toggle="tab"><%= t
-                'submissions.show.results' %></a></li>
+            <li class="nav-item"><a class="nav-link active" href="#results" data-toggle="tab"><%= t 'submissions.show.results' %></a></li>
 
-            <li class="nav-item"><a class="nav-link" href="#compiler-log" data-toggle="tab"><%= t
-                'submissions.show.compiler_log' %></a></li>
+            <li class="nav-item"><a class="nav-link" href="#compiler-log" data-toggle="tab"><%= t 'submissions.show.compiler_log' %></a></li>
 
-            <li class="nav-item"><a class="nav-link" href="#source" data-toggle="tab"><%= t 'submissions.show.source'
-                %></a></li>
+            <li class="nav-item"><a class="nav-link" href="#source" data-toggle="tab"><%= t 'submissions.show.source' %></a></li>
         </ul>
 
         <div class="tab-content">
