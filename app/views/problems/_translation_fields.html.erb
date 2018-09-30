@@ -1,22 +1,30 @@
 
 <div class="translation">
-  <div class="row">
-    <div class="col-xs-4 col-4">
-      <%= f.input :language, wrapper: :input_group do %>
-        <div class="input-group-prepend">
-          <span class="input-group-text"><%= f.input_field :default %></span>
-        </div>
+  <div class="clearfix translation__top">
+    <div class="row float-left">
+      <div class="col-xs-4 col-4">
+        <%= f.input :language, wrapper: :input_group do %>
+          <%= f.input_field :language, collection: language_select_options, include_blank: false, class: 'form-control' %>
 
-        <%= f.input_field :language, collection: language_select_options, include_blank: false, class: 'form-control' %>
-      <% end %>
+          <span class="input-group-addon">
+            <%= f.input_field :default %>
+          </span>
+        <% end %>
+      </div>
+
+      <div class="col-xs-4 col-4">
+        <%= f.input :caption %>
+      </div>
+
+      <div class="col-xs-4 col-4">
+        <%= f.input :author %>
+      </div>
     </div>
 
-    <div class="col-xs-4 col-4">
-      <%= f.input :caption %>
-    </div>
-
-    <div class="col-xs-4 col-4">
-      <%= f.input :author %>
+    <div class="float-right">
+       <%= link_to_remove_association f, class: 'btn btn-danger' do %>
+          <i class="fas fa-times"></i>
+        <% end %>
     </div>
   </div>
 

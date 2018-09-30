@@ -1,0 +1,11 @@
+.translation {
+  &__top {
+    .float-left {
+      width: calc(100% - 35px);
+    }
+
+    .float-right {
+      margin-top: 2.3rem;
+    }
+  }
+}
