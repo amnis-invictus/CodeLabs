@@ -9,25 +9,25 @@
     </div>
 
     <ul class="nav nav-tabs">
-      <li class="nav-item"><%= link_to t('problems.new.tabs.basic'), '#basic-tab', 'data-toggle': 'tab', class:
-        'nav-link active' %>
+      <li class="nav-item">
+        <%= link_to t('problems.new.tabs.basic'), '#basic-tab', 'data-toggle': 'tab', class: 'nav-link active' %>
       </li>
 
-      <li class="nav-item"><%= link_to t('problems.new.tabs.examples'), '#examples-tab', 'data-toggle': 'tab', class:
-        'nav-link' %>
+      <li class="nav-item">
+        <%= link_to t('problems.new.tabs.examples'), '#examples-tab', 'data-toggle': 'tab', class: 'nav-link' %>
       </li>
 
-      <li class="nav-item"><%= link_to t('problems.new.tabs.tests'), '#tests-tab', 'data-toggle': 'tab', class:
-        'nav-link' %>
+      <li class="nav-item">
+        <%= link_to t('problems.new.tabs.tests'), '#tests-tab', 'data-toggle': 'tab', class: 'nav-link' %>
       </li>
 
-      <li class="nav-item"><%= link_to t('problems.new.tabs.translations'), '#translations-tab', 'data-toggle': 'tab',
-        class: 'nav-link' %>
+      <li class="nav-item">
+        <%= link_to t('problems.new.tabs.translations'), '#translations-tab', 'data-toggle': 'tab', class: 'nav-link' %>
       </li>
     </ul>
 
     <div class="tab-content">
-      <%= render 'limits', f: f %>
+      <%= render 'basic', f: f %>
 
       <%= render 'examples', f: f %>
 

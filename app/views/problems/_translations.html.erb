@@ -1,6 +1,4 @@
 <div id="translations-tab" class="tab-pane fade">
-  <h3><%= t 'problems.new.translations.title' %></h3>
-
   <div id="translations" class="translations">
     <%= f.simple_fields_for :translations do |builder| %>
       <%= render 'translation_fields', f: builder %>

@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+Dir[Rails.root.join('lib/components/**/*.rb')].each { |f| require f }
+
 SimpleForm.setup do |config|
   config.button_class = 'btn'
 
   config.boolean_label_class = 'form-check-label'
 
-  config.label_text = -> (label, required, explicit_label) { "#{label} #{required}" }
+  config.label_text = lambda { |label, required, explicit_label| "#{label} #{required}" }
 
   config.boolean_style = :inline
 
@@ -110,8 +112,8 @@ SimpleForm.setup do |config|
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-    b.use :label, class: 'col-sm-3 col-3 col-form-label control-label'
-    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9 col-9' do |ba|
+    b.use :label, class: 'col-sm-3 col-form-label'
+    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9' do |ba|
       ba.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
       ba.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
@@ -121,10 +123,10 @@ SimpleForm.setup do |config|
   config.wrappers :horizontal_boolean, tag: 'div', class: 'form-group row', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.optional :readonly
-    b.wrapper tag: 'label', class: 'col-sm-3 col-3' do |ba|
+    b.wrapper tag: 'label', class: 'col-sm-3' do |ba|
       ba.use :label_text
     end
-    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9 col-9' do |wr|
+    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9' do |wr|
       wr.wrapper :form_check_wrapper, tag: 'div', class: 'form-check' do |bb|
         bb.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
         bb.use :label, class: 'form-check-label'
@@ -137,8 +139,8 @@ SimpleForm.setup do |config|
   config.wrappers :horizontal_collection, item_wrapper_class: 'form-check', tag: 'div', class: 'form-group row', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.optional :readonly
-    b.use :label, class: 'col-sm-3 col-3 form-control-label'
-    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9 col-9' do |ba|
+    b.use :label, class: 'col-sm-3 form-control-label'
+    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9' do |ba|
       ba.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
       ba.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
@@ -148,8 +150,8 @@ SimpleForm.setup do |config|
   config.wrappers :horizontal_collection_inline, item_wrapper_class: 'form-check form-check-inline', tag: 'div', class: 'form-group row', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.optional :readonly
-    b.use :label, class: 'col-sm-3 col-3 form-control-label'
-    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9 col-9' do |ba|
+    b.use :label, class: 'col-sm-3 form-control-label'
+    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9' do |ba|
       ba.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
       ba.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
@@ -162,8 +164,8 @@ SimpleForm.setup do |config|
     b.optional :maxlength
     b.optional :minlength
     b.optional :readonly
-    b.use :label, class: 'col-sm-3 col-3 form-control-label'
-    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9 col-9' do |ba|
+    b.use :label, class: 'col-sm-3 form-control-label'
+    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9' do |ba|
       ba.use :input, error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
       ba.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
@@ -173,8 +175,8 @@ SimpleForm.setup do |config|
   config.wrappers :horizontal_multi_select, tag: 'div', class: 'form-group row', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.optional :readonly
-    b.use :label, class: 'col-sm-3 col-3 control-label'
-    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9 col-9' do |ba|
+    b.use :label, class: 'col-sm-3 control-label'
+    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9' do |ba|
       ba.wrapper tag: 'div', class: 'd-flex flex-row justify-content-between align-items-center' do |bb|
         bb.use :input, class: 'form-control mx-1', error_class: 'is-invalid', valid_class: 'is-valid'
       end
@@ -188,8 +190,8 @@ SimpleForm.setup do |config|
     b.use :placeholder
     b.optional :readonly
     b.optional :step
-    b.use :label, class: 'col-sm-3 col-3 form-control-label'
-    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9 col-9' do |ba|
+    b.use :label, class: 'col-sm-3 form-control-label'
+    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9' do |ba|
       ba.use :input, class: 'form-control-range', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
       ba.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
@@ -219,7 +221,6 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
     b.optional :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
-
 
   config.wrappers :custom_boolean, tag: 'fieldset', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
@@ -302,6 +303,24 @@ SimpleForm.setup do |config|
     b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
+  config.wrappers :input_group, tag: 'div', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.use :label, class: 'form-control-label'
+    b.wrapper :input_group_tag, tag: 'div', class: 'input-group' do |ba|
+      ba.optional :prepend
+      ba.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
+      ba.optional :append
+    end
+    b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
+    b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
+  end
+
   config.wrappers :floating_labels_form, tag: 'div', class: 'form-label-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.use :placeholder
@@ -323,22 +342,6 @@ SimpleForm.setup do |config|
     b.use :label, class: 'form-control-label'
     b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
     b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
-  end
-
-  config.wrappers :input_group, tag: 'div', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.optional :maxlength
-    b.optional :minlength
-    b.optional :pattern
-    b.optional :min_max
-    b.optional :readonly
-    b.use :label, class: 'form-control-label'
-    b.wrapper tag: :div, class: 'input-group' do |g|
-      g.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
-    end
-    b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
-    b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
   end
 
   config.wrappers :table, tag: 'div' do |b|
@@ -377,4 +380,16 @@ SimpleForm.setup do |config|
     range:         :vertical_range,
     time:          :vertical_multi_select
   }
+
+  # enable custom form wrappers
+  # config.wrapper_mappings = {
+  #   boolean:       :custom_boolean,
+  #   check_boxes:   :custom_collection,
+  #   date:          :custom_multi_select,
+  #   datetime:      :custom_multi_select,
+  #   file:          :custom_file,
+  #   radio_buttons: :custom_collection,
+  #   range:         :custom_range,
+  #   time:          :custom_multi_select
+  # }
 end

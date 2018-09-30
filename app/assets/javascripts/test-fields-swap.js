@@ -7,7 +7,7 @@ function initializeTestFieldsSwap() {
       row.find('.problem_tests_answer'), row.find('.problem_tests_answer_text')
     ];
 
-    items.forEach(function (item) { item.toggleClass('hidden'); });
+    items.forEach(function (item) { item.toggleClass('d-none'); });
   });
 };
 

@@ -1,15 +1,9 @@
-
 <div class="translation">
   <div class="clearfix translation__top">
     <div class="row float-left">
       <div class="col-xs-4 col-4">
-        <%= f.input :language, wrapper: :input_group do %>
-          <%= f.input_field :language, collection: language_select_options, include_blank: false, class: 'form-control' %>
-
-          <span class="input-group-addon">
-            <%= f.input_field :default %>
-          </span>
-        <% end %>
+        <%= f.input :language, collection: language_select_options, include_blank: false,
+          wrapper: :input_group, prepend: f.input_field(:default) %>
       </div>
 
       <div class="col-xs-4 col-4">
