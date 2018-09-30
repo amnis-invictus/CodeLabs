@@ -7,5 +7,7 @@ class Tag < ApplicationRecord
 
   default_scope { includes :translation }
 
+  delegate :as_json, to: :decorate
+
   delegate :name, to: :translation, allow_nil: true
 end
