@@ -1,22 +1,22 @@
 <%= simple_form_for resource, url: :profile, wrapper: :horizontal_form,
-html: { class: 'form-horizontal row', id: 'profile-form', style: 'margin-left: 0' } do |f| %>
-<div class="col-xs-12 col-md-3 col-3 avatar">
-  <div class="image-input">
-    <%= f.file_field :avatar, direct_upload: true, class: 'image-input__input' %>
+  html: { class: 'form-horizontal row', id: 'profile-form', style: 'margin-left: 0' } do |f| %>
+  <div class="col-xs-12 col-md-3 col-3 avatar">
+    <div class="image-input">
+      <%= f.file_field :avatar, direct_upload: true, class: 'image-input__input' %>
 
-    <div class="image-input__prompt">
-      <i class="image-input__prompt-icon fas fa-upload"></i>
+      <div class="image-input__prompt">
+        <i class="image-input__prompt-icon fas fa-upload"></i>
+      </div>
+
+      <% if resource.avatar.attached? && resource.avatar.attachment.blob&.image? %>
+        <%= image_tag resource.avatar.variant(resize: '300x400^', crop: '300x400+0+0', gravity: 'center'), class: 'img-fluid' %>
+      <% else %>
+        <%= image_tag 'placeholder.png', class: 'img-fluid' %>
+      <% end %>
     </div>
-
-    <% if resource.avatar.attached? && resource.avatar.attachment.blob&.image? %>
-    <%= image_tag resource.avatar.variant(resize: '300x400^', crop: '300x400+0+0', gravity: 'center'), class: 'img-fluid' %>
-    <% else %>
-    <%= image_tag 'placeholder.png', class: 'img-fluid' %>
-    <% end %>
   </div>
-</div>
 
-<div class="col-xs-12 col-md-9 col-9">
+  <div class="col-xs-12 col-md-9 col-9">
     <%= f.input :name %>
 
     <%= f.input :skills, input_html: { 'data-role': :tagsinput } %>
@@ -31,22 +31,21 @@ html: { class: 'form-horizontal row', id: 'profile-form', style: 'margin-left: 0
 
     <%= f.input :score, readonly: true, as: :string %>
 
-    <%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) }
-    %>
+    <%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) } %>
 
     <div>
-        <button type="submit" class="btn btn-primary"
-                style="border-top-right-radius: 0; border-bottom-right-radius: 0;">Update profile
-        </button>
-        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"
-                style="border-top-left-radius: 0; border-bottom-left-radius: 0; margin-left: -4px; border-left: 1px solid #4a92d8">
-            <span class="sr-only">Ask for confirmation</span>
-        </button>
+      <button type="submit" class="btn btn-primary" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">
+        Update profile
+      </button>
 
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Ask for confirmation</a>
-        </div>
+      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+        style="border-top-left-radius: 0; border-bottom-left-radius: 0; margin-left: -4px; border-left: 1px solid #4a92d8">
+        <span class="sr-only">Ask for confirmation</span>
+      </button>
+
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Ask for confirmation</a>
+      </div>
     </div>
-</div>
+  </div>
 <% end %>
