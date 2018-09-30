@@ -7,7 +7,7 @@
     <%= simple_form_for resource, remote: true, authenticity_token: true do |f| %>
       <%= f.hidden_field :channel_id %>
 
-      <%= f.input :file, as: :file %>
+      <%= f.input :file, as: :file, input_html: {"accept": "application/zip"} %>
 
       <%= f.submit class: 'btn btn-default' %>
     <% end %>
