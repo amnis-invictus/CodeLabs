@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :submissions, only: %i(index new create)
   end
 
-  resources :tags, only: [] do
+  resources :tags, only: :index do
     resources :problems, only: :index
   end
 

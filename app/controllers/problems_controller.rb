@@ -24,10 +24,10 @@ class ProblemsController < ApplicationController
 
   def resource_params
     params.require(:problem).permit \
-      :memory_limit, :time_limit, :real_time_limit, :checker_compiler_id, :checker_source,
+      :memory_limit, :time_limit, :real_time_limit, :checker_compiler_id, :checker_source, tag_ids: [],
       examples_attributes: %i(input answer _destroy),
       tests_attributes: %i(num input answer _destroy),
-      translations_attributes: %i(language caption author text technical_text _destroy)
+      translations_attributes: %i(language caption author text technical_text default _destroy)
   end
 
   def initialize_resource
