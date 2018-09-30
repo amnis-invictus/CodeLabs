@@ -61,9 +61,9 @@
   function addExample() {
     const el = $(this),
         $input_field = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('name', 'examples[in][]'),
-      $input_col = $('<div>').attr('class', 'col-lg-6 col-md-6 col-sm-6').css('margin-top', '5px'),
+        $input_col = $('<div>').attr('class', 'col-lg-6 col-md-6 col-sm-6 col-6').css('margin-top', '5px'),
         $answer_field = $('<input>').attr('type', 'text').attr('class', 'form-control').attr('name', 'examples[out][]'),
-      $answer_col = $('<div>').attr('class', 'col-lg-6 col-md-6 col-sm-6').css('margin-top', '5px'),
+        $answer_col = $('<div>').attr('class', 'col-lg-6 col-md-6 col-sm-6 col-6').css('margin-top', '5px'),
       $row = $('<div></div>').attr('class', 'row');
 
     $input_col.append($input_field);
@@ -112,7 +112,7 @@
   function addTranslation() {
       const newTranslation = $('<div class="translation">\n' +
           '                      <div class="row">\n' +
-          '                        <div class="col-md-4">\n' +
+          '                        <div class="col-md-4 col-4">\n' +
           '                          <div class="form-group">\n' +
           '                            <label for="lang">Выберите язык</label>\n' +
           '                            <select name="translations[lang][]" class="form-control" id="lang">\n' +
@@ -122,7 +122,7 @@
           '                            </select>\n' +
           '                          </div>\n' +
           '                        </div>\n' +
-          '                        <div class="col-md-4">\n' +
+          '                        <div class="col-md-4 col-4">\n' +
           '                          <div class="form-group">\n' +
           '                            <label for="caption">Заголовок</label>\n' +
           '                            <div class="form-group">\n' +
@@ -130,7 +130,7 @@
           '                            </div>\n' +
           '                          </div>\n' +
           '                        </div>\n' +
-          '                        <div class="col-md-4">\n' +
+          '                        <div class="col-md-4 col-4">\n' +
           '                          <div class="form-group">\n' +
           '                            <label for="author">Автор</label>\n' +
           '                            <div class="form-group">\n' +
@@ -141,7 +141,7 @@
           '                      </div>\n' +
           '                      \n' +
           '                      <div class="row">\n' +
-          '                        <div class="col-md-6">\n' +
+          '                        <div class="col-md-6 col-6">\n' +
           '                          <div class="form-group">\n' +
           '                            <label for="text">Текст</label>\n' +
           '                            <div class="form-group">\n' +
@@ -149,7 +149,7 @@
           '                            </div>\n' +
           '                          </div>\n' +
           '                        </div>\n' +
-          '                        <div class="col-md-6">\n' +
+          '                        <div class="col-md-6 col-6">\n' +
           '                          <div class="form-group">\n' +
           '                                    <label for="techtext">Технические условия</label>\n' +
           '                            <div class="form-group">\n' +

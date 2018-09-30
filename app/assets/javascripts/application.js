@@ -3,6 +3,7 @@
 //= require activestorage
 //= require turbolinks
 //= require toastr/toastr
+//= require popper.min.js
 //= require bootstrap.min.js
 //= require bootstrap-tagsinput.min.js
 //= require cocoon

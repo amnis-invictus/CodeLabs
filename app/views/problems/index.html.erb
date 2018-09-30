@@ -1,26 +1,27 @@
 <div class="row bg-light">
-  <div class="col-xs-12">
+  <div class="col-xs-12 col-12">
     <h1>
     <%= t 'problems.index.title' %>
 
-    <%= link_to 'New from archive', %i(new archive), class: 'btn btn-default pull-right' if policy(Archive).new? %>
+      <%= link_to 'New from archive', %i(new archive), class: 'btn btn-default float-right' if policy(Archive).new? %>
 
-    <%= link_to 'New', %i(new problem), class: 'btn btn-default pull-right', style: 'margin-right: 1rem' if policy(Problem).new? %>
+      <%= link_to 'New', %i(new problem), class: 'btn btn-default float-right', style: 'margin-right: 1rem' if
+      policy(Problem).new? %>
     </h1>
   </div>
 
-  <div class="col-xs-12">
+  <div class="col-xs-12 col-12">
     <table>
       <tr class="row list-row">
-        <th class="list-row__col col-md-1 col-sm-1 col-xs-1">
+        <th class="list-row__col col-md-1 col-sm-1 col-xs-1 col-1">
           <%= t 'problems.index.number' %>
         </th>
 
-        <th class="list-row__col col-md-9 col-sm-9 col-xs-9">
+        <th class="list-row__col col-md-9 col-sm-9 col-xs-9 col-9">
           <%= t 'problems.index.name' %>
         </th>
 
-        <th class="list-row__col col-md-2 col-sm-2 col-xs-2">
+        <th class="list-row__col col-md-2 col-sm-2 col-xs-2 col-2">
           <%= t 'problems.index.difficulty' %>
         </th>
       </tr>

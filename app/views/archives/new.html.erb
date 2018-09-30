@@ -1,9 +1,9 @@
 <div class="row bg-light">
-  <div class="col-xs-12">
+    <div class="col-xs-12 col-12">
     <h1><%= t 'archives.new.title' %></h1>
   </div>
 
-  <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-6 col-6">
     <%= simple_form_for resource, remote: true, authenticity_token: true do |f| %>
       <%= f.hidden_field :channel_id %>
 
@@ -13,5 +13,6 @@
     <% end %>
   </div>
 
-  <div id="process-problem-archive-log" class="col-xs-12 col-md-6" data-channel-id="<%= resource.channel_id %>"></div>
+    <div id="process-problem-archive-log" class="col-xs-12 col-md-6 col-6"
+         data-channel-id="<%= resource.channel_id %>"></div>
 </div>

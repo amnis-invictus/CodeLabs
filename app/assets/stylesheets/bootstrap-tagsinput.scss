@@ -1,7 +1,13 @@
 .bootstrap-tagsinput {
   width: 300px;
+  line-height: 2;
 
   .label {
-    background-color: #0093FF;
+    background-color: dodgerblue;
+  }
+
+  .tag {
+    padding: 3px;
+    border-radius: 3px;
   }
 }

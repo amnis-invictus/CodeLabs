@@ -104,6 +104,21 @@ table pre {
     background: #f3f3f3;
 }
 
+.dropdown-item {
+    line-height: 30px;
+}
+
+form {
+    width: 100%;
+}
+
+pre {
+    padding: 12px;
+    background: #eee;
+    border-radius: 5px;
+    color: #545454;
+}
+
 @media (max-width: 300px) {
     .header__logo {
         width: 80vw;

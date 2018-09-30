@@ -22,14 +22,14 @@
       <% end %>
     </div>
 
-    <div class="header-section__item dropdown">
-      <a data-toggle="dropdown"><%= I18n.locale %> <span class="caret"></span></a>
+    <div class="header-section__item dropdown show">
+      <a data-toggle="dropdown" class="dropdown-toggle"><%= I18n.locale %></a>
 
-      <ul class="dropdown-menu dropdown-menu-right">
+      <div class="dropdown-menu dropdown-menu-right">
         <% I18n.available_locales.each do |locale| %>
-          <li><%= link_to t(:language, locale: locale), { language: locale } %></li>
+        <%= link_to t(:language, locale: locale), { language: locale }, class: 'dropdown-item' %>
         <% end %>
-      </ul>
+      </div>
     </div>
   </div>
 </div>

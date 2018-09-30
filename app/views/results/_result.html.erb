@@ -1,15 +1,15 @@
 <tr class="row list-row">
-    <td class="list-row__col col-md-1 col-sm-1 col-xs-1"><%= result.test_num %></td>
+    <td class="list-row__col col-md-1 col-sm-1 col-xs-1 col-1"><%= result.test_num %></td>
 
-    <td class="list-row__col col-md-3 col-sm-3 col-xs-3"><%= result.status.humanize %></td>
+    <td class="list-row__col col-md-3 col-sm-3 col-xs-3 col-3"><%= result.status.humanize %></td>
 
-    <td class="list-row__col col-md-4 col-sm-4 col-xs-4"><%= result.time %> ms</td>
+    <td class="list-row__col col-md-4 col-sm-4 col-xs-4 col-4"><%= result.time %> ms</td>
 
-    <td class="list-row__col col-md-4 col-sm-4 col-xs-4"><%= result.memory %> kb</td>
+    <td class="list-row__col col-md-4 col-sm-4 col-xs-4 col-4"><%= result.memory %> kb</td>
 
     <% if result.log? %>
-    <td class="list-row__col col-md-4">
-        <button class="btn btn-default btn-xs pull-right" data-toggle="collapse"
+    <td class="list-row__col col-md-4 col-4">
+        <button class="btn btn-default btn-xs float-right" data-toggle="collapse"
                 data-target="#log-<%= result.test_num %>">
             +
         </button>
