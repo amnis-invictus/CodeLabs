@@ -1,9 +1,21 @@
 <tr>
   <td><%= f.input :num, wrapper: :table %></td>
 
-  <td><%= f.input :input, wrapper: :table_file %></td>
+  <td>
+    <%= f.input :input, wrapper: :table_file %>
 
-  <td><%= f.input :answer, wrapper: :table_file %></td>
+    <%= f.input :input_text, as: :text, wrapper: :table, wrapper_html: { class: :hidden } %>
+  </td>
+
+  <td>
+    <%= f.input :answer, wrapper: :table_file %>
+
+    <%= f.input :answer_text, as: :text, wrapper: :table, wrapper_html: { class: :hidden } %>
+  </td>
+
+  <td>
+    <button type="button" class="btn btn-success" data-toggle="test-fields-swap"><i class="fas fa-sync"></i></button>
+  </td>
 
   <td>
     <%= link_to_remove_association f, class: 'btn btn-danger' do %>

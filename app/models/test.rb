@@ -1,4 +1,6 @@
 class Test < ApplicationRecord
+  attr_accessor :input_text, :answer_text
+
   validates :num, presence: true
 
   belongs_to :problem
