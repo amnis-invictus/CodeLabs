@@ -1,11 +1,8 @@
-/*
- *= require toastr/toastr
- *= require bootstrap.min.css
- *= require bootstrap-tagsinput.min.css
- *= require overlay.css
- *= require_tree .
- *= require_self
- */
+@import "bootstrap";
+@import 'toastr/toastr';
+@import "bootstrap-tagsinput.min.css";
+@import "overlay.css";
+@import "*";
 
 @font-face {
   font-family: 'Century Gothic';
@@ -24,4 +21,5 @@ body {
   position: relative;
   min-height: 100vh;
   padding-bottom: 80px;
+  font-size: 14px;
 }

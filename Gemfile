@@ -29,6 +29,7 @@ gem 'nokogiri'
 gem 'rails-i18n'
 gem 'russian'
 gem 'cocoon'
+gem 'bootstrap'
 
 group :development, :test do
   gem 'rspec-rails'

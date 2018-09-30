@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_29_141465) do
+ActiveRecord::Schema.define(version: 2018_09_30_141400) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -167,7 +168,11 @@ ActiveRecord::Schema.define(version: 2018_09_29_141465) do
     t.bigint "score", default: 0
     t.boolean "administrator", default: false, null: false
     t.string "skills"
+    t.string "city"
+    t.string "institution"
+    t.index ["city"], name: "index_users_on_city", opclass: :gist_trgm_ops, using: :gist
     t.index ["email"], name: "index_users_on_email"
+    t.index ["institution"], name: "index_users_on_institution", opclass: :gist_trgm_ops, using: :gist
   end
 
   add_foreign_key "auth_tokens", "users"
