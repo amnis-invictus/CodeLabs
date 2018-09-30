@@ -7,19 +7,27 @@
     </div>
   <% end %>
 
-  <%= f.input :time_limit, wrapper: :input_group do %>
-    <%= f.input_field :time_limit, class: 'form-control', value: 100 %>
+      <%= f.input :time_limit, wrapper: :input_group do %>
+        <%= f.input_field :time_limit, class: 'form-control', value: 100 %>
 
     <div class="input-group-append">
       <span class="input-group-text">ms</span>
     </div>
   <% end %>
 
-  <%= f.input :real_time_limit, wrapper: :input_group do %>
-    <%= f.input_field :real_time_limit, class: 'form-control', value: 5000 %>
+      <%= f.input :real_time_limit, wrapper: :input_group do %>
+        <%= f.input_field :real_time_limit, class: 'form-control', value: 5000 %>
 
-    <div class="input-group-append">
+         <div class="input-group-append">
       <span class="input-group-text">ms</span>
     </div>
-  <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.input :checker_compiler_id, collection: Compiler.status_public, include_blank: false %>
+
+      <%= f.input :checker_source %>
+    </div>
+  </div>
 </div>

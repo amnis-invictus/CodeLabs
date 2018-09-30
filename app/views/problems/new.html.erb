@@ -9,7 +9,7 @@
     </div>
 
     <ul class="nav nav-tabs">
-      <li class="nav-item"><%= link_to t('problems.new.tabs.limits'), '#limits-tab', 'data-toggle': 'tab', class:
+      <li class="nav-item"><%= link_to t('problems.new.tabs.basic'), '#basic-tab', 'data-toggle': 'tab', class:
         'nav-link active' %>
       </li>
 
@@ -24,10 +24,6 @@
       <li class="nav-item"><%= link_to t('problems.new.tabs.translations'), '#translations-tab', 'data-toggle': 'tab',
         class: 'nav-link' %>
       </li>
-
-      <li class="nav-item"><%= link_to t('problems.new.tabs.checker'), '#checker-tab', 'data-toggle': 'tab', class:
-        'nav-link' %>
-      </li>
     </ul>
 
     <div class="tab-content">
@@ -38,8 +34,6 @@
       <%= render 'tests', f: f %>
 
       <%= render 'translations', f: f %>
-
-      <%= render 'checker', f: f %>
     </div>
   <% end %>
 </div>
