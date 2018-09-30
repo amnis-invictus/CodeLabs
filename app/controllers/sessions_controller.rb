@@ -6,7 +6,9 @@ class SessionsController < ApplicationController
 
     cookies.encrypted[:auth_token] = resource.auth_token.id
 
-    redirect_to resource.redirect
+    redirect_to session[:redirect] || resource.redirect
+
+    session[:redirect] = nil
   end
 
   def destroy

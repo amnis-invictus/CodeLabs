@@ -27,7 +27,11 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    redirect_to [:new, :session, redirect: request.fullpath] unless current_user
+    unless current_user
+      session[:redirect] = request.fullpath
+
+      redirect_to [:new, :session]
+    end
   end
 
   def authorize_resource
