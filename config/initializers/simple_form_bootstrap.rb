@@ -325,7 +325,7 @@ SimpleForm.setup do |config|
     b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
-  config.wrappers :hint_as_addon, tag: 'div', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
+  config.wrappers :input_group, tag: 'div', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -336,10 +336,8 @@ SimpleForm.setup do |config|
     b.use :label, class: 'form-control-label'
     b.wrapper tag: :div, class: 'input-group' do |g|
       g.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
-      g.wrapper tag: :div, class: 'input-group-append' do |a|
-        a.use :hint, wrap_with: { tag: :span, class: 'input-group-text' }
-      end
     end
+    b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
     b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
   end
 
