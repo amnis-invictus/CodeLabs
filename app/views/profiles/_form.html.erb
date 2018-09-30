@@ -25,6 +25,10 @@
 
     <%= f.input :password_confirmation %>
 
+    <%= f.input :city %>
+
+    <%= f.input :institution %>
+
     <%= f.input :score, readonly: true, as: :string %>
 
     <%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) } %>
