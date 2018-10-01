@@ -1,24 +1,19 @@
-<tr class="row list-row">
-    <td class="list-row__col col-md-1 col-sm-1 col-xs-1 col-1"><%= result.test_num %></td>
+<tr>
+  <td><%= result.test_num %></td>
 
-    <td class="list-row__col col-md-3 col-sm-3 col-xs-3 col-3"><%= result.status.humanize %></td>
+  <td><%= result.status.humanize %></td>
 
-    <td class="list-row__col col-md-4 col-sm-4 col-xs-4 col-4"><%= result.time %> ms</td>
+  <td><%= result.time %> ms</td>
 
-    <td class="list-row__col col-md-4 col-sm-4 col-xs-4 col-4"><%= result.memory %> kb</td>
+  <td><%= result.memory %> kb</td>
 
+  <td>
     <% if result.log? %>
-    <td class="list-row__col col-md-4 col-4">
-        <button class="btn btn-default btn-xs float-right" data-toggle="collapse"
-                data-target="#log-<%= result.test_num %>">
-            +
-        </button>
+      <button class="btn btn-default btn-xs float-right" data-toggle="collapse" data-target="#log-<%= result.test_num %>">
+        +
+      </button>
 
-        <div id="log-<%= result.test_num %>" aria-expanded="false" class="collapse">
-            <br><br>
-
-            <pre><%= result.log %></pre>
-        </div>
-    </td>
+      <div id="log-<%= result.test_num %>" aria-expanded="false" class="collapse"><pre><%= result.log %></pre></div>
     <% end %>
+  </td>
 </tr>

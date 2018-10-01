@@ -1,48 +1,57 @@
 <div class="row bg-light" style="padding: 20px;">
-    <div class="col-xs-12 col-12" style="padding: 0;">
-        <h1><%= t 'submissions.index.title' %></h1>
+  <div class="col-xs-12 col-12" style="padding: 0;">
+    <h1><%= t 'submissions.index.title' %></h1>
+  </div>
+
+  <h3>Сортировать по </h3>
+
+  <div class="row" style="margin-bottom: 15px;">
+    <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      Пользователю:
+
+      <input id="sortByUser" class="form-control" type="text">
     </div>
 
-    <h3>Сортировать по </h3>
-    <div class="row" style="margin-bottom: 15px;">
-        <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">Пользователю: <input id="sortByUser"
-                                                                                     class="form-control" type="text">
-        </div>
-        <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">Задаче: <input id="sortByTask" class="form-control"
-                                                                               type="text"></div>
+    <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      Задаче:
 
-        <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">Статусу: <select id="sortByStatus" class="form-control">
-            <option value="fail">Failed</option>
-            <option value="ok">Ok</option>
-            <option value="error">Compiler error</option>
-        </select>
-        </div>
-
-        <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">Группе: <input id="sortByGroup" class="form-control"
-                                                                               type="text"></div>
+      <input id="sortByTask" class="form-control" type="text">
     </div>
 
-    <table class="col-xs-12 col-12">
-        <tr class="row list-row">
-            <th class="list-row__col col-md-1 col-1">
-                <%= t 'submissions.index.id' %>
-            </th>
+    <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      Статусу:
 
-            <th class="list-row__col col-md-5 col-5">
-                <%= t 'submissions.index.problem_name' %>
-            </th>
+      <select id="sortByStatus" class="form-control">
+        <option value="fail">Failed</option>
+        <option value="ok">Ok</option>
+        <option value="error">Compiler error</option>
+      </select>
+    </div>
 
-            <th class="list-row__col col-md-3 col-3">
-                <%= t 'submissions.index.user_name' %>
-            </th>
+    <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      Группе:
 
-            <th class="list-row__col col-md-3 col-3">
-                <%= t 'submissions.index.state' %>
-            </th>
-        </tr>
+      <input id="sortByGroup" class="form-control" type="text">
+    </div>
+  </div>
 
-        <%= render collection.decorate %>
-    </table>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th><%= t 'submissions.index.id' %></th>
 
-    <%= paginate collection %>
+        <th><%= t 'submissions.index.problem_name' %></th>
+
+        <th><%= t 'submissions.index.user_name' %></th>
+
+        <th><%= t 'submissions.index.state' %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render collection.decorate %>
+    </tbody>
+  </table>
+
+  <%= paginate collection %>
 </div>

@@ -1,54 +1,79 @@
 <div class="row bg-white">
-    <div class="col-xs-12 col-12">
-        <h1><%= t 'submissions.show.title', id: resource.id %></h1>
+  <div class="col-xs-12 col-12">
+    <h1><%= t 'submissions.show.title', id: resource.id %></h1>
 
-        <p><%= t 'submissions.show.problem' %>: <b><%= link_to resource.problem_caption, resource.problem %></b></p>
+    <p><%= t 'submissions.show.problem' %>: <b><%= link_to resource.problem_caption, resource.problem %></b></p>
 
-        <p><%= t 'submissions.show.user_name' %>: <b><%= resource.user_name %></b></p>
+    <p><%= t 'submissions.show.user_name' %>: <b><%= resource.user_name %></b></p>
 
-        <p><%= t 'submissions.show.state' %>: <b><%= resource.state %></b></p>
+    <p><%= t 'submissions.show.state' %>: <b><%= resource.state %></b></p>
 
-        <p><%= t 'submissions.show.time_limit' %>: <b><%= resource.time_limit %></b> ms</p>
+    <p><%= t 'submissions.show.time_limit' %>: <b><%= resource.time_limit %></b> ms</p>
 
-        <p><%= t 'submissions.show.memory_limit' %>: <b><%= resource.memory_limit %></b> kb</p>
-    </div>
+    <p><%= t 'submissions.show.memory_limit' %>: <b><%= resource.memory_limit %></b> kb</p>
+  </div>
 
-    <div class="col-xs-12 col-12">
-        <% if resource.test_state_failed? %>
-        <%= t 'submissions.show.failed' %>
-        <% elsif resource.test_result_compiler_error? %>
-        <ul class="nav nav-tabs">
-            <li class="nav-item"><a href="#compiler-log" class="nav-link active" data-toggle="tab"><%= t 'submissions.show.compiler_log' %></a>
-            </li>
+  <div class="col-xs-12 col-12">
+    <% if resource.test_state_failed? %>
+      <%= t 'submissions.show.failed' %>
+    <% elsif resource.test_result_compiler_error? %>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <%= link_to t('submissions.show.compiler_log'), '#compiler-log', class: 'nav-link active', 'data-toggle': 'tab' %>
+        </li>
 
-            <li class="nav-item"><a href="#source" class="nav-link" data-toggle="tab"><%= t 'submissions.show.source' %></a></li>
-        </ul>
+        <li class="nav-item">
+          <%= link_to t('submissions.show.source'), '#source', class: 'nav-link', 'data-toggle': 'tab' %>
+        </li>
+      </ul>
 
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="compiler-log"><%= render 'compiler_log' %></div>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="compiler-log"><%= render 'compiler_log' %></div>
 
-            <div class="tab-pane fade" id="source"><%= render 'source' %></div>
+        <div class="tab-pane fade" id="source"><%= render 'source' %></div>
+      </div>
+    <% else %>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <%= link_to t('submissions.show.results'), '#results', class: 'nav-link active', 'data-toggle': 'tab' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to t('submissions.show.compiler_log'), '#compiler-log', class: 'nav-link', 'data-toggle': 'tab' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to t('submissions.show.source'), '#source', class: 'nav-link', 'data-toggle': 'tab' %>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="results">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th><%= t 'results.index.num' %></th>
+
+                <th><%= t 'results.index.status' %></th>
+
+                <th><%= t 'results.index.time' %></th>
+
+                <th><%= t 'results.index.memory' %></th>
+
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <%= render resource.results.includes(:test).order('tests.num') %>
+            </tbody>
+          </table>
         </div>
-        <% else %>
-        <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" href="#results" data-toggle="tab"><%= t 'submissions.show.results' %></a></li>
 
-            <li class="nav-item"><a class="nav-link" href="#compiler-log" data-toggle="tab"><%= t 'submissions.show.compiler_log' %></a></li>
+        <div class="tab-pane fade" id="compiler-log"><%= render 'compiler_log' %></div>
 
-            <li class="nav-item"><a class="nav-link" href="#source" data-toggle="tab"><%= t 'submissions.show.source' %></a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="results">
-                <table style="border-collapse: collapse">
-                    <%= render 'results' %>
-                </table>
-            </div>
-
-            <div class="tab-pane fade" id="compiler-log"><%= render 'compiler_log' %></div>
-
-            <div class="tab-pane fade" id="source"><%= render 'source' %></div>
-        </div>
-        <% end %>
-    </div>
+        <div class="tab-pane fade" id="source"><%= render 'source' %></div>
+      </div>
+    <% end %>
+  </div>
 </div>
