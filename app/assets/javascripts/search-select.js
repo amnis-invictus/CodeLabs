@@ -20,6 +20,10 @@ jQuery.fn.extend({
           source: data.ttAdapter()
         }
       });
+
+      $.map(this.options, function (option) {
+        block.tagsinput('add', { value: option.value, text: option.text })
+      });
     })
   }
 });
