@@ -11,6 +11,12 @@
     <div class="header-section__item">
       <%= link_to t('header.submissions'), :submissions %>
     </div>
+
+    <% if policy(Compiler).index? %>
+      <div class="header-section__item">
+        <%= link_to t('header.compilers'), :compilers %>
+      </div>
+    <% end %>
   </div>
 
   <div class="header-section">

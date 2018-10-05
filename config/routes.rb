@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :archives, only: %i(new create)
 
+  resources :compilers, except: :edit
+
   namespace :api do
     resources :submissions, only: :index do
       resource :take, :release, :fail, only: :create

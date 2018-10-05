@@ -1,0 +1,25 @@
+<%= simple_form_for resource do |f| %>
+  <%= f.input :id, readonly: true %>
+
+  <%= f.input :name %>
+
+  <div class="row">
+    <div class="col-6">
+      <%= f.input :version %>
+
+      <%= f.input :memory_a %>
+
+      <%= f.input :memory_b %>
+    </div>
+
+    <div class="col-6">
+      <%= f.input :status, as: :select, collection: Compiler.statuses.keys, include_blank: false %>
+
+      <%= f.input :time_a %>
+
+      <%= f.input :time_b %>
+    </div>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
