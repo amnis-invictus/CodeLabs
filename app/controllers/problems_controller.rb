@@ -9,6 +9,20 @@ class ProblemsController < ApplicationController
     render :new
   end
 
+  def update
+    redirect_to resource and return if resource.update resource_params
+
+    flash.now[:error] = 'Validation Errors'
+
+    render :edit
+  end
+
+  def destroy
+    resource.destroy
+
+    redirect_to :problems
+  end
+
   private
   def collection
     @collection ||= (parent&.problems || Problem.all).order(:id).page(params[:page])

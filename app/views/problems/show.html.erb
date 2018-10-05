@@ -1,4 +1,14 @@
-<div class="bg-transparent">
+<div class="bg-transparent position-relative">
+  <div class="problem-buttons">
+    <%= link_to [:edit, resource], class: 'btn btn-default mb-2' do %>
+      <i class="far fa-edit"></i>
+    <% end if policy(resource).edit?%>
+
+    <%= link_to resource, method: :delete, class: 'btn btn-danger' do %>
+      <i class="fas fa-times"></i>
+    <% end if policy(resource).destroy? %>
+  </div>
+
   <%= content_tag :div, class: 'section section--warning' do %>
     <%= t 'problems.show.missing_translation', language: I18n.t(resource.language, scope: 'problems.show.languages') %>
   <% end if I18n.locale != resource.language %>

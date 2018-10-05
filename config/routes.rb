@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: :create
 
-  resources :problems, only: %i(index show new create) do
+  resources :problems do
     resources :submissions, only: %i(index new create)
   end
 

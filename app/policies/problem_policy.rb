@@ -3,6 +3,14 @@ class ProblemPolicy < ApplicationPolicy
     !!user&.administrator?
   end
 
+  def update?
+    !!user&.administrator?
+  end
+
+  def destroy?
+    !!user&.administrator?
+  end
+
   def index?
     true
   end

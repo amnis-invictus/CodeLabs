@@ -1,8 +1,6 @@
 class ProblemDecorator < Draper::Decorator
   delegate_all
 
-  decorates_association :tests
-
   delegate :caption, :author, :text, :technical_text, to: :translation, allow_nil: true
 
   def as_json *args

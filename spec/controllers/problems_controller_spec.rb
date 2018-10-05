@@ -7,7 +7,29 @@ RSpec.describe ProblemsController, type: :controller do
 
   it_behaves_like :new
 
-  pending '#create'
+  it_behaves_like :edit
+
+  it_behaves_like :create do
+    let(:resource) { stub_model Problem }
+
+    let(:success) { -> { should redirect_to resource } }
+
+    let(:failure) { -> { should render_template :new } }
+  end
+
+  it_behaves_like :update do
+    let(:resource) { stub_model Problem }
+
+    let(:success) { -> { should redirect_to resource } }
+
+    let(:failure) { -> { should render_template :edit } }
+  end
+
+  it_behaves_like :destroy do
+    let(:resource) { stub_model Problem }
+
+    let(:success) { -> { should redirect_to :problems } }
+  end
 
   pending '#resource_params'
 
