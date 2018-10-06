@@ -7,7 +7,11 @@ RSpec.describe User, type: :model do
 
   it { should have_many(:auth_tokens).dependent(:destroy) }
 
-  pending { should have_one_attached :avatar }
+  it { should have_many(:owned_groups).class_name('Group').with_foreign_key(:owner_id) }
+
+  it { should have_and_belong_to_many :groups }
 
   it { should have_secure_password }
+
+  pending { should have_one_attached :avatar }
 end

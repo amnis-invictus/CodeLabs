@@ -21,6 +21,12 @@ Rails.application.routes.draw do
 
   resources :compilers, except: :edit
 
+  resources :groups do
+    resources :members, only: :destroy
+
+    resources :invites, only: %i(new create)
+  end
+
   namespace :api do
     resources :submissions, only: :index do
       resource :take, :release, :fail, only: :create
