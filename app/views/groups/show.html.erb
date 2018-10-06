@@ -20,18 +20,30 @@
 
     <div class="list-group mb-2">
       <div class="member-list">
-        <% resource.users.each do |user| %>
-          <div class="list-group-item member-list__item">
-            <div class="d-flex flex-column">
-              <%= user.name %>
+        <% if policy(Membership.new group: resource).destroy? %>
+          <% resource.users.each do |user| %>
+            <div class="list-group-item member-list__item">
+              <div class="d-flex flex-column">
+                <%= user.name %>
 
-              <small class="text-muted"><%= user.email %></small>
+                <small class="text-muted"><%= user.email %></small>
+              </div>
+
+              <%= link_to [resource, :membership, id: user], method: :delete, class: 'btn btn-sm btn-danger' do %>
+                <i class="fas fa-times"></i>
+              <% end %>
             </div>
+          <% end %>
+        <% else %>
+          <% resource.users.each do |user| %>
+            <div class="list-group-item member-list__item">
+              <div class="d-flex flex-column">
+                <%= user.name %>
 
-            <%= link_to [resource, :member, id: user], method: :delete, class: 'btn btn-sm btn-danger' do %>
-              <i class="fas fa-times"></i>
-            <% end %>
-          </div>
+                <small class="text-muted"><%= user.email %></small>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
 

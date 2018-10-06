@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :compilers, except: :edit
 
   resources :groups do
-    resources :members, only: :destroy
+    resources :memberships, only: :destroy
 
     resources :invites, only: %i(new create)
   end
