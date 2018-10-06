@@ -1,0 +1,12 @@
+.member-list {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  max-height: 496px;
+  overflow-y: auto;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

@@ -9,9 +9,9 @@ class GroupDecorator < Draper::Decorator
   def visibility_icon_class
     case visibility.to_sym
     when :private, :moderated
-      'fas fa-lock'
+      'mr-3 fas fa-lock'
     when :public
-      'fas fa-unlock'
+      'mr-3 fas fa-unlock'
     end
   end
 end
