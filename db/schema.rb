@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_30_141400) do
+ActiveRecord::Schema.define(version: 2018_10_06_094117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -65,6 +65,22 @@ ActiveRecord::Schema.define(version: 2018_09_30_141400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["problem_id"], name: "index_examples_on_problem_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "visibility", default: 0, null: false
+    t.bigint "owner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_groups_on_owner_id"
+  end
+
+  create_table "groups_users", id: false, force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["group_id"], name: "index_groups_users_on_group_id"
+    t.index ["user_id"], name: "index_groups_users_on_user_id"
   end
 
   create_table "logs", force: :cascade do |t|
@@ -177,6 +193,9 @@ ActiveRecord::Schema.define(version: 2018_09_30_141400) do
 
   add_foreign_key "auth_tokens", "users"
   add_foreign_key "examples", "problems"
+  add_foreign_key "groups", "users", column: "owner_id"
+  add_foreign_key "groups_users", "groups"
+  add_foreign_key "groups_users", "users"
   add_foreign_key "problem_translations", "problems"
   add_foreign_key "problems", "compilers", column: "checker_compiler_id"
   add_foreign_key "problems_tags", "problems"
