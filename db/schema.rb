@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_06_122214) do
+ActiveRecord::Schema.define(version: 2018_10_06_142956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -83,6 +83,17 @@ ActiveRecord::Schema.define(version: 2018_10_06_122214) do
     t.bigint "user_id", null: false
     t.index ["group_id"], name: "index_groups_users_on_group_id"
     t.index ["user_id"], name: "index_groups_users_on_user_id"
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_invites_on_group_id"
+    t.index ["receiver_id"], name: "index_invites_on_receiver_id"
+    t.index ["sender_id"], name: "index_invites_on_sender_id"
   end
 
   create_table "logs", force: :cascade do |t|
@@ -198,6 +209,9 @@ ActiveRecord::Schema.define(version: 2018_10_06_122214) do
   add_foreign_key "groups", "users", column: "owner_id"
   add_foreign_key "groups_users", "groups"
   add_foreign_key "groups_users", "users"
+  add_foreign_key "invites", "groups"
+  add_foreign_key "invites", "users", column: "receiver_id"
+  add_foreign_key "invites", "users", column: "sender_id"
   add_foreign_key "problem_translations", "problems"
   add_foreign_key "problems", "compilers", column: "checker_compiler_id"
   add_foreign_key "problems_tags", "problems"
