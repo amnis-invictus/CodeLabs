@@ -1,3 +1,5 @@
+'use strict';
+
 document.addEventListener('turbolinks:load', function () {
-    $('[data-role="tagsinput"]').tagsinput()
+    $('[data-role="tagsinput"]').tagsinput();
 });
