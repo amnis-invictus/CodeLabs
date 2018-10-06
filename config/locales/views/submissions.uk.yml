@@ -5,7 +5,7 @@ uk:
       id: ІД
       problem_name: Назва задачі
       state: Статус
-      title: Посилання
+      title: Відправлені розв'язки
       user_name: Ім'я користувача
     new:
       title: Відправити рішення до задачі "%{problem_caption}"
@@ -18,5 +18,5 @@ uk:
       source: Код програми
       state: Статус
       time_limit: Ліміт часу
-      title: Посилання №%{id}
+      title: Розв'язок №%{id}
       user_name: Ім'я користувача

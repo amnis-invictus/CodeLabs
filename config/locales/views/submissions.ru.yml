@@ -5,7 +5,7 @@ ru:
       id: ИД
       problem_name: Название задачи
       state: Статус
-      title: Посылки
+      title: Попытки
       user_name: Имя пользователя
     new:
       title: Отправить решение к задаче "%{problem_caption}"
@@ -18,5 +18,5 @@ ru:
       source: Исходный код
       state: Статус
       time_limit: Лимит времени
-      title: Посылка №%{id}
+      title: Попытка №%{id}
       user_name: Имя пользователя
