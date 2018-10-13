@@ -7,6 +7,7 @@ uk:
     show:
       edit: Редагувати інформацію про групу
       invite: Запросити
+      invite_list: Список запрошень
       members: Учасники
       description: Опис
       visibility:
