@@ -3,9 +3,13 @@ require 'rails_helper'
 RSpec.describe Invite, type: :model do
   fixtures :users, :groups
 
-  subject { described_class.new sender: users(:one), receiver: users(:three), group: groups(:one) }
+  context do
+    subject { described_class.new sender: users(:one), receiver: users(:three), group: groups(:one) }
 
-  it { should validate_uniqueness_of(:receiver).scoped_to(:group_id) }
+    before { allow_any_instance_of(described_class).to receive(:receiver_must_not_be_in_group) }
+
+    it { should validate_uniqueness_of(:receiver).scoped_to(:group_id) }
+  end
 
   it { should belong_to :group }
 
@@ -19,7 +23,25 @@ RSpec.describe Invite, type: :model do
 
   it { should delegate_method(:owner).to(:group).with_prefix }
 
+  it { should delegate_method(:users).to(:group).with_prefix }
+
   it { should delegate_method(:name).to(:sender).with_prefix }
 
   it { should delegate_method(:name).to(:receiver).with_prefix }
+
+  describe '#receiver_must_not_be_in_group' do
+    before { subject.valid? }
+
+    context do
+      subject { described_class.new receiver: users(:two), group: groups(:one) }
+
+      its('errors.details') { should include receiver: [error: :exists] }
+    end
+
+    context do
+      subject { described_class.new receiver: users(:three), group: groups(:one) }
+
+      its('errors.details') { should_not include :receiver }
+    end
+  end
 end
