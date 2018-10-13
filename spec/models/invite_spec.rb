@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Invite, type: :model do
+  fixtures :users, :groups
+
+  subject { described_class.new sender: users(:one), receiver: users(:three), group: groups(:one) }
+
+  it { should validate_uniqueness_of(:receiver).scoped_to(:group_id) }
+
   it { should belong_to :group }
 
   it { should belong_to(:sender).class_name('User') }

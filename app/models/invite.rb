@@ -1,4 +1,6 @@
 class Invite < ApplicationRecord
+  validates :receiver, uniqueness: { scope: :group_id }
+
   belongs_to :group
 
   belongs_to :sender, class_name: 'User'
