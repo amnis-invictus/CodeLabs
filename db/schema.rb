@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_06_142956) do
+ActiveRecord::Schema.define(version: 2018_10_08_093116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2018_10_06_142956) do
     t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0, null: false
     t.index ["group_id"], name: "index_invites_on_group_id"
     t.index ["receiver_id"], name: "index_invites_on_receiver_id"
     t.index ["sender_id"], name: "index_invites_on_sender_id"
