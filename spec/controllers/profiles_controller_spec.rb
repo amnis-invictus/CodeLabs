@@ -19,7 +19,7 @@ RSpec.describe ProfilesController, type: :controller do
 
   it { expect(subject.method(:resource).original_name).to eq :current_user }
 
-  describe '#resource_params' do
+  pending '#resource_params' do
     let :params do
       acp user: {
         name: 'Pikachu',

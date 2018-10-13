@@ -33,7 +33,7 @@ RSpec.describe ProblemsController, type: :controller do
 
   pending '#resource_params'
 
-  describe '#collection' do
+  pending '#collection' do
     context do
       before { subject.instance_variable_set :@collection, :collection }
 
