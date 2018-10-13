@@ -1,0 +1,13 @@
+<div class="row bg-light">
+  <div class="col-12">
+    <h1><%= t 'invite.new.title' %></h1>
+  </div>
+
+  <div class="col-12">
+    <%= simple_form_for [parent, resource] do |f| %>
+      <%= f.association :receiver %>
+
+      <%= f.submit class: 'btn btn-default btn-block' %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+uk:
+  invite:
+    index:
+      group_title: Запрошення у групу %{group_name}
+      sender: Відправник
+      receiver: Отримувач
+      status: Статус
+      created_at: Дата відправлення

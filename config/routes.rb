@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :groups do
     resources :memberships, only: :destroy
 
-    resources :invites, only: %i(new create)
+    resources :invites, only: %i(index new create)
   end
 
   namespace :api do
