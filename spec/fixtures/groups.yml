@@ -1,0 +1,4 @@
+one:
+  name: Group One
+  owner: one
+  users: [two]
