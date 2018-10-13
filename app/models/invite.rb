@@ -9,7 +9,7 @@ class Invite < ApplicationRecord
 
   enum status: { pending: 0, accepted: 1, rejected: 2 }
 
-  delegate :owner, to: :group, prefix: true
+  delegate :owner, :visibility, to: :group, prefix: true
 
   delegate :name, to: :sender, prefix: true
 
