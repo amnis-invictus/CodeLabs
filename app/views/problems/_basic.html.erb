@@ -13,7 +13,7 @@
 
       <%= f.input :checker_source %>
 
-      <%= f.input :tag_ids, as: :select, collection: resource.tags, input_html: { multiple: true, data: { role: 'search-select', path: tags_path(format: :json) } } %>
+      <%= f.input :tag_ids, as: :select, collection: resource.tags, input_html: { multiple: true, 'data-role': 'tags-select' } %>
     </div>
   </div>
 </div>

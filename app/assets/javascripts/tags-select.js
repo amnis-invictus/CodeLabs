@@ -1,14 +1,14 @@
 'use strict';
 
 jQuery.fn.extend({
-  searchSelect: function () {
+  tagsSelect: function () {
     return this.each(function () {
       var block = $(this);
 
       var data = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        prefetch: { url: block.data('path'), cache: false }
+        prefetch: { url: "/tags.json", cache: false }
       });
 
       data.initialize();
@@ -31,5 +31,5 @@ jQuery.fn.extend({
 });
 
 document.addEventListener('turbolinks:load', function () {
-  $('[data-role=search-select]').searchSelect();
+  $('[data-role=tags-select]').tagsSelect();
 });
