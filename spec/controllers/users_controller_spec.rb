@@ -16,7 +16,9 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe '#resource_params' do
-    let(:params) { acp user: { email: 'one@users.com', password: 'password', password_confirmation: 'password' } }
+    let :params do
+      acp user: { username: 'just806me', email: 'one@users.com', password: 'password', password_confirmation: 'password' }
+    end
 
     before { expect(subject).to receive(:params).and_return(params) }
 

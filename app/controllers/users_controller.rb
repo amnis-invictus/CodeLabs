@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   attr_reader :resource
 
   def resource_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
   def initialize_resource

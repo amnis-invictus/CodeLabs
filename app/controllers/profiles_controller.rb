@@ -9,6 +9,6 @@ class ProfilesController < ApplicationController
 
   private
   def resource_params
-    params.require(:user).permit(:name, :password, :password_confirmation, :avatar, :skills, :city, :institution)
+    params.require(:user).permit(:username, :name, :password, :password_confirmation, :avatar, :skills, :city, :institution)
   end
 end
