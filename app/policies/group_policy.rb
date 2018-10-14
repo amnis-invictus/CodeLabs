@@ -6,7 +6,9 @@ class GroupPolicy < ApplicationPolicy
   def show?
     return false if user.blank?
 
-    user == resource.owner
+    return true if user == resource.owner
+
+    resource.users.include? user
   end
 
   def create?
