@@ -4,9 +4,13 @@
   </div>
 
   <div class="col-12">
-    <div class="card-columns">
-     <%= render collection.decorate %>
-    </div>
+    <% collection.decorate.each_slice 3 do |slice| %>
+      <div class="card-deck">
+        <% slice.each do |worker| %>
+          <%= render worker %>
+        <% end %>
+      </div>
+    <% end %>
 
     <%= paginate collection %>
   </div>
