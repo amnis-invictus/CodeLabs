@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resource :profile, only: %i(show update)
 
-  resources :users, only: :create
+  resources :users, only: %i(index create)
 
   resources :problems do
     resources :submissions, only: %i(index new create)
@@ -22,6 +22,20 @@ Rails.application.routes.draw do
   resources :compilers, except: :edit
 
   resources :workers, only: :index
+  
+  resources :groups do
+    resources :memberships, only: :destroy
+
+    resources :invites, only: %i(index new create)
+
+    resources :submissions, only: :index
+  end
+
+  resources :received_invites, only: :index
+
+  resources :invites, only: [] do
+    resource :reject, :accept, only: :create
+  end
 
   namespace :api do
     resources :submissions, only: :index do

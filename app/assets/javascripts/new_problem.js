@@ -1,19 +1,21 @@
+'use strict';
+
 jQuery.fn.extend({
-  newProblem: function () {
-    return this.each(function () {
-        var form = $(this);
+    newProblem: function newProblem() {
+        return this.each(function () {
+            var form = $(this);
 
-      form.find(':submit').on('click', function () {
-          this.disabled = true;
+            form.find(':submit').on('click', function () {
+                this.disabled = true;
 
-          $('#process-problem-archive-log').html('');
+                $('#process-problem-archive-log').html('');
 
-          form.submit();
-      });
-    });
-  }
+                form.submit();
+            });
+        });
+    }
 });
 
 document.addEventListener('turbolinks:load', function () {
-    $('form#new_problem').newProblem()
+    $('form#new_problem').newProblem();
 });

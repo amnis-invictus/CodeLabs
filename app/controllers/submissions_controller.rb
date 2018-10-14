@@ -9,11 +9,21 @@ class SubmissionsController < ApplicationController
 
   private
   def collection
-    @collection ||= Submission.order(created_at: :desc).page(params[:page])
+    @collection ||= submissions.order(created_at: :desc).page(params[:page])
+  end
+
+  def submissions
+    parent ? parent.submissions : Submission.all
   end
 
   def parent
-    @parent ||= Problem.find params[:problem_id]
+    @parent ||= \
+      case
+      when params[:group_id]
+        Group.find params[:group_id]
+      when params[:problem_id]
+        Problem.find params[:problem_id]
+      end
   end
 
   def resource

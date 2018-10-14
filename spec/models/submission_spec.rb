@@ -21,9 +21,9 @@ RSpec.describe Submission, type: :model do
 
   it { should delegate_method(:as_json).to(:decorate) }
 
-  it { should delegate_method(:name).to(:user).with_prefix }
-
   it { should delegate_method(:data).to(:log).with_prefix }
+
+  it { should delegate_method(:user).to(:problem).with_prefix }
 
   it { should have_state :pending }
 

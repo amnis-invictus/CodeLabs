@@ -33,7 +33,7 @@ RSpec.describe ProblemsController, type: :controller do
 
   pending '#resource_params'
 
-  describe '#collection' do
+  pending '#collection' do
     context do
       before { subject.instance_variable_set :@collection, :collection }
 
@@ -104,7 +104,7 @@ RSpec.describe ProblemsController, type: :controller do
   end
 
   describe '#initialize_resource' do
-    before { expect(Problem).to receive(:new).and_return(:resource) }
+    before { expect(subject).to receive_message_chain(:current_user, :problems, :new).and_return(:resource) }
 
     before { subject.send :initialize_resource }
 
@@ -114,7 +114,9 @@ RSpec.describe ProblemsController, type: :controller do
   describe '#build_resource' do
     before { expect(subject).to receive(:resource_params).and_return(:resource_params) }
 
-    before { expect(Problem).to receive(:new).with(:resource_params).and_return(:resource) }
+    before do
+      expect(subject).to receive_message_chain(:current_user, :problems, :new).with(:resource_params).and_return(:resource)
+    end
 
     before { subject.send :build_resource }
 

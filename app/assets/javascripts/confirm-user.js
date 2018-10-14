@@ -1,20 +1,21 @@
+'use strict';
+
 $(function () {
-    if (typeof confirm_users_page !== 'undefined')
-        (() => {
-            $('.confirm-user').click(function () {
-                const $btn = $(this).button('loading');
+    if (typeof confirm_users_page !== 'undefined') (function () {
+        $('.confirm-user').click(function () {
+            var $btn = $(this).button('loading');
 
-                //$.ajax(/*TODO*/);
+            //$.ajax(/*TODO*/);
 
-                $btn.button('reset');
-            });
+            $btn.button('reset');
+        });
 
-            $('.rm-user').click(function () {
-                const $btn = $(this).button('loading');
+        $('.rm-user').click(function () {
+            var $btn = $(this).button('loading');
 
-                //$.ajax(/*TODO*/);
+            //$.ajax(/*TODO*/);
 
-                $btn.button('reset');
-            });
-        })();
+            $btn.button('reset');
+        });
+    })();
 });

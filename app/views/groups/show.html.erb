@@ -1,0 +1,63 @@
+<div class="row bg-light">
+  <div class="col-12">
+    <h1><%= resource.name %></h1>
+
+    <div class="alert alert-info">
+      <%= resource.visibility_icon %>
+
+      <%= t resource.visibility, scope: 'group.show.visibility' %>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <h3><%= t 'group.show.description' %></h3>
+
+    <%= simple_format resource.description %>
+  </div>
+
+  <div class="col-4">
+    <h3 class="text-center"><%= t 'group.show.members' %></h3>
+
+    <div class="list-group mb-2">
+      <div class="member-list">
+        <% if policy(Membership.new group: resource).destroy? %>
+          <% resource.users.each do |user| %>
+            <div class="list-group-item member-list__item">
+              <div class="d-flex flex-column">
+                <%= user.name %>
+
+                <small class="text-muted"><%= user.username %></small>
+              </div>
+
+              <%= link_to [resource, :membership, id: user], method: :delete, class: 'btn btn-sm btn-danger' do %>
+                <i class="fas fa-times"></i>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <% resource.users.each do |user| %>
+            <div class="list-group-item member-list__item">
+              <div class="d-flex flex-column">
+                <%= user.name %>
+
+                <small class="text-muted"><%= user.username %></small>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%= link_to t('group.show.invite'), [:new, resource, :invite],
+        class: 'list-group-item btn btn-outline-primary btn-sm btn-block' if policy(resource.invites.new).create? %>
+
+      <%= link_to t('group.show.invite_list'), [resource, :invites],
+        class: 'list-group-item btn btn-outline-primary btn-sm btn-block mt-0' if policy(Invite).index? %>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <%= link_to t('group.show.edit'), [:edit, resource], class: 'btn btn-default btn-block' if policy(resource).edit? %>
+
+    <%= link_to t('group.show.submission_list'), [resource, :submissions], class: 'btn btn-default btn-block' %>
+  </div>
+</div>

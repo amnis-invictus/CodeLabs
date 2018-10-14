@@ -1,0 +1,15 @@
+one:
+  username: user-one
+  name: User One
+  email: one@users.com
+  password_digest: XXXYYYZZZ
+two:
+  username: user-two
+  name: User Two
+  email: two@users.com
+  password_digest: XXXYYYZZZ
+three:
+  username: user-three
+  name: User Three
+  email: three@users.com
+  password_digest: XXXYYYZZZ

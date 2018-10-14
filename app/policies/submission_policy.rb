@@ -10,6 +10,6 @@ class SubmissionPolicy < ApplicationPolicy
   def show?
     return false if user.blank?
 
-    user.administrator? || user == resource.user
+    user.administrator? || user == resource.user || user == resource.problem_user
   end
 end
