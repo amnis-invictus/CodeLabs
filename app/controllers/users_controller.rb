@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   private
   attr_reader :resource
 
+  def collection
+    @collection ||= UserSearcher.search(User, params).page(params[:page])
+  end
+
   def resource_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end

@@ -16,4 +16,6 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   has_secure_password
+
+  delegate :as_json, to: :decorate
 end

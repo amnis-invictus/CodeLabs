@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resource :profile, only: %i(show update)
 
-  resources :users, only: :create
+  resources :users, only: %i(index create)
 
   resources :problems do
     resources :submissions, only: %i(index new create)

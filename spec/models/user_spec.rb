@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  fixtures :users
+
+  subject { users(:one) }
+
   it { should validate_presence_of :email }
 
   it { should validate_uniqueness_of(:email).case_insensitive }
@@ -22,4 +26,6 @@ RSpec.describe User, type: :model do
   it { should have_secure_password }
 
   pending { should have_one_attached :avatar }
+
+  it { should delegate_method(:as_json).to(:decorate) }
 end

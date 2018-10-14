@@ -15,6 +15,29 @@ RSpec.describe UsersController, type: :controller do
     its(:resource) { should eq :resource }
   end
 
+  describe '#collection' do
+    context do
+      before { subject.instance_variable_set :@collection, :collection }
+
+      its(:collection) { should eq :collection }
+    end
+
+    context do
+      before { expect(subject).to receive(:params).and_return(name: 'John', page: '28').twice }
+
+      before do
+        #
+        # UserSearcher.search(params).page('28') -> :collection
+        #
+        expect(UserSearcher).to receive(:search).with(User, name: 'John', page: '28') do
+          double.tap { |a| expect(a).to receive(:page).with('28').and_return(:collection) }
+        end
+      end
+
+      its(:collection) { should eq :collection }
+    end
+  end
+
   describe '#resource_params' do
     let :params do
       acp user: { username: 'just806me', email: 'one@users.com', password: 'password', password_confirmation: 'password' }

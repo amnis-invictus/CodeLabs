@@ -26,7 +26,7 @@
               <div class="d-flex flex-column">
                 <%= user.name %>
 
-                <small class="text-muted"><%= user.email %></small>
+                <small class="text-muted"><%= user.username %></small>
               </div>
 
               <%= link_to [resource, :membership, id: user], method: :delete, class: 'btn btn-sm btn-danger' do %>
@@ -40,7 +40,7 @@
               <div class="d-flex flex-column">
                 <%= user.name %>
 
-                <small class="text-muted"><%= user.email %></small>
+                <small class="text-muted"><%= user.username %></small>
               </div>
             </div>
           <% end %>
