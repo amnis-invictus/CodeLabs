@@ -23,6 +23,8 @@ RSpec.describe Submission, type: :model do
 
   it { should delegate_method(:data).to(:log).with_prefix }
 
+  it { should delegate_method(:user).to(:problem).with_prefix }
+
   it { should have_state :pending }
 
   it { should transition_from(:pending).to(:in_progress).on_event(:take) }

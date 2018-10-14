@@ -25,6 +25,8 @@ class Submission < ApplicationRecord
 
   delegate :data, to: :log, prefix: true, allow_nil: true
 
+  delegate :user, to: :problem, prefix: true
+
   aasm column: :test_state, whiny_transitions: false, enum: true do
     state :pending, initial: true
 
