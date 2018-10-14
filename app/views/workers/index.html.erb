@@ -1,0 +1,17 @@
+<div class="row bg-light">
+  <div class="col-xs-12 col-12">
+    <h1><%= t 'workers.index.title' %></h1>
+  </div>
+
+  <div class="col-12">
+    <div class="card-columns">
+     <%= render collection.decorate %>
+    </div>
+
+    <%= paginate collection %>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <meta http-equiv="refresh" content="5">
+<% end %>

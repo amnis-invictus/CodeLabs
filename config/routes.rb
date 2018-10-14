@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   resources :compilers, except: :edit
 
+  resources :workers, only: :index
+
   namespace :api do
     resources :submissions, only: :index do
       resource :take, :release, :fail, only: :create
@@ -33,6 +35,12 @@ Rails.application.routes.draw do
     resources :results, only: :create
 
     resources :compilers, :constants, only: :index
+
+    resources :workers, only: :create do
+      resource :alive, only: :create
+
+      resource :session, only: %i(create destroy)
+    end
   end
 
   get '/v2/users/confirm', to: "users#confirm"

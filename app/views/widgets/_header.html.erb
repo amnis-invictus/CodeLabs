@@ -17,6 +17,12 @@
         <%= link_to t('header.compilers'), :compilers %>
       </div>
     <% end %>
+
+    <% if policy(Worker).index? %>
+      <div class="header-section__item">
+        <%= link_to t('header.workers'), :workers %>
+      </div>
+    <% end %>
   </div>
 
   <div class="header-section">
