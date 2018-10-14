@@ -10,7 +10,7 @@ class WorkerDecorator < Draper::Decorator
       when :disabled then 'border-dark'
       when :ok then 'border-success'
       when :failed then 'border-danger'
-      when :stale then'border-warning'
+      when :stale then 'border-warning'
     end
   end
 end
