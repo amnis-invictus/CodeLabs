@@ -16,6 +16,6 @@
        <p class="card-text"> <%= status %> </p>
     <% end %>
 
-    <p class="card-text">Last update <%= Time.at(Time.zone.now - worker.updated_at).gmtime.strftime("%H:%M:%S") %> ago</p>
+    <p class="card-text"><small class="text-muted">Last update <%= Time.at(Time.zone.now - worker.updated_at).gmtime.strftime("%H:%M:%S") %> ago</small></p>
   </div>
 <% end %>
