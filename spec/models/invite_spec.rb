@@ -8,7 +8,7 @@ RSpec.describe Invite, type: :model do
 
     before { allow_any_instance_of(described_class).to receive(:receiver_must_not_be_in_group) }
 
-    it { should validate_uniqueness_of(:receiver).scoped_to(:group_id) }
+    it { should validate_uniqueness_of(:receiver).scoped_to(:group_id, :status) }
   end
 
   it { should belong_to :group }
