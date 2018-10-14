@@ -12,6 +12,7 @@
     text-transform: uppercase;
     text-decoration: none;
     transition: all .2s ease-in-out;
+    white-space: nowrap;
 
     &:hover {
       color: #ffffff;
