@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     resources :memberships, only: :destroy
 
     resources :invites, only: %i(index new create)
+
+    resources :submissions, only: :index
   end
 
   resources :received_invites, only: :index

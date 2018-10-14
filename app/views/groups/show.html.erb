@@ -56,7 +56,8 @@
   </div>
 
   <div class="col-12">
-    <%= link_to t('group.show.edit'), [:edit, resource], class: 'btn btn-default btn-block' if
-      policy(resource).edit? %>
+    <%= link_to t('group.show.edit'), [:edit, resource], class: 'btn btn-default btn-block' if policy(resource).edit? %>
+
+    <%= link_to t('group.show.submission_list'), [resource, :submissions], class: 'btn btn-default btn-block' %>
   </div>
 </div>

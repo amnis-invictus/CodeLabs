@@ -29,14 +29,30 @@ RSpec.describe SubmissionsController, type: :controller do
 
       before do
         #
-        # Submission.order(created_at: :desc).page(params[:page]) -> :collection
+        # subject.submissions.order(created_at: :desc).page(params[:page]) -> :collection
         #
-        expect(Submission).to receive(:order).with(created_at: :desc) do
+        expect(subject).to receive_message_chain(:submissions, :order).with(created_at: :desc) do
           double.tap { |a| expect(a).to receive(:page).with(41).and_return(:collection) }
         end
       end
 
       its(:collection) { should eq :collection }
+    end
+  end
+
+  describe '#submissions' do
+    before { allow(subject).to receive(:parent).and_return(parent) }
+
+    context do
+      let(:parent) { double submissions: :submissions }
+
+      its(:submissions) { should eq :submissions }
+    end
+
+    context do
+      let(:parent) { nil }
+
+      its(:submissions) { should eq Submission.all }
     end
   end
 
@@ -48,9 +64,17 @@ RSpec.describe SubmissionsController, type: :controller do
     end
 
     context do
-      before { expect(subject).to receive(:params).and_return(problem_id: 89) }
+      before { allow(subject).to receive(:params).and_return(problem_id: 89) }
 
       before { expect(Problem).to receive(:find).with(89).and_return(:parent) }
+
+      its(:parent) { should eq :parent }
+    end
+
+    context do
+      before { allow(subject).to receive(:params).and_return(group_id: 89) }
+
+      before { expect(Group).to receive(:find).with(89).and_return(:parent) }
 
       its(:parent) { should eq :parent }
     end

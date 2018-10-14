@@ -15,6 +15,8 @@ RSpec.describe User, type: :model do
 
   it { should have_many(:auth_tokens).dependent(:destroy) }
 
+  it { should have_many(:submissions).dependent(:destroy) }
+
   it { should have_many(:owned_groups).class_name('Group').with_foreign_key(:owner_id) }
 
   it { should have_many(:sent_invites).class_name('Invite').with_foreign_key(:sender_id) }
