@@ -35,7 +35,7 @@ RSpec.describe Invite, type: :model do
     before { subject.valid? }
 
     context do
-      subject { described_class.new receiver: users(:two), group: groups(:one) }
+      subject { described_class.new receiver: users(:one), group: groups(:one) }
 
       its('errors.details') { should include receiver: [error: :exists] }
     end

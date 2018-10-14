@@ -5,7 +5,7 @@ RSpec.describe UserPolicy do
 
   fixtures :users
 
-  let(:resource) { users(:one) }
+  let(:resource) { users :one }
 
   permissions :index? do
     it { should permit nil, resource }

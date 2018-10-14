@@ -29,6 +29,10 @@ Rails.application.routes.draw do
 
   resources :received_invites, only: :index
 
+  resources :invites, only: [] do
+    resource :reject, :accept, only: :create
+  end
+
   namespace :api do
     resources :submissions, only: :index do
       resource :take, :release, :fail, only: :create
