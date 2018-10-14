@@ -11,10 +11,11 @@ RSpec.describe Reject do
 
   its(:invite) { should eq invite }
 
-  its(:invite_sender) { should eq sender }
+  it { should delegate_method(:sender).to(:invite).with_prefix }
 
-  its(:invite_receiver) { should eq receiver }
+  it { should delegate_method(:receiver).to(:invite).with_prefix }
 
+  it { should delegate_method(:pending?).to(:invite).with_prefix }
   describe '#save' do
     it { expect(invite).to receive(:update).with(status: :rejected) }
 

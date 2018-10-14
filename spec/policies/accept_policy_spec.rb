@@ -14,6 +14,8 @@ RSpec.describe AcceptPolicy do
 
     it { should_not permit users(:three), resource }
 
+    it { should_not permit users(:two), Accept.new(invites :two) }
+
     it { should permit users(:two), resource }
   end
 end

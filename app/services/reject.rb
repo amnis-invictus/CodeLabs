@@ -1,7 +1,7 @@
 class Reject
   attr_reader :invite
 
-  delegate :sender, :receiver, to: :invite, prefix: true
+  delegate :sender, :receiver, :pending?, to: :invite, prefix: true
 
   def initialize invite
     @invite = invite
