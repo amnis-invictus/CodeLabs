@@ -45,10 +45,10 @@ class ProblemsController < ApplicationController
   end
 
   def initialize_resource
-    @resource = Problem.new
+    @resource = current_user.problems.new
   end
 
   def build_resource
-    @resource = Problem.new resource_params
+    @resource = current_user.problems.new resource_params
   end
 end

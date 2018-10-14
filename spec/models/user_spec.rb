@@ -13,15 +13,17 @@ RSpec.describe User, type: :model do
 
   it { should validate_uniqueness_of(:username).case_insensitive }
 
+  it { should have_many(:problems).dependent(:nullify) }
+
   it { should have_many(:auth_tokens).dependent(:destroy) }
 
   it { should have_many(:submissions).dependent(:destroy) }
 
-  it { should have_many(:owned_groups).class_name('Group').with_foreign_key(:owner_id) }
+  it { should have_many(:owned_groups).class_name('Group').with_foreign_key(:owner_id).dependent(:destroy) }
 
-  it { should have_many(:sent_invites).class_name('Invite').with_foreign_key(:sender_id) }
+  it { should have_many(:sent_invites).class_name('Invite').with_foreign_key(:sender_id).dependent(:destroy) }
 
-  it { should have_many(:received_invites).class_name('Invite').with_foreign_key(:receiver_id) }
+  it { should have_many(:received_invites).class_name('Invite').with_foreign_key(:receiver_id).dependent(:destroy) }
 
   it { should have_and_belong_to_many :groups }
 

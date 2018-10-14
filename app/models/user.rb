@@ -3,15 +3,17 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
+  has_many :problems, dependent: :nullify
+
   has_many :auth_tokens, dependent: :destroy
 
   has_many :submissions, dependent: :destroy
 
-  has_many :owned_groups, class_name: 'Group', foreign_key: :owner_id
+  has_many :owned_groups, class_name: 'Group', foreign_key: :owner_id, dependent: :destroy
 
-  has_many :sent_invites, class_name: 'Invite', foreign_key: :sender_id
+  has_many :sent_invites, class_name: 'Invite', foreign_key: :sender_id, dependent: :destroy
 
-  has_many :received_invites, class_name: 'Invite', foreign_key: :receiver_id
+  has_many :received_invites, class_name: 'Invite', foreign_key: :receiver_id, dependent: :destroy
 
   has_and_belongs_to_many :groups
 

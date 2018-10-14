@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_13_133854) do
+ActiveRecord::Schema.define(version: 2018_10_14_145628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -126,7 +126,9 @@ ActiveRecord::Schema.define(version: 2018_10_13_133854) do
     t.float "memory_limit", null: false
     t.float "time_limit", null: false
     t.float "real_time_limit", null: false
+    t.bigint "user_id"
     t.index ["checker_compiler_id"], name: "index_problems_on_checker_compiler_id"
+    t.index ["user_id"], name: "index_problems_on_user_id"
   end
 
   create_table "problems_tags", force: :cascade do |t|
@@ -217,6 +219,7 @@ ActiveRecord::Schema.define(version: 2018_10_13_133854) do
   add_foreign_key "invites", "users", column: "sender_id"
   add_foreign_key "problem_translations", "problems"
   add_foreign_key "problems", "compilers", column: "checker_compiler_id"
+  add_foreign_key "problems", "users"
   add_foreign_key "problems_tags", "problems"
   add_foreign_key "problems_tags", "tags"
   add_foreign_key "submissions", "compilers"
