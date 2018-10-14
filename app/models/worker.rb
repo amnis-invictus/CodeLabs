@@ -5,7 +5,7 @@ class Worker < ApplicationRecord
 
   enum api_type: { HTTP: 0, WS: 1, }, _prefix: true
 
-  enum status: { disabled: 0, ok: 1, failed: 2, stale: 3 }, _prefix: true
+  enum status: { disabled: 0, ok: 1, failed: 2, stale: 3, stopped: 4 }, _prefix: true
 
   delegate :as_json, to: :decorate
 end
