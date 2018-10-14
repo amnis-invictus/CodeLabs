@@ -8,7 +8,7 @@ class Api::SessionsController < Api::ApplicationController
   end
 
   def destroy
-    render :errors, status: 422 and return unless parent.update alive_at: Time.zone.now, status: :disabled
+    render :errors, status: 422 and return unless parent.update alive_at: Time.zone.now, status: :disabled, task_status: []
 
     head 204
   end
