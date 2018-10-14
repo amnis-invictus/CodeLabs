@@ -9,7 +9,7 @@ class Api::WorkersController < Api::ApplicationController
   attr_reader :resource
 
   def resource_params
-    params.require(:worker).permit(:name, :api_version, :api_type, :webhook_supported, :status, ips: [])
+    params.require(:worker).permit(:name, :api_version, :api_type, :webhook_supported, :status, ips: []).merge(alive_at: Time.zone.now)
   end
 
   def build_resource
