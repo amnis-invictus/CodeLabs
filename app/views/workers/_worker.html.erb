@@ -11,9 +11,11 @@
       <%= worker.webhook_supported ? 'with' : 'without' %> webhook support
     </p>
 
-    <p class="card-title"><b>Tasks:</b></p>
-    <% worker.task_status.each do |status| %>
-       <p class="card-text"> <%= status %> </p>
+    <% if worker.task_status? %>
+      <p class="card-title"><b>Tasks:</b></p>
+      <% worker.task_status.each do |status| %>
+        <p class="card-text"> <%= status %> </p>
+      <% end %>
     <% end %>
 
     <p class="card-text"><small class="text-muted">Last update <%= Time.at(Time.zone.now - worker.updated_at).gmtime.strftime("%H:%M:%S") %> ago</small></p>
