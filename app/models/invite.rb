@@ -13,14 +13,10 @@ class Invite < ApplicationRecord
 
   delegate :name, :visibility, :owner, :users, to: :group, prefix: true
 
-  delegate :name, to: :sender, prefix: true
-
-  delegate :name, to: :receiver, prefix: true, allow_nil: true
-
   private
   def receiver_must_not_be_in_group
     return unless pending?
-    
+
     errors.add :receiver, :exists if group_users.include? receiver
   end
 end

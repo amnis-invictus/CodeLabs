@@ -14,4 +14,14 @@ RSpec.describe UserDecorator do
 
     its(:as_json) { should eq id: resource.id, name: 'User One', search_suggestion: :search_suggestion }
   end
+
+  describe '#name' do
+    its(:name) { should eq 'User One' }
+
+    context do
+      let(:resource) { stub_model User, username: 'kostyanf14' }
+
+      its(:name) { should eq 'kostyanf14' }
+    end
+  end
 end

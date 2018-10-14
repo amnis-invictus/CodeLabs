@@ -27,10 +27,6 @@ RSpec.describe Invite, type: :model do
 
   it { should delegate_method(:users).to(:group).with_prefix }
 
-  it { should delegate_method(:name).to(:sender).with_prefix }
-
-  it { should delegate_method(:name).to(:receiver).with_prefix }
-
   describe '#receiver_must_not_be_in_group' do
     before { subject.valid? }
 

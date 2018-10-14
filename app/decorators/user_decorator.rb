@@ -5,6 +5,10 @@ class UserDecorator < Draper::Decorator
     { id: id, name: name, search_suggestion: search_suggestion }
   end
 
+  def name
+    super.presence || username
+  end
+
   def search_suggestion
     body = ''.html_safe
 

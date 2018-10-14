@@ -6,7 +6,7 @@
   <div class="col-12">
     <%= simple_form_for [parent, resource] do |f| %>
       <%= f.association :receiver, as: :string,
-        input_html: { id: nil, 'data-role': 'user-search', value: resource.receiver_name } %>
+        input_html: { id: nil, 'data-role': 'user-search', value: resource.decorate.receiver_name } %>
 
       <%= f.input_field :receiver_id, hidden: true %>
 

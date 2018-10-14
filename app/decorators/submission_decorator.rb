@@ -3,6 +3,10 @@ class SubmissionDecorator < Draper::Decorator
 
   decorates_association :problem, context: :submission
 
+  decorates_association :user
+
+  delegate :name, to: :user, prefix: true
+
   delegate :caption, to: :problem, prefix: true
 
   def as_json *args
