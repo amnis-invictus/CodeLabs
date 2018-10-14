@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :invites, only: %i(index new create)
   end
 
+  resources :received_invites, only: :index
+
   namespace :api do
     resources :submissions, only: :index do
       resource :take, :release, :fail, only: :create

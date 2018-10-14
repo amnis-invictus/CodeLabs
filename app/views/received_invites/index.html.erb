@@ -1,0 +1,27 @@
+<div class="row bg-light">
+  <div class="col-xs-12 col-12"">
+    <h1><%= t 'received_invite.index.title' %></h1>
+  </div>
+
+  <div class="col-12">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th><%= t 'received_invite.index.sender' %></th>
+
+          <th><%= t 'received_invite.index.group' %></th>
+
+          <th><%= t 'received_invite.index.status' %></th>
+
+          <th><%= t 'received_invite.index.created_at' %></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= render partial: 'received_invite', collection: collection %>
+      </tbody>
+    </table>
+
+    <%= paginate collection %>
+  </div>
+</div>

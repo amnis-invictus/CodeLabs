@@ -1,0 +1,9 @@
+<tr>
+  <td><%= received_invite.sender_name %></td>
+
+  <td><%= received_invite.group_name %></td>
+
+  <td><%= received_invite.status&.humanize %></td>
+
+  <td><%= l received_invite.created_at, format: :long %></td>
+</tr>

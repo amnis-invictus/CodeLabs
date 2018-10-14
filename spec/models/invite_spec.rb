@@ -19,6 +19,8 @@ RSpec.describe Invite, type: :model do
 
   it { should define_enum_for(:status).with(pending: 0, accepted: 1, rejected: 2) }
 
+  it { should delegate_method(:name).to(:group).with_prefix }
+
   it { should delegate_method(:visibility).to(:group).with_prefix }
 
   it { should delegate_method(:owner).to(:group).with_prefix }
