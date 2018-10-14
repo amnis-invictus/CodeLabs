@@ -8,4 +8,6 @@ class Group < ApplicationRecord
   has_and_belongs_to_many :users
 
   enum visibility: { private: 0, moderated: 1, public: 2 }, _prefix: true
+
+  delegate :name, to: :owner, prefix: true
 end

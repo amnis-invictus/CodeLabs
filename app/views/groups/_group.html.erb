@@ -1,0 +1,9 @@
+<tr data-href="<%= url_for group %>">
+  <td><%= group.owner_name %></td>
+
+  <td><%= group.name %></td>
+
+  <td><%= group.visibility.humanize %></td>
+
+  <td><%= l group.created_at, format: :long %></td>
+</tr>
