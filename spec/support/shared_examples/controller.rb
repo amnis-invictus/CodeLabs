@@ -138,7 +138,7 @@ RSpec.shared_examples :destroy do |params|
   describe '#destroy' do
     before { allow(subject).to receive(:resource).and_return(resource) }
 
-    before { expect(resource).to receive(:destroy) }
+    before { expect(resource).to receive(:destroy).and_return(true) }
 
     before { delete :destroy, params: request_params, format: format }
 
