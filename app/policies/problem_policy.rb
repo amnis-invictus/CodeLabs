@@ -4,11 +4,19 @@ class ProblemPolicy < ApplicationPolicy
   end
 
   def update?
-    !!user&.confirmed?
+    return false if user.blank?
+
+    return true if user.moderator?
+
+    user == resource.user
   end
 
   def destroy?
-    !!user&.confirmed?
+    return false if user.blank?
+
+    return true if user.moderator?
+
+    user == resource.user
   end
 
   def index?
