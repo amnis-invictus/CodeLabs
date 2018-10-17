@@ -47,11 +47,13 @@
         <% end %>
       </div>
 
-      <%= link_to t('group.show.invite'), [:new, resource, :invite],
-        class: 'list-group-item btn btn-outline-primary btn-sm btn-block' if policy(resource.invites.new).create? %>
+      <div class="member-list-actions">
+        <%= link_to t('group.show.invite'), [:new, resource, :invite],
+          class: 'list-group-item btn btn-outline-primary btn-sm btn-block' if policy(resource.invites.new).create? %>
 
-      <%= link_to t('group.show.invite_list'), [resource, :invites],
-        class: 'list-group-item btn btn-outline-primary btn-sm btn-block mt-0' if policy(Invite).index? %>
+        <%= link_to t('group.show.invite_list'), [resource, :invites],
+          class: 'list-group-item btn btn-outline-primary btn-sm btn-block mt-0' if policy(Invite).index? %>
+      </div>
     </div>
   </div>
 

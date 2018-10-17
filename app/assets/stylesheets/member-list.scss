@@ -1,13 +1,17 @@
 .member-list {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
   max-height: 496px;
   overflow-y: auto;
-  width: 104.4%;
+  // border-bottom-left-radius: 0;
+  // border-bottom-right-radius: 0;
+  // width: 104.4%;
 
   &__item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &:last-child {
+      border-radius: 0;
+    }
   }
 }
