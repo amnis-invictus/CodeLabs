@@ -3,7 +3,13 @@
 <tr>
   <td><%= link_to submission.id, submission %></td>
 
-  <td><%= link_to submission.problem_caption, submission.problem %></td>
+  <td>
+    <% if policy(submission.problem).show? %>
+      <%= link_to submission.problem_caption, submission.problem %>
+    <% else %>
+      <%= submission.problem_caption %>
+    <% end %>
+  </td>
 
   <td><%= submission.user_name %></td>
 

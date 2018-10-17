@@ -1,7 +1,13 @@
 <tr>
   <td><%= problem.id %></td>
 
-  <td><%= link_to problem.caption, problem %></td>
+  <td>
+    <% if policy(problem).show? %>
+      <%= link_to problem.caption, problem %>
+    <% else %>
+      <%= problem.caption %>
+    <% end %>
+  </td>
 
   <td>0%</td>
 </tr>
