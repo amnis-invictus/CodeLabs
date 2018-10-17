@@ -22,6 +22,8 @@ RSpec.describe Invite::Accept do
  it { should delegate_method(:pending?).to(:invite).with_prefix }
 
   describe '#save' do
+    before { expect(Invite).to receive(:transaction).and_yield }
+
     before { expect(invite).to receive(:update).with(status: :accepted) }
 
     it { expect { subject.save }.to change { group_users }.to [receiver] }
