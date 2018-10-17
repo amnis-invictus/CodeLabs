@@ -3,9 +3,9 @@
     <h1>
       <%= t 'problems.index.title' %>
 
-      <%= link_to 'New from archive', %i(new archive), class: 'btn btn-default float-right' if policy(Archive).new? %>
+      <%= link_to 'New from archive', %i(new archive), class: 'btn btn-primary float-right' if policy(Archive).new? %>
 
-      <%= link_to 'New', %i(new problem), class: 'btn btn-default float-right',
+      <%= link_to 'New', %i(new problem), class: 'btn btn-primary float-right',
         style: 'margin-right: 1rem' if policy(Problem).new? %>
     </h1>
   </div>

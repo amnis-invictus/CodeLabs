@@ -40,10 +40,10 @@
     <%= link_to t('profile.show.ask_for_confirmation'), :confirmation_requests, method: :post, class: 'btn btn-block btn-primary' \
       if policy(ConfirmationRequest).new? %>
 
-    <%= link_to t('profile.show.problems'), [current_user, :problems], class: 'btn btn-block btn-primary' \
+    <%= link_to t('profile.show.problems'), [current_user, :problems], class: 'btn btn-block btn-link' \
       if current_user.confirmed? %>
 
-    <%= link_to t('profile.show.received_invites'), :received_invites, class: 'btn btn-block btn-primary' \
+    <%= link_to t('profile.show.received_invites'), :received_invites, class: 'btn btn-block btn-link' \
       if policy(Invite).index? %>
   </div>
 <% end %>
