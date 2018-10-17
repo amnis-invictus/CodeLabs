@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_132550) do
+ActiveRecord::Schema.define(version: 2018_10_17_174725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_132550) do
     t.float "time_limit", null: false
     t.float "real_time_limit", null: false
     t.bigint "user_id"
+    t.boolean "private", default: false, null: false
     t.index ["checker_compiler_id"], name: "index_problems_on_checker_compiler_id"
     t.index ["user_id"], name: "index_problems_on_user_id"
   end

@@ -1,6 +1,8 @@
 class Problem < ApplicationRecord
   validates :memory_limit, :time_limit, :real_time_limit, presence: true, numericality: true
 
+  validates :private, inclusion: { in: [true, false] }
+
   belongs_to :user, optional: true
 
   belongs_to :checker_compiler, class_name: 'Compiler'

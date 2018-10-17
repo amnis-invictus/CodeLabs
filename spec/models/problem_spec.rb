@@ -13,6 +13,12 @@ RSpec.describe Problem, type: :model do
 
   it { should validate_numericality_of :real_time_limit }
 
+  it { should_not allow_value(nil).for(:private) }
+
+  it { should allow_value(true).for(:private) }
+
+  it { should allow_value(false).for(:private) }
+
   it { should belong_to :user }
 
   it { should belong_to(:checker_compiler).class_name('Compiler') }
