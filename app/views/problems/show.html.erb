@@ -70,4 +70,8 @@
   <%= content_tag :div, class: 'section section-striped' do %>
     <%= render 'submissions/form', parent: resource, resource: Submission.new %>
   <% end if current_user %>
+
+  <div class="section section-striped">
+    <%= link_to t('problems.show.submissions'), [resource, :submissions], class: 'btn btn-block btn-link' %>
+  </div>
 </div>
