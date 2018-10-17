@@ -45,5 +45,7 @@
 
     <%= link_to t('profile.show.received_invites'), :received_invites, class: 'btn btn-block btn-link' \
       if policy(Invite).index? %>
+
+    <%= link_to t('profile.show.submissions'), [current_user, :submissions], class: 'btn btn-block btn-link' %>
   </div>
 <% end %>

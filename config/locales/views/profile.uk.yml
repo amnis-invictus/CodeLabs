@@ -6,6 +6,7 @@ uk:
       ask_for_confirmation: Запросити підтвердження
       problems: Мої задачі
       received_invites: Мої запрошення
+      submissions: Мої відправлені розв'язки
     update:
       success: Успішно збережено
     confirm: Підтвердити

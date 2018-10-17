@@ -23,6 +23,8 @@ class SubmissionsController < ApplicationController
         Group.find params[:group_id]
       when params[:problem_id]
         Problem.find params[:problem_id]
+      when params[:user_id]
+        User.find params[:user_id]
       end
   end
 

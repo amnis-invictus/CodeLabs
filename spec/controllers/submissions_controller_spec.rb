@@ -78,6 +78,14 @@ RSpec.describe SubmissionsController, type: :controller do
 
       its(:parent) { should eq :parent }
     end
+
+    context do
+      before { allow(subject).to receive(:params).and_return(user_id: 89) }
+
+      before { expect(User).to receive(:find).with(89).and_return(:parent) }
+
+      its(:parent) { should eq :parent }
+    end
   end
 
   describe '#resource' do
