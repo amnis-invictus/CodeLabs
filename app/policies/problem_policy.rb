@@ -1,14 +1,14 @@
 class ProblemPolicy < ApplicationPolicy
   def create?
-    !!user&.administrator?
+    !!user&.confirmed?
   end
 
   def update?
-    !!user&.administrator?
+    !!user&.confirmed?
   end
 
   def destroy?
-    !!user&.administrator?
+    !!user&.confirmed?
   end
 
   def index?
