@@ -1,4 +1,4 @@
-class AcceptPolicy < ApplicationPolicy
+class Invite::AcceptPolicy < ApplicationPolicy
   def create?
     return false if user.blank?
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Accept do
+RSpec.describe Invite::Accept do
   let(:sender) { double }
 
   let(:receiver) { double }

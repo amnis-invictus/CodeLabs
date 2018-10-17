@@ -1,4 +1,4 @@
-class AcceptsController < ApplicationController
+class Invite::RejectsController < ApplicationController
   def create
     flash[:error] = 'Validation errors' unless resource.save
 
@@ -13,6 +13,6 @@ class AcceptsController < ApplicationController
   end
 
   def build_resource
-    @resource = Accept.new parent
+    @resource = Invite::Reject.new parent
   end
 end

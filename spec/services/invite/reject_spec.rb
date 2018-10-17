@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Reject do
+RSpec.describe Invite::Reject do
   let(:sender) { double }
 
   let(:receiver) { double }

@@ -32,11 +32,11 @@ Rails.application.routes.draw do
   resources :received_invites, only: :index
 
   resources :invites, only: [] do
-    resource :reject, :accept, only: :create
+    resource :reject, :accept, only: :create, module: :invite
   end
 
   resources :confirmation_requests, only: %i(index create) do
-    resource :reject, :accept, only: :create
+    resource :reject, :accept, only: :create, module: :confirmation_request
   end
 
   namespace :api do
