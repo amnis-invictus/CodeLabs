@@ -108,15 +108,13 @@ RSpec.describe SubmissionsController, type: :controller do
 
     before { expect(subject).to receive(:params).and_return(params) }
 
-    before { expect(subject).to receive(:parent).and_return(:parent) }
-
     before { expect(subject).to receive(:current_user).and_return(:current_user) }
 
-    its(:resource_params) { should eq params[:submission].permit!.merge(problem: :parent, user: :current_user) }
+    its(:resource_params) { should eq params[:submission].permit!.merge(user: :current_user) }
   end
 
   describe '#initialize_resource' do
-    before { expect(Submission).to receive(:new).and_return(:resource) }
+    before { expect(subject).to receive_message_chain(:parent, :submissions, :new).and_return(:resource) }
 
     before { subject.send :initialize_resource }
 
@@ -126,7 +124,9 @@ RSpec.describe SubmissionsController, type: :controller do
   describe '#build_resource' do
     before { expect(subject).to receive(:resource_params).and_return(:resource_params) }
 
-    before { expect(Submission).to receive(:new).with(:resource_params).and_return(:resource) }
+    before do
+      expect(subject).to receive_message_chain(:parent, :submissions, :new).with(:resource_params).and_return(:resource)
+    end
 
     before { subject.send :build_resource }
 

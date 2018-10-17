@@ -1,7 +1,13 @@
 <% url = url_for submission if policy(submission).show? %>
 
 <tr>
-  <td><%= link_to submission.id, submission %></td>
+  <td>
+    <% if policy(submission).show? %>
+      <%= link_to submission.id, submission %>
+    <% else %>
+      <%= submission.id %>
+    <% end %>
+  </td>
 
   <td>
     <% if policy(submission.problem).show? %>
