@@ -10,10 +10,10 @@
   <td>
     <%= link_to [received_invite, :accept], method: :post, class: 'btn btn-sm btn-success' do %>
       <i class="fas fa-check"></i>
-    <% end if policy(Accept.new received_invite).create? %>
+    <% end if policy(Invite::Accept.new received_invite).create? %>
 
     <%= link_to [received_invite, :reject], method: :post, class: 'btn btn-sm btn-danger' do %>
       <i class="fas fa-times"></i>
-    <% end if policy(Reject.new received_invite).create? %>
+    <% end if policy(Invite::Reject.new received_invite).create? %>
   </td>
 </tr>

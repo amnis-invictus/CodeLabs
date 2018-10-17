@@ -5,13 +5,17 @@
 
   <td><%= confirmation_request.user_username %></td>
 
+  <td><%= confirmation_request.status.humanize %></td>
+
+  <td><%= l confirmation_request.created_at, format: :long %></td>
+
   <td>
     <%= link_to [confirmation_request, :accept], method: :post, class: 'btn btn-sm btn-success' do %>
       <i class="fas fa-check"></i>
-    <% end %>
+    <% end if policy(ConfirmationRequest::Accept.new confirmation_request).create? %>
 
     <%= link_to [confirmation_request, :reject], method: :post, class: 'btn btn-sm btn-danger' do %>
       <i class="fas fa-times"></i>
-    <% end %>
+    <% end if policy(ConfirmationRequest::Reject.new confirmation_request).create? %>
   </td>
 </tr>
