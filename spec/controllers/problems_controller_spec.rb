@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe ProblemsController, type: :controller do
   it_behaves_like :index, anonymous: true
 
+  it_behaves_like :index, params: { tag_id: 25 }, anonymous: true
+
+  it_behaves_like :index, params: { user_id: 25 }, anonymous: true
+
   it_behaves_like :show, anonymous: true
 
   it_behaves_like :new
@@ -61,15 +65,13 @@ RSpec.describe ProblemsController, type: :controller do
 
   describe '#parent' do
     context do
-      before { expect(subject).to receive(:params).and_return(tag_id: 5) }
-
       before { subject.instance_variable_set :@parent, :parent }
 
       its(:parent) { should eq :parent }
     end
 
     context do
-      before { expect(subject).to receive(:params).and_return(tag_id: 5).twice }
+      before { allow(subject).to receive(:params).and_return(tag_id: 5) }
 
       before { expect(Tag).to receive(:find).with(5).and_return(:parent) }
 
@@ -77,7 +79,15 @@ RSpec.describe ProblemsController, type: :controller do
     end
 
     context do
-      before { expect(subject).to receive(:params).and_return({}) }
+      before { allow(subject).to receive(:params).and_return(user_id: 5) }
+
+      before { expect(User).to receive(:find).with(5).and_return(:parent) }
+
+      its(:parent) { should eq :parent }
+    end
+
+    context do
+      before { allow(subject).to receive(:params).and_return({}) }
 
       its(:parent) { should be_nil }
     end

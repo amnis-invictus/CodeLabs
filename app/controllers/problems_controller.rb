@@ -29,7 +29,13 @@ class ProblemsController < ApplicationController
   end
 
   def parent
-    @parent ||= Tag.find params[:tag_id] if params[:tag_id]
+    @parent ||= \
+      case
+      when params[:tag_id]
+        Tag.find params[:tag_id]
+      when params[:user_id]
+        User.find params[:user_id]
+      end
   end
 
   def resource

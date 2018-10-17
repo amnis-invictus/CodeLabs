@@ -4,6 +4,7 @@ uk:
     show:
       title: Особистий кабінет
       ask_for_confirmation: Запросити підтвердження
+      problems: Мої задачі
     update:
       success: Успішно збережено
     confirm: Підтвердити
