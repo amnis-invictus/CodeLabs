@@ -21,5 +21,11 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  bitmask :roles, as: %i(confirmed moderator administrator), null: false
+
+  values_for_roles.each do |value|
+    define_method("#{ value }?") { roles? value }
+  end
+
   delegate :as_json, to: :decorate
 end

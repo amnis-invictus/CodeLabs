@@ -32,6 +32,7 @@ gem 'cocoon'
 gem 'bootstrap'
 gem 'rails-assets-sweetalert2', source: 'https://rails-assets.org'
 gem 'sweet-alert2-rails'
+gem 'bitmask_attributes'
 
 group :development, :test do
   gem 'rspec-rails'

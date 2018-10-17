@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_14_145628) do
+ActiveRecord::Schema.define(version: 2018_10_16_162627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -198,15 +198,29 @@ ActiveRecord::Schema.define(version: 2018_10_14_145628) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.bigint "score", default: 0
-    t.boolean "administrator", default: false, null: false
     t.string "skills"
     t.string "city"
     t.string "institution"
     t.string "username", null: false
+    t.integer "roles", default: 0, null: false
     t.index ["city"], name: "index_users_on_city", opclass: :gist_trgm_ops, using: :gist
     t.index ["email"], name: "index_users_on_email"
     t.index ["institution"], name: "index_users_on_institution", opclass: :gist_trgm_ops, using: :gist
     t.index ["username"], name: "index_users_on_username", opclass: :gist_trgm_ops, using: :gist
+  end
+
+  create_table "workers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ips", default: [], null: false, array: true
+    t.integer "api_version", null: false
+    t.integer "api_type", null: false
+    t.boolean "webhook_supported", null: false
+    t.string "task_status", default: [], null: false, array: true
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "alive_at", null: false
+    t.index ["alive_at"], name: "index_workers_on_alive_at"
   end
 
   add_foreign_key "auth_tokens", "users"

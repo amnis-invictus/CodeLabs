@@ -31,5 +31,15 @@ RSpec.describe User, type: :model do
 
   pending { should have_one_attached :avatar }
 
+  pending { should define_bitmask_for(:roles).with(%i(confirmed moderator administrator)).null(false) }
+
+  %i(confirmed moderator administrator).each do |value|
+    describe "##{ value }?" do
+      before { expect(subject).to receive(:roles?).with(value).and_return(:result) }
+
+      its("#{ value }?") { should eq :result }
+    end
+  end
+
   it { should delegate_method(:as_json).to(:decorate) }
 end
