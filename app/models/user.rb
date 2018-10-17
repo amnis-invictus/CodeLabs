@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
+  has_one :confirmation_request, dependent: :destroy
+
   has_many :problems, dependent: :nullify
 
   has_many :auth_tokens, dependent: :destroy
@@ -23,9 +25,9 @@ class User < ApplicationRecord
 
   bitmask :roles, as: %i(confirmed moderator administrator), null: false
 
+  delegate :as_json, to: :decorate
+
   values_for_roles.each do |value|
     define_method("#{ value }?") { roles? value }
   end
-
-  delegate :as_json, to: :decorate
 end

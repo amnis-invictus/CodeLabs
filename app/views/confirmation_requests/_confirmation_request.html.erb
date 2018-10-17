@@ -1,0 +1,17 @@
+<tr>
+  <td><%= confirmation_request.user_id %></td>
+
+  <td><%= confirmation_request.user_name %></td>
+
+  <td><%= confirmation_request.user_username %></td>
+
+  <td>
+    <%= link_to [confirmation_request, :accept], method: :post, class: 'btn btn-sm btn-success' do %>
+      <i class="fas fa-check"></i>
+    <% end %>
+
+    <%= link_to [confirmation_request, :reject], method: :post, class: 'btn btn-sm btn-danger' do %>
+      <i class="fas fa-times"></i>
+    <% end %>
+  </td>
+</tr>

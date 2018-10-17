@@ -3,6 +3,7 @@ uk:
   profile:
     show:
       title: Особистий кабінет
+      ask_for_confirmation: Запросити підтвердження
     update:
       success: Успішно збережено
     confirm: Підтвердити

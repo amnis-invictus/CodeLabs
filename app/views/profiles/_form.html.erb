@@ -35,19 +35,16 @@
 
     <%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) } %>
 
-    <div>
-      <button type="submit" class="btn btn-primary" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">
-        Update profile
-      </button>
+    <div class="btn-group">
+      <%= f.submit class: 'btn btn-primary' %>
 
-      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-        style="border-top-left-radius: 0; border-bottom-left-radius: 0; margin-left: -4px; border-left: 1px solid #4a92d8">
-        <span class="sr-only">Ask for confirmation</span>
-      </button>
+      <% if policy(ConfirmationRequest).new? %>
+        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
 
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Ask for confirmation</a>
-      </div>
+        <div class="dropdown-menu">
+          <%= link_to t('profile.show.ask_for_confirmation'), :confirmation_requests, method: :post, class: 'dropdown-item' %>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>

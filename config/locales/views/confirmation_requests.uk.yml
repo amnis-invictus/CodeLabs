@@ -1,0 +1,7 @@
+uk:
+  confirmation_requests:
+    index:
+      title: Запити на підтвердження
+      user_id: Ідентифікатор
+      user_name: Ім'я
+      user_username: Нік

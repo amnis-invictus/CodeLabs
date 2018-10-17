@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_16_162627) do
+ActiveRecord::Schema.define(version: 2018_10_17_132550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 2018_10_16_162627) do
     t.float "time_b", null: false
     t.integer "status", default: 0
     t.index ["name"], name: "index_compilers_on_name"
+  end
+
+  create_table "confirmation_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_confirmation_requests_on_user_id"
   end
 
   create_table "examples", force: :cascade do |t|
@@ -224,6 +232,7 @@ ActiveRecord::Schema.define(version: 2018_10_16_162627) do
   end
 
   add_foreign_key "auth_tokens", "users"
+  add_foreign_key "confirmation_requests", "users"
   add_foreign_key "examples", "problems"
   add_foreign_key "groups", "users", column: "owner_id"
   add_foreign_key "groups_users", "groups"

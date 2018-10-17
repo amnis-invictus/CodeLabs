@@ -8,6 +8,7 @@ two:
   name: User Two
   email: two@users.com
   password_digest: XXXYYYZZZ
+  roles: 4
 three:
   username: user-three
   name: User Three

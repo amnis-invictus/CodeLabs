@@ -35,6 +35,10 @@ Rails.application.routes.draw do
     resource :reject, :accept, only: :create
   end
 
+  resources :confirmation_requests, only: %i(index create) do
+    resource :reject, :accept, only: :create
+  end
+
   namespace :api do
     resources :submissions, only: :index do
       resource :take, :release, :fail, only: :create
@@ -49,7 +53,6 @@ Rails.application.routes.draw do
     resources :compilers, :constants, only: :index
   end
 
-  get '/v2/users/confirm', to: "users#confirm"
   get '/v2/tests/problems.json', to: 'tests#problems'
   get '/v2/tests/statuses.json', to: 'tests#statuses'
   get '/v2/tests/users.json', to: 'tests#users'
