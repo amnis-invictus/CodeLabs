@@ -37,7 +37,7 @@ RSpec.describe ProblemsController, type: :controller do
 
   pending '#resource_params'
 
-  pending '#collection' do
+  describe '#collection' do
     context do
       before { subject.instance_variable_set :@collection, :collection }
 
@@ -47,19 +47,36 @@ RSpec.describe ProblemsController, type: :controller do
     context do
       before { expect(subject).to receive(:params).and_return(page: 12) }
 
-      before { expect(subject).to receive_message_chain(:parent, :problems, :page).with(12).and_return(:collection) }
+      before do
+        #
+        # subject.problems.includes(:user).order(:id).page(12) -> :collection
+        #
+        expect(subject).to receive_message_chain(:problems, :includes).with(:user) do
+          double.tap do |a|
+            expect(a).to receive(:order).with(:id) do
+              double.tap { |b| expect(b).to receive(:page).with(12).and_return(:collection) }
+            end
+          end
+        end
+      end
 
       its(:collection) { should eq :collection }
     end
+  end
+
+  describe '#problems' do
+    before { allow(subject).to receive(:parent).and_return(parent) }
 
     context do
-      before { expect(subject).to receive(:params).and_return(page: 12) }
+      let(:parent) { double problems: :problems }
 
-      before { expect(subject).to receive(:parent).and_return(nil) }
+      its(:problems) { should eq :problems }
+    end
 
-      before { expect(Problem).to receive_message_chain(:all, :page).with(12).and_return(:collection) }
+    context do
+      let(:parent) { nil }
 
-      its(:collection) { should eq :collection }
+      its(:problems) { should eq Problem.all }
     end
   end
 

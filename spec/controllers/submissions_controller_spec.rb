@@ -29,10 +29,14 @@ RSpec.describe SubmissionsController, type: :controller do
 
       before do
         #
-        # subject.submissions.order(created_at: :desc).page(params[:page]) -> :collection
+        # subject.submissions.includes(:user, problem: :user).order(created_at: :desc).page(params[:page]) -> :collection
         #
-        expect(subject).to receive_message_chain(:submissions, :order).with(created_at: :desc) do
-          double.tap { |a| expect(a).to receive(:page).with(41).and_return(:collection) }
+        expect(subject).to receive_message_chain(:submissions, :includes).with(:user, problem: :user) do
+          double.tap do |a|
+            expect(a).to receive(:order).with(created_at: :desc) do
+              double.tap { |b| expect(b).to receive(:page).with(41).and_return(:collection) }
+            end
+          end
         end
       end
 

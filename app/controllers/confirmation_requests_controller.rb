@@ -14,7 +14,7 @@ class ConfirmationRequestsController < ApplicationController
   attr_reader :resource
 
   def collection
-    @collection ||= ConfirmationRequest.page params[:page]
+    @collection ||= ConfirmationRequest.includes(:user).page(params[:page])
   end
 
   def build_resource

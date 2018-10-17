@@ -9,7 +9,7 @@ class SubmissionsController < ApplicationController
 
   private
   def collection
-    @collection ||= submissions.order(created_at: :desc).page(params[:page])
+    @collection ||= submissions.includes(:user, problem: :user).order(created_at: :desc).page(params[:page])
   end
 
   def submissions

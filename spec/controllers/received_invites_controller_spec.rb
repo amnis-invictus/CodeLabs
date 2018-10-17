@@ -14,10 +14,14 @@ RSpec.describe ReceivedInvitesController, type: :controller do
       before { expect(subject).to receive(:params).and_return(page: 10) }
       before do
         #
-        # subject.current_user.received_invites.order(id: :desc).page(10) -> :collection
+        # subject.current_user.received_invites.includes(:sender, :group).order(id: :desc).page(10) -> :collection
         #
-        expect(subject).to receive_message_chain(:current_user, :received_invites, :order).with(id: :desc) do
-          double.tap { |a| expect(a).to receive(:page).with(10).and_return(:collection) }
+        expect(subject).to receive_message_chain(:current_user, :received_invites, :includes).with(:sender, :group) do
+          double.tap do |a|
+            expect(a).to receive(:order).with(id: :desc) do
+              double.tap { |b| expect(b).to receive(:page).with(10).and_return(:collection) }
+            end
+          end
         end
       end
 

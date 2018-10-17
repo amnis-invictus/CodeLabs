@@ -37,7 +37,14 @@ RSpec.describe ConfirmationRequestsController, type: :controller do
     context do
       before { expect(subject).to receive(:params).and_return(page: 23) }
 
-      before { expect(ConfirmationRequest).to receive(:page).with(23).and_return(:collection) }
+      before do
+        #
+        # ConfirmationRequest.includes(:user).page(23) -> :collection
+        #
+        expect(ConfirmationRequest).to receive(:includes).with(:user) do
+          double.tap { |a| expect(a).to receive(:page).with(23).and_return(:collection) }
+        end
+      end
 
       its(:collection) { should eq :collection }
     end

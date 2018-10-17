@@ -11,7 +11,7 @@ class InvitesController < ApplicationController
   attr_reader :resource
 
   def collection
-    @collection ||= parent.invites.order(id: :desc).page(params[:page])
+    @collection ||= parent.invites.includes(:sender, :receiver).order(id: :desc).page(params[:page])
   end
 
   def parent

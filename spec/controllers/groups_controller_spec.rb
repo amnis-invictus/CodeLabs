@@ -30,4 +30,14 @@ RSpec.describe GroupsController, type: :controller do
 
     let(:success) { -> { should redirect_to :groups } }
   end
+
+  pending '#resource'
+
+  pending '#collection'
+
+  pending '#resource_params'
+
+  pending '#initialize_resource'
+
+  pending '#build_resource'
 end

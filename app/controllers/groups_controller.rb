@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
   end
 
   def collection
-    @collection ||= Group.order(:name).page(params[:page])
+    @collection ||= Group.includes(:owner).order(:name).page(params[:page])
   end
 
   def resource_params

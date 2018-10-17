@@ -29,10 +29,14 @@ RSpec.describe InvitesController, type: :controller do
 
       before do
         #
-        # subject.parent.invites.order(id: :desc).page(8) -> :collection
+        # subject.parent.invites.includes(:sender, :receiver).order(id: :desc).page(8) -> :collection
         #
-        expect(subject).to receive_message_chain(:parent, :invites, :order).with(id: :desc) do
-          double.tap { |a| expect(a).to receive(:page).with(8).and_return(:collection) }
+        expect(subject).to receive_message_chain(:parent, :invites, :includes).with(:sender, :receiver) do
+          double.tap do |a|
+            expect(a).to receive(:order).with(id: :desc) do
+              double.tap { |b| expect(b).to receive(:page).with(8).and_return(:collection) }
+            end
+          end
         end
       end
 

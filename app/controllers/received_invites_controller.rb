@@ -3,6 +3,6 @@ class ReceivedInvitesController < ApplicationController
 
   private
   def collection
-    @collection ||= current_user.received_invites.order(id: :desc).page(params[:page])
+    @collection ||= current_user.received_invites.includes(:sender, :group).order(id: :desc).page(params[:page])
   end
 end
