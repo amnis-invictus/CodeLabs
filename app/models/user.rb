@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :groups
 
+  has_many :shared_problems, class_name: 'Problem', through: :groups, source: :problems
+
   has_one_attached :avatar
 
   has_secure_password

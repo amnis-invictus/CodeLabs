@@ -29,6 +29,8 @@ RSpec.describe User, type: :model do
 
   it { should have_and_belong_to_many :groups }
 
+  it { should have_many(:shared_problems).through(:groups).source(:problems).class_name('Problem') }
+
   it { should have_secure_password }
 
   pending { should have_one_attached :avatar }

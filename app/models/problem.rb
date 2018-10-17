@@ -23,6 +23,8 @@ class Problem < ApplicationRecord
 
   has_and_belongs_to_many :tags
 
+  has_and_belongs_to_many :groups
+
   default_scope { includes :translation, :default_translation }
 
   delegate :as_json, to: :decorate

@@ -39,6 +39,8 @@ RSpec.describe Problem, type: :model do
 
   it { should have_and_belong_to_many :tags }
 
+  it { should have_and_belong_to_many :groups }
+
   it { should delegate_method(:as_json).to(:decorate) }
 
   describe '.default_scope' do
