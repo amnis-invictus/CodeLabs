@@ -3,45 +3,53 @@ require 'rails_helper'
 RSpec.describe ConfirmationRequest::AcceptPolicy do
   subject { described_class }
 
-  fixtures :users
+  let(:sender) { stub_model User }
+
+  let(:status) { :pending }
+
+  let(:confirmation_request) { stub_model ConfirmationRequest, status: status, user: sender }
 
   let(:resource) { ConfirmationRequest::Accept.new confirmation_request }
 
   permissions :new?, :create? do
-    context do
-      let(:confirmation_request) { stub_model ConfirmationRequest, status: :pending }
+    it { should_not permit nil, resource }
 
-      it { should_not permit nil, resource }
+    it { should_not permit sender, resource }
+
+    it { should_not permit stub_model(User), resource }
+
+    context do
+      let(:user) { stub_model User, roles: [:administrator] }
+
+      it { should_not permit user, resource }
     end
 
     context do
-      let(:confirmation_request) { stub_model ConfirmationRequest, status: :pending }
+      let(:user) { stub_model User, roles: [:confirmed] }
 
-      it { should_not permit users(:one), resource }
+      it { should_not permit user, resource }
     end
 
     context do
-      let(:confirmation_request) { stub_model ConfirmationRequest, status: :pending }
+      let(:status) { :accepted }
 
-      it { should_not permit users(:three), resource }
+      let(:user) { stub_model User, roles: [:moderator] }
+
+      it { should_not permit user, resource }
     end
 
     context do
-      let(:confirmation_request) { stub_model ConfirmationRequest, status: :accepted }
+      let(:status) { :rejected }
 
-      it { should_not permit users(:two), resource }
+      let(:user) { stub_model User, roles: [:moderator] }
+
+      it { should_not permit user, resource }
     end
 
     context do
-      let(:confirmation_request) { stub_model ConfirmationRequest, status: :rejected }
+      let(:user) { stub_model User, roles: [:moderator] }
 
-      it { should_not permit users(:two), resource }
-    end
-
-    context do
-      let(:confirmation_request) { stub_model ConfirmationRequest, status: :pending }
-
-      it { should permit users(:two), resource }
+      it { should permit user, resource }
     end
   end
 end

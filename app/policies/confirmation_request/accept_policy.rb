@@ -4,6 +4,6 @@ class ConfirmationRequest::AcceptPolicy < ApplicationPolicy
 
     return false unless resource.confirmation_request_pending?
 
-    user.administrator?
+    user.moderator?
   end
 end
