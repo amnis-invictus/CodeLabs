@@ -48,6 +48,7 @@ group :development do
   gem 'capistrano-rails', require: false
   gem 'capistrano-rbenv', require: false
   gem 'faker', require: false
+  gem 'bullet'
 end
 
 group :test do
