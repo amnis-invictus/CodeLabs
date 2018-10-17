@@ -42,5 +42,8 @@
 
     <%= link_to t('profile.show.problems'), [current_user, :problems], class: 'btn btn-block btn-primary' \
       if current_user.confirmed? %>
+
+    <%= link_to t('profile.show.received_invites'), :received_invites, class: 'btn btn-block btn-primary' \
+      if policy(Invite).index? %>
   </div>
 <% end %>

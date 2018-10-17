@@ -5,6 +5,7 @@ uk:
       title: Особистий кабінет
       ask_for_confirmation: Запросити підтвердження
       problems: Мої задачі
+      received_invites: Мої запрошення
     update:
       success: Успішно збережено
     confirm: Підтвердити

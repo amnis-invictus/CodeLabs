@@ -6,11 +6,11 @@
   <div class="header-section">
     <%= content_tag :div, class: 'header-section__item' do %>
       <%= link_to t('header.problems'), :problems %>
-    <% end if policy(Problem).index?  %>
+    <% end if policy(Problem).index? %>
 
     <%= content_tag :div, class: 'header-section__item' do %>
       <%= link_to t('header.submissions'), :submissions %>
-    <% end if policy(Submission).index?  %>
+    <% end if policy(Submission).index? %>
 
     <%= content_tag :div, class: 'header-section__item' do %>
       <%= link_to t('header.compilers'), :compilers %>
@@ -18,15 +18,11 @@
 
     <%= content_tag :div, class: 'header-section__item' do %>
       <%= link_to t('header.groups'), :groups %>
-    <% end if policy(Group).index?  %>
-
-    <%= content_tag :div, class: 'header-section__item' do %>
-      <%= link_to t('header.received_invites'), :received_invites %>
-    <% end if policy(Invite).index?  %>
+    <% end if policy(Group).index? %>
 
     <%= content_tag :div, class: 'header-section__item' do %>
       <%= link_to t('header.confirmation_requests'), :confirmation_requests %>
-    <% end if policy(ConfirmationRequest).index?  %>
+    <% end if policy(ConfirmationRequest).index? %>
   </div>
 
   <div class="header-section">
