@@ -1,7 +1,7 @@
-<tr data-href="<%= url_for group %>">
+<tr>
   <td><%= group.owner_name %></td>
 
-  <td><%= group.name %></td>
+  <td><%= link_to group.name, group %></td>
 
   <td><%= group.visibility.humanize %></td>
 

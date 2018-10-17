@@ -1,7 +1,7 @@
-<tr data-href="<%= url_for problem %>">
+<tr>
   <td><%= problem.id %></td>
 
-  <td><%= problem.caption %></td>
+  <td><%= link_to problem.caption, problem %></td>
 
   <td>0%</td>
 </tr>

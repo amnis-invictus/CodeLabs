@@ -1,11 +1,11 @@
 <% url = url_for submission if policy(submission).show? %>
 
-<%= content_tag :tr, 'data-href': url do %>
-  <td><%= submission.id %></td>
+<tr>
+  <td><%= link_to submission.id, submission %></td>
 
-  <td><%= submission.problem_caption %></td>
+  <td><%= link_to submission.problem_caption, submission.problem %></td>
 
   <td><%= submission.user_name %></td>
 
   <td><%= submission.state %></td>
-<% end %>
+</tr>
