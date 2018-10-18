@@ -1,5 +1,5 @@
 <div class="row bg-white">
-  <div class="col-xs-12 col-12">
+  <div class="col-12">
     <h1><%= t 'submissions.show.title', id: resource.id %></h1>
 
     <p><%= t 'submissions.show.problem' %>: <b><%= link_to resource.problem_caption, resource.problem %></b></p>
@@ -13,7 +13,7 @@
     <p><%= t 'submissions.show.memory_limit' %>: <b><%= resource.memory_limit %></b> kb</p>
   </div>
 
-  <div class="col-xs-12 col-12">
+  <div class="col-12">
     <% if resource.test_state_failed? %>
       <%= t 'submissions.show.failed' %>
     <% elsif resource.test_result_compiler_error? %>

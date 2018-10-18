@@ -1,6 +1,6 @@
 <%= simple_form_for resource, url: :profile, wrapper: :horizontal_form,
   html: { class: 'form-horizontal row', id: 'profile-form', style: 'margin-left: 0' } do |f| %>
-  <div class="col-xs-12 col-md-3 col-3 avatar">
+  <div class="col-md-3 col-12 avatar">
     <div class="image-input">
       <%= f.file_field :avatar, direct_upload: true, class: 'image-input__input' %>
 
@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="col-xs-12 col-md-9 col-9">
+  <div class="col-md-9 col-12">
     <%= f.input :name %>
 
     <%= f.input :username %>
@@ -35,19 +35,17 @@
 
     <%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) } %>
 
-    <div>
-      <button type="submit" class="btn btn-primary" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">
-        Update profile
-      </button>
+    <%= f.submit class: 'btn btn-block btn-primary' %>
 
-      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-        style="border-top-left-radius: 0; border-bottom-left-radius: 0; margin-left: -4px; border-left: 1px solid #4a92d8">
-        <span class="sr-only">Ask for confirmation</span>
-      </button>
+    <%= link_to t('profile.show.ask_for_confirmation'), :confirmation_requests, method: :post, class: 'btn btn-block btn-primary' \
+      if policy(ConfirmationRequest).new? %>
 
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Ask for confirmation</a>
-      </div>
-    </div>
+    <%= link_to t('profile.show.received_invites'), :received_invites, class: 'btn btn-block btn-link' \
+      if policy(Invite).index? %>
+
+    <%= link_to t('profile.show.submissions'), [current_user, :submissions], class: 'btn btn-block btn-link' %>
+
+    <%= link_to t('profile.show.problems'), [current_user, :problems], class: 'btn btn-block btn-link' \
+      if policy(Problem).new? %>
   </div>
 <% end %>

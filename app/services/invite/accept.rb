@@ -1,4 +1,4 @@
-class Accept
+class Invite::Accept
   attr_reader :invite
 
   delegate :sender, :receiver, :pending?, to: :invite, prefix: true
@@ -8,8 +8,10 @@ class Accept
   end
 
   def save
-    invite.group_users << invite.receiver
+    Invite.transaction do
+      invite.group_users << invite.receiver
 
-    invite.update status: :accepted
+      invite.update status: :accepted
+    end
   end
 end

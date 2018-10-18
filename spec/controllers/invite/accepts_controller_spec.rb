@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RejectsController, type: :controller do
+RSpec.describe Invite::AcceptsController, type: :controller do
   it_behaves_like :create, params: { invite_id: 10 } do
     let(:resource) { double }
 
@@ -40,7 +40,7 @@ RSpec.describe RejectsController, type: :controller do
   describe '#build_resource' do
     before { expect(subject).to receive(:parent).and_return(:parent) }
 
-    before { expect(Reject).to receive(:new).with(:parent).and_return(:resource) }
+    before { expect(Invite::Accept).to receive(:new).with(:parent).and_return(:resource) }
 
     before { subject.send :build_resource }
 

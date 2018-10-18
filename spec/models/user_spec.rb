@@ -13,6 +13,8 @@ RSpec.describe User, type: :model do
 
   it { should validate_uniqueness_of(:username).case_insensitive }
 
+  it { should have_one(:confirmation_request).dependent(:destroy) }
+
   it { should have_many(:problems).dependent(:nullify) }
 
   it { should have_many(:auth_tokens).dependent(:destroy) }
@@ -27,9 +29,21 @@ RSpec.describe User, type: :model do
 
   it { should have_and_belong_to_many :groups }
 
+  it { should have_many(:shared_problems).through(:groups).source(:problems).class_name('Problem') }
+
   it { should have_secure_password }
 
   pending { should have_one_attached :avatar }
 
+  pending { should define_bitmask_for(:roles).with(%i(confirmed moderator administrator)).null(false) }
+
   it { should delegate_method(:as_json).to(:decorate) }
+
+  %i(confirmed moderator administrator).each do |value|
+    describe "##{ value }?" do
+      before { expect(subject).to receive(:roles?).with(value).and_return(:result) }
+
+      its("#{ value }?") { should eq :result }
+    end
+  end
 end

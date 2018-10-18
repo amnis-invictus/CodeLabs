@@ -4,7 +4,7 @@ ru:
     attributes:
       user:
         created_at: Дата регистрации
-        name: Имя
+        name: Фамилия, Имя
         password: Пароль
         password_confirmation: Подтверждение пароля
         score: Балы

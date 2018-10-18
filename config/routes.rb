@@ -1,40 +1,50 @@
 Rails.application.routes.draw do
-  root controller: :home, action: :show
+  scope '(:language)', language: /ru|en|uk/ do
+    root controller: :home, action: :show
+    
+    resource :session, only: %i(new create destroy)
 
-  resource :session, only: %i(new create destroy)
+    resource :profile, only: %i(show update)
 
-  resource :profile, only: %i(show update)
+    resources :users, only: %i(index create) do
+      resources :problems, only: :index
 
-  resources :users, only: %i(index create)
+      resources :submissions, only: :index
+    end
 
-  resources :problems do
-    resources :submissions, only: %i(index new create)
-  end
+    resources :problems do
+      resources :submissions, only: %i(index new create)
+    end
 
-  resources :tags, only: :index do
-    resources :problems, only: :index
-  end
+    resources :tags, only: :index do
+      resources :problems, only: :index
+    end
 
-  resources :submissions, only: %i(index show)
+    resources :submissions, only: %i(index show)
 
-  resources :archives, only: %i(new create)
+    resources :archives, only: %i(new create)
 
-  resources :compilers, except: :edit
+    resources :compilers, except: :edit
 
   resources :workers, only: :index
   
   resources :groups do
     resources :memberships, only: :destroy
 
-    resources :invites, only: %i(index new create)
+      resources :invites, only: %i(index new create)
 
-    resources :submissions, only: :index
-  end
+      resources :submissions, only: :index
+    end
 
-  resources :received_invites, only: :index
+    resources :received_invites, only: :index
 
-  resources :invites, only: [] do
-    resource :reject, :accept, only: :create
+    resources :invites, only: [] do
+      resource :reject, :accept, only: :create, module: :invite
+    end
+
+    resources :confirmation_requests, only: %i(index create) do
+      resource :reject, :accept, only: :create, module: :confirmation_request
+    end
   end
 
   namespace :api do
@@ -57,7 +67,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/v2/users/confirm', to: "users#confirm"
   get '/v2/tests/problems.json', to: 'tests#problems'
   get '/v2/tests/statuses.json', to: 'tests#statuses'
   get '/v2/tests/users.json', to: 'tests#users'

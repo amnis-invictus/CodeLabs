@@ -1,0 +1,12 @@
+.member-list-actions {
+  margin-top: -1px;
+
+  .btn.list-group-item {
+    border-radius: 0;
+
+    &:last-child {
+      border-bottom-right-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+    }
+  }
+}

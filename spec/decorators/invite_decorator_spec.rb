@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe InviteDecorator do
   fixtures :invites
 
-  let(:resource) { invites(:one) }
+  let(:resource) { invites :one }
 
   subject { resource.decorate }
 

@@ -4,7 +4,7 @@ uk:
     attributes:
       user:
         created_at: Дата реєстрації
-        name: Ім'я
+        name: Прізвище, Ім’я
         password: Пароль
         password_confirmation: Підтвердження пароля
         score: Бали

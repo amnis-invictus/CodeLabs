@@ -1,4 +1,4 @@
-class Reject
+class Invite::Reject
   attr_reader :invite
 
   delegate :sender, :receiver, :pending?, to: :invite, prefix: true

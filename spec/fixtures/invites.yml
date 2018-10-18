@@ -3,8 +3,3 @@ one:
   receiver: two
   group: one
   status: pending
-two:
-  sender: one
-  receiver: two
-  group: one
-  status: rejected

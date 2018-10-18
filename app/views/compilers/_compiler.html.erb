@@ -1,7 +1,7 @@
-<tr data-href="<%= url_for compiler %>">
+<tr>
   <td><%= compiler.id  %></td>
 
-  <td><%= compiler.name %></td>
+  <td><%= link_to compiler.name, compiler %></td>
 
   <td><%= compiler.version %></td>
 
