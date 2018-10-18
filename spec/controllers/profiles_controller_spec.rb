@@ -22,11 +22,14 @@ RSpec.describe ProfilesController, type: :controller do
   describe '#resource_params' do
     let :params do
       acp user: {
+        username: 'pika',
         name: 'Pikachu',
         password: 'password',
         password_confirmation: 'password',
         avatar: '',
-        skills: ['lighting rod', 'elecro ball']
+        skills: 'lighting rod, elecro ball',
+        city: 'Vinnytsia',
+        institution: 'VTL'
       }
     end
 

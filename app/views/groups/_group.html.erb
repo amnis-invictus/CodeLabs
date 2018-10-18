@@ -1,0 +1,9 @@
+<tr>
+  <td><%= group.owner_name %></td>
+
+  <td><%= link_to group.name, group %></td>
+
+  <td><%= group.visibility.humanize %></td>
+
+  <td><%= l group.created_at, format: :long %></td>
+</tr>

@@ -25,11 +25,21 @@ class ProblemsController < ApplicationController
 
   private
   def collection
-    @collection ||= (parent&.problems || Problem.all).order(:id).page(params[:page])
+    @collection ||= problems.includes(:user).order(:id).page(params[:page])
+  end
+
+  def problems
+    parent ? parent.problems : Problem.all
   end
 
   def parent
-    @parent ||= Tag.find params[:tag_id] if params[:tag_id]
+    @parent ||= \
+      case
+      when params[:tag_id]
+        Tag.find params[:tag_id]
+      when params[:user_id]
+        User.find params[:user_id]
+      end
   end
 
   def resource
@@ -38,17 +48,17 @@ class ProblemsController < ApplicationController
 
   def resource_params
     params.require(:problem).permit \
-      :memory_limit, :time_limit, :real_time_limit, :checker_compiler_id, :checker_source, tag_ids: [],
+      :memory_limit, :time_limit, :real_time_limit, :checker_compiler_id, :checker_source, :private, tag_ids: [],
       examples_attributes: %i(id input answer _destroy),
       tests_attributes: %i(id num input answer _destroy),
       translations_attributes: %i(id language caption author text technical_text default _destroy)
   end
 
   def initialize_resource
-    @resource = Problem.new
+    @resource = current_user.problems.new
   end
 
   def build_resource
-    @resource = Problem.new resource_params
+    @resource = current_user.problems.new resource_params
   end
 end

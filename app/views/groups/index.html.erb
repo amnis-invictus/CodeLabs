@@ -1,0 +1,27 @@
+<div class="row bg-light">
+  <div class="col-12 mb-4">
+    <h1><%= t 'group.index.title' %></h1>
+  </div>
+
+  <div class="col-12">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th><%= t 'group.index.owner' %></th>
+
+          <th><%= t 'group.index.name' %></th>
+
+          <th><%= t 'group.index.visibility' %></th>
+
+          <th><%= t 'group.index.created_at' %></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= render collection %>
+      </tbody>
+    </table>
+
+    <%= paginate collection %>
+  </div>
+</div>

@@ -32,6 +32,7 @@ gem 'cocoon'
 gem 'bootstrap'
 gem 'rails-assets-sweetalert2', source: 'https://rails-assets.org'
 gem 'sweet-alert2-rails'
+gem 'bitmask_attributes'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -46,6 +47,8 @@ group :development do
   gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rbenv', require: false
+  gem 'faker', require: false
+  gem 'bullet'
 end
 
 group :test do

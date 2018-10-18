@@ -9,11 +9,23 @@ class SubmissionsController < ApplicationController
 
   private
   def collection
-    @collection ||= Submission.order(created_at: :desc).page(params[:page])
+    @collection ||= submissions.includes(:user, problem: :user).order(created_at: :desc).page(params[:page])
+  end
+
+  def submissions
+    parent ? parent.submissions : Submission.all
   end
 
   def parent
-    @parent ||= Problem.find params[:problem_id]
+    @parent ||= \
+      case
+      when params[:group_id]
+        Group.find params[:group_id]
+      when params[:problem_id]
+        Problem.find params[:problem_id]
+      when params[:user_id]
+        User.find params[:user_id]
+      end
   end
 
   def resource
@@ -21,14 +33,14 @@ class SubmissionsController < ApplicationController
   end
 
   def resource_params
-    params.require(:submission).permit(:compiler_id, :source).merge(problem: parent, user: current_user)
+    params.require(:submission).permit(:compiler_id, :source).merge(user: current_user)
   end
 
   def initialize_resource
-    @resource = Submission.new
+    @resource = parent.submissions.new
   end
 
   def build_resource
-    @resource = Submission.new resource_params
+    @resource = parent.submissions.new resource_params
   end
 end

@@ -15,6 +15,8 @@ RSpec.describe SubmissionDecorator do
 
   subject { resource.decorate }
 
+  it { should delegate_method(:name).to(:user).with_prefix }
+
   it { should delegate_method(:caption).to(:problem).with_prefix }
 
   its(:memory_limit) { should eq 3148.792 }

@@ -1,0 +1,19 @@
+<tr>
+  <td><%= received_invite.sender_name %></td>
+
+  <td><%= received_invite.group_name %></td>
+
+  <td><%= received_invite.status&.humanize %></td>
+
+  <td><%= l received_invite.created_at, format: :long %></td>
+
+  <td>
+    <%= link_to [received_invite, :accept], method: :post, class: 'btn btn-sm btn-success' do %>
+      <i class="fas fa-check"></i>
+    <% end if policy(Invite::Accept.new received_invite).create? %>
+
+    <%= link_to [received_invite, :reject], method: :post, class: 'btn btn-sm btn-danger' do %>
+      <i class="fas fa-times"></i>
+    <% end if policy(Invite::Reject.new received_invite).create? %>
+  </td>
+</tr>

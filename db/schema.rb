@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_30_141400) do
+ActiveRecord::Schema.define(version: 2018_10_17_181648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 2018_09_30_141400) do
     t.index ["name"], name: "index_compilers_on_name"
   end
 
+  create_table "confirmation_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_confirmation_requests_on_user_id"
+  end
+
   create_table "examples", force: :cascade do |t|
     t.string "input"
     t.string "answer"
@@ -65,6 +73,43 @@ ActiveRecord::Schema.define(version: 2018_09_30_141400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["problem_id"], name: "index_examples_on_problem_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "visibility", default: 0, null: false
+    t.bigint "owner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.index ["name"], name: "index_groups_on_name"
+    t.index ["owner_id"], name: "index_groups_on_owner_id"
+  end
+
+  create_table "groups_problems", id: false, force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "problem_id", null: false
+    t.index ["group_id"], name: "index_groups_problems_on_group_id"
+    t.index ["problem_id"], name: "index_groups_problems_on_problem_id"
+  end
+
+  create_table "groups_users", id: false, force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["group_id"], name: "index_groups_users_on_group_id"
+    t.index ["user_id"], name: "index_groups_users_on_user_id"
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0, null: false
+    t.index ["group_id"], name: "index_invites_on_group_id"
+    t.index ["receiver_id"], name: "index_invites_on_receiver_id"
+    t.index ["sender_id"], name: "index_invites_on_sender_id"
   end
 
   create_table "logs", force: :cascade do |t|
@@ -96,7 +141,10 @@ ActiveRecord::Schema.define(version: 2018_09_30_141400) do
     t.float "memory_limit", null: false
     t.float "time_limit", null: false
     t.float "real_time_limit", null: false
+    t.bigint "user_id"
+    t.boolean "private", default: false, null: false
     t.index ["checker_compiler_id"], name: "index_problems_on_checker_compiler_id"
+    t.index ["user_id"], name: "index_problems_on_user_id"
   end
 
   create_table "problems_tags", force: :cascade do |t|
@@ -166,19 +214,45 @@ ActiveRecord::Schema.define(version: 2018_09_30_141400) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.bigint "score", default: 0
-    t.boolean "administrator", default: false, null: false
     t.string "skills"
     t.string "city"
     t.string "institution"
+    t.string "username", null: false
+    t.integer "roles", default: 0, null: false
     t.index ["city"], name: "index_users_on_city", opclass: :gist_trgm_ops, using: :gist
     t.index ["email"], name: "index_users_on_email"
     t.index ["institution"], name: "index_users_on_institution", opclass: :gist_trgm_ops, using: :gist
+    t.index ["username"], name: "index_users_on_username", opclass: :gist_trgm_ops, using: :gist
+  end
+
+  create_table "workers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ips", default: [], null: false, array: true
+    t.integer "api_version", null: false
+    t.integer "api_type", null: false
+    t.boolean "webhook_supported", null: false
+    t.string "task_status", default: [], null: false, array: true
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "alive_at", null: false
+    t.index ["alive_at"], name: "index_workers_on_alive_at"
   end
 
   add_foreign_key "auth_tokens", "users"
+  add_foreign_key "confirmation_requests", "users"
   add_foreign_key "examples", "problems"
+  add_foreign_key "groups", "users", column: "owner_id"
+  add_foreign_key "groups_problems", "groups"
+  add_foreign_key "groups_problems", "problems"
+  add_foreign_key "groups_users", "groups"
+  add_foreign_key "groups_users", "users"
+  add_foreign_key "invites", "groups"
+  add_foreign_key "invites", "users", column: "receiver_id"
+  add_foreign_key "invites", "users", column: "sender_id"
   add_foreign_key "problem_translations", "problems"
   add_foreign_key "problems", "compilers", column: "checker_compiler_id"
+  add_foreign_key "problems", "users"
   add_foreign_key "problems_tags", "problems"
   add_foreign_key "problems_tags", "tags"
   add_foreign_key "submissions", "compilers"

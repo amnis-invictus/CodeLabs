@@ -29,14 +29,34 @@ RSpec.describe SubmissionsController, type: :controller do
 
       before do
         #
-        # Submission.order(created_at: :desc).page(params[:page]) -> :collection
+        # subject.submissions.includes(:user, problem: :user).order(created_at: :desc).page(params[:page]) -> :collection
         #
-        expect(Submission).to receive(:order).with(created_at: :desc) do
-          double.tap { |a| expect(a).to receive(:page).with(41).and_return(:collection) }
+        expect(subject).to receive_message_chain(:submissions, :includes).with(:user, problem: :user) do
+          double.tap do |a|
+            expect(a).to receive(:order).with(created_at: :desc) do
+              double.tap { |b| expect(b).to receive(:page).with(41).and_return(:collection) }
+            end
+          end
         end
       end
 
       its(:collection) { should eq :collection }
+    end
+  end
+
+  describe '#submissions' do
+    before { allow(subject).to receive(:parent).and_return(parent) }
+
+    context do
+      let(:parent) { double submissions: :submissions }
+
+      its(:submissions) { should eq :submissions }
+    end
+
+    context do
+      let(:parent) { nil }
+
+      its(:submissions) { should eq Submission.all }
     end
   end
 
@@ -48,9 +68,25 @@ RSpec.describe SubmissionsController, type: :controller do
     end
 
     context do
-      before { expect(subject).to receive(:params).and_return(problem_id: 89) }
+      before { allow(subject).to receive(:params).and_return(problem_id: 89) }
 
       before { expect(Problem).to receive(:find).with(89).and_return(:parent) }
+
+      its(:parent) { should eq :parent }
+    end
+
+    context do
+      before { allow(subject).to receive(:params).and_return(group_id: 89) }
+
+      before { expect(Group).to receive(:find).with(89).and_return(:parent) }
+
+      its(:parent) { should eq :parent }
+    end
+
+    context do
+      before { allow(subject).to receive(:params).and_return(user_id: 89) }
+
+      before { expect(User).to receive(:find).with(89).and_return(:parent) }
 
       its(:parent) { should eq :parent }
     end
@@ -84,15 +120,13 @@ RSpec.describe SubmissionsController, type: :controller do
 
     before { expect(subject).to receive(:params).and_return(params) }
 
-    before { expect(subject).to receive(:parent).and_return(:parent) }
-
     before { expect(subject).to receive(:current_user).and_return(:current_user) }
 
-    its(:resource_params) { should eq params[:submission].permit!.merge(problem: :parent, user: :current_user) }
+    its(:resource_params) { should eq params[:submission].permit!.merge(user: :current_user) }
   end
 
   describe '#initialize_resource' do
-    before { expect(Submission).to receive(:new).and_return(:resource) }
+    before { expect(subject).to receive_message_chain(:parent, :submissions, :new).and_return(:resource) }
 
     before { subject.send :initialize_resource }
 
@@ -102,7 +136,9 @@ RSpec.describe SubmissionsController, type: :controller do
   describe '#build_resource' do
     before { expect(subject).to receive(:resource_params).and_return(:resource_params) }
 
-    before { expect(Submission).to receive(:new).with(:resource_params).and_return(:resource) }
+    before do
+      expect(subject).to receive_message_chain(:parent, :submissions, :new).with(:resource_params).and_return(:resource)
+    end
 
     before { subject.send :build_resource }
 

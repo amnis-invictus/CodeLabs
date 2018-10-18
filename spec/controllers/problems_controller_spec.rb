@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe ProblemsController, type: :controller do
   it_behaves_like :index, anonymous: true
 
+  it_behaves_like :index, params: { tag_id: 25 }, anonymous: true
+
+  it_behaves_like :index, params: { user_id: 25 }, anonymous: true
+
   it_behaves_like :show, anonymous: true
 
   it_behaves_like :new
@@ -43,33 +47,48 @@ RSpec.describe ProblemsController, type: :controller do
     context do
       before { expect(subject).to receive(:params).and_return(page: 12) }
 
-      before { expect(subject).to receive_message_chain(:parent, :problems, :page).with(12).and_return(:collection) }
-
-      its(:collection) { should eq :collection }
-    end
-
-    context do
-      before { expect(subject).to receive(:params).and_return(page: 12) }
-
-      before { expect(subject).to receive(:parent).and_return(nil) }
-
-      before { expect(Problem).to receive_message_chain(:all, :page).with(12).and_return(:collection) }
+      before do
+        #
+        # subject.problems.includes(:user).order(:id).page(12) -> :collection
+        #
+        expect(subject).to receive_message_chain(:problems, :includes).with(:user) do
+          double.tap do |a|
+            expect(a).to receive(:order).with(:id) do
+              double.tap { |b| expect(b).to receive(:page).with(12).and_return(:collection) }
+            end
+          end
+        end
+      end
 
       its(:collection) { should eq :collection }
     end
   end
 
+  describe '#problems' do
+    before { allow(subject).to receive(:parent).and_return(parent) }
+
+    context do
+      let(:parent) { double problems: :problems }
+
+      its(:problems) { should eq :problems }
+    end
+
+    context do
+      let(:parent) { nil }
+
+      its(:problems) { should eq Problem.all }
+    end
+  end
+
   describe '#parent' do
     context do
-      before { expect(subject).to receive(:params).and_return(tag_id: 5) }
-
       before { subject.instance_variable_set :@parent, :parent }
 
       its(:parent) { should eq :parent }
     end
 
     context do
-      before { expect(subject).to receive(:params).and_return(tag_id: 5).twice }
+      before { allow(subject).to receive(:params).and_return(tag_id: 5) }
 
       before { expect(Tag).to receive(:find).with(5).and_return(:parent) }
 
@@ -77,7 +96,15 @@ RSpec.describe ProblemsController, type: :controller do
     end
 
     context do
-      before { expect(subject).to receive(:params).and_return({}) }
+      before { allow(subject).to receive(:params).and_return(user_id: 5) }
+
+      before { expect(User).to receive(:find).with(5).and_return(:parent) }
+
+      its(:parent) { should eq :parent }
+    end
+
+    context do
+      before { allow(subject).to receive(:params).and_return({}) }
 
       its(:parent) { should be_nil }
     end
@@ -104,7 +131,7 @@ RSpec.describe ProblemsController, type: :controller do
   end
 
   describe '#initialize_resource' do
-    before { expect(Problem).to receive(:new).and_return(:resource) }
+    before { expect(subject).to receive_message_chain(:current_user, :problems, :new).and_return(:resource) }
 
     before { subject.send :initialize_resource }
 
@@ -114,7 +141,9 @@ RSpec.describe ProblemsController, type: :controller do
   describe '#build_resource' do
     before { expect(subject).to receive(:resource_params).and_return(:resource_params) }
 
-    before { expect(Problem).to receive(:new).with(:resource_params).and_return(:resource) }
+    before do
+      expect(subject).to receive_message_chain(:current_user, :problems, :new).with(:resource_params).and_return(:resource)
+    end
 
     before { subject.send :build_resource }
 

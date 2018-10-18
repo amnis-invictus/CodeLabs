@@ -4,12 +4,18 @@ class SubmissionPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    return false if user.blank?
+
+    return true unless resource.problem_private?
+
+    return true if user.moderator? || user == resource.problem_user
+
+    user.shared_problems.include? resource.problem
   end
 
   def show?
     return false if user.blank?
 
-    user.administrator? || user == resource.user
+    user.administrator? || user == resource.user || user == resource.problem_user
   end
 end

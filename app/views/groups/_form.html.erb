@@ -1,0 +1,9 @@
+<%= simple_form_for resource do |f| %>
+  <%= f.input :name %>
+
+  <%= f.input :visibility, as: :select, collection: Group.visibilities.keys, include_blank: false %>
+
+  <%= f.input :description %>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

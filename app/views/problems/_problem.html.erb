@@ -1,7 +1,13 @@
-<tr data-href="<%= url_for problem %>">
+<tr>
   <td><%= problem.id %></td>
 
-  <td><%= problem.caption %></td>
+  <td>
+    <% if policy(problem).show? %>
+      <%= link_to problem.caption, problem %>
+    <% else %>
+      <%= problem.caption %>
+    <% end %>
+  </td>
 
   <td>0%</td>
 </tr>

@@ -13,6 +13,16 @@ RSpec.describe Problem, type: :model do
 
   it { should validate_numericality_of :real_time_limit }
 
+  it { should_not allow_value(nil).for(:private) }
+
+  it { should allow_value(true).for(:private) }
+
+  it { should allow_value(false).for(:private) }
+
+  it { should belong_to :user }
+
+  it { should belong_to(:checker_compiler).class_name('Compiler') }
+
   pending { should have_one_attached :checker_source }
 
   it { should have_one(:translation).conditions(language: I18n.locale).class_name('ProblemTranslation') }
@@ -28,6 +38,8 @@ RSpec.describe Problem, type: :model do
   it { should have_many(:submissions).dependent(:destroy) }
 
   it { should have_and_belong_to_many :tags }
+
+  it { should have_and_belong_to_many :groups }
 
   it { should delegate_method(:as_json).to(:decorate) }
 

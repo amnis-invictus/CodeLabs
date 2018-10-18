@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError do
     flash[:error] = 'You are not authorized to perform this action'
 
-    redirect_to :root
+    redirect_back fallback_location: :root, allow_other_host: false
   end
 
   private
