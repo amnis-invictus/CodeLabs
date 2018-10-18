@@ -26,8 +26,10 @@ Rails.application.routes.draw do
 
     resources :compilers, except: :edit
 
-    resources :groups do
-      resources :memberships, only: :destroy
+  resources :workers, only: :index
+  
+  resources :groups do
+    resources :memberships, only: :destroy
 
       resources :invites, only: %i(index new create)
 
@@ -57,6 +59,12 @@ Rails.application.routes.draw do
     resources :results, only: :create
 
     resources :compilers, :constants, only: :index
+
+    resources :workers, only: :create do
+      resource :alive, only: :create
+
+      resource :session, only: %i(create destroy)
+    end
   end
 
   get '/v2/tests/problems.json', to: 'tests#problems'

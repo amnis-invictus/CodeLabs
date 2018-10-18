@@ -1,0 +1,65 @@
+ok:
+  name: Worker Ok
+  api_version: 1
+  api_type: HTTP
+  webhook_supported: false
+  status: ok
+  alive_at: '20.09.2018 19:38:42'
+  ips:
+    - '8.8.8.8'
+    - '1.1.1.1'
+  task_status:
+    - Working
+    - Working
+disabled:
+  name: Worker Disabled
+  api_version: 2
+  api_type: HTTP
+  webhook_supported: false
+  status: disabled
+  alive_at: '20.09.2018 19:38:42'
+  ips:
+    - '8.8.8.8'
+    - '1.1.1.1'
+  task_status:
+    - Stopped
+    - Stopped
+failed:
+  name: Worker Failed
+  api_version: 3
+  api_type: HTTP
+  webhook_supported: false
+  status: failed
+  alive_at: '20.09.2018 19:38:42'
+  ips:
+    - '8.8.8.8'
+    - '1.1.1.1'
+  task_status:
+    - Failed
+    - Failed
+stale:
+  name: Worker Stale
+  api_version: 4
+  api_type: HTTP
+  webhook_supported: false
+  status: stale
+  alive_at: '20.09.2017 19:38:42'
+  ips:
+    - '8.8.8.8'
+    - '1.1.1.1'
+  task_status:
+    - Working
+    - Working
+stopped:
+  name: Worker Stopped
+  api_version: 2
+  api_type: HTTP
+  webhook_supported: false
+  status: stopped
+  alive_at: '20.09.2018 19:38:42'
+  ips:
+    - '8.8.8.8'
+    - '1.1.1.1'
+  task_status:
+    - Working
+    - Stopped
