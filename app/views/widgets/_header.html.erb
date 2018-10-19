@@ -14,23 +14,15 @@
 
     <%= content_tag :div, class: 'header-section__item' do %>
       <%= link_to t('header.groups'), :groups %>
-    <% end if policy(Group).index?  %>
-
-    <%= content_tag :div, class: 'header-section__item' do %>
-      <%= link_to t('header.received_invites'), :received_invites %>
-    <% end if policy(Invite).index?  %>
-
-    <%= content_tag :div, class: 'header-section__item' do %>
-      <%= link_to t('header.groups'), :groups %>
     <% end if policy(Group).index? %>
 
     <%= content_tag :div, class: 'header-section__item' do %>
       <%= link_to t('header.confirmation_requests'), :confirmation_requests %>
     <% end if policy(ConfirmationRequest).index? %>
-    
+
     <%= content_tag :div, class: 'header-section__item' do %>
       <%= link_to t('header.compilers'), :compilers %>
-    <% end if policy(Compiler).index?  %>
+    <% end if policy(Compiler).index? %>
 
     <%= content_tag :div, class: 'header-section__item' do %>
       <%= link_to t('header.workers'), :workers %>

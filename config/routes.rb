@@ -1,37 +1,37 @@
 Rails.application.routes.draw do
   scope '(:language)', language: /ru|en|uk/ do
     root controller: :home, action: :show
-    
-    resource :session, only: %i(new create destroy)
 
-    resource :profile, only: %i(show update)
+    resource :session, only: %i[new create destroy]
 
-    resources :users, only: %i(index create) do
+    resource :profile, only: %i[show update]
+
+    resources :users, only: %i[index create] do
       resources :problems, only: :index
 
       resources :submissions, only: :index
     end
 
     resources :problems do
-      resources :submissions, only: %i(index new create)
+      resources :submissions, only: %i[index new create]
     end
 
     resources :tags, only: :index do
       resources :problems, only: :index
     end
 
-    resources :submissions, only: %i(index show)
+    resources :submissions, only: %i[index show]
 
-    resources :archives, only: %i(new create)
+    resources :archives, only: %i[new create]
 
     resources :compilers, except: :edit
 
-  resources :workers, only: :index
-  
-  resources :groups do
-    resources :memberships, only: :destroy
+    resources :workers, only: :index
 
-      resources :invites, only: %i(index new create)
+    resources :groups do
+      resources :memberships, only: :destroy
+
+      resources :invites, only: %i[index new create]
 
       resources :submissions, only: :index
     end
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       resource :reject, :accept, only: :create, module: :invite
     end
 
-    resources :confirmation_requests, only: %i(index create) do
+    resources :confirmation_requests, only: %i[index create] do
       resource :reject, :accept, only: :create, module: :confirmation_request
     end
   end
@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     resources :workers, only: :create do
       resource :alive, only: :create
 
-      resource :session, only: %i(create destroy)
+      resource :session, only: %i[create destroy]
     end
   end
 
