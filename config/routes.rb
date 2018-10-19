@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
       resources :invites, only: %i[index new create]
 
-      resources :submissions, only: :index
+      resources :submissions, :problems, only: :index
     end
 
     resources :received_invites, only: :index
