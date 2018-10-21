@@ -1,5 +1,5 @@
 class Invite < ApplicationRecord
-  validates :receiver, uniqueness: { scope: %i(group_id status) }
+  validates :receiver, uniqueness: { scope: %i(group_id status) }, if: :pending?
 
   validate :receiver_must_not_be_in_group
 
