@@ -14,12 +14,18 @@ RSpec.describe ConfirmationRequest::Accept do
 
     before { allow(confirmation_request).to receive(:user).and_return(user) }
 
-    before { expect(ConfirmationRequest).to receive(:transaction).and_yield }
+    context do
+      before { expect(confirmation_request).to receive(:update).with(status: :accepted).and_return(true) }
 
-    before { expect(user).to receive(:update).with(roles: :confirmed) }
+      before { expect(user).to receive(:update!).with(roles: :confirmed) }
 
-    before { expect(confirmation_request).to receive(:update).with(status: :accepted).and_return(:result) }
+      its(:save) { should be true }
+    end
 
-    its(:save) { should eq :result }
+    context do
+      before { expect(confirmation_request).to receive(:update).with(status: :accepted).and_return(false) }
+
+      its(:save) { should be false }
+    end
   end
 end

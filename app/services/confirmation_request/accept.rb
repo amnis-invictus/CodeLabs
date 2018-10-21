@@ -8,10 +8,8 @@ class ConfirmationRequest::Accept
   end
 
   def save
-    ConfirmationRequest.transaction do
-      confirmation_request.user.update roles: :confirmed
-
-      confirmation_request.update status: :accepted
+    confirmation_request.update(status: :accepted).tap do |result|
+      confirmation_request.user.update! roles: :confirmed if result
     end
   end
 end

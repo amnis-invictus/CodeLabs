@@ -8,10 +8,8 @@ class Invite::Accept
   end
 
   def save
-    Invite.transaction do
-      invite.group_users << invite.receiver
-
-      invite.update status: :accepted
+    invite.update(status: :accepted).tap do |result|
+      invite.group_users << invite.receiver if result
     end
   end
 end
