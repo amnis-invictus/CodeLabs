@@ -7,11 +7,13 @@ RSpec.describe Group, type: :model do
 
   it { should belong_to(:owner).class_name('User') }
 
-  it { should have_many :invites }
+  it { should have_many(:invites).dependent(:destroy) }
+
+  it { should have_many(:sharings).dependent(:destroy) }
+
+  it { should have_many(:problems).through(:sharings) }
 
   it { should have_and_belong_to_many :users }
-
-  it { should have_and_belong_to_many :problems }
 
   it { should have_many(:submissions).through(:users) }
 

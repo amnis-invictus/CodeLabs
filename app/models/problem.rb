@@ -21,9 +21,11 @@ class Problem < ApplicationRecord
 
   has_many :submissions, dependent: :destroy
 
-  has_and_belongs_to_many :tags
+  has_many :sharings, dependent: :destroy
 
-  has_and_belongs_to_many :groups
+  has_many :groups, through: :sharings
+
+  has_and_belongs_to_many :tags
 
   default_scope { includes :translation, :default_translation }
 

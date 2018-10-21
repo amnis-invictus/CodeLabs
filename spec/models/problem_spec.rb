@@ -37,9 +37,11 @@ RSpec.describe Problem, type: :model do
 
   it { should have_many(:submissions).dependent(:destroy) }
 
-  it { should have_and_belong_to_many :tags }
+  it { should have_many(:sharings).dependent(:destroy) }
 
-  it { should have_and_belong_to_many :groups }
+  it { should have_many(:groups).through(:sharings) }
+
+  it { should have_and_belong_to_many :tags }
 
   it { should delegate_method(:as_json).to(:decorate) }
 

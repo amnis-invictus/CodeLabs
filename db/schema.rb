@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_181648) do
+ActiveRecord::Schema.define(version: 2018_10_21_190935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -84,13 +84,6 @@ ActiveRecord::Schema.define(version: 2018_10_17_181648) do
     t.text "description"
     t.index ["name"], name: "index_groups_on_name"
     t.index ["owner_id"], name: "index_groups_on_owner_id"
-  end
-
-  create_table "groups_problems", id: false, force: :cascade do |t|
-    t.bigint "group_id", null: false
-    t.bigint "problem_id", null: false
-    t.index ["group_id"], name: "index_groups_problems_on_group_id"
-    t.index ["problem_id"], name: "index_groups_problems_on_problem_id"
   end
 
   create_table "groups_users", id: false, force: :cascade do |t|
@@ -169,6 +162,15 @@ ActiveRecord::Schema.define(version: 2018_10_17_181648) do
     t.index ["test_id"], name: "index_results_on_test_id"
   end
 
+  create_table "sharings", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "problem_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_sharings_on_group_id"
+    t.index ["problem_id"], name: "index_sharings_on_problem_id"
+  end
+
   create_table "submissions", force: :cascade do |t|
     t.bigint "problem_id", null: false
     t.datetime "created_at", null: false
@@ -243,8 +245,6 @@ ActiveRecord::Schema.define(version: 2018_10_17_181648) do
   add_foreign_key "confirmation_requests", "users"
   add_foreign_key "examples", "problems"
   add_foreign_key "groups", "users", column: "owner_id"
-  add_foreign_key "groups_problems", "groups"
-  add_foreign_key "groups_problems", "problems"
   add_foreign_key "groups_users", "groups"
   add_foreign_key "groups_users", "users"
   add_foreign_key "invites", "groups"
@@ -255,6 +255,8 @@ ActiveRecord::Schema.define(version: 2018_10_17_181648) do
   add_foreign_key "problems", "users"
   add_foreign_key "problems_tags", "problems"
   add_foreign_key "problems_tags", "tags"
+  add_foreign_key "sharings", "groups"
+  add_foreign_key "sharings", "problems"
   add_foreign_key "submissions", "compilers"
   add_foreign_key "submissions", "problems"
   add_foreign_key "submissions", "users"

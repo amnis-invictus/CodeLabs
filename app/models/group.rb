@@ -3,11 +3,13 @@ class Group < ApplicationRecord
 
   belongs_to :owner, class_name: 'User'
 
-  has_many :invites
+  has_many :invites, dependent: :destroy
+
+  has_many :sharings, dependent: :destroy
+
+  has_many :problems, through: :sharings
 
   has_and_belongs_to_many :users
-
-  has_and_belongs_to_many :problems
 
   has_many :submissions, through: :users
 

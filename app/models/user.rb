@@ -19,7 +19,9 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :groups
 
-  has_many :shared_problems, class_name: 'Problem', through: :groups, source: :problems
+  has_many :sharings, through: :groups
+
+  has_many :shared_problems, class_name: 'Problem', through: :sharings, source: :problem
 
   has_one_attached :avatar
 
