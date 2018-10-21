@@ -16,6 +16,7 @@ uk:
       invite_list: Список запрошень
       submission_list: Відправлені розв'язки учасників групи
       problem_list: Задачі групи
+      create_sharing: Додати задачу
       members: Учасники
       description: Опис
       visibility:

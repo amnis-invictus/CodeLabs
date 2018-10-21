@@ -60,6 +60,9 @@
   <div class="col-12">
     <%= link_to t('group.show.edit'), [:edit, resource], class: 'btn btn-primary btn-block' if policy(resource).edit? %>
 
+    <%= link_to t('group.show.create_sharing'), [:new, resource, :sharing], class: 'btn btn-primary btn-block' \
+      if policy(Sharing.new group: resource).new? %>
+
     <%= link_to t('group.show.submission_list'), [resource, :submissions], class: 'btn btn-link btn-block' %>
 
     <%= link_to t('group.show.problem_list'), [resource, :problems], class: 'btn btn-link btn-block' %>

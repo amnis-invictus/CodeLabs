@@ -1,0 +1,13 @@
+<div class="row bg-light">
+  <div class="col-12">
+    <h1><%= t 'sharing.new.title' %></h1>
+  </div>
+
+  <div class="col-12">
+    <%= simple_form_for [parent, resource] do |f| %>
+      <%= f.association :problem, collection: current_user.problems.decorate.map { |p| [p.caption, p.id] } %>
+
+      <%= f.submit class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>
