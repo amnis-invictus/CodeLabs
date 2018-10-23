@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::ProblemsController, type: :controller do
   it { should be_an Api::ApplicationController }
 
-  it_behaves_like :show, format: :json
+  it_behaves_like :show, format: :json, unauthorized: true
 
   describe '#resource' do
     context do

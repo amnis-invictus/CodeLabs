@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::SubmissionsController, type: :controller do
   it { should be_an Api::ApplicationController }
 
-  it_behaves_like :index, format: :json
+  it_behaves_like :index, format: :json, unauthorized: true
 
   describe '#collection' do
     context do
