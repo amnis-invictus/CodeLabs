@@ -49,7 +49,7 @@ class ProcessProblemArchiveJob < ApplicationJob
       @problem = Problem.create! \
         memory_limit: @xml.at_xpath('problem/memory_limit').content,
         time_limit: @xml.at_xpath('problem/time_limit').content,
-        # real_time_limit: @xml.at_xpath('problem/real_time_limit').content,
+        real_time_limit: @xml.at_xpath('problem/real_time_limit').content,
         checker_source: { io: io, filename: File.basename(@checker.name) },
         checker_compiler: find_compiler_by_file(@checker),
         user: @user
