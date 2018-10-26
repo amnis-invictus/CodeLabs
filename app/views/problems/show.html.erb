@@ -16,13 +16,17 @@
   <div class="section section-striped">
     <h2 class="section__title"><%= resource.caption %></h2>
 
-    <%= simple_format resource.text, class: 'section__content' %>
+    <div class="section__content">
+      <%= sanitize_for_problem resource.text %>
+    </div>
   </div>
 
   <div class="section section-striped">
     <h3><%= t 'problems.show.technical_text' %></h3>
 
-    <%= simple_format resource.technical_text, class: 'section__content' %>
+    <div class="section__content">
+      <%= sanitize_for_problem resource.technical_text %>
+    </div>
   </div>
 
   <%= content_tag :div, class: 'section section-striped' do %>
@@ -51,7 +55,7 @@
     <% end %>
   <% end if resource.examples.any? %>
 
-  <div class="section section-striped">
+  <%= content_tag :div, class: 'section section-striped' do %>
     <i class="fa fa-certificate" aria-hidden="true"></i>
 
     <ol class="tags">
@@ -59,7 +63,7 @@
         <li><%= link_to tag.name, [tag, :problems] %></li>
       <% end %>
     </ol>
-  </div>
+  <% end if resource.tags.any? %>
 
   <div class="section section-striped">
     <i class="far fa-address-book contact" aria-hidden="true"></i>
