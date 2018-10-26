@@ -55,7 +55,7 @@
     <% end %>
   <% end if resource.examples.any? %>
 
-  <div class="section section-striped">
+  <%= content_tag :div, class: 'section section-striped' do %>
     <i class="fa fa-certificate" aria-hidden="true"></i>
 
     <ol class="tags">
@@ -63,7 +63,7 @@
         <li><%= link_to tag.name, [tag, :problems] %></li>
       <% end %>
     </ol>
-  </div>
+  <% end if resource.tags.any? %>
 
   <div class="section section-striped">
     <i class="far fa-address-book contact" aria-hidden="true"></i>
