@@ -4,4 +4,8 @@ module ApplicationHelper
       [I18n.t(:language, locale: locale), locale]
     end
   end
+
+  def sanitize_for_problem text
+    sanitize text, tags: %w(b br em i p span strong sub sup table tbody td th thead tr), attributes: %w(class)
+  end
 end

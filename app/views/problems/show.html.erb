@@ -16,13 +16,17 @@
   <div class="section section-striped">
     <h2 class="section__title"><%= resource.caption %></h2>
 
-    <%= simple_format resource.text, class: 'section__content' %>
+    <div class="section__content">
+      <%= sanitize_for_problem resource.text %>
+    </div>
   </div>
 
   <div class="section section-striped">
     <h3><%= t 'problems.show.technical_text' %></h3>
 
-    <%= simple_format resource.technical_text, class: 'section__content' %>
+    <div class="section__content">
+      <%= sanitize_for_problem resource.technical_text %>
+    </div>
   </div>
 
   <%= content_tag :div, class: 'section section-striped' do %>
