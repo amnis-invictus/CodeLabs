@@ -3,6 +3,8 @@ class Test < ApplicationRecord
 
   validates :num, presence: true
 
+  validates :point, presence: true, numericality: { only_integer: true }
+
   belongs_to :problem
 
   has_one_attached :input
