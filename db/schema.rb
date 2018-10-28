@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_21_190935) do
+ActiveRecord::Schema.define(version: 2018_10_28_181705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_190935) do
     t.bigint "compiler_id", null: false
     t.float "score"
     t.integer "test_result"
+    t.float "max_score"
     t.index ["compiler_id"], name: "index_submissions_on_compiler_id"
     t.index ["problem_id"], name: "index_submissions_on_problem_id"
     t.index ["test_state"], name: "index_submissions_on_test_state"
@@ -206,6 +207,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_190935) do
     t.bigint "problem_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "point", default: 1, null: false
     t.index ["problem_id"], name: "index_tests_on_problem_id"
   end
 
