@@ -8,13 +8,17 @@ class Release
   def save
     return false unless @submission.release
 
-    @submission.update test_result: @test_result, score: score
+    @submission.update test_result: @test_result, score: score, max_score: max_score
   end
 
   private
   def score
     return unless @test_result == 0
 
-    (@submission.results.where(status: :ok).count.to_f / @submission.results.count * 100).round(2)
+    @submission.results.joins(:test).where(status: :ok).sum('tests.point')
+  end
+
+  def max_score
+    Test.unscoped.where(problem_id: @submission.problem_id).sum(:point)
   end
 end
