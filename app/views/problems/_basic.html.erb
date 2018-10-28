@@ -11,7 +11,7 @@
     </div>
 
     <div class="col-md-6">
-      <%= f.input :checker_compiler_id, collection: Compiler.status_public, include_blank: false %>
+      <%= f.input :checker_compiler_id, collection: checker_compilers, include_blank: false %>
 
       <%= f.input :checker_source %>
 
