@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_28_215626) do
+ActiveRecord::Schema.define(version: 2018_11_24_172711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 2018_10_28_215626) do
   create_table "results", force: :cascade do |t|
     t.integer "status", null: false
     t.bigint "submission_id", null: false
-    t.bigint "test_id", null: false
+    t.bigint "test_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "log"

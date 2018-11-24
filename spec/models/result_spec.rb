@@ -28,7 +28,7 @@ RSpec.describe Result, type: :model do
 
   it { should belong_to :submission }
 
-  it { should belong_to :test }
+  it { should belong_to(:test).optional }
 
-  it { should delegate_method(:num).to(:test).with_prefix }
+  it { should delegate_method(:num).to(:test).with_prefix.allow_nil }
 end

@@ -9,6 +9,8 @@ RSpec.describe Test, type: :model do
 
   pending { should have_one_attached :answer }
 
+  it { should have_many(:results).dependent(:nullify) }
+
   it { should delegate_method(:as_json).to(:decorate) }
 
   describe '.default_scope' do
