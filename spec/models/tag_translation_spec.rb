@@ -7,5 +7,5 @@ RSpec.describe TagTranslation, type: :model do
 
   it { should belong_to :tag }
 
-  it { should define_enum_for(:language).with(I18n.available_locales) }
+  it { should define_enum_for(:language).with_values(I18n.available_locales) }
 end

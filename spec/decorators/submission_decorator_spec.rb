@@ -54,14 +54,14 @@ RSpec.describe SubmissionDecorator do
   end
 
   describe '#state' do
-    let(:resource) { stub_model Submission, test_state: test_state, test_result: test_result, score: 95.25 }
+    let(:resource) { stub_model Submission, test_state: test_state, test_result: test_result, score: 60, max_score: 100 }
 
     context do
       let(:test_state) { :done }
 
       let(:test_result) { :ok }
 
-      its(:state) { should eq 'Ok (95.25%)' }
+      its(:state) { should eq 'Ok (60.0/100.0)' }
     end
 
     context do

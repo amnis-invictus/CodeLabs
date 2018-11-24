@@ -12,7 +12,7 @@ RSpec.describe Result, type: :model do
   it { should validate_numericality_of :time }
 
   it do
-    should define_enum_for(:status).with \
+    should define_enum_for(:status).with_values \
       ok: 0,
       wrong_answer: 1,
       presentation_error: 2,

@@ -13,5 +13,5 @@ RSpec.describe ProblemTranslation, type: :model do
 
   it { should belong_to :problem }
 
-  it { should define_enum_for(:language).with(I18n.available_locales) }
+  it { should define_enum_for(:language).with_values(I18n.available_locales) }
 end
