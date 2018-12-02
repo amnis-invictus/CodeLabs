@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe TagsController, type: :controller do
-  it_behaves_like :index
+  it_behaves_like :index, anonymous: true
 
-  it_behaves_like :index, format: :json
+  it_behaves_like :index, anonymous: true, format: :json
 
   describe '#collection' do
     context do
