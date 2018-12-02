@@ -16,17 +16,18 @@
       <%= link_to t('header.groups'), :groups %>
     <% end if policy(Group).index? %>
 
-    <%= content_tag :div, class: 'header-section__item' do %>
-      <%= link_to t('header.confirmation_requests'), :confirmation_requests %>
-    <% end if policy(ConfirmationRequest).index? %>
+    <%= content_tag :div, class: 'header-section__item dropdown show' do %>
+      <a data-toggle="dropdown" class="dropdown-toggle"><%= t('header.administration') %></a>
 
-    <%= content_tag :div, class: 'header-section__item' do %>
-      <%= link_to t('header.compilers'), :compilers %>
-    <% end if policy(Compiler).index? %>
+      <div class="dropdown-menu dropdown-menu-right">
+        <%= link_to t('header.confirmation_requests'), :confirmation_requests, class: 'dropdown-item' \
+          if policy(ConfirmationRequest).index? %>
 
-    <%= content_tag :div, class: 'header-section__item' do %>
-      <%= link_to t('header.workers'), :workers %>
-    <% end if policy(Worker).index? %>
+        <%= link_to t('header.compilers'), :compilers, class: 'dropdown-item' if policy(Compiler).index? %>
+
+        <%= link_to t('header.workers'), :workers, class: 'dropdown-item' if policy(Worker).index? %>
+      </div>
+    <% end if current_user&.administrator? %>
   </div>
 
   <div class="header-section">
