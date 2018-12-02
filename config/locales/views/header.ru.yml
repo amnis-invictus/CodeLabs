@@ -2,6 +2,8 @@
 ru:
   header:
     problems: Задачи
+    problems_all: Все задачи
+    problems_tags: Класификация
     signin: Войти
     signout: Выйти
     submissions: Попытки

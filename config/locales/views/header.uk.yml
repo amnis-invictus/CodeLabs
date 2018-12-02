@@ -2,6 +2,8 @@
 uk:
   header:
     problems: Задачі
+    problems_all: Усі задачі
+    problems_tags: Класифікація
     signin: Вхід
     signout: Вихід
     submissions: Відправлені розв'язки

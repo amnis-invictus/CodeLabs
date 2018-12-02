@@ -4,9 +4,15 @@
   <% end %>
 
   <div class="header-section">
-    <%= content_tag :div, class: 'header-section__item' do %>
-      <%= link_to t('header.problems'), :problems %>
-    <% end if policy(Problem).index? %>
+    <div class="header-section__item dropdown show">
+      <a data-toggle="dropdown" class="dropdown-toggle"><%= t 'header.problems' %></a>
+
+      <div class="dropdown-menu dropdown-menu-right">
+        <%= link_to t('header.problems_all'), :problems, class: 'dropdown-item' if policy(Problem).index? %>
+
+        <%= link_to t('header.problems_tags'), :tags, class: 'dropdown-item' if policy(Tag).index? %>
+      </div>
+    </div>
 
     <%= content_tag :div, class: 'header-section__item' do %>
       <%= link_to t('header.submissions'), :submissions %>
@@ -17,7 +23,7 @@
     <% end if policy(Group).index? %>
 
     <%= content_tag :div, class: 'header-section__item dropdown show' do %>
-      <a data-toggle="dropdown" class="dropdown-toggle"><%= t('header.administration') %></a>
+      <a data-toggle="dropdown" class="dropdown-toggle"><%= t 'header.administration' %></a>
 
       <div class="dropdown-menu dropdown-menu-right">
         <%= link_to t('header.confirmation_requests'), :confirmation_requests, class: 'dropdown-item' \
