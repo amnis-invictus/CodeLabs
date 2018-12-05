@@ -1,23 +1,29 @@
 deploy_staging:
+  image: ruby:alpine
   environment: development
   stage: deploy
   script:
-    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+    - apk add openssh-client
     - eval $(ssh-agent -s)
-    - ssh-add <(echo -e "$SSH_PRIVATE_KEY")
-    - gem install capistrano capistrano-rbenv capistrano-rails
+    - echo -e "$SSH_PRIVATE_KEY" > key
+    - ssh-add key
+    - gem install capistrano capistrano-rails
     - cap staging deploy
+    - rm key
   only:
     - master
 
 deploy_production:
+  image: ruby:alpine
   environment: production
   stage: deploy
   script:
-    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+    - apk add openssh-client
     - eval $(ssh-agent -s)
-    - ssh-add <(echo -e "$SSH_PRIVATE_KEY")
-    - gem install capistrano capistrano-rbenv capistrano-rails
+    - echo -e "$SSH_PRIVATE_KEY" > key
+    - ssh-add key
+    - gem install capistrano capistrano-rails
     - cap production deploy
+    - rm key
   only:
     - production
