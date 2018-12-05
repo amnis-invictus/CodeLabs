@@ -45,7 +45,6 @@ group :development do
   gem 'i18n-tasks'
   gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
-  gem 'capistrano-rbenv', require: false
   gem 'faker', require: false
   gem 'bullet'
 end

@@ -1,0 +1,17 @@
+[Unit]
+  Description = Codelabs Application
+  After = network.service
+
+[Service]
+  User = user
+  Group = user
+  WorkingDirectory = /home/user/application/current
+  Environment = 'RAILS_ENV=production'
+  Environment = 'SOCKET=unix:///home/user/application/current/tmp/sockets/server.sock'
+  Environment = 'PID=/home/user/application/current/tmp/pids/server.pid'
+  Environment = 'PATH=/bin:/usr/bin:/usr/local/bin'
+  ExecStart = /usr/bin/bundle exec puma --config /home/user/application/current/config/puma.rb
+  Restart = always
+
+[Install]
+  WantedBy = multi-user.target

@@ -1,7 +1,3 @@
 set :branch, :master
 
-set :deploy_to, '/home/user/staging'
-
-namespace :deploy do
-  after :finishing, 'staging:restart'
-end
+server 'codelabs.site:10016', user: 'user', roles: %i(app web db)

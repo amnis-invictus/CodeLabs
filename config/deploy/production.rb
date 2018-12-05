@@ -1,7 +1,3 @@
 set :branch, :production
 
-set :deploy_to, '/home/user/production'
-
-namespace :deploy do
-  after :finishing, 'production:restart'
-end
+server 'codelabs.site:10014', user: 'user', roles: %i(app web db)

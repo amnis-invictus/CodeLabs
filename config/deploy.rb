@@ -14,8 +14,9 @@ set :rbenv_type, :user
 
 set :rbenv_ruby, File.read('.ruby-version').strip
 
+set :deploy_to, '/home/user/application'
+
 namespace :deploy do
+  after :finishing, 'application:restart'
   after :finishing, 'bundler:clean'
 end
-
-server 'codelabs.site', user: 'user', roles: %i(app web db)
