@@ -14,6 +14,6 @@ module ApplicationHelper
   end
 
   def sanitize_for_problem text
-    sanitize text, tags: %w(b br em i p span strong sub sup table tbody td th thead tr), attributes: %w(class)
+    sanitize text, tags: %w(b br em i p span strong sub sup table tbody td th thead tr img), attributes: %w(class src alt)
   end
 end
