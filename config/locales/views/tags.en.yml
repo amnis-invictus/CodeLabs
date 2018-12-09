@@ -3,3 +3,4 @@ en:
     index:
       title: Classification
       name: Tag name
+      problems_count: Problems count
