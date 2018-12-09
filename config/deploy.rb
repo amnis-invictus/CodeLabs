@@ -18,5 +18,6 @@ set :deploy_to, '/home/user/application'
 
 namespace :deploy do
   after :finishing, 'application:restart'
+  after :finishing, 'nginx:reload'
   after :finishing, 'bundler:clean'
 end
