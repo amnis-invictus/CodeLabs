@@ -19,7 +19,7 @@ class Result < ApplicationRecord
 
   belongs_to :submission
 
-  belongs_to :test
+  belongs_to :test, optional: true
 
-  delegate :num, to: :test, prefix: true
+  delegate :num, to: :test, prefix: true, allow_nil: true
 end

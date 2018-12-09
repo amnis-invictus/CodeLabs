@@ -20,4 +20,6 @@ RSpec.describe Compiler, type: :model do
   it { should validate_numericality_of :time_a }
 
   it { should validate_numericality_of :time_b }
+
+  it { should define_enum_for(:status).with_values(in_test: 0, reserved: 1, public: 2).with_prefix }
 end

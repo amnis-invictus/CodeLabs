@@ -9,12 +9,14 @@ RSpec.describe Test, type: :model do
 
   pending { should have_one_attached :answer }
 
+  it { should have_many(:results).dependent(:nullify) }
+
   it { should delegate_method(:as_json).to(:decorate) }
 
   describe '.default_scope' do
     subject { described_class.all }
 
-    let(:expected) { described_class.unscoped.with_attached_input.with_attached_answer }
+    let(:expected) { described_class.unscoped.with_attached_input.with_attached_answer.order :num }
 
     its(:includes_values) { should eq expected.includes_values }
 

@@ -11,7 +11,9 @@ class Test < ApplicationRecord
 
   has_one_attached :answer
 
-  default_scope { with_attached_input.with_attached_answer }
+  has_many :results, dependent: :nullify
+
+  default_scope { with_attached_input.with_attached_answer.order :num }
 
   delegate :as_json, to: :decorate
 end

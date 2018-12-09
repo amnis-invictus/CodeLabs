@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.5.3'
 
 gem 'rails', '~> 5.2.0'
 gem 'puma', '~> 3.11'
 gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
-gem 'mini_racer', platforms: :ruby
 gem 'turbolinks', '~> 5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -46,13 +45,12 @@ group :development do
   gem 'i18n-tasks'
   gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
-  gem 'capistrano-rbenv', require: false
   gem 'faker', require: false
   gem 'bullet'
 end
 
 group :test do
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 4.0.0.rc1'
   gem 'shoulda-callback-matchers'
   gem 'rspec-its'
   gem 'rspec-activemodel-mocks'

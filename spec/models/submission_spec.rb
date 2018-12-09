@@ -15,9 +15,9 @@ RSpec.describe Submission, type: :model do
 
   it { should have_many :logs }
 
-  it { should define_enum_for(:test_state).with(pending: 0, in_progress: 1, done: 2, failed: 3) }
+  it { should define_enum_for(:test_state).with_values(pending: 0, in_progress: 1, done: 2, failed: 3).with_prefix }
 
-  it { should define_enum_for(:test_result).with(ok: 0, compiler_error: 1) }
+  it { should define_enum_for(:test_result).with_values(ok: 0, compiler_error: 1).with_prefix }
 
   it { should delegate_method(:as_json).to(:decorate) }
 

@@ -2,9 +2,12 @@
 uk:
   header:
     problems: Задачі
+    problems_all: Усі задачі
+    problems_tags: Класифікація
     signin: Вхід
     signout: Вихід
     submissions: Відправлені розв'язки
     compilers: Компілятори
     groups: Групи
     confirmation_requests: Запити на підтвердження
+    administration: Адміністрування

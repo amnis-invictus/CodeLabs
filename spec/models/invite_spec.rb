@@ -6,15 +6,11 @@ RSpec.describe Invite, type: :model do
   context do
     subject { described_class.new sender: users(:one), receiver: users(:three), group: groups(:one), status: :pending }
 
-    before { allow_any_instance_of(described_class).to receive(:receiver_must_not_be_in_group) }
-
     it { should validate_uniqueness_of(:receiver).scoped_to(:group_id, :status) }
   end
 
   context do
     subject { described_class.new sender: users(:one), receiver: users(:three), group: groups(:one), status: :accepted }
-
-    before { allow_any_instance_of(described_class).to receive(:receiver_must_not_be_in_group) }
 
     it { should_not validate_uniqueness_of :receiver }
   end
@@ -25,7 +21,7 @@ RSpec.describe Invite, type: :model do
 
   it { should belong_to(:receiver).class_name('User') }
 
-  it { should define_enum_for(:status).with(pending: 0, accepted: 1, rejected: 2) }
+  it { should define_enum_for(:status).with_values(pending: 0, accepted: 1, rejected: 2) }
 
   it { should delegate_method(:name).to(:group).with_prefix }
 

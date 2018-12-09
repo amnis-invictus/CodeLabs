@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
 
   pending { should have_one_attached :avatar }
 
-  pending { should define_bitmask_for(:roles).with(%i(confirmed moderator administrator)).null(false) }
+  pending { should define_bitmask_for(:roles).with_values(%i(confirmed moderator administrator)).null(false) }
 
   it { should delegate_method(:as_json).to(:decorate) }
 

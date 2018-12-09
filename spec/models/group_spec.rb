@@ -17,5 +17,5 @@ RSpec.describe Group, type: :model do
 
   it { should have_many(:submissions).through(:users) }
 
-  it { should define_enum_for(:visibility).with(private: 0, moderated: 1, public: 2) }
+  it { should define_enum_for(:visibility).with_values(private: 0, moderated: 1, public: 2).with_prefix }
 end
