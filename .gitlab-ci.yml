@@ -6,6 +6,7 @@ deploy_staging:
     - apk add openssh-client
     - eval $(ssh-agent -s)
     - echo -e "$SSH_PRIVATE_KEY" > key
+    - chmod 400 key
     - ssh-add key
     - gem install capistrano capistrano-rails
     - cap staging deploy
@@ -21,6 +22,7 @@ deploy_production:
     - apk add openssh-client
     - eval $(ssh-agent -s)
     - echo -e "$SSH_PRIVATE_KEY" > key
+    - chmod 400 key
     - ssh-add key
     - gem install capistrano capistrano-rails
     - cap production deploy
