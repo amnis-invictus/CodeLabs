@@ -13,7 +13,7 @@ RSpec.describe TagsController, type: :controller do
     end
 
     context do
-      before { expect(Tag).to receive(:all).and_return(:collection) }
+      before { expect(Tag).to receive(:order).with(problems_count: :desc).and_return(:collection) }
 
       its(:collection) { should eq :collection }
     end

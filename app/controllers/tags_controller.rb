@@ -3,6 +3,6 @@ class TagsController < ApplicationController
 
   private
   def collection
-    @collection ||= Tag.all
+    @collection ||= Tag.order problems_count: :desc
   end
 end
