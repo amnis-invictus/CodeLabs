@@ -5,7 +5,9 @@ RSpec.describe Tag, type: :model do
 
   it { should have_many(:translations).dependent(:destroy).class_name('TagTranslation') }
 
-  it { should have_and_belong_to_many :problems }
+  it { should have_many(:problems_tags).dependent(:destroy) }
+
+  it { should have_many(:problems).through(:problems_tags) }
 
   it { should delegate_method(:name).to(:translation) }
 
