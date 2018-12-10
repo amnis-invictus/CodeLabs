@@ -3,6 +3,6 @@ class TagsController < ApplicationController
 
   private
   def collection
-    @collection ||= Tag.order problems_count: :desc
+    @collection ||= Tag.order(problems_count: :desc).page(params[:page])
   end
 end

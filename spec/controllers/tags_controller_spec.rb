@@ -13,7 +13,13 @@ RSpec.describe TagsController, type: :controller do
     end
 
     context do
-      before { expect(Tag).to receive(:order).with(problems_count: :desc).and_return(:collection) }
+      before { expect(subject).to receive(:params).and_return(page: 51) }
+
+      before do
+        expect(Tag).to receive(:order).with(problems_count: :desc) do
+          double.tap { |a| expect(a).to receive(:page).with(51).and_return(:collection) }
+        end
+      end
 
       its(:collection) { should eq :collection }
     end
