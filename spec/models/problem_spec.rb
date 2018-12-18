@@ -39,9 +39,11 @@ RSpec.describe Problem, type: :model do
 
   it { should have_many(:sharings).dependent(:destroy) }
 
+  it { should have_many(:problems_tags).dependent(:destroy) }
+
   it { should have_many(:groups).through(:sharings) }
 
-  it { should have_and_belong_to_many :tags }
+  it { should have_many(:tags).through(:problems_tags) }
 
   it { should delegate_method(:as_json).to(:decorate) }
 

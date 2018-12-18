@@ -3,7 +3,9 @@ class Tag < ApplicationRecord
 
   has_many :translations, class_name: 'TagTranslation', dependent: :destroy
 
-  has_and_belongs_to_many :problems
+  has_many :problems_tags, dependent: :destroy
+
+  has_many :problems, through: :problems_tags
 
   default_scope { includes :translation }
 
