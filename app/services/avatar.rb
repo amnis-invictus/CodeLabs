@@ -16,9 +16,7 @@ class Avatar
   delegate :as_json, :url, to: :decorate
 
   def initialize params = {}
-    @user = params[:user]
-
-    @file = params[:file]
+    @user, @file = params.values_at :user, :file
   end
 
   def save
