@@ -1,4 +1,4 @@
-Rails.application.config.revision = \
+REVISION = \
   if Rails.env.production? && ENV.key?('REVISION_FILE') && File.exist?(ENV['REVISION_FILE'])
     IO.readlines(ENV['REVISION_FILE']).last.strip
   else
