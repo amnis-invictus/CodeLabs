@@ -1,51 +1,38 @@
-<%= simple_form_for resource, url: :profile, wrapper: :horizontal_form,
-  html: { class: 'form-horizontal row', id: 'profile-form', style: 'margin-left: 0' } do |f| %>
-  <div class="col-md-3 col-12 avatar">
-    <div class="image-input">
-      <%= f.file_field :avatar, direct_upload: true, class: 'image-input__input' %>
+<div class="col-md-3 col-12">
+	<%= render 'avatars/form', resource: Avatar.new(user: current_user) %>
+</div>
 
-      <div class="image-input__prompt">
-        <i class="image-input__prompt-icon fas fa-upload"></i>
-      </div>
+<div class="col-md-9 col-12">
+	<%= simple_form_for resource, url: :profile, wrapper: :horizontal_form, remote: true do |f| %>
+		<%= f.input :name %>
 
-      <% if resource.avatar.attached? && resource.avatar.attachment.blob&.image? %>
-        <%= image_tag resource.avatar.variant(resize: '300x400^', crop: '300x400+0+0', gravity: 'center'), class: 'img-fluid' %>
-      <% else %>
-        <%= image_tag 'placeholder.png', class: 'img-fluid' %>
-      <% end %>
-    </div>
-  </div>
+		<%= f.input :username %>
 
-  <div class="col-md-9 col-12">
-    <%= f.input :name %>
+		<%= f.input :skills, input_html: { 'data-role': :tagsinput } %>
 
-    <%= f.input :username %>
+		<%= f.input :password %>
 
-    <%= f.input :skills, input_html: { 'data-role': :tagsinput } %>
+		<%= f.input :password_confirmation %>
 
-    <%= f.input :password %>
+		<%= f.input :city %>
 
-    <%= f.input :password_confirmation %>
+		<%= f.input :institution %>
 
-    <%= f.input :city %>
+		<%= f.input :score, readonly: true, as: :string %>
 
-    <%= f.input :institution %>
+		<%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) } %>
 
-    <%= f.input :score, readonly: true, as: :string %>
+		<%= f.submit class: 'btn btn-block btn-primary' %>
+	<% end %>
 
-    <%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) } %>
+	<%= link_to t('profile.show.submissions'), [current_user, :submissions], class: 'btn btn-block btn-link' %>
 
-    <%= f.submit class: 'btn btn-block btn-primary' %>
+	<%= link_to t('profile.show.problems'), [current_user, :problems], class: 'btn btn-block btn-link' \
+		if policy(Problem).new? %>
 
-    <%= link_to t('profile.show.ask_for_confirmation'), :confirmation_requests, method: :post, class: 'btn btn-block btn-primary' \
-      if policy(ConfirmationRequest).new? %>
+	<%= link_to t('profile.show.received_invites'), :received_invites, class: 'btn btn-block btn-link' \
+		if policy(Invite).index? %>
 
-    <%= link_to t('profile.show.received_invites'), :received_invites, class: 'btn btn-block btn-link' \
-      if policy(Invite).index? %>
-
-    <%= link_to t('profile.show.submissions'), [current_user, :submissions], class: 'btn btn-block btn-link' %>
-
-    <%= link_to t('profile.show.problems'), [current_user, :problems], class: 'btn btn-block btn-link' \
-      if policy(Problem).new? %>
-  </div>
-<% end %>
+	<%= link_to t('profile.show.ask_for_confirmation'), :confirmation_requests, class: 'btn btn-block btn-primary',
+		method: :post if policy(ConfirmationRequest).new? %>
+</div>

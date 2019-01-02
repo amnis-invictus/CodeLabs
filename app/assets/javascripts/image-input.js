@@ -1,35 +1,48 @@
 'use strict';
 
-jQuery.fn.extend({
-    imageInput: function imageInput() {
-        return this.each(function () {
-            var block = $(this);
+(function () {
+	var defaultOptions = {
+		url: '/avatar',
+		cache: false,
+		contentType: false,
+		processData: false,
+		method: 'POST',
+		dataType: 'json'
+	}
 
-            var input = block.children('input');
+	function imageInput() {
+		var block = $(this);
 
-            var image = block.children('img');
+		var input = block.children('input');
 
-            block.children('.image-input__prompt').click(function () {
-                input.click();
-            });
+		var image = block.children('img');
 
-            input.change(function () {
-                var files = input.prop('files');
+		block.children('.image-input__prompt').click(function () {
+			input.click();
+		});
 
-                if (files && files[0]) {
-                    var reader = new FileReader();
+		function success(data) {
+			image.attr('src', data.url);
+		}
 
-                    reader.onload = function (e) {
-                        image.attr('src', e.target.result);
-                    };
+		input.change(function () {
+			var files = input.prop('files');
 
-                    reader.readAsDataURL(files[0]);
-                }
-            });
-        });
-    }
-});
+			var data = new FormData();
 
-document.addEventListener('turbolinks:load', function () {
-    $('.image-input').imageInput();
-});
+			data.append('avatar[file]', files && files[0]);
+
+			$.ajax(Object.assign({}, defaultOptions, { data: data, success: success }));
+		});
+	}
+
+	jQuery.fn.extend({
+		imageInput: function () {
+			return this.each(imageInput);
+		}
+	});
+
+	document.addEventListener('turbolinks:load', function () {
+		$('.image-input').imageInput();
+	});
+})()

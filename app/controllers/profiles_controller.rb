@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
 			flash.now[:error] = I18n.t 'flash.save.failure'
 		end
 
-    render :show
+    render :show, turbolinks: true
   end
 
 	private
@@ -14,6 +14,6 @@ class ProfilesController < ApplicationController
   alias_method :resource, :current_user
 
   def resource_params
-    params.require(:user).permit(:username, :name, :password, :password_confirmation, :avatar, :skills, :city, :institution)
+    params.require(:user).permit(:username, :name, :password, :password_confirmation, :skills, :city, :institution)
   end
 end

@@ -71,11 +71,6 @@ table {
     margin-bottom: 20px;
 }
 
-.avatar img {
-    width: 300px;
-    height: 400px;
-}
-
 ul {
     list-style-type: none;
 }
@@ -135,8 +130,4 @@ pre {
     }
 }
 
-@media (max-width: 990px) {
-    .avatar {
-        margin-bottom: 20px;
-    }
-}
+

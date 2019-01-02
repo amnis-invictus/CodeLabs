@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
     resource :session, only: %i[new create destroy]
 
-    resource :profile, only: %i[show update]
+		resource :profile, only: %i[show update]
+
+    resource :avatar, only: %i[create destroy]
 
     resources :users, only: %i[index create] do
       resources :problems, only: :index

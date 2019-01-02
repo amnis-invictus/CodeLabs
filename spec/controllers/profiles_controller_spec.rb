@@ -32,7 +32,6 @@ RSpec.describe ProfilesController, type: :controller do
         name: 'Pikachu',
         password: 'password',
         password_confirmation: 'password',
-        avatar: '',
         skills: 'lighting rod, electro ball',
         city: 'Vinnytsia',
         institution: 'VTL'
