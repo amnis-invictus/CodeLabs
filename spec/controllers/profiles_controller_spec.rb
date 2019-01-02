@@ -14,7 +14,13 @@ RSpec.describe ProfilesController, type: :controller do
       end
     end
 
-    let(:failure) { -> { should render_template :show } }
+		let :failure do
+			lambda do
+				should set_flash.now[:error]
+
+				should render_template :show
+			end
+		end
   end
 
   it { expect(subject.method(:resource).original_name).to eq :current_user }
@@ -27,7 +33,7 @@ RSpec.describe ProfilesController, type: :controller do
         password: 'password',
         password_confirmation: 'password',
         avatar: '',
-        skills: 'lighting rod, elecro ball',
+        skills: 'lighting rod, electro ball',
         city: 'Vinnytsia',
         institution: 'VTL'
       }
