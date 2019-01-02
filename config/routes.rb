@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
     resources :archives, only: %i[new create]
 
-    resources :compilers, except: :edit
+    resources :compilers, except: :show
 
     resources :workers, only: :index
 

@@ -5,6 +5,8 @@ RSpec.describe Compiler, type: :model do
 
   it { should validate_presence_of :version }
 
+  it { should validate_presence_of :status }
+
   it { should validate_presence_of :memory_a }
 
   it { should validate_presence_of :memory_b }

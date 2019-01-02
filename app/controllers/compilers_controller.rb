@@ -1,25 +1,36 @@
 class CompilersController < ApplicationController
   def create
-    redirect_to resource and return if resource.save
+    if resource.save
+      flash[:success] = I18n.t 'flash.save.success'
 
-    flash.now[:error] = 'Validation Errors'
+      redirect_to :compilers
+    else
+      flash.now[:error] = I18n.t 'flash.save.failure'
 
-    render :new
+      render :new, turbolinks: true
+    end
   end
 
   def update
     if resource.update resource_params
-      flash.now[:success] = 'Update success'
+      flash.now[:success] = I18n.t 'flash.save.success'
     else
-      flash.now[:error] = 'Validation Errors'
+      flash.now[:error] = I18n.t 'flash.save.failure'
     end
 
-    render :show
+    render :edit, turbolinks: true
+  end
+
+  def destroy
+    resource.destroy
+
+    redirect_to :compilers
   end
 
   private
+
   def collection
-    @collection ||= Compiler.all.order(:id).page(params[:page])
+    @collection ||= Compiler.order(:id).page(params[:page])
   end
 
   def resource

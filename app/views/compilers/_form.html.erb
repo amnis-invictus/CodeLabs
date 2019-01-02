@@ -1,4 +1,4 @@
-<%= simple_form_for resource do |f| %>
+<%= simple_form_for resource, remote: true do |f| %>
   <%= f.input :id, readonly: true %>
 
   <%= f.input :name %>
