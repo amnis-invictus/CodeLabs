@@ -1,38 +1,38 @@
 <div class="col-md-3 col-12">
-	<%= render 'avatars/form', resource: Avatar.new(user: current_user) %>
+  <%= render 'avatars/form', resource: Avatar.new(user: current_user) %>
 </div>
 
 <div class="col-md-9 col-12">
-	<%= simple_form_for resource, url: :profile, wrapper: :horizontal_form, remote: true do |f| %>
-		<%= f.input :name %>
+  <%= simple_form_for resource, url: :profile, wrapper: :horizontal_form, remote: true do |f| %>
+    <%= f.input :name %>
 
-		<%= f.input :username %>
+    <%= f.input :username %>
 
-		<%= f.input :skills, input_html: { 'data-role': :tagsinput } %>
+    <%= f.input :skills, input_html: { 'data-role': :tagsinput } %>
 
-		<%= f.input :password %>
+    <%= f.input :password %>
 
-		<%= f.input :password_confirmation %>
+    <%= f.input :password_confirmation %>
 
-		<%= f.input :city %>
+    <%= f.input :city %>
 
-		<%= f.input :institution %>
+    <%= f.input :institution %>
 
-		<%= f.input :score, readonly: true, as: :string %>
+    <%= f.input :score, readonly: true, as: :string %>
 
-		<%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) } %>
+    <%= f.input :created_at, readonly: true, as: :string, input_html: { value: l(resource.created_at, format: :long) } %>
 
-		<%= f.submit class: 'btn btn-block btn-primary' %>
-	<% end %>
+    <%= f.submit class: 'btn btn-block btn-primary' %>
+  <% end %>
 
-	<%= link_to t('profile.show.submissions'), [current_user, :submissions], class: 'btn btn-block btn-link' %>
+  <%= link_to t('profile.show.submissions'), [current_user, :submissions], class: 'btn btn-block btn-link' %>
 
-	<%= link_to t('profile.show.problems'), [current_user, :problems], class: 'btn btn-block btn-link' \
-		if policy(Problem).new? %>
+  <%= link_to t('profile.show.problems'), [current_user, :problems], class: 'btn btn-block btn-link' \
+    if policy(Problem).new? %>
 
-	<%= link_to t('profile.show.received_invites'), :received_invites, class: 'btn btn-block btn-link' \
-		if policy(Invite).index? %>
+  <%= link_to t('profile.show.received_invites'), :received_invites, class: 'btn btn-block btn-link' \
+    if policy(Invite).index? %>
 
-	<%= link_to t('profile.show.ask_for_confirmation'), :confirmation_requests, class: 'btn btn-block btn-primary',
-		method: :post if policy(ConfirmationRequest).new? %>
+  <%= link_to t('profile.show.ask_for_confirmation'), :confirmation_requests, class: 'btn btn-block btn-primary',
+    method: :post if policy(ConfirmationRequest).new? %>
 </div>

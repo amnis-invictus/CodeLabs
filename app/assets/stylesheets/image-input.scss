@@ -1,5 +1,5 @@
 .image-input {
-	position: relative;
+  position: relative;
 
   .image-input__prompt {
     position: absolute;
@@ -11,7 +11,7 @@
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.5);
     transition: opacity .2s ease-in-out;
-		cursor: pointer;
+    cursor: pointer;
 
     .image-input__prompt-icon {
       text-align: center;
@@ -20,11 +20,11 @@
       color: #ffffff;
       font-size: 42px;
     }
-	}
+  }
 
   &:hover {
     .image-input__prompt {
       opacity: 1;
     }
-	}
+  }
 }
