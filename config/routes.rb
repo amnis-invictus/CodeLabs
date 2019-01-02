@@ -70,11 +70,4 @@ Rails.application.routes.draw do
       resource :session, only: %i[create destroy]
     end
   end
-
-  get '/v2/tests/problems.json', to: 'tests#problems'
-  get '/v2/tests/statuses.json', to: 'tests#statuses'
-  get '/v2/tests/users.json', to: 'tests#users'
-  get '/v2/tests/groups.json', to: 'tests#groups'
-
-  resources :tests, only: :create
 end
