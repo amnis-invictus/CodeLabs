@@ -12,8 +12,8 @@ ru:
       example_input: Ввод
       example_output: Вывод
       examples: Примеры
-      technical_text: Технические условия
-      missing_translation: Перевод на выбраном языке отсутствует, условия отображены на %{language} языке.
       languages:
         en: английском
         uk: украинском
+      missing_translation: Перевод на выбраном языке отсутствует, условия отображены на %{language} языке.
+      technical_text: Технические условия

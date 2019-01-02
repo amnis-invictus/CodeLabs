@@ -1,8 +1,9 @@
+---
 uk:
   received_invite:
     index:
-      title: Отримані запрошення
-      sender: Відправник
-      group: Назва групи
-      status: Статус
       created_at: Дата відправлення
+      group: Назва групи
+      sender: Відправник
+      status: Статус
+      title: Отримані запрошення

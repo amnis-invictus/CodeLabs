@@ -1,10 +1,10 @@
 ---
 en:
   header:
+    administration: Administration
     problems: Problems
     problems_all: All problems
     problems_tags: Classification
     signin: Sign in
     signout: Sign out
     submissions: Submissions
-    administration: Administration

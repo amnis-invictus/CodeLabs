@@ -2,12 +2,12 @@
 uk:
   submissions:
     index:
+      compiler: Компілятор
       id: ІД
       problem_name: Назва задачі
       state: Статус
       title: Відправлені розв'язки
       user_name: Ім'я користувача
-      compiler: Компілятор
     new:
       title: Відправити рішення до задачі "%{problem_caption}"
     show:

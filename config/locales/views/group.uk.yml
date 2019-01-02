@@ -1,25 +1,26 @@
+---
 uk:
   group:
-    index:
-      title: Групи
-      owner: Власник
-      name: Назва
-      visibility: Видимість
-      created_at: Дата створення
-    new:
-      title: Створити нову групу
     edit:
       title: Редагування групи
+    index:
+      created_at: Дата створення
+      name: Назва
+      owner: Власник
+      title: Групи
+      visibility: Видимість
+    new:
+      title: Створити нову групу
     show:
+      create_sharing: Додати задачу
+      description: Опис
       edit: Редагувати інформацію про групу
       invite: Запросити
       invite_list: Список запрошень
-      submission_list: Відправлені розв'язки учасників групи
-      problem_list: Задачі групи
-      create_sharing: Додати задачу
       members: Учасники
-      description: Опис
+      problem_list: Задачі групи
+      submission_list: Відправлені розв'язки учасників групи
       visibility:
-        private: Лише власник групи може додавати користувачів
         moderated: Користувачі можуть надсилати запити на приєднання до групи
+        private: Лише власник групи може додавати користувачів
         public: Кожен користувач може приєднатись і запросити інших до групи
