@@ -1,0 +1,6 @@
+---
+en:
+  flash:
+    save:
+      failure: Validation errors
+      success: Saved successfully

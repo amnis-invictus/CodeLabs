@@ -12,9 +12,9 @@ uk:
       example_input: Введення
       example_output: Виведення
       examples: Приклади
-      technical_text: Технічні умови
-      missing_translation: Переклад обраною мовою відсутній, умову відображено %{language} мовою.
-      submissions: Відправлені розв'язки для цієї задачі
       languages:
         en: англійською
         ru: російською
+      missing_translation: Переклад обраною мовою відсутній, умову відображено %{language} мовою.
+      submissions: Відправлені розв'язки для цієї задачі
+      technical_text: Технічні умови

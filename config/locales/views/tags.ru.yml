@@ -1,6 +1,7 @@
+---
 ru:
   tags:
     index:
-      title: Класификация
       name: Название тега
       problems_count: Количество задач
+      title: Класификация

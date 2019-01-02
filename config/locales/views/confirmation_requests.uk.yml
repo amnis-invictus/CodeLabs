@@ -1,9 +1,10 @@
+---
 uk:
   confirmation_requests:
     index:
+      created_at: Дата відправлення
+      status: Статус
       title: Запити на підтвердження
       user_id: Ідентифікатор
       user_name: Ім'я
       user_username: Нік
-      status: Статус
-      created_at: Дата відправлення

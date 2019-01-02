@@ -1,0 +1,13 @@
+<div class="image-input">
+	<input type="file" hidden>
+
+	<div class="image-input__prompt">
+		<i class="image-input__prompt-icon fas fa-upload"></i>
+	</div>
+
+	<% if resource.attached? %>
+		<%= image_tag resource.url, class: 'avatar' %>
+	<% else %>
+		<%= image_tag 'placeholder.png', class: 'avatar' %>
+	<% end %>
+</div>

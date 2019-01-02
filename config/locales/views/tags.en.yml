@@ -1,6 +1,7 @@
+---
 en:
   tags:
     index:
-      title: Classification
       name: Tag name
       problems_count: Problems count
+      title: Classification

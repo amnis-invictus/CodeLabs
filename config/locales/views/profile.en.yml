@@ -1,9 +1,9 @@
 ---
 en:
   profile:
+    confirm: Confirm
     show:
       title: Personal cabinet
     update:
       success: Saved successfully
-    confirm: Confirm
     user: User

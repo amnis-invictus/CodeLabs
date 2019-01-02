@@ -12,8 +12,8 @@ en:
       example_input: Input
       example_output: Output
       examples: Examples
-      technical_text: Specifications
-      missing_translation: Translation for selected language is missing, problem is displayed in %{language}.
       languages:
-        uk: ukrainian
         ru: russian
+        uk: ukrainian
+      missing_translation: Translation for selected language is missing, problem is displayed in %{language}.
+      technical_text: Specifications

@@ -1,0 +1,6 @@
+---
+ru:
+  flash:
+    save:
+      failure: Ошибки валидации
+      success: Успешно сохранено

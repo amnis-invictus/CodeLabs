@@ -1,0 +1,59 @@
+.winter-is-coming {
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.snow {
+  z-index: -1;
+  pointer-events: none;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  animation: falling linear infinite both;
+  transform: translate3D(0,-100%,0);
+
+  &--near {
+    animation-duration: 10s;
+    background-image: url('https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-large-075d267ecbc42e3564c8ed43516dd557.png');
+    background-size: contain;
+
+    & + .snow--alt {
+      animation-delay: (5s);
+    }
+  }
+
+  &--mid {
+    animation-duration: 20s;
+    background-image: url('https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-medium-0b8a5e0732315b68e1f54185be7a1ad9.png');
+    background-size: contain;
+
+    & + .snow--alt {
+      animation-delay: (10s);
+    }
+  }
+
+  &--far {
+    animation-duration: 30s;
+    background-image: url('https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-small-1ecd03b1fce08c24e064ff8c0a72c519.png');
+    background-size: contain;
+
+    & + .snow--alt {
+      animation-delay: (15s);
+    }
+  }
+}
+
+@keyframes falling {
+  0% {
+    transform: translate3D(-7.5%,-100%, 0);
+  }
+
+  100% {
+    transform: translate3D(7.5%,100%, 0);
+  }
+}
