@@ -2,13 +2,11 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate!, only: %i(new create)
 
   def create
-    render :new and return unless resource.save
+    render :new, turbolinks: true and return unless resource.save
 
     cookies.encrypted[:auth_token] = resource.auth_token.id
 
-    redirect_to session[:redirect] || resource.redirect
-
-    session[:redirect] = nil
+    redirect_to session.delete(:redirect) || :profile
   end
 
   def destroy
@@ -20,12 +18,13 @@ class SessionsController < ApplicationController
   end
 
   private
+
   def resource
     @resource ||= Session.new auth_token: AuthToken.find(cookies.encrypted[:auth_token])
   end
 
   def resource_params
-    params.require(:session).permit(:email, :password, :redirect)
+    params.require(:session).permit(:email, :password)
   end
 
   def initialize_resource

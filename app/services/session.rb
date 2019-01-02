@@ -1,7 +1,7 @@
 class Session
   include ActiveModel::Validations
 
-  attr_reader :email, :password
+  attr_accessor :email, :password
 
   validates :email, :password, presence: true
 
@@ -9,8 +9,8 @@ class Session
 
   delegate :destroy, to: :auth_token
 
-  def initialize params={}
-    @email, @password, @auth_token, @redirect = params.values_at :email, :password, :auth_token, :redirect
+  def initialize params = {}
+    @email, @password, @auth_token = params.values_at :email, :password, :auth_token
   end
 
   def to_key; end
@@ -21,19 +21,16 @@ class Session
     valid? ? auth_token.save : false
   end
 
-  def auth_token
-    @auth_token ||= user.auth_tokens.build
-  end
-
   def user
     @user ||= User.find_by email: email
   end
 
-  def redirect
-    @redirect.present? ? @redirect : :profile
+  def auth_token
+    @auth_token ||= user.auth_tokens.build
   end
 
   private
+
   def user_must_be_present
     return if email.blank?
 

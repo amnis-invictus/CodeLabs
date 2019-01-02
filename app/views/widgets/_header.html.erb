@@ -39,7 +39,7 @@
   <div class="header-section">
     <div class="header-section__item">
       <% if current_user %>
-        <%= link_to t('header.signout'), :session, method: :delete %>
+        <%= link_to t('header.signout'), :session, method: :delete, remote: true %>
       <% else %>
         <%= link_to t('header.signin'), %i(new session) %>
       <% end %>

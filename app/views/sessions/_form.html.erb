@@ -1,4 +1,4 @@
-<%= simple_form_for resource, url: :session do |f| %>
+<%= simple_form_for resource, url: :session, remote: true do |f| %>
   <%= f.input :email %>
 
   <%= f.input :password %>
