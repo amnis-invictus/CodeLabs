@@ -15,14 +15,6 @@ RSpec.describe Avatar, type: :model do
 
   it { should be_a Draper::Decoratable }
 
-  context do
-    before { expect(subject).to receive(:blob_must_be_variable) }
-
-    it { should validate_presence_of :user }
-
-    it { should validate_presence_of :file }
-  end
-
   it { should delegate_method(:avatar).to(:user).allow_nil }
 
   it { should delegate_method(:attached?).to(:avatar).allow_nil }
@@ -32,6 +24,14 @@ RSpec.describe Avatar, type: :model do
   it { should delegate_method(:as_json).to(:decorate) }
 
   it { should delegate_method(:url).to(:decorate) }
+
+  describe '#valid?' do
+    before { expect(subject).to receive(:blob_must_be_variable) }
+
+    it { should validate_presence_of :user }
+
+    it { should validate_presence_of :file }
+  end
 
   describe '#save' do
     context do
