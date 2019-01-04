@@ -1,11 +1,12 @@
+---
 ru:
   compiler:
-    index:
-      title: Компиляторы
-      id: ИД
-      name: Название
-      version: Версия
-      status: Статус
-      new: Добавить
     form:
       destroy: Удалить
+    index:
+      id: ИД
+      name: Название
+      new: Добавить
+      status: Статус
+      title: Компиляторы
+      version: Версия

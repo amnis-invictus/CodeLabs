@@ -1,11 +1,12 @@
+---
 en:
   compiler:
-    index:
-      title: Compilers
-      id: ID
-      name: Name
-      version: Version
-      status: Status
-      new: New
     form:
       destroy: Delete
+    index:
+      id: ID
+      name: Name
+      new: New
+      status: Status
+      title: Compilers
+      version: Version

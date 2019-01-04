@@ -4,6 +4,7 @@ ru:
     errors:
       messages:
         confirmation: не совпадает
+  confirm: Вы уверены?
   errors:
     messages:
       exists: уже существует

@@ -4,7 +4,7 @@
       <i class="far fa-edit"></i>
     <% end if policy(resource).edit? %>
 
-    <%= link_to resource, method: :delete, class: 'btn btn-danger' do %>
+    <%= link_to resource, method: :delete, remote: true, class: 'btn btn-danger', data: { confirm: t('confirm') } do %>
       <i class="fas fa-times"></i>
     <% end if policy(resource).destroy? %>
   </div>

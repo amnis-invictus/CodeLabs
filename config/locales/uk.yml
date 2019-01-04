@@ -4,6 +4,7 @@ uk:
     errors:
       messages:
         confirmation: не співпадає
+  confirm: Ви впевнені?
   errors:
     messages:
       exists: вже існує

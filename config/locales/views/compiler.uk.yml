@@ -1,11 +1,12 @@
+---
 uk:
   compiler:
-    index:
-      title: Компілятори
-      id: ІД
-      name: Назва
-      version: Версія
-      status: Статус
-      new: Додати
     form:
       destroy: Видалити
+    index:
+      id: ІД
+      name: Назва
+      new: Додати
+      status: Статус
+      title: Компілятори
+      version: Версія

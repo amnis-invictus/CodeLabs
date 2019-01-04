@@ -4,6 +4,7 @@ en:
     errors:
       messages:
         confirmation: does not match
+  confirm: Are your sure?
   errors:
     messages:
       exists: already exists
