@@ -31,7 +31,7 @@ gem 'russian'
 gem 'cocoon'
 gem 'bootstrap'
 gem 'rails-assets-sweetalert2', source: 'https://rails-assets.org'
-gem 'sweet-alert2-rails', git: 'https://github.com/just806me/sweet-alert2-rails.git'
+gem 'sweet-alert2-rails', github: 'just806me/sweet-alert2-rails'
 gem 'bitmask_attributes'
 
 group :development, :test do
