@@ -1,31 +1,27 @@
-<div class="page row bg-light">
-  <div class="col-12 mb-4">
-    <h1>
-      <%= t 'compiler.index.title' %>
+<div class="page bg-light">
+  <div class="page__title">
+    <h1><%= t 'compiler.index.title' %></h1>
 
-      <%= link_to 'New', %i(new compiler), class: 'btn btn-primary float-right', style: 'margin-right: 1rem' %>
-    </h1>
+    <%= link_to t('compiler.index.new'), %i(new compiler), class: 'btn btn-primary' %>
   </div>
 
-  <div class="col-12">
-    <table class="table table-custom">
-      <thead class="thead-dark">
-        <tr>
-          <th><%= t 'compiler.index.id' %></th>
+  <table class="table table-custom">
+    <thead class="thead-dark">
+      <tr>
+        <th><%= t 'compiler.index.id' %></th>
 
-          <th><%= t 'compiler.index.name' %></th>
+        <th><%= t 'compiler.index.name' %></th>
 
-          <th><%= t 'compiler.index.version' %></th>
+        <th><%= t 'compiler.index.version' %></th>
 
-          <th><%= t 'compiler.index.status' %></th>
-        </tr>
-      </thead>
+        <th><%= t 'compiler.index.status' %></th>
+      </tr>
+    </thead>
 
-      <tbody>
-        <%= render collection %>
-      </tbody>
-    </table>
+    <tbody>
+      <%= render collection %>
+    </tbody>
+  </table>
 
-    <%= paginate collection %>
-  </div>
+  <%= paginate collection %>
 </div>

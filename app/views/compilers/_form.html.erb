@@ -1,9 +1,11 @@
 <%= simple_form_for resource, remote: true do |f| %>
-  <%= f.input :id, readonly: true %>
+  <div class="page row bg-light">
+    <div class="col-12">
+      <%= f.input :id, readonly: true %>
 
-  <%= f.input :name %>
+      <%= f.input :name %>
+    </div>
 
-  <div class="row">
     <div class="col-6">
       <%= f.input :version %>
 
@@ -19,7 +21,12 @@
 
       <%= f.input :time_b %>
     </div>
-  </div>
 
-  <%= f.submit class: 'btn btn-primary' %>
+    <div class="col-12">
+      <%= f.submit class: 'btn btn-primary float-left' %>
+
+      <%= link_to t('compiler.form.destroy'), resource, method: :delete, remote: true, class: 'btn btn-danger float-right',
+        data: { confirm: 'Are you sure you want to delete this item?' } if policy(resource).destroy? %>
+    </div>
+  </div>
 <% end %>

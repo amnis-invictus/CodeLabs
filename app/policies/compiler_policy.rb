@@ -16,6 +16,6 @@ class CompilerPolicy < ApplicationPolicy
   end
 
   def destroy?
-    !!user&.administrator?
+    !!user&.administrator? && resource.persisted?
   end
 end

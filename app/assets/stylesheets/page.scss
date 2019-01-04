@@ -2,4 +2,16 @@
   margin-top: 30px;
   margin-bottom: 30px;
   padding: 15px 0;
+  border-radius: 5px;
+
+  &:not(.row) {
+    padding: 15px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
 }
