@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '2.6.0'
 
 gem 'rails', '~> 5.2.0'
 gem 'puma', '~> 3.11'
@@ -31,7 +31,7 @@ gem 'russian'
 gem 'cocoon'
 gem 'bootstrap'
 gem 'rails-assets-sweetalert2', source: 'https://rails-assets.org'
-gem 'sweet-alert2-rails'
+gem 'sweet-alert2-rails', git: 'https://github.com/just806me/sweet-alert2-rails.git'
 gem 'bitmask_attributes'
 
 group :development, :test do
