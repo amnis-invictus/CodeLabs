@@ -31,18 +31,6 @@ textarea {
     color: #933706;
 }
 
-.section {
-    background: #fff;
-    border-radius: 5px;
-    margin-bottom: 12px;
-    -webkit-clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
-    clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
-}
-
-.section.section-striped:nth-child(even) {
-    background: #efefef;
-}
-
 i.contact {
     transform: scale(1.5);
     padding-right: 5px;
@@ -129,5 +117,3 @@ pre {
         margin-bottom: 40px;
     }
 }
-
-

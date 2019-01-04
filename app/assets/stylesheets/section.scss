@@ -1,4 +1,9 @@
 .section {
+  background: #fff;
+  color: #000000;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
   padding: 15px;
 
   &:not(:last-child) {
@@ -22,5 +27,9 @@
     text-align: center;
     background-color: #fcf8e3;
     color: #8a6d3b;
+  }
+
+  &--striped:nth-child(even) {
+    background: #efefef;
   }
 }

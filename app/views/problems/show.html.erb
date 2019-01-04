@@ -13,7 +13,7 @@
     <%= t 'problems.show.missing_translation', language: I18n.t(resource.language, scope: 'problems.show.languages') %>
   <% end if I18n.locale != resource.language %>
 
-  <div class="section section-striped">
+  <div class="section section--striped">
     <h2 class="section__title"><%= resource.caption %></h2>
 
     <div class="section__content">
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div class="section section-striped">
+  <div class="section section--striped">
     <h3><%= t 'problems.show.technical_text' %></h3>
 
     <div class="section__content">
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <%= content_tag :div, class: 'section section-striped' do %>
+  <%= content_tag :div, class: 'section section--striped' do %>
     <h3><%= t 'problems.show.examples' %></h3>
 
     <div class="row">
@@ -55,7 +55,7 @@
     <% end %>
   <% end if resource.examples.any? %>
 
-  <%= content_tag :div, class: 'section section-striped' do %>
+  <%= content_tag :div, class: 'section section--striped' do %>
     <i class="fa fa-certificate" aria-hidden="true"></i>
 
     <ol class="tags">
@@ -65,17 +65,17 @@
     </ol>
   <% end if resource.tags.any? %>
 
-  <div class="section section-striped">
+  <div class="section section--striped">
     <i class="far fa-address-book contact" aria-hidden="true"></i>
 
     <p class="author"><%= resource.author %></p>
   </div>
 
-  <%= content_tag :div, class: 'section section-striped' do %>
+  <%= content_tag :div, class: 'section section--striped' do %>
     <%= render 'submissions/form', parent: resource, resource: Submission.new %>
   <% end if current_user %>
 
-  <div class="section section-striped">
+  <div class="section section--striped">
     <%= link_to t('problems.show.submissions'), [resource, :submissions], class: 'btn btn-block btn-link' %>
   </div>
 </div>
