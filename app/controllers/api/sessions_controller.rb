@@ -17,7 +17,7 @@ class Api::SessionsController < Api::ApplicationController
   end
 
   def parent
-    @parent ||= Worker.find params[:worker_id]
+    @parent ||= ::Worker.find params[:worker_id]
   end
 
   def build_resource
