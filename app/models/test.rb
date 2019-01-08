@@ -5,7 +5,7 @@ class Test < ApplicationRecord
 
   validates :point, presence: true, numericality: { only_integer: true }
 
-  belongs_to :problem
+  belongs_to :problem, touch: true
 
   has_one_attached :input
 
