@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <%= f.input :text, as: :text %>
+  <%= f.input :text, as: :text, :input_html => { :data => {:textarea => "ckeditor"} } %>
 
-  <%= f.input :technical_text, as: :text %>
+  <%= f.input :technical_text, as: :text, :input_html => { :data => {:textarea => "ckeditor"} } %>
 </div>
