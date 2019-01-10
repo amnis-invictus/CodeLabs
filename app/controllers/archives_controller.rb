@@ -1,6 +1,6 @@
 class ArchivesController < ApplicationController
   def create
-    render :new and return unless resource.save
+    render :new, turbolinks: true and return unless resource.save
 
     head 204
   end

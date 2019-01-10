@@ -25,6 +25,8 @@ RSpec.describe Archive, type: :model do
 
   it { should validate_presence_of :channel_id }
 
+  it { should validate_presence_of :user }
+
   describe '#save' do
     context do
       before { expect(subject).to receive(:valid?).and_return(false) }

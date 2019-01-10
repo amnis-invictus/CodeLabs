@@ -1,18 +1,14 @@
 class Archive
   include ActiveModel::Validations
 
-  attr_accessor :file, :channel_id, :user
+  attr_accessor :user, :file, :channel_id
 
-  validates :file, :channel_id, presence: true
+  validates :user, :file, :channel_id, presence: true
 
   validate :file_must_be_valid
 
-  def initialize params={}
-    @file = params[:file]
-
-    @channel_id = params[:channel_id]
-
-    @user = params[:user]
+  def initialize params = {}
+    @user, @file, @channel_id = params.values_at :user, :file, :channel_id
   end
 
   def to_key; end
@@ -38,7 +34,7 @@ class Archive
 
   def file_must_be_valid
     return if file.is_a?(ActionDispatch::Http::UploadedFile) && file.content_type == 'application/zip'
-    
+
     errors.add :file, :invalid
   end
 end

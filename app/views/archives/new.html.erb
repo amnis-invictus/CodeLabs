@@ -1,18 +1,17 @@
 <div class="page row bg-light">
-    <div class="col-12">
+  <div class="col-12">
     <h1><%= t 'archives.new.title' %></h1>
   </div>
 
-    <div class="col-md-6 col-12">
+  <div class="col-md-6 col-12">
     <%= simple_form_for resource, remote: true, authenticity_token: true do |f| %>
       <%= f.hidden_field :channel_id %>
 
-      <%= f.input :file, as: :file, input_html: {"accept": "application/zip"} %>
+      <%= f.input :file, as: :file, input_html: { accept: 'application/zip' } %>
 
       <%= f.submit class: 'btn btn-primary' %>
     <% end %>
   </div>
 
-    <div id="process-problem-archive-log" class="col-md-6 col-12"
-         data-channel-id="<%= resource.channel_id %>"></div>
+  <div id="process-problem-archive-log" class="col-md-6 col-12" data-channel-id="<%= resource.channel_id %>"></div>
 </div>
