@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Test, type: :model do
   it { should validate_presence_of :num }
 
-  it { should belong_to :problem }
+  it { should belong_to(:problem).touch }
 
   pending { should have_one_attached :input }
 
