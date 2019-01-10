@@ -10,7 +10,6 @@
 //= require sweet-alert2-rails
 //= require bootstrap-tagsinput.min.js
 //= require typeahead.min.js
-//= require textarea-ckeditor.js
 //= require_tree .
 
 $(function () {
