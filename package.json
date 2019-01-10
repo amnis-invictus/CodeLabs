@@ -2,6 +2,7 @@
   "name": "CodeLabs",
   "private": true,
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "kostyanf14/ckeditor5-build-classic#stable",
     "toastr": "^2.1.4"
   }
 }
