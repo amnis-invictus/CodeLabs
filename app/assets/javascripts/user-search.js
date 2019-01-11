@@ -1,5 +1,3 @@
-'use strict';
-
 (function () {
   function suggestion(data) { return data.search_suggestion; }
 

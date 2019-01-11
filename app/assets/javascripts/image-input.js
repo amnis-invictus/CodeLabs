@@ -1,5 +1,3 @@
-'use strict';
-
 (function () {
   var defaultOptions = {
     url: '/avatar',
@@ -17,13 +15,9 @@
 
     var image = block.children('img');
 
-    block.children('.image-input__prompt').click(function () {
-      input.click();
-    });
+    block.children('.image-input__prompt').click(function () { input.click(); });
 
-    function success(data) {
-      image.attr('src', data.url);
-    }
+    function success(data) { image.attr('src', data.url); }
 
     input.change(function () {
       var files = input.prop('files');
@@ -36,13 +30,7 @@
     });
   }
 
-  jQuery.fn.extend({
-    imageInput: function () {
-      return this.each(imageInput);
-    }
-  });
+  jQuery.fn.extend({ imageInput: function () { return this.each(imageInput); } });
 
-  document.addEventListener('turbolinks:load', function () {
-    $('.image-input').imageInput();
-  });
-})()
+  document.addEventListener('turbolinks:load', function () { $('.image-input').imageInput(); });
+})();

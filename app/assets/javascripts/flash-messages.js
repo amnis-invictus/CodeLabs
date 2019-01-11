@@ -1,13 +1,5 @@
-'use strict';
-
-toastr.options.closeButton = true;
-
-toastr.options.timeOut = 1500;
+Object.assign(toastr.options, { closeButton: true, timeOut: 1500 });
 
 document.addEventListener('turbolinks:load', function () {
-    var messages = $('body').data('flash');
-
-    messages.forEach(function (m) {
-        toastr[m[0]](m[1]);
-    });
+  $('body').data('flash').forEach(function (m) { toastr[m[0]](m[1]); });
 });

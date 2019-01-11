@@ -1,17 +1,16 @@
-'use strict';
-
 function initializeTestFieldsSwap() {
-    $(document).on('click', '[data-toggle=test-fields-swap]', function () {
-        var row = $(this).closest('tr');
+  $(document).on('click', '[data-toggle=test-fields-swap]', function () {
+    var row = $(this).closest('tr');
 
-        var items = [row.find('.problem_tests_input'), row.find('.problem_tests_input_text'), row.find('.problem_tests_answer'), row.find('.problem_tests_answer_text')];
+    var items = [
+      row.find('.problem_tests_input'),
+      row.find('.problem_tests_input_text'),
+      row.find('.problem_tests_answer'),
+      row.find('.problem_tests_answer_text')
+    ];
 
-        items.forEach(function (item) {
-            item.toggleClass('d-none');
-        });
-    });
+    items.forEach(function (item) { item.toggleClass('d-none'); });
+  });
 }
 
-document.addEventListener('turbolinks:load', function () {
-    initializeTestFieldsSwap();
-});
+document.addEventListener('turbolinks:load', function () { initializeTestFieldsSwap(); });

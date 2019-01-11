@@ -14,9 +14,7 @@
 //= require_tree .
 
 $(function () {
-  $('input[readonly]').on('focus', function () {
-    $(this).blur();
-  });
+  $('input[readonly]').on('focus', function () { $(this).blur(); });
 
   $('[data-toggle="tooltip"]').tooltip();
 });

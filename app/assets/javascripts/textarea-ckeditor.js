@@ -1,5 +1,3 @@
-'use strict';
-
 (function () {
   function replaceTextareas() {
     $('[data-textarea="ckeditor"]').each(function () {
