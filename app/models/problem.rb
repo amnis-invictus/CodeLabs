@@ -33,5 +33,5 @@ class Problem < ApplicationRecord
 
   delegate :as_json, to: :decorate
 
-  accepts_nested_attributes_for :examples, :tests, :translations, allow_destroy: true
+  accepts_nested_attributes_for :examples, :tests, :translations, :submissions, allow_destroy: true
 end
