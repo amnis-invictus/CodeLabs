@@ -3,7 +3,7 @@
 
   document.addEventListener('turbolinks:load', function () {
     if (regex.test(window.location.pathname))
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'render-me']);
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
   });
 })();
 
