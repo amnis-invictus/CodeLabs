@@ -62,26 +62,4 @@ RSpec.describe Archive, type: :model do
       its(:filename) { should eq File.join Dir.tmpdir, uuid }
     end
   end
-
-  describe '#file_must_be_valid' do
-    let(:call) { -> { subject.send :file_must_be_valid } }
-
-    let(:errors) { -> { subject.errors.details } }
-
-    context do
-      it { expect(&call).to_not change(&errors) }
-    end
-
-    context do
-      let(:file) { double }
-
-      it { expect(&call).to change(&errors).to(file: [{ error: :invalid }]) }
-    end
-
-    context do
-      let(:file) { ActionDispatch::Http::UploadedFile.new tempfile: '', type: 'image/json' }
-
-      it { expect(&call).to change(&errors).to(file: [{ error: :invalid }]) }
-    end
-  end
 end
