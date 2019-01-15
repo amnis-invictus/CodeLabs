@@ -24,7 +24,7 @@ class Problem < ApplicationRecord
   has_many :sharings, dependent: :destroy
 
   has_many :problems_tags, dependent: :destroy
-  
+
   has_many :groups, through: :sharings
 
   has_many :tags, through: :problems_tags
