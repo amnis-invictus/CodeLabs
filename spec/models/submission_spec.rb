@@ -7,13 +7,13 @@ RSpec.describe Submission, type: :model do
 
   it { should belong_to :compiler }
 
-  pending { should have_one_attached :source }
+  it { should have_one :source_attachment }
 
   it { should have_one(:log).conditions(type: :source) }
 
-  it { should have_many :results }
+  it { should have_many(:results).dependent(:destroy) }
 
-  it { should have_many :logs }
+  it { should have_many(:logs).dependent(:destroy) }
 
   it { should define_enum_for(:test_state).with_values(pending: 0, in_progress: 1, done: 2, failed: 3).with_prefix }
 
@@ -21,7 +21,7 @@ RSpec.describe Submission, type: :model do
 
   it { should delegate_method(:as_json).to(:decorate) }
 
-  it { should delegate_method(:data).to(:log).with_prefix }
+  it { should delegate_method(:data).to(:log).with_prefix.allow_nil }
 
   it { should delegate_method(:user).to(:problem).with_prefix }
 
@@ -36,6 +36,8 @@ RSpec.describe Submission, type: :model do
   describe '#fail' do
     context do
       before { subject.fails_count = 0 }
+
+      before { expect(subject).to receive_message_chain(:results, :delete_all) }
 
       it { should transition_from(:in_progress).to(:pending).on_event(:fail) }
     end

@@ -13,9 +13,9 @@ class Submission < ApplicationRecord
 
   has_one :log, -> { where type: :source }
 
-  has_many :results
+  has_many :results, dependent: :destroy
 
-  has_many :logs
+  has_many :logs, dependent: :destroy
 
   enum test_state: { pending: 0, in_progress: 1, done: 2, failed: 3 }, _prefix: true
 
@@ -37,7 +37,7 @@ class Submission < ApplicationRecord
     event(:release) { transitions from: :in_progress, to: :done }
 
     event :fail do
-      transitions from: :in_progress, to: :pending, if: -> { fails_count < 5 }
+      transitions from: :in_progress, to: :pending, if: -> { fails_count < 5 }, after: -> { results.delete_all }
 
       transitions from: :in_progress, to: :failed
     end
