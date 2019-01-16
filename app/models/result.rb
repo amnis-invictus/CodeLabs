@@ -3,6 +3,8 @@ class Result < ApplicationRecord
 
   validates :memory, :time, presence: true, numericality: true
 
+  validates :test, presence: true, on: :create
+
   enum status: {
     ok: 0,
     wrong_answer: 1,

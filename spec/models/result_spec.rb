@@ -11,6 +11,8 @@ RSpec.describe Result, type: :model do
 
   it { should validate_numericality_of :time }
 
+  it { should validate_presence_of(:test).on(:create) }
+
   it do
     should define_enum_for(:status).with_values \
       ok: 0,
