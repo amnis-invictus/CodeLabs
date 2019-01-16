@@ -1,5 +1,7 @@
 class ProblemTranslation < ApplicationRecord
-  validates :language, :caption, :author, :text, :technical_text, presence: true
+  validates :caption, :author, :text, :technical_text, presence: true
+
+  validates :language, presence: true, uniqueness: { scope: :problem_id }
 
   validates :default, inclusion: { in: [true, false] }
 

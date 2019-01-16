@@ -3,11 +3,17 @@ require 'rails_helper'
 RSpec.describe Test, type: :model do
   it { should validate_presence_of :num }
 
+  it { should validate_presence_of :point }
+
+  it { should validate_numericality_of(:point).only_integer }
+
+  pending { should validate_uniqueness_of(:num).scoped_to(:problem_id) }
+
   it { should belong_to(:problem).touch }
 
-  pending { should have_one_attached :input }
+  it { should have_one :input_attachment }
 
-  pending { should have_one_attached :answer }
+  it { should have_one :answer_attachment }
 
   it { should have_many(:results).dependent(:nullify) }
 

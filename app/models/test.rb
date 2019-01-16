@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
   attr_accessor :input_text, :answer_text
 
-  validates :num, presence: true
+  validates :num, presence: true, uniqueness: { scope: :problem_id }
 
   validates :point, presence: true, numericality: { only_integer: true }
 

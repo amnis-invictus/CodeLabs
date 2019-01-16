@@ -11,6 +11,8 @@ RSpec.describe ProblemTranslation, type: :model do
 
   it { should validate_presence_of :technical_text }
 
+  pending { should validate_uniqueness_of(:language).scoped_to(:problem_id) }
+
   it { should belong_to :problem }
 
   it { should define_enum_for(:language).with_values(I18n.available_locales) }
