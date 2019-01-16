@@ -1,11 +1,11 @@
 class Archive::TranslationParser
-  def initialize xml
-    @xml = xml
+  def initialize xml, problem_id
+    @xml, @problem_id = xml, problem_id
   end
 
   def attributes
     {
-      id: @xml[:id],
+      id: id,
       _destroy: @xml[:_destroy],
       default: @xml[:default],
       language: @xml[:language],
@@ -17,6 +17,12 @@ class Archive::TranslationParser
   end
 
   private
+
+  def id
+    return nil if @problem_id.blank? || @xml[:language].blank?
+
+    ProblemTranslation.select(:id).find_by(problem_id: @problem_id, language: @xml[:language])&.id
+  end
 
   def text
     @xml.at_xpath('text')&.inner_html

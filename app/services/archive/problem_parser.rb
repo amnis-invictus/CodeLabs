@@ -28,31 +28,35 @@ class Archive::ProblemParser
   def tag_ids
     return if @xml.xpath('tags').blank?
 
-    @xml.xpath('tags/tag').map { |xml| xml[:id] }.compact
+    @xml.xpath('tags/tag').map { |tag_xml| tag_xml[:id] }.compact
   end
 
   def examples_attributes
     return if @xml.xpath('examples').blank?
 
-    @xml.xpath('examples/example').map { |xml| Archive::ExampleParser.attributes xml }
+    @xml.xpath('examples/example').map { |example_xml| Archive::ExampleParser.attributes example_xml }
   end
 
   def tests_attributes
     return if @xml.xpath('tests').blank?
 
-    @xml.xpath('tests/test').map { |xml| Archive::TestParser.attributes xml, @zip }
+    @xml.xpath('tests/test').map { |test_xml| Archive::TestParser.attributes test_xml, @zip, xml[:id] }
   end
 
   def translations_attributes
     return if @xml.xpath('translations').blank?
 
-    @xml.xpath('translations/translation').map { |xml| Archive::TranslationParser.attributes xml }
+    @xml.xpath('translations/translation').map do |translation_xml|
+      Archive::TranslationParser.attributes translation_xml, xml[:id]
+    end
   end
 
   def submissions_attributes
     return if @xml.xpath('submissions').blank?
 
-    @xml.xpath('submissions/submission').map { |xml| Archive::SubmissionParser.attributes xml, @zip, @user }
+    @xml.xpath('submissions/submission').map do |submission_xml|
+      Archive::SubmissionParser.attributes submission_xml, @zip, @user
+    end
   end
 
   class << self
