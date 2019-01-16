@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
 
     resources :problems do
-      resources :submissions, only: %i[index new create]
+      resources :submissions, only: %i[index create]
     end
 
     resources :tags, only: :index do

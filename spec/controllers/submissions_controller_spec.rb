@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe SubmissionsController, type: :controller do
+  it_behaves_like :show
+
   it_behaves_like :index, anonymous: true
 
   it_behaves_like :index, anonymous: true, params: { problem_id: 7 }
 
-  it_behaves_like :show
+  it_behaves_like :index, anonymous: true, params: { group_id: 7 }
 
-  it_behaves_like :new, params: { problem_id: 7 }
+  it_behaves_like :index, anonymous: true, params: { user_id: 7 }
 
   it_behaves_like :create, params: { problem_id: 7 } do
     let(:resource) { stub_model Submission }
@@ -29,9 +31,9 @@ RSpec.describe SubmissionsController, type: :controller do
 
       before do
         #
-        # subject.submissions.includes(:user, problem: :user).order(created_at: :desc).page(params[:page]) -> :collection
+        # subject.submissions.includes(:compiler, :user, problem: :user).order(created_at: :desc).page(params[:page]) -> :collection
         #
-        expect(subject).to receive_message_chain(:submissions, :includes).with(:user, problem: :user) do
+        expect(subject).to receive_message_chain(:submissions, :includes).with(:compiler, :user, problem: :user) do
           double.tap do |a|
             expect(a).to receive(:order).with(created_at: :desc) do
               double.tap { |b| expect(b).to receive(:page).with(41).and_return(:collection) }
@@ -123,14 +125,6 @@ RSpec.describe SubmissionsController, type: :controller do
     before { expect(subject).to receive(:current_user).and_return(:current_user) }
 
     its(:resource_params) { should eq params[:submission].permit!.merge(user: :current_user) }
-  end
-
-  describe '#initialize_resource' do
-    before { expect(subject).to receive_message_chain(:parent, :submissions, :new).and_return(:resource) }
-
-    before { subject.send :initialize_resource }
-
-    its(:resource) { should eq :resource }
   end
 
   describe '#build_resource' do

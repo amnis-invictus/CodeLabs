@@ -8,8 +8,9 @@ class SubmissionsController < ApplicationController
   end
 
   private
+
   def collection
-    @collection ||= submissions.includes(:user, problem: :user).order(created_at: :desc).page(params[:page])
+    @collection ||= submissions.includes(:compiler, :user, problem: :user).order(created_at: :desc).page(params[:page])
   end
 
   def submissions
@@ -34,10 +35,6 @@ class SubmissionsController < ApplicationController
 
   def resource_params
     params.require(:submission).permit(:compiler_id, :source).merge(user: current_user)
-  end
-
-  def initialize_resource
-    @resource = parent.submissions.new
   end
 
   def build_resource
