@@ -12,12 +12,13 @@ uk:
       title: Відправити рішення до задачі "%{problem_caption}"
     show:
       compiler_log: Лог компіляції
-      failed: Помилка тестування рішення
       memory_limit: Ліміт пам'яті
       problem: Задача
       results: Результати
       source: Код програми
       state: Статус
+      test_result_compiler_error: Помилка компіляції рішення
+      test_state_failed: Помилка тестування рішення
       time_limit: Ліміт часу
       title: Розв'язок №%{id}
       user_name: Ім'я користувача

@@ -2,6 +2,7 @@
 en:
   submissions:
     index:
+      compiler: Compiler
       id: ID
       problem_name: Problem name
       state: State
@@ -11,12 +12,13 @@ en:
       title: Submit a solution for the "%{problem_caption}" problem
     show:
       compiler_log: Compiler log
-      failed: Failed testing solution
       memory_limit: Memory limit exceeded
       problem: Problem
       results: Results
       source: Source
       state: State
+      test_result_compiler_error: Failed compiling solution
+      test_state_failed: Failed testing solution
       time_limit: Time limit exceeded
       title: 'Submission #%{id}'
       user_name: User name

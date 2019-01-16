@@ -2,6 +2,7 @@
 ru:
   submissions:
     index:
+      compiler: Компилятор
       id: ИД
       problem_name: Название задачи
       state: Статус
@@ -11,12 +12,13 @@ ru:
       title: Отправить решение к задаче "%{problem_caption}"
     show:
       compiler_log: Лог компиляции
-      failed: Ошибка тестирования решения
       memory_limit: Лимит памяти
       problem: Задача
       results: Результаты
       source: Исходный код
       state: Статус
+      test_result_compiler_error: Ошибка компиляции решения
+      test_state_failed: Ошибка тестирования решения
       time_limit: Лимит времени
       title: Попытка №%{id}
       user_name: Имя пользователя
