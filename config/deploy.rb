@@ -8,7 +8,7 @@ set :rails_env, :production
 
 append :linked_files, '.env', 'config/master.key'
 
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'vendor/bundle', 'storage'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'storage'
 
 set :deploy_to, '/home/user/application'
 
