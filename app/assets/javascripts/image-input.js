@@ -1,13 +1,4 @@
 (function () {
-  var defaultOptions = {
-    url: '/avatar',
-    cache: false,
-    contentType: false,
-    processData: false,
-    method: 'POST',
-    dataType: 'json'
-  }
-
   function imageInput() {
     var block = $(this);
 
@@ -26,7 +17,16 @@
 
       data.append('avatar[file]', files && files[0]);
 
-      $.ajax(Object.assign({}, defaultOptions, { data: data, success: success }));
+      $.ajax({
+        url: '/avatar',
+        cache: false,
+        contentType: false,
+        processData: false,
+        method: 'POST',
+        dataType: 'json',
+        data: data,
+        success: success
+      });
     });
   }
 
