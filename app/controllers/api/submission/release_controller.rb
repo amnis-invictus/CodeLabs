@@ -1,4 +1,4 @@
-class Api::ReleasesController < Api::ApplicationController
+class Api::Submission::ReleaseController < Api::ApplicationController
   skip_before_action :authorize_resource
 
   def create
@@ -6,6 +6,7 @@ class Api::ReleasesController < Api::ApplicationController
   end
 
   private
+
   attr_reader :resource
 
   def resource_params

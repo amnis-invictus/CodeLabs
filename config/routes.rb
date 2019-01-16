@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :submissions, only: :index do
-      resource :take, :release, :fail, only: :create
+      resources :take, :release, :fail, only: :create, module: :submission
 
       resources :logs, only: :create
     end

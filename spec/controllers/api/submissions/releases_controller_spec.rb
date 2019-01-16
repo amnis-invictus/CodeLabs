@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::ReleasesController, type: :controller do
+RSpec.describe Api::Submission::ReleaseController, type: :controller do
   it { should be_an Api::ApplicationController }
 
   it_behaves_like :create, params: { submission_id: 93 }, unauthorized: true, format: :json do
