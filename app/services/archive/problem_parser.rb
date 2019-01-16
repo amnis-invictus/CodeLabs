@@ -40,14 +40,14 @@ class Archive::ProblemParser
   def tests_attributes
     return if @xml.xpath('tests').blank?
 
-    @xml.xpath('tests/test').map { |test_xml| Archive::TestParser.attributes test_xml, @zip, xml[:id] }
+    @xml.xpath('tests/test').map { |test_xml| Archive::TestParser.attributes test_xml, @zip, @xml[:id] }
   end
 
   def translations_attributes
     return if @xml.xpath('translations').blank?
 
     @xml.xpath('translations/translation').map do |translation_xml|
-      Archive::TranslationParser.attributes translation_xml, xml[:id]
+      Archive::TranslationParser.attributes translation_xml, @xml[:id]
     end
   end
 
