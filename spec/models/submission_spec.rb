@@ -34,8 +34,10 @@ RSpec.describe Submission, type: :model do
   it { should transition_from(:in_progress).to(:done).on_event(:release) }
 
   describe '#fail' do
+    before { expect(subject).to receive(:increment!).with(:fails_count) }
+
     context do
-      before { subject.fails_count = 0 }
+      subject { stub_model described_class, fails_count: 0 }
 
       before { expect(subject).to receive_message_chain(:results, :delete_all) }
 
@@ -43,7 +45,7 @@ RSpec.describe Submission, type: :model do
     end
 
     context do
-      before { subject.fails_count = 5 }
+      subject { stub_model described_class, fails_count: 5 }
 
       it { should transition_from(:in_progress).to(:failed).on_event(:fail) }
     end

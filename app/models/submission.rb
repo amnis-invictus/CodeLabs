@@ -36,7 +36,7 @@ class Submission < ApplicationRecord
 
     event(:release) { transitions from: :in_progress, to: :done }
 
-    event :fail do
+    event :fail, after: -> { increment! :fails_count } do
       transitions from: :in_progress, to: :pending, if: -> { fails_count < 5 }, after: -> { results.delete_all }
 
       transitions from: :in_progress, to: :failed
