@@ -3,7 +3,9 @@ class Result < ApplicationRecord
 
   validates :memory, :time, presence: true, numericality: true
 
-  validates :test, presence: true, on: :create
+  belongs_to :submission
+
+  belongs_to :test
 
   enum status: {
     ok: 0,
@@ -18,10 +20,6 @@ class Result < ApplicationRecord
     time_limit_exceded: 15,
     partilly_correct: 16
   }
-
-  belongs_to :submission
-
-  belongs_to :test, optional: true
 
   delegate :num, to: :test, prefix: true, allow_nil: true
 end
