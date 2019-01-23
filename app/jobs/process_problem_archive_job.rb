@@ -32,6 +32,7 @@ class ProcessProblemArchiveJob < ApplicationJob
   end
 
   private
+
   def log message
     ActionCable.server.broadcast "ProcessProblemArchive:#{ @channel_id }", message
   end

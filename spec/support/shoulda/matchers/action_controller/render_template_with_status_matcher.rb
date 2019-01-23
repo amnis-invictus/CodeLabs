@@ -33,6 +33,7 @@ module Shoulda
         end
 
         private
+
         def renders_template?
           @render_template.matches? @controller
         end

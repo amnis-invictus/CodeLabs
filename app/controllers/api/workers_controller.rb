@@ -6,6 +6,7 @@ class Api::WorkersController < Api::ApplicationController
   end
 
   private
+
   attr_reader :resource
 
   def resource_params

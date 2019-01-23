@@ -6,6 +6,7 @@ class ConfirmationRequest::RejectsController < ApplicationController
   end
 
   private
+
   attr_reader :resource
 
   def parent

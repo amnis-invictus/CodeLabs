@@ -6,6 +6,7 @@ class Invite::AcceptsController < ApplicationController
   end
 
   private
+
   attr_reader :resource
 
   def parent

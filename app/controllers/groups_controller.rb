@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
   end
 
   private
+
   def resource
     @resource ||= Group.find(params[:id]).decorate
   end

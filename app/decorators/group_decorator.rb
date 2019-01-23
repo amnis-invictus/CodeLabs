@@ -6,6 +6,7 @@ class GroupDecorator < Draper::Decorator
   end
 
   private
+
   def visibility_icon_class
     case visibility.to_sym
     when :private, :moderated

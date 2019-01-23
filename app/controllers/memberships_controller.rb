@@ -6,6 +6,7 @@ class MembershipsController < ApplicationController
   end
 
   private
+
   def resource
     @resource ||= Membership.new resource_params
   end

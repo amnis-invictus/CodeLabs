@@ -14,6 +14,7 @@ class Invite < ApplicationRecord
   delegate :name, :visibility, :owner, :users, to: :group, prefix: true
 
   private
+
   def receiver_must_not_be_in_group
     return unless group.present?
 

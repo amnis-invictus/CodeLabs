@@ -24,6 +24,7 @@ class ProblemsController < ApplicationController
   end
 
   private
+
   def collection
     @collection ||= problems.includes(:user).order(:id).page(params[:page])
   end

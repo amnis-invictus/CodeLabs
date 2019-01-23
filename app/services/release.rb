@@ -12,6 +12,7 @@ class Release
   end
 
   private
+
   def score
     return unless @test_result == 0
 

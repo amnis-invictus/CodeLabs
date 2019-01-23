@@ -44,6 +44,7 @@ class Submission < ApplicationRecord
   end
 
   private
+
   def source_must_be_attached
     errors.add :source, :blank unless source.attached?
   end

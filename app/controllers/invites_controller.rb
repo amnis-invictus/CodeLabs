@@ -8,6 +8,7 @@ class InvitesController < ApplicationController
   end
 
   private
+
   attr_reader :resource
 
   def collection

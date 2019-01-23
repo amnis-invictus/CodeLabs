@@ -26,6 +26,7 @@ class Archive
   end
 
   private
+
   def filename
     @filename ||= File.join Dir.tmpdir, SecureRandom.uuid
   end

@@ -6,6 +6,7 @@ class Api::ApplicationController < ApplicationController
   rescue_from(Pundit::NotAuthorizedError) { head 403 }
 
   private
+
   def authenticate!
     head 401 unless params[:access_token] == ENV['API_ACCESS_TOKEN']
   end

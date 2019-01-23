@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def current_user
     return unless cookies.encrypted[:auth_token]
 

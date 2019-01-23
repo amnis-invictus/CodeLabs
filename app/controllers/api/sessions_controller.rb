@@ -12,6 +12,7 @@ class Api::SessionsController < Api::ApplicationController
   end
 
   private
+
   def resource
     @resource ||= build_resource
   end

@@ -6,6 +6,7 @@ class Api::LogsController < Api::ApplicationController
   end
 
   private
+
   attr_reader :resource
 
   def parent
