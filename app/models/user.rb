@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  bitmask :roles, as: %i(confirmed moderator administrator), null: false
+  bitmask :roles, as: %i[confirmed moderator administrator], null: false
 
   delegate :as_json, to: :decorate
 

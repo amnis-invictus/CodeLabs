@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate!, only: %i(new create)
+  skip_before_action :authenticate!, only: %i[new create]
 
   def create
     render :new, turbolinks: true and return unless resource.save
 
-    redirect_to %i(new session)
+    redirect_to %i[new session]
   end
 
   private

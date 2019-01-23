@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate!, only: %i(new create)
+  skip_before_action :authenticate!, only: %i[new create]
 
   def create
     render :new, turbolinks: true and return unless resource.save

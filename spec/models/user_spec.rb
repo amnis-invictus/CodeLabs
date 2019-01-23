@@ -37,11 +37,11 @@ RSpec.describe User, type: :model do
 
   pending { should have_one_attached :avatar }
 
-  pending { should define_bitmask_for(:roles).with_values(%i(confirmed moderator administrator)).null(false) }
+  pending { should define_bitmask_for(:roles).with_values(%i[confirmed moderator administrator]).null(false) }
 
   it { should delegate_method(:as_json).to(:decorate) }
 
-  %i(confirmed moderator administrator).each do |value|
+  %i[confirmed moderator administrator].each do |value|
     describe "##{ value }?" do
       before { expect(subject).to receive(:roles?).with(value).and_return(:result) }
 

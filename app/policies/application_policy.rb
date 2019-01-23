@@ -5,7 +5,7 @@ class ApplicationPolicy
     @user, @resource = user, resource
   end
 
-  %i(index? show? create? update? destroy?).each do |name|
+  %i[index? show? create? update? destroy?].each do |name|
     define_method(name) { false }
   end
 

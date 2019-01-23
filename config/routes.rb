@@ -33,9 +33,9 @@ Rails.application.routes.draw do
     resources :groups do
       resources :memberships, only: :destroy
 
-      resources :sharings, only: %i(new create)
+      resources :sharings, only: %i[new create]
 
-      resources :invites, only: %i(index new create)
+      resources :invites, only: %i[index new create]
 
       resources :submissions, :problems, only: :index
     end

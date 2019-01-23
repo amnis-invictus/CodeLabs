@@ -6,7 +6,7 @@ RSpec.describe UsersController, type: :controller do
   it_behaves_like :create, anonymous: true do
     let(:resource) { double }
 
-    let(:success) { -> { should redirect_to %i(new session) } }
+    let(:success) { -> { should redirect_to %i[new session] } }
 
     let(:failure) { -> {  should render_template :new } }
   end
