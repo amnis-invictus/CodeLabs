@@ -2,9 +2,13 @@
 en:
   header:
     administration: Administration
+    compilers: Compilers
+    confirmation_requests: Confirmation requests
+    groups: Groups
     problems: Problems
     problems_all: All problems
     problems_tags: Classification
     signin: Sign in
     signout: Sign out
     submissions: Submissions
+    workers: Workers

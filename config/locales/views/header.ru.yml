@@ -2,9 +2,13 @@
 ru:
   header:
     administration: Администрирование
+    compilers: Компиляторы
+    confirmation_requests: Запросы на подтверджение
+    groups: Группы
     problems: Задачи
     problems_all: Все задачи
     problems_tags: Класификация
     signin: Войти
     signout: Выйти
     submissions: Попытки
+    workers: Воркеры
