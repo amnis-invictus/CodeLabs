@@ -11,6 +11,10 @@ RSpec.describe Result, type: :model do
 
   it { should validate_numericality_of :time }
 
+  it { should belong_to :submission }
+
+  it { should belong_to :test }
+
   it do
     should define_enum_for(:status).with_values \
       ok: 0,
@@ -25,10 +29,6 @@ RSpec.describe Result, type: :model do
       time_limit_exceded: 15,
       partilly_correct: 16
   end
-
-  it { should belong_to :submission }
-
-  it { should belong_to(:test).optional }
 
   it { should delegate_method(:num).to(:test).with_prefix.allow_nil }
 end

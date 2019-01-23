@@ -29,6 +29,5 @@ RSpec.describe LogPolicy do
 
       it { should_not permit nil, resource  }
     end
-
   end
 end
