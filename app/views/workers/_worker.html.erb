@@ -1,7 +1,11 @@
-<% url = ''#url_for worker #if policy(worker).show? %>
+<%= content_tag :div, class: "card #{ worker.status_class } mb-3 worker-card" do %>
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <%= worker.name %>
 
-<%= content_tag :div, class: "card #{ worker.status_class } mb-3 worker-card", 'data-href': url do %>
-  <div class="card-header"><%= worker.name %></div>
+    <%= link_to worker, class: 'btn btn-danger', remote: true, method: :delete do %>
+      <i class="fas fa-times"></i>
+    <% end %>
+  </div>
 
   <div class="card-body">
     <p class><b>IPs:</b> <%= worker.ips.to_sentence(two_words_connector: ', ', last_word_connector: ', ') %></h5>

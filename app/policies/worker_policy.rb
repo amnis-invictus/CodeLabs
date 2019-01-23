@@ -3,6 +3,10 @@ class WorkerPolicy < ApplicationPolicy
     !!user&.administrator?
   end
 
+  def destroy?
+    !!user&.administrator?
+  end
+
   def create?
     true
   end

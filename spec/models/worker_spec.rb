@@ -15,6 +15,8 @@ RSpec.describe Worker, type: :model do
 
   it { should validate_numericality_of(:api_version).only_integer }
 
+  it { should_not allow_value(nil).for(:webhook_supported) }
+
   it { should define_enum_for(:api_type).with_values(HTTP: 0, WS: 1) }
 
   it { should define_enum_for(:status).with_values(disabled: 0, ok: 1, failed: 2, stale: 3, stopped: 4) }

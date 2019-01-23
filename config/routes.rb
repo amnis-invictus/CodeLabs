@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
     resources :compilers, except: :show
 
-    resources :workers, only: :index
+    resources :workers, only: %i[index destroy]
 
     resources :groups do
       resources :memberships, only: :destroy

@@ -1,9 +1,7 @@
-<div class="page row bg-light">
-  <div class="col-xs-12 col-12">
-    <h1><%= t 'workers.index.title' %></h1>
-  </div>
+<div class="page bg-light">
+  <h1><%= t 'workers.index.title' %></h1>
 
-  <div class="col-12">
+  <div>
     <% collection.decorate.each_slice 3 do |slice| %>
       <div class="card-deck">
         <% slice.each do |worker| %>
@@ -11,11 +9,5 @@
         <% end %>
       </div>
     <% end %>
-
-    <%= paginate collection %>
   </div>
 </div>
-
-<% content_for :head do %>
-  <meta http-equiv="refresh" content="5">
-<% end %>

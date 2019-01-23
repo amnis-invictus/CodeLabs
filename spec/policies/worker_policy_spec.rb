@@ -9,7 +9,7 @@ RSpec.describe WorkerPolicy do
     it { should permit nil, double }
   end
 
-  permissions :index? do
+  permissions :index?, :destroy? do
     it { should_not permit users(:one), double }
 
     it { should permit users(:two), double }
