@@ -64,10 +64,6 @@ Rails.application.routes.draw do
 
     resources :compilers, :constants, only: :index
 
-    resources :workers, only: :create do
-      resource :alive, only: :create
-
-      resource :session, only: %i[create destroy]
-    end
+    resources :workers, only: %i[create update]
   end
 end
