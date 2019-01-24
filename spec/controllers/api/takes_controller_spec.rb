@@ -15,7 +15,7 @@ RSpec.describe Api::TakesController, type: :controller do
     context do
       before { expect(subject).to receive(:params).and_return(submission_id: 56) }
 
-      before { expect(Submission).to receive(:find).with(56).and_return(:parent) }
+      before { expect(Submission).to receive_message_chain(:lock, :find).with(56).and_return(:parent) }
 
       its(:parent) { should eq :parent }
     end
