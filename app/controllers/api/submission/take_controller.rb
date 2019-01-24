@@ -8,6 +8,6 @@ class Api::Submission::TakeController < Api::ApplicationController
   private
 
   def parent
-    @parent ||= Submission.find params[:submission_id]
+    @parent ||= Submission.lock.find params[:submission_id]
   end
 end
