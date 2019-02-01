@@ -38,6 +38,8 @@ Rails.application.routes.draw do
       resources :invites, only: %i[index new create]
 
       resources :submissions, :problems, only: :index
+
+      resource :standing, only: :show
     end
 
     resources :received_invites, only: :index

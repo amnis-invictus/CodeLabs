@@ -209,6 +209,8 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redis (4.1.0)
+    redis-namespace (1.6.0)
+      redis (>= 3.0.4)
     request_store (1.4.1)
       rack (>= 1.4)
     rspec-activemodel-mocks (1.1.0)
@@ -323,6 +325,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-i18n
   redis
+  redis-namespace
   rspec-activemodel-mocks
   rspec-its
   rspec-rails

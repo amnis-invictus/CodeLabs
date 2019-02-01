@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'mini_magick'
 gem 'hiredis'
 gem 'redis', require: %w(redis redis/connection/hiredis)
+gem 'redis-namespace'
 gem 'draper'
 gem 'aasm'
 gem 'rubyzip', require: 'zip'
