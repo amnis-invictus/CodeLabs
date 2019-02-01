@@ -27,6 +27,8 @@ class Submission < ApplicationRecord
 
   delegate :user, :private?, to: :problem, prefix: true
 
+  after_commit :update_standings
+
   aasm column: :test_state, whiny_transitions: false, enum: true do
     state :pending, initial: true
 
@@ -47,5 +49,9 @@ class Submission < ApplicationRecord
 
   def source_must_be_attached
     errors.add :source, :blank unless source.attached?
+  end
+
+  def update_standings
+    StandingRedisStore.update_if_exists user_id, problem_id, score
   end
 end
