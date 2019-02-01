@@ -11,7 +11,7 @@ RSpec.describe Group, type: :model do
 
   it { should have_many(:sharings).dependent(:destroy) }
 
-  it { should have_many(:problems).through(:sharings) }
+  it { should have_many(:problems).through(:sharings).order(:id) }
 
   it { should have_many(:submissions).through(:users) }
 

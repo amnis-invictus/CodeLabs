@@ -7,7 +7,7 @@ class Group < ApplicationRecord
 
   has_many :sharings, dependent: :destroy
 
-  has_many :problems, through: :sharings
+  has_many :problems, -> { order :id }, through: :sharings
 
   has_and_belongs_to_many :users
 
