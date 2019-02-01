@@ -15,7 +15,7 @@
           <tr>
             <td><%= user.name %></td>
 
-            <% resource.problems.each do |problem, name| %>
+            <% resource.problems.order(:id).each do |problem, name| %>
               <td><%= StandingRedisStore.get user.id, problem.id %></td>
             <% end %>
           </tr>
