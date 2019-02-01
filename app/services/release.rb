@@ -8,7 +8,11 @@ class Release
   def save
     return false unless @submission.release
 
-    @submission.update test_result: @test_result, score: score, max_score: max_score
+    return false unless @submission.update test_result: @test_result, score: score, max_score: max_score
+
+    StandingRedisStore.update_if_exists @submission.user_id, @submission.problem_id, score
+
+    true
   end
 
   private
