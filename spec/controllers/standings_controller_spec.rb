@@ -13,7 +13,14 @@ RSpec.describe StandingsController, type: :controller do
     context do
       before { expect(subject).to receive(:params).and_return(group_id: 49) }
 
-      before { expect(Group).to receive(:find).with(49).and_return(:resource) }
+      before do
+        #
+        # Group.find(49).decorate -> :resource
+        #
+        expect(Group).to receive(:find).with(49) do
+          double.tap { |a| expect(a).to receive(:decorate).and_return(:resource) }
+        end
+      end
 
       its(:resource) { should eq :resource }
     end
