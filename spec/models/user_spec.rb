@@ -13,6 +13,8 @@ RSpec.describe User, type: :model do
 
   it { should validate_uniqueness_of(:username).case_insensitive }
 
+  it { should have_one :avatar_attachment }
+
   it { should have_one(:confirmation_request).dependent(:destroy) }
 
   it { should have_many(:problems).dependent(:nullify) }
@@ -23,7 +25,9 @@ RSpec.describe User, type: :model do
 
   it { should have_many(:owned_groups).class_name('Group').with_foreign_key(:owner_id).dependent(:destroy) }
 
-  it { should have_and_belong_to_many :groups }
+   it { should have_many(:memberships).dependent(:destroy) }
+
+   it { should have_many(:groups).through(:memberships) }
 
   it { should have_many(:sharings).through(:groups) }
 
@@ -31,9 +35,7 @@ RSpec.describe User, type: :model do
 
   it { should have_secure_password }
 
-  pending { should have_one_attached :avatar }
-
-  pending { should define_bitmask_for(:roles).with_values(%i[confirmed moderator administrator]).null(false) }
+  it { should allow_values(%i[confirmed moderator administrator]).for(:roles) }
 
   it { should delegate_method(:as_json).to(:decorate) }
 

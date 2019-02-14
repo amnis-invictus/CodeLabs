@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
+  has_one_attached :avatar
+
   has_one :confirmation_request, dependent: :destroy
 
   has_many :problems, dependent: :nullify
@@ -13,13 +15,13 @@ class User < ApplicationRecord
 
   has_many :owned_groups, class_name: 'Group', foreign_key: :owner_id, dependent: :destroy
 
-  has_and_belongs_to_many :groups
+  has_many :memberships, dependent: :destroy
+
+  has_many :groups, through: :memberships
 
   has_many :sharings, through: :groups
 
   has_many :shared_problems, class_name: 'Problem', through: :sharings, source: :problem
-
-  has_one_attached :avatar
 
   has_secure_password
 

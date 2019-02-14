@@ -9,11 +9,13 @@ RSpec.describe Group, type: :model do
 
   it { should have_many(:sharings).dependent(:destroy) }
 
+  it { should have_many(:memberships).dependent(:destroy) }
+
   it { should have_many(:problems).through(:sharings).order(:id) }
 
-  it { should have_many(:submissions).through(:users) }
+  it { should have_many(:users).through(:memberships) }
 
-  it { should have_and_belong_to_many :users }
+  it { should have_many(:submissions).through(:users) }
 
   it { should define_enum_for(:visibility).with_values(private: 0, moderated: 1, public: 2).with_prefix }
 end
