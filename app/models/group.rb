@@ -3,8 +3,6 @@ class Group < ApplicationRecord
 
   belongs_to :owner, class_name: 'User'
 
-  has_many :invites, dependent: :destroy
-
   has_many :sharings, dependent: :destroy
 
   has_many :problems, -> { order :id }, through: :sharings

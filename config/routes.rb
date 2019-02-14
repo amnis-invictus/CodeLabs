@@ -35,17 +35,9 @@ Rails.application.routes.draw do
 
       resources :sharings, only: %i[new create]
 
-      resources :invites, only: %i[index new create]
-
       resources :submissions, :problems, only: :index
 
       resource :standing, only: :show
-    end
-
-    resources :received_invites, only: :index
-
-    resources :invites, only: [] do
-      resource :reject, :accept, only: :create, module: :invite
     end
 
     resources :confirmation_requests, only: %i[index create] do

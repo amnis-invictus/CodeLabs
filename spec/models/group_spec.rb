@@ -7,8 +7,6 @@ RSpec.describe Group, type: :model do
 
   it { should belong_to(:owner).class_name('User') }
 
-  it { should have_many(:invites).dependent(:destroy) }
-
   it { should have_many(:sharings).dependent(:destroy) }
 
   it { should have_many(:problems).through(:sharings).order(:id) }
