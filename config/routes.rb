@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :workers, only: %i[index destroy]
 
     resources :groups do
-      resources :memberships, only: :destroy
+      resources :memberships, only: %i[create destroy], shallow: true
 
       resources :sharings, only: %i[new create]
 
@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :confirmation_requests, only: %i[index create] do
       resource :reject, :accept, only: :create, module: :confirmation_request
     end
+
   end
 
   namespace :api do
