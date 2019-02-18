@@ -1,8 +1,8 @@
 class ApplicationPolicy
-  attr_reader :user, :resource
+  attr_reader :user, :resource, :params
 
-  def initialize user, resource
-    @user, @resource = user, resource
+  def initialize user, resource, **params
+    @user, @resource, @params = user, resource, params
   end
 
   %i[index? show? create? update? destroy?].each do |name|

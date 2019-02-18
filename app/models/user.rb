@@ -15,11 +15,15 @@ class User < ApplicationRecord
 
   has_many :owned_groups, class_name: 'Group', foreign_key: :owner_id, dependent: :destroy
 
-  has_many :memberships, dependent: :destroy
+  has_many :pending_memberships, -> { where.not state: :accepted }, class_name: 'Membership', dependent: :destroy
 
-  has_many :groups, through: :memberships
+  has_many :accepted_memberships, -> { where state: :accepted }, class_name: 'Membership', dependent: :destroy
 
-  has_many :sharings, through: :groups
+  has_many :pending_groups, through: :pending_memberships, source: :group, class_name: 'Group'
+
+  has_many :accepted_groups, through: :accepted_memberships, source: :group, class_name: 'Group'
+
+  has_many :sharings, through: :accepted_groups
 
   has_many :shared_problems, class_name: 'Problem', through: :sharings, source: :problem
 

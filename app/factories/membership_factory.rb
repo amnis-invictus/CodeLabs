@@ -4,14 +4,23 @@ class MembershipFactory < ApplicationFactory
   end
 
   def build
-    Membership.new @params.slice(:user_id, :group).merge(state: state)
+    Membership.new @params.slice(:group).merge(user: user, state: state)
   end
 
   private
 
+  def user
+    case @params[:type]
+    when 'invite'
+      User.find_by id: @params[:user_id]
+    when 'request'
+      @current_user
+    end
+  end
+
   def state
     return unless @params[:group]
-    
+
     case @params[:type]
     when 'invite' then :invited
     when 'request'

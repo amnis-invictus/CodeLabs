@@ -1,7 +1,13 @@
 <tr>
   <td><%= group.owner_name %></td>
 
-  <td><%= link_to group.name, group %></td>
+  <td>
+    <% if policy(group).show? %>
+      <%= link_to group.name, group %>
+    <% else %>
+      <%= group.name %>
+    <% end %>
+  </td>
 
   <td><%= group.visibility.humanize %></td>
 

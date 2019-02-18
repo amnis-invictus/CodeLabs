@@ -1,0 +1,19 @@
+<div class="page bg-white">
+  <table class="table table-custom">
+    <thead class="thead-dark">
+      <th><%= t 'membership.index.user_name' %></th>
+
+      <th><%= t 'membership.index.state' %></th>
+
+      <th><%= t 'membership.index.created_at' %></th>
+
+      <th></th>
+    </thead>
+
+    <tbody>
+      <%= render collection.decorate %>
+    </tbody>
+  </table>
+
+  <%= paginate collection %>
+</div>

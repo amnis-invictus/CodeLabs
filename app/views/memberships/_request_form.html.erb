@@ -1,0 +1,5 @@
+<%= simple_form_for [parent, resource], remote: true do |f| %>
+  <%= f.hidden_field :type, value: 'request' %>
+
+  <%= f.submit t('membership.new.request'), class: 'btn btn-primary btn-block' %>
+<% end %>

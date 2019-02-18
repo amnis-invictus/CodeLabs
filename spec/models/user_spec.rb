@@ -25,11 +25,15 @@ RSpec.describe User, type: :model do
 
   it { should have_many(:owned_groups).class_name('Group').with_foreign_key(:owner_id).dependent(:destroy) }
 
-   it { should have_many(:memberships).dependent(:destroy) }
+  it { should have_many(:pending_memberships).class_name('Membership').dependent(:destroy) }
 
-   it { should have_many(:groups).through(:memberships) }
+  it { should have_many(:accepted_memberships).conditions(state: :accepted).class_name('Membership').dependent(:destroy) }
 
-  it { should have_many(:sharings).through(:groups) }
+  it { should have_many(:pending_groups).through(:pending_memberships).source(:group).class_name('Group') }
+
+  it { should have_many(:accepted_groups).through(:accepted_memberships).source(:group).class_name('Group') }
+
+  it { should have_many(:sharings).through(:accepted_groups) }
 
   it { should have_many(:shared_problems).through(:sharings).source(:problem).class_name('Problem') }
 

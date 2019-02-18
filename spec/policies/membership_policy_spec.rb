@@ -130,4 +130,58 @@ RSpec.describe MembershipPolicy do
       it { should_not permit users(:one), resource }
     end
   end
+
+  permissions :update? do
+    it { should_not permit nil, double }
+
+    context do
+      let(:resource) { stub_model Membership, group: groups(:one), user: users(:three), state: :requested }
+
+      it { should permit users(:one), resource }
+    end
+
+    context do
+      let(:resource) { stub_model Membership, group: groups(:one), user: users(:three), state: :requested }
+
+      it { should_not permit users(:three), resource }
+    end
+
+    context do
+      let(:resource) { stub_model Membership, group: groups(:one), user: users(:three), state: :invited }
+
+      it { should permit users(:three), resource }
+    end
+
+    context do
+      let(:resource) { stub_model Membership, group: groups(:one), user: users(:three), state: :invited }
+
+      it { should_not permit users(:one), resource }
+    end
+  end
+
+  describe '#index?' do
+    context do
+      subject { described_class.new nil, double }
+
+      its(:index?) { should be false }
+    end
+
+    context do
+      subject { described_class.new users(:one), memberships(:one), parent: groups(:one) }
+
+      its(:index?) { should be true }
+    end
+
+    context do
+      subject { described_class.new users(:two), memberships(:one), parent: groups(:one) }
+
+      its(:index?) { should be false }
+    end
+
+    context do
+      subject { described_class.new users(:two), memberships(:one) }
+
+      its(:index?) { should be true }
+    end
+  end
 end

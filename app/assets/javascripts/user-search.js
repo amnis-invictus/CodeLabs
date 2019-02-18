@@ -2,7 +2,7 @@
   function suggestion(data) { return data.search_suggestion; }
 
   function onSelect(block) {
-    var input = block.closest('form').find('input[name="' + block.attr('name') + '"]:hidden');
+    var input = block.closest('form').find(block.data('target'));
 
     return function (_, selected) { input.val(selected.id); };
   }

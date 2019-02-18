@@ -1,0 +1,9 @@
+uk:
+  membership:
+    new:
+      request: Приєднатись до групи
+      invite: Запросити до групи
+    index:
+      user_name: Користувач
+      created_at: Дата створення
+      state: Тип

@@ -24,15 +24,4 @@
 
     <%= f.submit class: 'btn btn-block btn-primary' %>
   <% end %>
-
-  <%= link_to t('profile.show.submissions'), [current_user, :submissions], class: 'btn btn-block btn-link' %>
-
-  <%= link_to t('profile.show.problems'), [current_user, :problems], class: 'btn btn-block btn-link' \
-    if policy(Problem).new? %>
-
-  <%= link_to t('profile.show.received_invites'), :received_invites, class: 'btn btn-block btn-link' \
-    if policy(Invite).index? %>
-
-  <%= link_to t('profile.show.ask_for_confirmation'), :confirmation_requests, class: 'btn btn-block btn-primary',
-    method: :post if policy(ConfirmationRequest).new? %>
 </div>
