@@ -9,8 +9,8 @@
   Environment = 'RAILS_ENV=production'
   Environment = 'SOCKET=unix:///home/user/application/current/tmp/sockets/server.sock'
   Environment = 'PID=/home/user/application/current/tmp/pids/server.pid'
-  Environment = 'PATH=/bin:/usr/bin:/usr/local/bin'
-  ExecStart = /usr/bin/bundle exec puma --config /home/user/application/current/config/puma.rb
+  Environment = 'PATH=/home/user/.rubies/current/bin:/bin:/usr/bin:/usr/local/bin'
+  ExecStart = /usr/bin/env bundle exec puma --config /home/user/application/current/config/puma.rb
   Restart = always
 
 [Install]

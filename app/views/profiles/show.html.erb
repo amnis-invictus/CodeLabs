@@ -4,4 +4,16 @@
   </div>
 
   <%= render 'form' %>
+
+  <div class="offset-md-3 col-md-9 col-12">
+    <%= link_to t('profile.show.submissions'), [current_user, :submissions], class: 'btn btn-block btn-link' %>
+
+    <%= link_to t('profile.show.problems'), [current_user, :problems], class: 'btn btn-block btn-link' \
+      if policy(Problem).new? %>
+
+    <%= link_to t('profile.show.membership_list'), :memberships, class: 'btn btn-block btn-link' %>
+
+    <%= link_to t('profile.show.ask_for_confirmation'), :confirmation_requests, class: 'btn btn-block btn-primary',
+      method: :post if policy(ConfirmationRequest).new? %>
+  </div>
 </div>

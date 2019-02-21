@@ -1,0 +1,25 @@
+<div class="page">
+  <table class="table table-custom">
+    <thead class="thead-dark">
+      <tr>
+        <th>User</th>
+
+        <% resource.problems.zip('A'..).each do |problem, letter| %>
+          <th><%= link_to letter, problem, style: 'color: inherit; text-decoration: none' %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% resource.accepted_users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+
+          <% resource.problems.each do |problem, name| %>
+            <td><%= StandingRedisStore.get user.id, problem.id %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

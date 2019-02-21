@@ -1,8 +1,13 @@
 class GroupDecorator < Draper::Decorator
   delegate_all
 
+  decorates_associations :owner, :accepted_users
+
+  delegate :name, to: :owner, prefix: true
+
   def visibility_icon
-    h.content_tag :i, '', class: visibility_icon_class, title: visibility, data: { toggle: :tooltip, placement: :bottom }
+    h.content_tag :i, '', class: visibility_icon_class, title: visibility.humanize,
+      data: { toggle: :tooltip, placement: :bottom }
   end
 
   private

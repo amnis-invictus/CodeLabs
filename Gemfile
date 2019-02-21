@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'mini_magick'
 gem 'hiredis'
 gem 'redis', require: %w(redis redis/connection/hiredis)
+gem 'redis-namespace'
 gem 'draper'
 gem 'aasm'
 gem 'rubyzip', require: 'zip'
@@ -48,7 +49,7 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda-matchers', '~> 4.0.0.rc1'
+  gem 'shoulda-matchers'
   gem 'shoulda-callback-matchers'
   gem 'rspec-its'
   gem 'rspec-activemodel-mocks'

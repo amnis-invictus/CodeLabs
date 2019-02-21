@@ -27,6 +27,8 @@ RSpec.describe Submission, type: :model do
 
   it { should delegate_method(:private?).to(:problem).with_prefix }
 
+  it { should callback(:update_standings).after(:commit) }
+
   it { should have_state :pending }
 
   it { should transition_from(:pending).to(:in_progress).on_event(:take) }
@@ -67,5 +69,13 @@ RSpec.describe Submission, type: :model do
 
       it { expect(&call).to change { subject.errors.details[:source] }.to [{error: :blank}] }
     end
+  end
+
+  describe '#update_standings' do
+    subject { stub_model Submission, user_id: 5, problem_id: 12, score: 95.5 }
+
+    it { expect(StandingRedisStore).to receive(:update_if_exists).with(5, 12, 95.5) }
+
+    after { subject.send :update_standings }
   end
 end

@@ -5,9 +5,9 @@ uk:
     show:
       ask_for_confirmation: Запросити підтвердження
       problems: Мої задачі
-      received_invites: Мої запрошення
       submissions: Мої розв'язки
       title: Особистий кабінет
+      membership_list: Список запрошень
     update:
       success: Успішно збережено
     user: Користувач

@@ -15,56 +15,58 @@
     <%= simple_format resource.description %>
   </div>
 
-  <div class="col-4">
-    <h3 class="text-center"><%= t 'group.show.members' %></h3>
+  <% if current_user == resource.owner || resource.accepted_users.include?(current_user) %>
+    <div class="col-4">
+      <h3 class="text-center"><%= t 'group.show.members' %></h3>
 
-    <div class="list-group mb-2">
-      <div class="member-list">
-        <% if policy(Membership.new group: resource).destroy? %>
-          <% resource.users.each do |user| %>
+      <div class="list-group mb-2">
+        <div class="member-list">
+          <% resource.accepted_memberships.each do |membership| %>
             <div class="list-group-item member-list__item">
               <div class="d-flex flex-column">
-                <%= user.name %>
+                <%= membership.user.name %>
 
-                <small class="text-muted"><%= user.username %></small>
+                <small class="text-muted"><%= membership.user.username %></small>
               </div>
 
-              <%= link_to [resource, :membership, id: user], method: :delete, class: 'btn btn-sm btn-danger' do %>
+              <%= link_to membership, method: :delete, class: 'btn btn-sm btn-danger' do %>
                 <i class="fas fa-times"></i>
-              <% end %>
+              <% end if policy(membership).destroy? %>
             </div>
           <% end %>
-        <% else %>
-          <% resource.users.each do |user| %>
-            <div class="list-group-item member-list__item">
-              <div class="d-flex flex-column">
-                <%= user.name %>
+        </div>
 
-                <small class="text-muted"><%= user.username %></small>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
+        <div class="member-list-actions">
+          <%= link_to t('group.show.new_membership'), [:new, resource, :membership],
+            class: 'list-group-item btn btn-outline-primary btn-sm btn-block' if policy(resource).new_invite? %>
 
-      <div class="member-list-actions">
-        <%= link_to t('group.show.invite'), [:new, resource, :invite],
-          class: 'list-group-item btn btn-outline-primary btn-sm btn-block' if policy(resource.invites.new).create? %>
-
-        <%= link_to t('group.show.invite_list'), [resource, :invites],
-          class: 'list-group-item btn btn-outline-primary btn-sm btn-block mt-0' if policy(Invite).index? %>
+          <%= link_to t('group.show.membership_list'), [resource, :memberships],
+            class: 'list-group-item btn btn-outline-primary btn-sm btn-block mt-0' if policy(resource).index_memberships? %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="col-12">
-    <%= link_to t('group.show.edit'), [:edit, resource], class: 'btn btn-primary btn-block' if policy(resource).edit? %>
+    <div class="col-12">
+      <%= link_to t('group.show.edit'), [:edit, resource], class: 'btn btn-primary btn-block' if policy(resource).edit? %>
 
-    <%= link_to t('group.show.create_sharing'), [:new, resource, :sharing], class: 'btn btn-primary btn-block' \
-      if policy(Sharing.new group: resource).new? %>
+      <%= link_to t('group.show.create_sharing'), [:new, resource, :sharing], class: 'btn btn-primary btn-block' \
+        if policy(resource).new_sharing? %>
 
-    <%= link_to t('group.show.submission_list'), [resource, :submissions], class: 'btn btn-link btn-block' %>
+      <%= link_to t('group.show.submission_list'), [resource, :submissions], class: 'btn btn-link btn-block' %>
 
-    <%= link_to t('group.show.problem_list'), [resource, :problems], class: 'btn btn-link btn-block' %>
-  </div>
+      <%= link_to t('group.show.problem_list'), [resource, :problems], class: 'btn btn-link btn-block' %>
+
+      <%= link_to t('group.show.standings'), [resource, :standing], class: 'btn btn-link btn-block' %>
+    </div>
+  <% elsif resource.pending_users.include? current_user %>
+    <div class="col-12">
+      <div class="alert alert-warning"><%= t 'group.show.pending_member' %></div>
+    </div>
+  <% else %>
+    <div class="col-12">
+      <div class="alert alert-warning"><%= t 'group.show.not_a_member' %></div>
+
+      <%= render 'memberships/request_form', parent: resource, resource: Membership.new %>
+    </div>
+  <% end %>
 </div>
