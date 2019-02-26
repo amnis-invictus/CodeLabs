@@ -1,0 +1,8 @@
+one:
+  user: one
+  group: one
+  state: 2
+two:
+  user: two
+  group: one
+  state: 2

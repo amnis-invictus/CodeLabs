@@ -31,26 +31,20 @@ Rails.application.routes.draw do
     resources :workers, only: %i[index destroy]
 
     resources :groups do
-      resources :memberships, only: :destroy
+      resources :memberships, except: %i[show edit], shallow: true
 
       resources :sharings, only: %i[new create]
-
-      resources :invites, only: %i[index new create]
 
       resources :submissions, :problems, only: :index
 
       resource :standing, only: :show
     end
 
-    resources :received_invites, only: :index
-
-    resources :invites, only: [] do
-      resource :reject, :accept, only: :create, module: :invite
-    end
-
     resources :confirmation_requests, only: %i[index create] do
       resource :reject, :accept, only: :create, module: :confirmation_request
     end
+    
+    resources :memberships, only: :index
   end
 
   namespace :api do

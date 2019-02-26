@@ -9,7 +9,7 @@ RSpec.describe GroupDecorator do
 
   its(:owner) { should be_a UserDecorator }
 
-  its(:users) { should be_a Draper::CollectionDecorator }
+  its(:accepted_users) { should be_a Draper::CollectionDecorator }
 
   it { should delegate_method(:name).to(:owner).with_prefix }
 
