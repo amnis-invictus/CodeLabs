@@ -1,4 +1,10 @@
-<div class="page bg-white">
+<div class="page bg-white position-relative">
+  <div class="side-buttons">
+    <%= link_to [resource, :retest], class: 'btn btn-warning mb-2', method: :post, data: { confirm: t('confirm') } do %>
+      <i class="fas fa-sync"></i>
+    <% end if policy(Submission::Retest.new resource).new? %>
+  </div>
+
   <div>
     <h1><%= t 'submissions.show.title', id: resource.id %></h1>
 
