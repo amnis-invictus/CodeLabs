@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     resources :confirmation_requests, only: %i[index create] do
       resource :reject, :accept, only: :create, module: :confirmation_request
     end
-    
+
     resources :memberships, only: :index
   end
 
