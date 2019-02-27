@@ -1,6 +1,7 @@
 <div class="page bg-white position-relative">
   <div class="side-buttons">
-    <%= link_to [resource, :retest], class: 'btn btn-warning mb-2', method: :post, data: { confirm: t('confirm') } do %>
+    <%= link_to [resource, :retest], class: 'btn btn-warning mb-2',
+      data: { confirm: t('confirm'), remote: true, method: :post } do %>
       <i class="fas fa-sync"></i>
     <% end if policy(Submission::Retest.new resource).new? %>
   </div>
