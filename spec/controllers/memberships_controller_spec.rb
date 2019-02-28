@@ -142,12 +142,22 @@ RSpec.describe MembershipsController, type: :controller do
   end
 
   describe '#policy' do
-    before { expect(subject).to receive(:current_user).and_return(:current_user) }
+    context do
+      let(:record) { stub_model Problem }
 
-    before { expect(subject).to receive(:parent).and_return(:parent) }
+      it { expect(subject.send :policy, record).to be_a(ProblemPolicy) }
+    end
 
-    before { expect(MembershipPolicy).to receive(:new).with(:current_user, :record, parent: :parent).and_return(:policy) }
+    context do
+      let(:record) { stub_model Membership }
 
-    it { expect(subject.send :policy, :record).to eq(:policy) }
+      before { expect(subject).to receive(:current_user).and_return(:current_user) }
+
+      before { expect(subject).to receive(:parent).and_return(:parent) }
+
+      before { expect(MembershipPolicy).to receive(:new).with(:current_user, record, parent: :parent).and_return(:policy) }
+
+      it { expect(subject.send :policy, record).to eq(:policy) }
+    end
   end
 end
