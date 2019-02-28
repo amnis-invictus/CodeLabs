@@ -11,6 +11,8 @@ RSpec.describe GroupDecorator do
 
   its(:accepted_users) { should be_a Draper::CollectionDecorator }
 
+  its(:problems) { should be_a Draper::CollectionDecorator }
+
   it { should delegate_method(:name).to(:owner).with_prefix }
 
   describe '#visibility_icon' do

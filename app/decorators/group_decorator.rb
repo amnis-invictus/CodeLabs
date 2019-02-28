@@ -1,7 +1,7 @@
 class GroupDecorator < Draper::Decorator
   delegate_all
 
-  decorates_associations :owner, :accepted_users
+  decorates_associations :owner, :accepted_users, :problems
 
   delegate :name, to: :owner, prefix: true
 
