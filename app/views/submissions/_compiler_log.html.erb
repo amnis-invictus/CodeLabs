@@ -1,1 +1,5 @@
-<pre><%= resource.log_data %></pre>
+<% resource.logs.each do |log| %>
+  <% if policy(log).show? %>
+    <pre><%= log.data %></pre>
+  <% end %>
+<% end %>
