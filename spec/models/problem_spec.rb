@@ -47,6 +47,16 @@ RSpec.describe Problem, type: :model do
 
   it { should delegate_method(:as_json).to(:decorate) }
 
+  it { should delegate_method(:caption).to(:decorate) }
+
+  describe '#to_param' do
+    subject { stub_model described_class, id: 621 }
+
+    before { expect(subject).to receive(:caption).and_return('N-digit numbers') }
+
+    its(:to_param) { should eq '621-n-digit-numbers' }
+  end
+
   describe '.default_scope' do
     subject { described_class.all }
 
