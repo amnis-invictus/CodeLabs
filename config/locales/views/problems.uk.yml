@@ -18,3 +18,5 @@ uk:
       missing_translation: Переклад обраною мовою відсутній, умову відображено %{language} мовою.
       submissions: Відправлені розв'язки для цієї задачі
       technical_text: Технічні умови
+      download: Завантажити
+      select_file: Оберіть файл

@@ -16,7 +16,21 @@
     <div class="col-md-6">
       <%= f.input :checker_compiler_id, collection: checker_compilers, include_blank: false %>
 
-      <%= f.input :checker_source %>
+      <%= f.label :checker_source, class: 'form-control-label' %>
+      
+      <div class="input-group mb-3">
+        <% if resource.checker_source.attached? %>
+          <div class="input-group-prepend">
+            <span class="input-group-text"><%= link_to t('problems.show.download'), resource.checker_source %></span>
+          </div>
+        <% end %>
+        
+        <div class="custom-file">
+          <%= f.input_field :checker_source, class: 'custom-file-input' %>
+          
+          <label class="custom-file-label"><%= t 'problems.show.select_file' %></label>
+        </div>
+      </div>
 
       <%= f.input :tag_ids, as: :select, collection: resource.tags, input_html: { multiple: true, 'data-role': 'tags-select' } %>
     </div>
