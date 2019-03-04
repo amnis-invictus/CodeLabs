@@ -4,13 +4,13 @@
  */
 
 @import "bootstrap";
-@import 'toastr/toastr';
+@import "toastr/toastr";
 @import "sweetalert2";
 @import "*";
 
 @font-face {
-  font-family: 'Century Gothic';
-  src: asset-url('CenturyGothic.ttf') format('truetype');
+  font-family: "Century Gothic";
+  src: asset-url("CenturyGothic.ttf") format("truetype");
 }
 
 * {
@@ -19,9 +19,9 @@
 }
 
 body {
-  background: #6d3606 image-url('background-1.jpg');
+  background: #6d3606 image-url("background-1.jpg");
   background-size: cover;
-  font-family: 'Century Gothic', sans-serif;
+  font-family: "Century Gothic", sans-serif;
   position: relative;
   min-height: 100vh;
   padding-bottom: 80px;
