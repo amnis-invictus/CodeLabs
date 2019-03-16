@@ -10,6 +10,8 @@ class Submission::Retest
   def save
     submission.results.delete_all
 
+    submission.logs.delete_all
+
     submission.update! test_state: :pending,  fails_count: 0, score: nil, test_result: nil, max_score: nil
   end
 end
