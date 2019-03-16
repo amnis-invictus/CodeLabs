@@ -5,7 +5,7 @@ class SubmissionDecorator < Draper::Decorator
 
   decorates_association :user
 
-  delegate :name, to: :user, prefix: true
+  delegate :username, to: :user, prefix: true
 
   delegate :caption, to: :problem, prefix: true
 
