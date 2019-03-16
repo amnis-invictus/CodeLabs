@@ -18,4 +18,10 @@ class SubmissionPolicy < ApplicationPolicy
 
     user.administrator? || user == resource.user || user == resource.problem_user
   end
+
+  def destroy?
+    return false if user.blank?
+
+    user.administrator?
+  end
 end

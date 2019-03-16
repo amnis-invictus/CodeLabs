@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       resources :problems, only: :index
     end
 
-    resources :submissions, only: %i[index show] do
+    resources :submissions, only: %i[index show destroy] do
       resource :retest, only: :create, module: :submission
     end
 

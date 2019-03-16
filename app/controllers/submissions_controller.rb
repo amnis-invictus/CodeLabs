@@ -7,6 +7,12 @@ class SubmissionsController < ApplicationController
     redirect_to resource
   end
 
+  def destroy
+    resource.destroy
+
+    redirect_to :submissions
+  end
+
   private
 
   def collection
