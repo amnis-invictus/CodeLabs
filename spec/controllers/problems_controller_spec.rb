@@ -16,17 +16,41 @@ RSpec.describe ProblemsController, type: :controller do
   it_behaves_like :create do
     let(:resource) { stub_model Problem }
 
-    let(:success) { -> { should redirect_to resource } }
+    let :success do
+      lambda do
+        should set_flash[:success]
 
-    let(:failure) { -> { should render_template :new } }
+        should redirect_to resource
+      end
+    end
+
+    let :failure do
+      lambda do
+        should set_flash.now[:error]
+
+        should render_template :new
+      end
+    end
   end
 
   it_behaves_like :update do
     let(:resource) { stub_model Problem }
 
-    let(:success) { -> { should redirect_to resource } }
+    let :success do
+      lambda do
+        should set_flash[:success]
 
-    let(:failure) { -> { should render_template :edit } }
+        should redirect_to resource
+      end
+    end
+
+    let :failure do
+      lambda do
+        should set_flash.now[:error]
+
+        should render_template :edit
+      end
+    end
   end
 
   it_behaves_like :destroy do

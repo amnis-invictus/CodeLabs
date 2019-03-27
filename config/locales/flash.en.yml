@@ -4,3 +4,4 @@ en:
     save:
       failure: Validation errors
       success: Saved successfully
+    not_authorized: You are not authorized to perform this action

@@ -2,19 +2,27 @@ class ProblemsController < ApplicationController
   skip_before_action :authenticate!, only: %i[index show]
 
   def create
-    redirect_to resource and return if resource.save
+    if resource.save
+      flash[:success] = I18n.t 'flash.save.success'
 
-    flash.now[:error] = 'Validation Errors'
+      redirect_to resource
+    else
+      flash.now[:error] = I18n.t 'flash.save.failure'
 
-    render :new
+      render :new
+    end
   end
 
   def update
-    redirect_to resource and return if resource.update resource_params
+    if resource.update resource_params
+      flash[:success] = I18n.t 'flash.save.success'
+      
+      redirect_to resource
+    else
+      flash.now[:error] = I18n.t 'flash.save.failure'
 
-    flash.now[:error] = 'Validation Errors'
-
-    render :edit
+      render :edit
+    end
   end
 
   def destroy

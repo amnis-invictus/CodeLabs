@@ -1,9 +1,9 @@
 class ConfirmationRequestsController < ApplicationController
   def create
     if resource.save
-      flash[:success] = 'Success'
+      flash[:success] = I18n.t 'flash.save.success'
     else
-      flash[:error] = 'Error'
+      flash[:error] = I18n.t 'flash.save.failure'
     end
 
     redirect_to :profile
