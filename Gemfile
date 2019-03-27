@@ -17,6 +17,7 @@ gem 'kaminari'
 gem 'simple_form'
 gem 'pundit'
 gem 'jquery-rails'
+gem 'mini_racer', platforms: :ruby
 gem 'mini_magick'
 gem 'hiredis'
 gem 'redis', require: %w(redis redis/connection/hiredis)

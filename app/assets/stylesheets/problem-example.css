@@ -1,5 +1,8 @@
 .problem-example {
   background-color: #ffe4ce;
-  padding: 7.5px 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 7px 1.2px #ffbd88;
+  color: #933706;
   font-family: monospace;
+  padding: 7.5px 15px;
 }
