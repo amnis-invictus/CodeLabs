@@ -59,7 +59,35 @@ RSpec.describe ProblemsController, type: :controller do
     let(:success) { -> { should redirect_to :problems } }
   end
 
-  pending '#resource_params'
+  describe '#resource_params' do
+    let :params do
+      acp problem: {
+        memory_limit: '1000',
+        time_limit: '256',
+        real_time_limit: '5000',
+        checker_compiler_id: '1',
+        checker_source: '',
+        private: '0',
+        tag_ids: ['1', '2'],
+        examples_attributes: [{ id: '1', input: '', answer: '', _destroy: '' }],
+        tests_attributes: [{ id: '2', num: 'b', point: '10', input: '', answer: '', _destroy: '' }],
+        translations_attributes: [{
+          id: '3',
+          language: 'ru',
+          caption: 'a problem',
+          author: '@just806me',
+          text: 'Just solve it',
+          technical_text: '$$ f(x, z) = x^2 + z^2 $$',
+          default: '1',
+          _destroy: ''
+        }]
+      }
+    end
+
+    before { expect(subject).to receive(:params).and_return(params) }
+
+    its(:resource_params) { should eq params[:problem].permit! }
+  end
 
   describe '#collection' do
     context do

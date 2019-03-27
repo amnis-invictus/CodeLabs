@@ -16,7 +16,7 @@ class ProblemsController < ApplicationController
   def update
     if resource.update resource_params
       flash[:success] = I18n.t 'flash.save.success'
-      
+
       redirect_to resource
     else
       flash.now[:error] = I18n.t 'flash.save.failure'

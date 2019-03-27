@@ -23,7 +23,7 @@ RSpec.describe Problem, type: :model do
 
   it { should belong_to(:checker_compiler).class_name('Compiler') }
 
-  pending { should have_one_attached :checker_source }
+  it { should have_one :checker_source_attachment }
 
   it { should have_one(:translation).conditions(language: I18n.locale).class_name('ProblemTranslation') }
 

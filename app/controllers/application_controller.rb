@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     unless current_user
       session[:redirect] = request.fullpath
 
-      redirect_to [:new, :session]
+      redirect_to %i[new session]
     end
   end
 
