@@ -15,7 +15,7 @@ RSpec.describe SubmissionDecorator do
 
   subject { resource.decorate }
 
-  it { should delegate_method(:name).to(:user).with_prefix }
+  it { should delegate_method(:username).to(:user).with_prefix }
 
   it { should delegate_method(:caption).to(:problem).with_prefix }
 
