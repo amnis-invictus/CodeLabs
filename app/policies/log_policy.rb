@@ -5,11 +5,11 @@ class LogPolicy < ApplicationPolicy
 
   def show?
     return false if user.blank?
-    
+
     return true if user.administrator?
-    
-    return true if resource.source? && resource.submission.user == user
-    
-    resource.submission.problem.user == user
+
+    return true if resource.source? && resource.submission_user == user
+
+    resource.submission_problem_user == user
   end
 end

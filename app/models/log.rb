@@ -3,7 +3,9 @@ class Log < ApplicationRecord
 
   validates :data, presence: true
 
+  belongs_to :submission
+
   enum type: { source: 0, checker: 1 }
 
-  belongs_to :submission
+  delegate :user, :problem_user, to: :submission, prefix: true
 end

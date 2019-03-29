@@ -10,7 +10,7 @@ class Submission < ApplicationRecord
   belongs_to :compiler
 
   has_one_attached :source
-  
+
   has_many :results, dependent: :destroy
 
   has_many :logs, dependent: :destroy
