@@ -14,8 +14,6 @@ class Release
   private
 
   def score
-    return unless @test_result == 0
-
     @submission.results.joins(:test).where(status: :ok).sum('tests.point')
   end
 
