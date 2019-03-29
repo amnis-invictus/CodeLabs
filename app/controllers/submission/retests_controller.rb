@@ -2,7 +2,7 @@ class Submission::RetestsController < ApplicationController
   def create
     flash[:error] = I18n.t 'flash.save.failure' unless resource.save
 
-    redirect_back fallback_location: :submission, allow_other_host: false
+    redirect_to parent
   end
 
   private
