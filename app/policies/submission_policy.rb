@@ -20,8 +20,6 @@ class SubmissionPolicy < ApplicationPolicy
   end
 
   def destroy?
-    return false if user.blank?
-
-    user.administrator?
+    !!user&.administrator?
   end
 end

@@ -12,7 +12,7 @@ RSpec.describe SubmissionPolicy do
 
     context do
       let(:resource) { stub_model Submission, problem: stub_model(Problem) }
-      
+
       it { should_not permit stub_model(User), resource }
     end
 
@@ -86,6 +86,32 @@ RSpec.describe SubmissionPolicy do
       before { expect(user).to receive(:shared_problems).and_return([]) }
 
       it { should_not permit user, resource }
+    end
+  end
+
+  permissions :destroy? do
+    context do
+      let(:user) { stub_model User }
+
+      it { should_not permit user, double }
+    end
+
+    context do
+      let(:user) { stub_model User, roles: [:moderator] }
+
+      it { should_not permit user, double }
+    end
+
+    context do
+      let(:user) { stub_model User, roles: [:confirmed] }
+
+      it { should_not permit user, double }
+    end
+
+    context do
+      let(:user) { stub_model User, roles: [:administrator] }
+
+      it { should permit user, double }
     end
   end
 end
