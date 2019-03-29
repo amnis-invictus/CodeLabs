@@ -1,6 +1,6 @@
 class StandingRedisStore
-  def initialize user_id, problem_id, score = nil
-    @user_id, @problem_id, @score = user_id, problem_id, score
+  def initialize user_id, problem_id
+    @user_id, @problem_id = user_id, problem_id
 
     @key = "#{ user_id }_#{ problem_id }"
   end
@@ -12,7 +12,7 @@ class StandingRedisStore
   end
 
   def update_if_exists
-    $redis_standings.set @key, @score, xx: true
+    $redis_standings.set @key, score_from_database if $redis_standings.exists @key
   end
 
   private

@@ -27,9 +27,9 @@ RSpec.describe StandingRedisStore do
     end
 
     describe '#update_if_exists' do
-      subject { described_class.new :user_id, :problem_id, 100 }
-
       context do
+        before { expect(subject).to_not receive(:score_from_database) }
+
         before { subject.update_if_exists }
 
         it { expect($redis_standings.get key).to be_nil }
@@ -37,6 +37,8 @@ RSpec.describe StandingRedisStore do
 
       context do
         before { $redis_standings.set key, 50 }
+
+        before { expect(subject).to receive(:score_from_database).and_return(100) }
 
         before { subject.update_if_exists }
 

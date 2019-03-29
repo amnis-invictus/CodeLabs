@@ -48,6 +48,6 @@ class Submission < ApplicationRecord
   end
 
   def update_standings
-    StandingRedisStore.update_if_exists user_id, problem_id, score
+    StandingRedisStore.update_if_exists user_id, problem_id
   end
 end

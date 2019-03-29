@@ -68,9 +68,9 @@ RSpec.describe Submission, type: :model do
   end
 
   describe '#update_standings' do
-    subject { stub_model Submission, user_id: 5, problem_id: 12, score: 95.5 }
+    subject { stub_model Submission, user_id: 5, problem_id: 12 }
 
-    it { expect(StandingRedisStore).to receive(:update_if_exists).with(5, 12, 95.5) }
+    it { expect(StandingRedisStore).to receive(:update_if_exists).with(5, 12) }
 
     after { subject.send :update_standings }
   end
