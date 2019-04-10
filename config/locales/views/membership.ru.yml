@@ -1,0 +1,11 @@
+---
+ru:
+  membership:
+    index:
+      created_at: Дата создания
+      group_name: Группа
+      state: Тип
+      user_name: Пользователь
+    new:
+      invite: Пригласить в группу
+      request: Добавиться к группе

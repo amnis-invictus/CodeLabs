@@ -1,0 +1,10 @@
+---
+en:
+  confirmation_requests:
+    index:
+      created_at: Departure date
+      status: Status
+      title: Confirmation request
+      user_id: Identifier
+      user_name: Name
+      user_username: Nickname
