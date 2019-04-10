@@ -9,6 +9,7 @@ uk:
     new:
       title: Створити задачу
     show:
+      download: Завантажити
       example_input: Введення
       example_output: Виведення
       examples: Приклади
@@ -16,7 +17,6 @@ uk:
         en: англійською
         ru: російською
       missing_translation: Переклад обраною мовою відсутній, умову відображено %{language} мовою.
+      select_file: Оберіть файл
       submissions: Відправлені розв'язки для цієї задачі
       technical_text: Технічні умови
-      download: Завантажити
-      select_file: Оберіть файл

@@ -1,0 +1,11 @@
+---
+en:
+  membership:
+    index:
+      created_at: Date of creation
+      group_name: Group
+      state: Type
+      user_name: User
+    new:
+      invite: Invite to the group
+      request: Add to group
