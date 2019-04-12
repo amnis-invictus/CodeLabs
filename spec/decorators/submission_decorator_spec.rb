@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SubmissionDecorator do
-  let :problem do
-    stub_model Problem, id: 24, updated_at: Date.today, checker_compiler_id: 1, memory_limit: 256, time_limit: 100
-  end
+  let(:problem) { stub_model Problem, id: 24, checker_compiler_id: 1, memory_limit: 256, time_limit: 100 }
 
   let(:compiler) { stub_model Compiler, memory_a: 12.28, memory_b: 5.112, time_a: 143, time_b: 3.14 }
 

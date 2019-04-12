@@ -22,11 +22,17 @@ RSpec.configure do |config|
 
   config.include ActionControllerParameters
 
+  config.include ActiveSupport::Testing::TimeHelpers
+
   [:controller, :view, :request].each do |type|
-    config.include ::Rails::Controller::Testing::TestProcess, type: type
-    config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
-    config.include ::Rails::Controller::Testing::Integration, type: type
+    config.include Rails::Controller::Testing::TestProcess, type: type
+
+    config.include Rails::Controller::Testing::TemplateAssertions, type: type
+
+    config.include Rails::Controller::Testing::Integration, type: type
   end
+
+  config.before { freeze_time }
 end
 
 Shoulda::Matchers.configure do |config|
