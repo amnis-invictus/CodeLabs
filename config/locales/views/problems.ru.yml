@@ -8,7 +8,12 @@ ru:
       title: Задачи
     new:
       title: Создать задачу
+      tabs:
+        examples: Примеры
+        tests: Тесты
+        translations: Переводы
     show:
+      download: Скачать
       example_input: Ввод
       example_output: Вывод
       examples: Примеры
@@ -16,4 +21,6 @@ ru:
         en: английском
         uk: украинском
       missing_translation: Перевод на выбраном языке отсутствует, условия отображены на %{language} языке.
+      select_file: Выберите файл
+      submissions: Отправлены решения для этой задачи
       technical_text: Технические условия

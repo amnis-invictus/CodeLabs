@@ -3,6 +3,10 @@ ru:
   profile:
     confirm: Подтвердить
     show:
+      ask_for_confirmation: Запросить подтверждение
+      membership_list: Список приглашений
+      problems: Мои задачи
+      submissions: Мои решения
       title: Личный кабинет
     update:
       success: Успешно сохранено

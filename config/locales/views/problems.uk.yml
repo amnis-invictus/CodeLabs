@@ -8,6 +8,10 @@ uk:
       title: Задачі
     new:
       title: Створити задачу
+      tabs:
+        examples: Приклади
+        tests: Тести
+        translations: Переклади
     show:
       download: Завантажити
       example_input: Введення

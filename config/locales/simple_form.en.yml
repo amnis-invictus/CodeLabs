@@ -7,6 +7,11 @@ en:
     placeholders:
       defaults:
         email: one@users.com
+      group:
+        name: Enter group name
+      problem:
+        real_time_limit: Time to death
+        time_limit: Time to complete
     required:
       mark: "*"
       text: required

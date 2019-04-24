@@ -7,6 +7,12 @@ ru:
     placeholders:
       defaults:
         email: one@users.com
+      group:
+        name: Введите название группы
+      problem:
+        memory_limit: Допустимые затраты памяти
+        real_time_limit: Время до смерти
+        time_limit: Время на выполнение
     required:
       mark: "*"
       text: обязательно

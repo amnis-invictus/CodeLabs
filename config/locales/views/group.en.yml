@@ -22,6 +22,7 @@ en:
       pending_member: Request to add to group has been sent
       problem_list: Group tasks
       submission_list: Sent submissions of group members
+      standings: Standings
       visibility:
         moderated: Users can send group add requests
         private: Only group owner can add users
