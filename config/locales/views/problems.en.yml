@@ -8,7 +8,12 @@ en:
       title: Problems
     new:
       title: Create a problem
+      tabs:
+        examples: Examples
+        tests: Tests
+        translations: Translations
     show:
+      download: Download
       example_input: Input
       example_output: Output
       examples: Examples
@@ -16,4 +21,6 @@ en:
         ru: russian
         uk: ukrainian
       missing_translation: Translation for selected language is missing, problem is displayed in %{language}.
+      select_file: Select file
+      submissions: Submitted solutions for this problem
       technical_text: Specifications
