@@ -3,6 +3,6 @@ ru:
   results:
     index:
       memory: Память
-      num: Номер
+      num: Тест
       status: Статус
       time: Время

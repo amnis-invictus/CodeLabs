@@ -7,11 +7,12 @@ en:
       number: "#"
       title: Problems
     new:
-      title: Create a problem
       tabs:
+        basic: Basic information
         examples: Examples
         tests: Tests
         translations: Translations
+      title: Create a problem
     show:
       download: Download
       example_input: Input

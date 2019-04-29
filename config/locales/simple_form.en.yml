@@ -10,6 +10,7 @@ en:
       group:
         name: Enter group name
       problem:
+        memory_limit: Memory limit
         real_time_limit: Time to death
         time_limit: Time to complete
     required:

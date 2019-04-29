@@ -2,9 +2,8 @@
 en:
   confirmation_requests:
     index:
-      created_at: Departure date
+      created_at: Sent date
       status: Status
-      title: Confirmation request
-      user_id: Identifier
+      title: Confirmation requests
       user_name: Name
-      user_username: Nickname
+      user_username: Username

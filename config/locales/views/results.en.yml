@@ -3,6 +3,6 @@ en:
   results:
     index:
       memory: Memory
-      num: Test num
+      num: Test
       status: Status
       time: Time

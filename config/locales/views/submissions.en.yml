@@ -4,21 +4,21 @@ en:
     index:
       compiler: Compiler
       id: ID
-      problem_name: Problem name
+      problem: Problem
       state: State
       title: Submissions
-      user_name: User name
+      user: User
     new:
       title: Submit a solution for the "%{problem_caption}" problem
     show:
       compiler_log: Compiler log
-      memory_limit: Memory limit exceeded
+      memory_limit: Memory limit
       problem: Problem
       results: Results
-      source: Source
+      source: Source code
       state: State
-      test_result_compiler_error: Failed compiling solution
-      test_state_failed: Failed testing solution
-      time_limit: Time limit exceeded
+      test_result_compiler_error: Compilation failed
+      test_state_failed: Testing failed
+      time_limit: Time limit
       title: 'Submission #%{id}'
-      user_name: User name
+      user: User
