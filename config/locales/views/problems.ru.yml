@@ -7,11 +7,12 @@ ru:
       number: "№"
       title: Задачи
     new:
-      title: Создать задачу
       tabs:
+        basic: Основная информация
         examples: Примеры
         tests: Тесты
         translations: Переводы
+      title: Создать задачу
     show:
       download: Скачать
       example_input: Ввод
@@ -22,5 +23,5 @@ ru:
         uk: украинском
       missing_translation: Перевод на выбраном языке отсутствует, условия отображены на %{language} языке.
       select_file: Выберите файл
-      submissions: Отправлены решения для этой задачи
+      submissions: Отправленые решения для этой задачи
       technical_text: Технические условия

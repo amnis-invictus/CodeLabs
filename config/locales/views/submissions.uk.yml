@@ -4,12 +4,12 @@ uk:
     index:
       compiler: Компілятор
       id: ІД
-      problem_name: Назва задачі
+      problem: Задача
       state: Статус
       title: Відправлені розв'язки
-      user_name: Ім'я користувача
+      user: Користувач
     new:
-      title: Відправити рішення до задачі "%{problem_caption}"
+      title: Відправити рішення задачі "%{problem_caption}"
     show:
       compiler_log: Лог компіляції
       memory_limit: Ліміт пам'яті
@@ -21,4 +21,4 @@ uk:
       test_state_failed: Помилка тестування рішення
       time_limit: Ліміт часу
       title: Розв'язок №%{id}
-      user_name: Ім'я користувача
+      user: Користувач

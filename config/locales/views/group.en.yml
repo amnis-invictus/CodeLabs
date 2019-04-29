@@ -2,28 +2,28 @@
 en:
   group:
     edit:
-      title: Group editing
+      title: Edit group
     index:
-      created_at: Date of creation
-      name: Title
+      created_at: Creation date
+      name: Name
       owner: Owner
       title: Groups
       visibility: Visibility
     new:
       title: Create a new group
     show:
-      create_sharing: Add task
+      create_sharing: Add a problem
       description: Description
-      edit: Edit information about group
+      edit: Edit group information
       members: Members
       membership_list: Invitation list
       new_membership: Invite
       not_a_member: You are not a group member
-      pending_member: Request to add to group has been sent
-      problem_list: Group tasks
-      submission_list: Sent submissions of group members
+      pending_member: Participation request has been sent
+      problem_list: Group problems
       standings: Standings
+      submission_list: Group submissions
       visibility:
-        moderated: Users can send group add requests
+        moderated: Users can send participation requests
         private: Only group owner can add users
-        public: Every member can join and invite other to the group
+        public: Every member can join and invite others to the group

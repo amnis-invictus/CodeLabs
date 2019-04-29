@@ -4,12 +4,12 @@ ru:
     index:
       compiler: Компилятор
       id: ИД
-      problem_name: Название задачи
+      problem: Задача
       state: Статус
       title: Попытки
-      user_name: Имя пользователя
+      user: Пользователь
     new:
-      title: Отправить решение к задаче "%{problem_caption}"
+      title: Отправить решение задачи "%{problem_caption}"
     show:
       compiler_log: Лог компиляции
       memory_limit: Лимит памяти
@@ -21,4 +21,4 @@ ru:
       test_state_failed: Ошибка тестирования решения
       time_limit: Лимит времени
       title: Попытка №%{id}
-      user_name: Имя пользователя
+      user: Пользователь

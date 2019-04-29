@@ -7,11 +7,12 @@ uk:
       number: "№"
       title: Задачі
     new:
-      title: Створити задачу
       tabs:
+        basic: Основна інформація
         examples: Приклади
         tests: Тести
         translations: Переклади
+      title: Створити задачу
     show:
       download: Завантажити
       example_input: Введення
