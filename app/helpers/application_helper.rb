@@ -1,8 +1,10 @@
 module ApplicationHelper
+  ALLOWED_TAGS = %w[b br em i p span strong sub sup table tbody td th thead tr img ul ol li].freeze
+
+  ALLOWED_ATTRIBUTES = %w[class src alt].freeze
+
   def language_select_options
-    I18n.available_locales.map do |locale|
-      [I18n.t(:language, locale: locale), locale]
-    end
+    I18n.available_locales.map { |locale| [translate(:language, locale: locale), locale] }
   end
 
   def visible_compilers
@@ -14,6 +16,6 @@ module ApplicationHelper
   end
 
   def sanitize_for_problem text
-    sanitize text, tags: %w[b br em i p span strong sub sup table tbody td th thead tr img ul ol li], attributes: %w[class src alt]
+    sanitize text, tags: ALLOWED_TAGS, attributes: ALLOWED_ATTRIBUTES
   end
 end

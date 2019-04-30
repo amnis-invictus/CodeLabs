@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :parent, :collection, :resource
 
   rescue_from Pundit::NotAuthorizedError do
-    flash[:error] = 'You are not authorized to perform this action'
+    flash[:error] = I18n.t 'flash.not_authorized'
 
     redirect_back fallback_location: :root, allow_other_host: false
   end
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     unless current_user
       session[:redirect] = request.fullpath
 
-      redirect_to [:new, :session]
+      redirect_to %i[new session]
     end
   end
 

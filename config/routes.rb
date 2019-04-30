@@ -22,7 +22,9 @@ Rails.application.routes.draw do
       resources :problems, only: :index
     end
 
-    resources :submissions, only: %i[index show]
+    resources :submissions, only: %i[index show destroy] do
+      resource :retest, only: :create, module: :submission
+    end
 
     resources :archives, only: %i[new create]
 
@@ -43,7 +45,7 @@ Rails.application.routes.draw do
     resources :confirmation_requests, only: %i[index create] do
       resource :reject, :accept, only: :create, module: :confirmation_request
     end
-    
+
     resources :memberships, only: :index
   end
 

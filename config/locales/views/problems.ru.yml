@@ -7,8 +7,14 @@ ru:
       number: "№"
       title: Задачи
     new:
+      tabs:
+        basic: Основная информация
+        examples: Примеры
+        tests: Тесты
+        translations: Переводы
       title: Создать задачу
     show:
+      download: Скачать
       example_input: Ввод
       example_output: Вывод
       examples: Примеры
@@ -16,4 +22,6 @@ ru:
         en: английском
         uk: украинском
       missing_translation: Перевод на выбраном языке отсутствует, условия отображены на %{language} языке.
+      select_file: Выберите файл
+      submissions: Отправленые решения для этой задачи
       technical_text: Технические условия

@@ -1,4 +1,8 @@
 .translation {
+  box-shadow: #924301 0 0 5px -0.5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  
   &__top {
     .float-left {
       width: calc(100% - 35px);

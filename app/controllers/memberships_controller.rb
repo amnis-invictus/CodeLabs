@@ -50,6 +50,8 @@ class MembershipsController < ApplicationController
   end
 
   def policy record
-    MembershipPolicy.new current_user, record, parent: parent
+    policy = PolicyFinder.new(record).policy!
+
+    policy == MembershipPolicy ? MembershipPolicy.new(current_user, record, parent: parent) : super
   end
 end

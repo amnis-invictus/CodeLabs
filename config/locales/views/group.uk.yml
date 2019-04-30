@@ -15,13 +15,14 @@ uk:
       create_sharing: Додати задачу
       description: Опис
       edit: Редагувати інформацію про групу
-      new_membership: Запросити
-      membership_list: Список запрошень
       members: Учасники
-      problem_list: Задачі групи
-      submission_list: Відправлені розв'язки учасників групи
+      membership_list: Список запрошень
+      new_membership: Запросити
       not_a_member: Ви не є учасником групи
       pending_member: Надіслано запит на приєднання до групи
+      problem_list: Задачі групи
+      standings: Таблиця результатів
+      submission_list: Відправлені розв'язки учасників групи
       visibility:
         moderated: Користувачі можуть надсилати запити на приєднання до групи
         private: Лише власник групи може додавати користувачів

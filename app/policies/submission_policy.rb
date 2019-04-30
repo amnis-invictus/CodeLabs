@@ -18,4 +18,8 @@ class SubmissionPolicy < ApplicationPolicy
 
     user.administrator? || user == resource.user || user == resource.problem_user
   end
+
+  def destroy?
+    !!user&.administrator?
+  end
 end

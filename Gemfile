@@ -17,6 +17,7 @@ gem 'kaminari'
 gem 'simple_form'
 gem 'pundit'
 gem 'jquery-rails'
+gem 'mini_racer', platforms: :ruby
 gem 'mini_magick'
 gem 'hiredis'
 gem 'redis', require: %w(redis redis/connection/hiredis)
@@ -29,7 +30,7 @@ gem 'rails-i18n'
 gem 'russian'
 gem 'cocoon'
 gem 'bootstrap'
-gem 'rails-assets-sweetalert2', source: 'https://rails-assets.org'
+gem 'rails-assets-sweetalert2', '7.29.1', source: 'https://rails-assets.org'
 gem 'sweet-alert2-rails', github: 'just806me/sweet-alert2-rails'
 gem 'bitmask_attributes'
 

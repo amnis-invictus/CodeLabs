@@ -1,1 +1,3 @@
-<pre><%= resource.log_data %></pre>
+<% resource.logs.each do |log| %>
+  <%= content_tag(:pre) { log.data } if policy(log).show? %>
+<% end %>

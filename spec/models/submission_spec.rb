@@ -9,8 +9,6 @@ RSpec.describe Submission, type: :model do
 
   it { should have_one :source_attachment }
 
-  it { should have_one(:log).conditions(type: :source) }
-
   it { should have_many(:results).dependent(:destroy) }
 
   it { should have_many(:logs).dependent(:destroy) }
@@ -20,8 +18,6 @@ RSpec.describe Submission, type: :model do
   it { should define_enum_for(:test_result).with_values(ok: 0, compiler_error: 1).with_prefix }
 
   it { should delegate_method(:as_json).to(:decorate) }
-
-  it { should delegate_method(:data).to(:log).with_prefix.allow_nil }
 
   it { should delegate_method(:user).to(:problem).with_prefix }
 
@@ -72,9 +68,9 @@ RSpec.describe Submission, type: :model do
   end
 
   describe '#update_standings' do
-    subject { stub_model Submission, user_id: 5, problem_id: 12, score: 95.5 }
+    subject { stub_model Submission, user_id: 5, problem_id: 12 }
 
-    it { expect(StandingRedisStore).to receive(:update_if_exists).with(5, 12, 95.5) }
+    it { expect(StandingRedisStore).to receive(:update_if_exists).with(5, 12) }
 
     after { subject.send :update_standings }
   end

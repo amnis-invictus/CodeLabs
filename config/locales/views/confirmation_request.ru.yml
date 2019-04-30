@@ -1,0 +1,9 @@
+---
+ru:
+  confirmation_requests:
+    index:
+      created_at: Дата отправления
+      status: Статус
+      title: Запросы на подтверждение
+      user_name: Имя
+      user_username: Ник

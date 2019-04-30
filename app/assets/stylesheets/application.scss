@@ -4,13 +4,13 @@
  */
 
 @import "bootstrap";
-@import 'toastr/toastr';
+@import "toastr/toastr";
 @import "sweetalert2";
 @import "*";
 
 @font-face {
-  font-family: 'Century Gothic';
-  src: asset-url('CenturyGothic.ttf') format('truetype');
+  font-family: "Century Gothic";
+  src: asset-url("CenturyGothic.ttf") format("truetype");
 }
 
 * {
@@ -18,12 +18,36 @@
   padding: 0;
 }
 
+html {
+  font-size: 14px;
+}
+
 body {
-  background: #6d3606 image-url('background-1.jpg');
+  background: #6d3606 image-url("background-1.jpg");
   background-size: cover;
-  font-family: 'Century Gothic', sans-serif;
+  font-family: "Century Gothic", sans-serif;
   position: relative;
   min-height: 100vh;
   padding-bottom: 80px;
-  font-size: 14px;
+}
+
+::selection {
+  background: #93440180;
+}
+
+:focus {
+  outline: none;
+}
+
+input[readonly] {
+  background: #e9e9e9 !important;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 35px;
+}
+
+form {
+  width: 100%;
 }

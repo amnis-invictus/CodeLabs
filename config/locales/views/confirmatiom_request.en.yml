@@ -1,0 +1,9 @@
+---
+en:
+  confirmation_requests:
+    index:
+      created_at: Sent date
+      status: Status
+      title: Confirmation requests
+      user_name: Name
+      user_username: Username

@@ -5,7 +5,7 @@ RSpec.describe ProblemDecorator do
 
   let(:default_translation) { stub_model ProblemTranslation, language: 'uk', default: true }
 
-  let(:resource) { stub_model Problem, id: 24, updated_at: Date.today, checker_compiler_id: 1 }
+  let(:resource) { stub_model Problem, id: 24, updated_at: Time.zone.now, checker_compiler_id: 1 }
 
   before { allow(resource).to receive(:translation).and_return(translation) }
 
@@ -28,7 +28,7 @@ RSpec.describe ProblemDecorator do
       before { expect(subject).to receive(:tests).and_return(:tests) }
 
       its :as_json do
-        should eq id: 24, updated_at: Date.today, checker_compiler_id: 1,
+        should eq id: 24, updated_at: Time.zone.now, checker_compiler_id: 1,
           checker_source_url: :checker_source_url, tests: :tests
       end
     end
@@ -36,7 +36,7 @@ RSpec.describe ProblemDecorator do
     context do
       subject { resource.decorate context: :submission }
 
-      its(:as_json) { should eq id: 24, updated_at: Date.today, checker_compiler_id: 1 }
+      its(:as_json) { should eq id: 24, updated_at: Time.zone.now, checker_compiler_id: 1 }
     end
   end
 

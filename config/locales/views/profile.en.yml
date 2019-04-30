@@ -1,9 +1,9 @@
 ---
 en:
   profile:
-    confirm: Confirm
     show:
+      ask_for_confirmation: Ask for confirmation
+      membership_list: Invitation list
+      problems: My problems
+      submissions: My solutions
       title: Personal cabinet
-    update:
-      success: Saved successfully
-    user: User

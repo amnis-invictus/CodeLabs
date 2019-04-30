@@ -1,9 +1,27 @@
 .tt-menu {
   width: 20rem;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 2px 2px 5px 2px #eee;
 }
 
 .tt-hint {
   display: none;
+}
+
+.tt-input {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+.tt-suggestion {
+  padding: 7px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.tt-suggestion:hover {
+  background: #f3f3f3;
 }
 
 .form-group > .twitter-typeahead {

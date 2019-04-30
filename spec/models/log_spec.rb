@@ -5,7 +5,11 @@ RSpec.describe Log, type: :model do
 
   it { should validate_presence_of :data }
 
+  it { should belong_to :submission }
+
   it { should define_enum_for(:type).with_values(source: 0, checker: 1) }
 
-  it { should belong_to :submission }
+  it { should delegate_method(:user).to(:submission).with_prefix }
+
+  it { should delegate_method(:problem_user).to(:submission).with_prefix }
 end

@@ -11,8 +11,6 @@ class Submission < ApplicationRecord
 
   has_one_attached :source
 
-  has_one :log, -> { where type: :source }
-
   has_many :results, dependent: :destroy
 
   has_many :logs, dependent: :destroy
@@ -22,8 +20,6 @@ class Submission < ApplicationRecord
   enum test_result: { ok: 0, compiler_error: 1 }, _prefix: true
 
   delegate :as_json, to: :decorate
-
-  delegate :data, to: :log, prefix: true, allow_nil: true
 
   delegate :user, :private?, to: :problem, prefix: true
 
@@ -52,6 +48,6 @@ class Submission < ApplicationRecord
   end
 
   def update_standings
-    StandingRedisStore.update_if_exists user_id, problem_id, score
+    StandingRedisStore.update_if_exists user_id, problem_id
   end
 end

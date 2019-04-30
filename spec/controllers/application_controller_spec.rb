@@ -37,20 +37,22 @@ RSpec.describe ApplicationController, type: :controller do
   end
 
   describe '#authenticate!' do
-    after { subject.send :authenticate! }
-
-    before { allow(subject).to receive_message_chain(:request, :fullpath).and_return('/profile') }
-
-    pending do
+    context do
       before { expect(subject).to receive(:current_user).and_return(nil) }
 
-      it { expect(subject).to receive(:redirect_to).with([:new, :session, redirect: '/profile']) }
+      before { expect(subject).to receive_message_chain(:request, :fullpath).and_return('/profile') }
+
+      before { expect(subject).to receive(:redirect_to).with(%i[new session]) }
+
+      it { expect { subject.send :authenticate! }.to change { session[:redirect] }.to('/profile') }
     end
 
     context do
       before { expect(subject).to receive(:current_user).and_return(:current_user) }
 
       it { expect(subject).to_not receive(:redirect_to) }
+
+      after { subject.send :authenticate! }
     end
   end
 

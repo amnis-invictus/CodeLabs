@@ -1,13 +1,9 @@
 ---
 uk:
   profile:
-    confirm: Підтвердити
     show:
       ask_for_confirmation: Запросити підтвердження
+      membership_list: Список запрошень
       problems: Мої задачі
       submissions: Мої розв'язки
       title: Особистий кабінет
-      membership_list: Список запрошень
-    update:
-      success: Успішно збережено
-    user: Користувач

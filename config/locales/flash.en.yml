@@ -1,6 +1,7 @@
 ---
 en:
   flash:
+    not_authorized: You are not authorized to perform this action
     save:
       failure: Validation errors
       success: Saved successfully

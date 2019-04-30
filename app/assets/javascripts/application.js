@@ -10,6 +10,7 @@
 //= require sweet-alert2-rails
 //= require bootstrap-tagsinput.min.js
 //= require typeahead.min.js
+//= require bs-custom-file-input/dist/bs-custom-file-input.min.js
 //= require_tree .
 
 $(function () {

@@ -1,10 +1,21 @@
-<div class="page bg-white">
+<div class="page bg-white position-relative">
+  <div class="side-buttons">
+    <%= link_to [resource, :retest], class: 'btn btn-warning mb-2',
+      data: { confirm: t('confirm'), remote: true, method: :post } do %>
+      <i class="fas fa-sync"></i>
+    <% end if policy(Submission::Retest.new resource).new? %>
+
+    <%= link_to resource, method: :delete, remote: true, class: 'btn btn-danger', data: { confirm: t('confirm') } do %>
+      <i class="fas fa-times"></i>
+    <% end if policy(resource).destroy? %>
+  </div>
+
   <div>
     <h1><%= t 'submissions.show.title', id: resource.id %></h1>
 
     <p><%= t 'submissions.show.problem' %>: <b><%= link_to resource.problem_caption, resource.problem %></b></p>
 
-    <p><%= t 'submissions.show.user_name' %>: <b><%= resource.user_name %></b></p>
+    <p><%= t 'submissions.show.user' %>: <b><%= resource.user_username %></b></p>
 
     <p><%= t 'submissions.show.state' %>: <b><%= resource.state %></b></p>
 
