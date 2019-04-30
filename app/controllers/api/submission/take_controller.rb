@@ -1,5 +1,7 @@
 class Api::Submission::TakeController < Api::ApplicationController
   skip_before_action :build_resource, :authorize_resource
+ 
+  around_action :wrap_in_transaction
 
   def create
     head parent.take! ? 204 : 422
@@ -9,5 +11,11 @@ class Api::Submission::TakeController < Api::ApplicationController
 
   def parent
     @parent ||= Submission.lock.find params[:submission_id]
+  end
+
+  def wrap_in_transaction
+    ActiveRecord::Base.transaction do
+      yield
+    end
   end
 end
