@@ -1,6 +1,9 @@
 class Submission < ApplicationRecord
   include AASM
 
+  # TODO: spec me
+  validates :source, byte_size: { maximum: 5.kilobytes }
+
   validate :source_must_be_attached
 
   belongs_to :problem
