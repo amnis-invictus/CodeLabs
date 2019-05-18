@@ -7,7 +7,7 @@ class Avatar
 
   validates :user, :file, presence: true
 
-  validate :blob_must_be_variable
+  validate :blob_must_be_variable, :blob_size_must_not_be_greater_that_2_megabytes
 
   delegate :avatar, to: :user, allow_nil: true
 
@@ -38,5 +38,11 @@ class Avatar
     return if file.blank?
 
     errors.add :file, :invalid unless blob.variable?
+  end
+
+  def blob_size_must_not_be_greater_that_2_megabytes
+    return if file.blank?
+
+    errors.add :file, :too_long, count: 2.megabytes if blob.byte_size > 2.megabytes
   end
 end
