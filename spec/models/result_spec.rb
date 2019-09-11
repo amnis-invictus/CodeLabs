@@ -20,6 +20,7 @@ RSpec.describe Result, type: :model do
       ok: 0,
       wrong_answer: 1,
       presentation_error: 2,
+      fail: 3,
       dirt: 4,
       points: 5,
       bad_test: 6,
