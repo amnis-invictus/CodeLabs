@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_092557) do
+ActiveRecord::Schema.define(version: 2019_09_11_195729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -219,6 +219,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_092557) do
     t.index ["city"], name: "index_users_on_city", opclass: :gist_trgm_ops, using: :gist
     t.index ["email"], name: "index_users_on_email"
     t.index ["institution"], name: "index_users_on_institution", opclass: :gist_trgm_ops, using: :gist
+    t.index ["name"], name: "index_users_on_name", opclass: :gist_trgm_ops, using: :gist
     t.index ["username"], name: "index_users_on_username", opclass: :gist_trgm_ops, using: :gist
   end
 
