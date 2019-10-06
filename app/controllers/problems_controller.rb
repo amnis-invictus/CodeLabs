@@ -61,7 +61,7 @@ class ProblemsController < ApplicationController
     params.require(:problem).permit \
       :memory_limit, :time_limit, :real_time_limit, :checker_compiler_id, :checker_source, :private, tag_ids: [],
       examples_attributes: %i[id input answer _destroy],
-      tests_attributes: %i[id num point input answer _destroy],
+      tests_attributes: %i[id num point input answer input_text answer_text _destroy],
       translations_attributes: %i[id language caption author text technical_text default _destroy]
   end
 

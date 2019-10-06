@@ -16,4 +16,13 @@ class Test < ApplicationRecord
   default_scope { with_attached_input.with_attached_answer.order :num }
 
   delegate :as_json, to: :decorate
+
+  before_validation :set_input
+
+  private
+
+  def set_input
+    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!set_input!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+    p input_text, answer_text
+  end
 end
