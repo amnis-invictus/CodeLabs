@@ -51,7 +51,7 @@ end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'shoulda-callback-matchers'
+  gem 'shoulda-callback-matchers', github: 'just806me/shoulda-callback-matchers'
   gem 'rspec-its'
   gem 'rspec-activemodel-mocks'
   gem 'rails-controller-testing'

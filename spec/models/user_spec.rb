@@ -41,6 +41,8 @@ RSpec.describe User, type: :model do
 
   it { should allow_values(%i[confirmed moderator administrator]).for(:roles) }
 
+  it { should callback(:send_email).after(:commit).on(:create) }
+
   it { should delegate_method(:as_json).to(:decorate) }
 
   %i[confirmed moderator administrator].each do |value|
@@ -49,5 +51,18 @@ RSpec.describe User, type: :model do
 
       its("#{ value }?") { should eq :result }
     end
+  end
+
+  describe '#send_email' do
+    it do
+      #
+      # UserMailer.email(subject).deliver_later
+      #
+      expect(UserMailer).to receive(:email).with(subject) do
+        double.tap { |a| expect(a).to receive(:deliver_later) }
+      end
+    end
+
+    after { subject.send :send_email }
   end
 end
