@@ -16,19 +16,23 @@
     <div class="col-md-6">
       <%= f.input :checker_compiler_id, collection: checker_compilers, include_blank: false %>
 
-      <%= f.label :checker_source, class: 'form-control-label' %>
-      
-      <div class="input-group mb-3">
-        <% if resource.checker_source.attached? %>
-          <div class="input-group-prepend">
-            <span class="input-group-text"><%= link_to t('problems.show.download'), resource.checker_source %></span>
+      <div class="form-group <%= 'form-group-invalid' if resource.errors[:checker_source].present? %>">
+        <%= f.label :checker_source, class: 'form-control-label' %>
+
+        <div class="input-group">
+          <% if resource.checker_source.attached? %>
+            <div class="input-group-prepend">
+              <span class="input-group-text"><%= link_to t('problems.show.download'), resource.checker_source %></span>
+            </div>
+          <% end %>
+
+          <div class="custom-file">
+            <%= f.input_field :checker_source, class: 'custom-file-input' %>
+
+            <label class="custom-file-label"><%= t 'problems.show.select_file' %></label>
           </div>
-        <% end %>
-        
-        <div class="custom-file">
-          <%= f.input_field :checker_source, class: 'custom-file-input' %>
-          
-          <label class="custom-file-label"><%= t 'problems.show.select_file' %></label>
+
+          <div class="invalid-feedback d-block"><%= f.error :checker_source %></div>
         </div>
       </div>
 

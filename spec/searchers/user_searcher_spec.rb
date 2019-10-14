@@ -5,17 +5,19 @@ RSpec.describe UserSearcher do
 
   subject { UserSearcher.search relation, params }
 
-  describe '#search_by_username' do
+  describe '#search_by_query' do
     context do
-      let(:params) { acp username: 'John' }
+      let(:params) { acp query: 'John' }
 
-      before { expect(relation).to receive(:where).with('username ILIKE ?', '%John%').and_return(:result) }
+      let(:sql) { 'username ILIKE :query OR name ILIKE :query' }
+
+      before { expect(relation).to receive(:where).with(sql, query: '%John%').and_return(:result) }
 
       it { should eq :result }
     end
 
     context do
-      let(:params) { acp username: '' }
+      let(:params) { acp query: '' }
 
       before { expect(relation).to_not receive(:where) }
 

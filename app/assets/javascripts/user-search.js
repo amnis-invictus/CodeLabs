@@ -10,7 +10,7 @@
   var bloodhoundOptions = {
     datumTokenizer: Bloodhound.tokenizers.whitespace,
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    remote: { wildcard: '%Q%', url: '/users?username=%Q%' }
+    remote: { wildcard: '%Q%', url: '/users?query=%Q%' }
   };
 
   var typeaheadOptions = { highlight: true, minLength: 3 }

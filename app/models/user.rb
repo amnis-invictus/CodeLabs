@@ -31,9 +31,16 @@ class User < ApplicationRecord
 
   bitmask :roles, as: %i[confirmed moderator administrator], null: false
 
+  after_create_commit :send_email
+
   delegate :as_json, to: :decorate
 
   values_for_roles.each do |value|
     define_method("#{ value }?") { roles? value }
+  end
+
+  private
+  def send_email
+    UserMailer.email(self).deliver_later
   end
 end

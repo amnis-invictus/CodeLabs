@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails'
+gem 'rails', '~> 5.2'
 gem 'puma'
 gem 'sassc-rails'
 gem 'uglifier'
@@ -51,7 +51,7 @@ end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'shoulda-callback-matchers'
+  gem 'shoulda-callback-matchers', github: 'just806me/shoulda-callback-matchers'
   gem 'rspec-its'
   gem 'rspec-activemodel-mocks'
   gem 'rails-controller-testing'

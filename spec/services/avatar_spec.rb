@@ -28,6 +28,8 @@ RSpec.describe Avatar, type: :model do
   describe '#valid?' do
     before { expect(subject).to receive(:blob_must_be_variable) }
 
+    before { expect(subject).to receive(:blob_size_must_not_be_greater_that_2_megabytes) }
+
     it { should validate_presence_of :user }
 
     it { should validate_presence_of :file }
@@ -88,6 +90,32 @@ RSpec.describe Avatar, type: :model do
       before { expect(subject).to receive(:blob).and_return(double variable?: false) }
 
       it { expect(&call).to change(&errors).to(file: [{ error: :invalid }]) }
+    end
+  end
+
+  describe '#blob_size_must_not_be_greater_that_2_megabytes' do
+    let(:call) { -> { subject.send :blob_size_must_not_be_greater_that_2_megabytes } }
+
+    let(:errors) { -> { subject.errors.details } }
+
+    context do
+      let(:file) { nil }
+
+      before { expect(subject).to_not receive(:blob) }
+
+      it { expect(&call).to_not change(&errors) }
+    end
+
+    context do
+      before { expect(subject).to receive(:blob).and_return(double byte_size: 2.megabytes) }
+
+      it { expect(&call).to_not change(&errors) }
+    end
+
+    context do
+      before { expect(subject).to receive(:blob).and_return(double byte_size: 3.megabytes) }
+
+      it { expect(&call).to change(&errors).to(file: [{ error: :too_long, count: 2097152 }]) }
     end
   end
 end

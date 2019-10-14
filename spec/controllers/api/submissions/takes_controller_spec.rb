@@ -8,6 +8,8 @@ RSpec.describe Api::Submission::TakeController, type: :controller do
 
     before { expect(subject).to receive(:authenticate!) }
 
+    before { expect(subject).to receive(:wrap_in_transaction).and_yield }
+
     before { allow(subject).to receive(:parent).and_return(parent) }
 
     context do
@@ -41,5 +43,15 @@ RSpec.describe Api::Submission::TakeController, type: :controller do
 
       its(:parent) { should eq :parent }
     end
+  end
+
+  describe '#wrap_in_transaction' do
+    let(:foo) { double }
+
+    before { expect(ActiveRecord::Base).to receive(:transaction).and_yield }
+
+    it { expect(foo).to receive(:bar) }
+
+    after { subject.send(:wrap_in_transaction) { foo.bar } }
   end
 end

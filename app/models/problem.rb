@@ -3,6 +3,9 @@ class Problem < ApplicationRecord
 
   validates :private, inclusion: { in: [true, false] }
 
+  # TODO: spec me
+  validates :checker_source, byte_size: { maximum: 5.kilobytes }
+
   belongs_to :user, optional: true
 
   belongs_to :checker_compiler, class_name: 'Compiler'
