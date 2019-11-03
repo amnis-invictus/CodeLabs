@@ -17,6 +17,8 @@ RSpec.describe SessionsController, type: :controller do
         end
       end
 
+      before { expect(subject).to receive(:verify_recaptcha).and_return(true) }
+
       it_behaves_like :create, anonymous: true
     end
 
@@ -33,7 +35,25 @@ RSpec.describe SessionsController, type: :controller do
 
       before { session[:redirect] = '/problems/1' }
 
+      before { expect(subject).to receive(:verify_recaptcha).and_return(true) }
+
       it_behaves_like :create, anonymous: true
+    end
+
+    context do
+      before { allow(subject).to receive(:resource).and_return(resource) }
+
+      before { expect(subject).to receive(:authorize).with(resource).and_return(true) }
+
+      before { expect(subject).to receive(:build_resource) }
+
+      before { expect(subject).to receive(:verify_recaptcha).and_return(false) }
+
+      before { expect(resource).to_not receive(:save) }
+
+      before { post :create, format: :html }
+
+      it { should render_template :new }
     end
   end
 

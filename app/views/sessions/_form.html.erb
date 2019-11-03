@@ -3,5 +3,9 @@
 
   <%= f.input :password %>
 
+  <div class="form-group">
+    <%= recaptcha_tags %>
+  </div>
+
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>

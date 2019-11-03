@@ -3,12 +3,32 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   it_behaves_like :index, format: :json
 
-  it_behaves_like :create, anonymous: true do
+  describe '#create' do
     let(:resource) { double }
 
-    let(:success) { -> { should redirect_to %i[new session] } }
+    it_behaves_like :create, anonymous: true do
+      let(:success) { -> { should redirect_to %i[new session] } }
 
-    let(:failure) { -> {  should render_template :new } }
+      let(:failure) { -> {  should render_template :new } }
+
+      before { expect(subject).to receive(:verify_recaptcha).and_return(true) }
+    end
+
+    context do
+      before { allow(subject).to receive(:resource).and_return(resource) }
+
+      before { expect(subject).to receive(:authorize).with(resource).and_return(true) }
+
+      before { expect(subject).to receive(:build_resource) }
+
+      before { expect(subject).to receive(:verify_recaptcha).and_return(false) }
+
+      before { expect(resource).to_not receive(:save) }
+
+      before { post :create, format: :html }
+
+      it { should render_template :new }
+    end
   end
 
   describe '#resource' do
