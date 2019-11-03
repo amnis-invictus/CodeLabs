@@ -49,7 +49,7 @@ RSpec.describe Session, type: :model do
     end
 
     context do
-      before { expect(User).to receive(:find_by).with(email: 'one@users.com').and_return(:user) }
+      before { expect(User).to receive(:find_by).with('lower(email) = lower(?)', 'one@users.com').and_return(:user) }
 
       its(:user) { should eq :user }
     end
