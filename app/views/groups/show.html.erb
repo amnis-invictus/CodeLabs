@@ -60,7 +60,12 @@
     </div>
   <% elsif resource.pending_users.include? current_user %>
     <div class="col-12">
-      <div class="alert alert-warning"><%= t 'group.show.pending_member' %></div>
+      <div class="alert alert-warning">
+        <%= t 'group.show.pending_member' %>
+        <%= link_to resource.pending_memberships.find_by(user: current_user), method: :delete, remote: true, class: 'badge badge-danger ml-3' do %>
+          <i class="fas fa-times"></i>
+        <% end %>
+      </div>
     </div>
   <% else %>
     <div class="col-12">
