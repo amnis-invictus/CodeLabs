@@ -1,8 +1,5 @@
-/*
- *= require bootstrap-tagsinput.min.css
- *= require overlay.css
- */
-
+@import "bootstrap-tagsinput.min";
+@import "overlay";
 @import "bootstrap";
 @import "toastr/toastr";
 @import "sweetalert2";
