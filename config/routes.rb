@@ -47,6 +47,10 @@ Rails.application.routes.draw do
     end
 
     resources :memberships, only: :index
+
+    resource :password_recovery, only: %i[new create]
+
+    resource :password, only: %i[edit update]
   end
 
   namespace :api do

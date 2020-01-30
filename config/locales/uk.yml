@@ -23,6 +23,10 @@ uk:
       user:
         create: Реєстрація
         update: Оновити профіль
+      password_recovery:
+        create: Відновити пароль
+      password_recovery:
+        create: Зберегти новий пароль
   language: Українська
   number:
     errors:

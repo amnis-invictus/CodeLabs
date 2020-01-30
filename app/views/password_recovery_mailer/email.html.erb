@@ -1,0 +1,11 @@
+<p>Hello <%= @user.username %>.</p>
+
+<p>
+  You received this email because someone requested a new password for your account. You can follow
+  <%= link_to 'this link', [:edit, :password, token: @user.password_recovery_token] %> to reset your
+  password.
+</p>
+
+<p>If you did not request a new password do not take any action and ignore this letter.</p>
+
+<p>CodeLabs Team</p>

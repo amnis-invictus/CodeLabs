@@ -1,0 +1,11 @@
+<div class="page form-page bg-dark">
+  <%= simple_form_for resource, url: :password_recovery, remote: true do |f| %>
+    <%= f.input :email %>
+
+    <div class="form-group">
+      <%= recaptcha_tags theme: :dark %>
+    </div>
+
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>

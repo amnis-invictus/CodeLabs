@@ -1,0 +1,11 @@
+<div class="page form-page bg-dark">
+  <%= simple_form_for resource, url: :password, remote: true do |f| %>
+    <%= hidden_field_tag :token, params[:token] %>
+
+    <%= f.input :password %>
+
+    <%= f.input :password_confirmation %>
+
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>
