@@ -9,9 +9,11 @@ RSpec.describe Group, type: :model do
 
   it { should have_many(:sharings).dependent(:destroy) }
 
-  it { should have_many(:pending_memberships).class_name('Membership').dependent(:destroy) }
+  it { should have_many(:memberships).dependent(:destroy) }
 
-  it { should have_many(:accepted_memberships).conditions(state: :accepted).class_name('Membership').dependent(:destroy) }
+  it { should have_many(:pending_memberships).class_name('Membership') }
+
+  it { should have_many(:accepted_memberships).conditions(state: :accepted).class_name('Membership') }
 
   it { should have_many(:problems).through(:sharings).order(:id) }
 

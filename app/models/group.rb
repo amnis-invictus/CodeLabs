@@ -5,9 +5,11 @@ class Group < ApplicationRecord
 
   has_many :sharings, dependent: :destroy
 
-  has_many :pending_memberships, -> { where.not state: :accepted }, class_name: 'Membership', dependent: :destroy
+  has_many :memberships, dependent: :destroy
 
-  has_many :accepted_memberships, -> { where state: :accepted }, class_name: 'Membership', dependent: :destroy
+  has_many :pending_memberships, -> { where.not state: :accepted }, class_name: 'Membership'
+
+  has_many :accepted_memberships, -> { where state: :accepted }, class_name: 'Membership'
 
   has_many :problems, -> { order :id }, through: :sharings
 
