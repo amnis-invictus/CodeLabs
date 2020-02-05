@@ -5,7 +5,7 @@ RSpec.describe PasswordPolicy do
 
   fixtures :users
 
-  permissions :new?, :create? do
+  permissions :edit?, :update? do
     it { should permit nil, double }
 
     it { should_not permit nil, nil }
