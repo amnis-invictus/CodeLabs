@@ -13,16 +13,16 @@ variables:
   SMTP_FROM: "codelabs@codelabs.local"
 
 test:
-  stage: test
   environment: test
+  stage: test
   script:
-  - gem update --system
-  - gem update bundler --force
-  - bundle config set path '/cache'
-  - bundle install
-  - RAILS_ENV=test bundle exec rake db:create
-  - RAILS_ENV=test bundle exec rake db:schema:load
-  - bundle exec rake
+    - gem update --system
+    - gem update bundler --force
+    - bundle config set path '/cache'
+    - bundle install
+    - RAILS_ENV=test bundle exec rake db:create
+    - RAILS_ENV=test bundle exec rake db:schema:load
+    - bundle exec rake
 
 deploy_staging:
   image: ruby:alpine
