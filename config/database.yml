@@ -11,6 +11,8 @@ development:
 test:
   <<: *default
   database: codelabs_test
+  url: <%= ENV['DATABASE_URL'] %>
+
 
 production:
   <<: *default
