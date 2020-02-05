@@ -18,11 +18,15 @@ test:
   script:
     - gem update --system
     - gem update bundler --force
-    - bundle config set path '/cache'
+    - bundle config set path 'vendor/ruby'
     - bundle install
     - RAILS_ENV=test bundle exec rake db:create
     - RAILS_ENV=test bundle exec rake db:schema:load
     - bundle exec rake
+  cache:
+    paths:
+      - vendor/ruby
+
 
 deploy_staging:
   image: ruby:alpine
