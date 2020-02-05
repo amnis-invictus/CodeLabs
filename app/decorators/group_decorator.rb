@@ -12,6 +12,10 @@ class GroupDecorator < Draper::Decorator
       data: { toggle: :tooltip, placement: :bottom }
   end
 
+  def current_user_membership
+    @current_user_membership ||= memberships.find_by user: h.current_user if h.current_user.present?
+  end
+
   private
 
   def visibility_icon_class
@@ -21,9 +25,5 @@ class GroupDecorator < Draper::Decorator
     when :public
       'mr-3 fas fa-unlock'
     end
-  end
-
-  def current_user_membership
-    @current_user_membership ||= memberships.find_by user: h.current_user if h.current_user.present?
   end
 end
