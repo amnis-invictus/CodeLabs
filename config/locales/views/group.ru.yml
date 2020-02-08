@@ -9,6 +9,7 @@ ru:
       owner: Владелец
       title: Группы
       visibility: Видимость
+      new: Cоздать новую группу
     new:
       title: Создать новую группу
     show:
