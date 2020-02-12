@@ -1,5 +1,3 @@
-lock "~> 3.11.0"
-
 set :application, 'CodeLabs'
 
 set :repo_url, 'git@gitlab.com:kostyanf14/CodeLabs.git'
