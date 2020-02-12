@@ -31,9 +31,9 @@
 
             <label class="custom-file-label"><%= t 'problems.show.select_file' %></label>
           </div>
-
-          <div class="invalid-feedback d-block"><%= f.error :checker_source %></div>
         </div>
+        
+        <div class="invalid-feedback d-block"><%= f.error :checker_source %></div>
       </div>
 
       <%= f.input :tag_ids, as: :select, collection: resource.tags, input_html: { multiple: true, 'data-role': 'tags-select' } %>
