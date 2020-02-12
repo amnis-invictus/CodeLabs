@@ -9,6 +9,7 @@ en:
       owner: Owner
       title: Groups
       visibility: Visibility
+      new: Create a new group
     new:
       title: Create a new group
     show:
