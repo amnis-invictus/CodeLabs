@@ -1,7 +1,3 @@
-services:
-  - postgres
-  - redis
-
 stages:
   - test
   - deploy
@@ -26,6 +22,9 @@ test:
   cache:
     paths:
       - vendor/ruby
+  services:
+    - postgres
+    - redis
 
 
 deploy_staging:
