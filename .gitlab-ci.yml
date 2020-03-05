@@ -3,6 +3,7 @@ stages:
   - deploy
 
 variables:
+  POSTGRES_PASSWORD: "postgres"
   DATABASE_URL: "postgres://postgres:postgres@postgres/codelabs_test"
   REDIS_URL: "redis://redis/"
   APPLICATION_URL: "http://localhost/"
