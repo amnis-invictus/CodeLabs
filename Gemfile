@@ -33,6 +33,7 @@ gem 'bootstrap'
 gem 'rails-assets-sweetalert2', '7.29.1', source: 'https://rails-assets.org'
 gem 'sweet-alert2-rails', github: 'just806me/sweet-alert2-rails'
 gem 'bitmask_attributes'
+gem 'recaptcha'
 
 group :development, :test do
   gem 'rspec-rails'

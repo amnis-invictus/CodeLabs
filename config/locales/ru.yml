@@ -23,6 +23,10 @@ ru:
       user:
         create: Регистрация
         update: Обновить профиль
+      password_recovery:
+        create: Восстановить пароль
+      password_recovery:
+        create: Сохранить новый пароль
   language: Русский
   number:
     errors:

@@ -9,6 +9,7 @@ uk:
       owner: Власник
       title: Групи
       visibility: Видимість
+      new: Створити нову групу
     new:
       title: Створити нову групу
     show:

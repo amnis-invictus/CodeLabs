@@ -1,3 +1,32 @@
+stages:
+  - test
+  - deploy
+
+variables:
+  DATABASE_URL: "postgres://postgres:postgres@postgres/codelabs_test"
+  REDIS_URL: "redis://redis/"
+  APPLICATION_URL: "http://localhost/"
+  SMTP_FROM: "codelabs@codelabs.local"
+
+test:
+  environment: test
+  stage: test
+  script:
+    - gem update --system
+    - gem update bundler --force
+    - bundle config set path 'vendor/ruby'
+    - bundle install
+    - RAILS_ENV=test bundle exec rake db:create
+    - RAILS_ENV=test bundle exec rake db:schema:load
+    - bundle exec rake
+  cache:
+    paths:
+      - vendor/ruby
+  services:
+    - postgres
+    - redis
+
+
 deploy_staging:
   image: ruby:alpine
   environment: development
@@ -5,12 +34,9 @@ deploy_staging:
   script:
     - apk add openssh-client
     - eval $(ssh-agent -s)
-    - echo -e "$SSH_PRIVATE_KEY" > key
-    - chmod 400 key
-    - ssh-add key
+    - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
     - gem install capistrano capistrano-rails
     - cap staging deploy
-    - rm key
   only:
     - master
 
@@ -21,11 +47,8 @@ deploy_production:
   script:
     - apk add openssh-client
     - eval $(ssh-agent -s)
-    - echo -e "$SSH_PRIVATE_KEY" > key
-    - chmod 400 key
-    - ssh-add key
+    - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
     - gem install capistrano capistrano-rails
     - cap production deploy
-    - rm key
   only:
     - production

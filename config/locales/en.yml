@@ -23,6 +23,10 @@ en:
       user:
         create: Registration
         update: Update profile
+      password_recovery:
+        create: Reset password
+      password:
+        create: Save new password
   language: English
   number:
     errors:

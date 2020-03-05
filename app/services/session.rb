@@ -22,7 +22,7 @@ class Session
   end
 
   def user
-    @user ||= User.find_by email: email
+    @user ||= User.find_by 'lower(email) = lower(?)', email
   end
 
   def auth_token

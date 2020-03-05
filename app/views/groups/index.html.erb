@@ -1,6 +1,11 @@
 <div class="page row bg-light">
   <div class="col-12 mb-4">
-    <h1><%= t 'group.index.title' %></h1>
+    <h1>
+      <%= t 'group.index.title' %>
+
+      <%= link_to t('group.index.new'), %i(new group), class: 'btn btn-primary float-right',
+          style: 'margin-right: 1rem' if policy(Group).new? %>
+    </h1>
   </div>
 
   <div class="col-12">

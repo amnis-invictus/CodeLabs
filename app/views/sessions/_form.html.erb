@@ -3,5 +3,11 @@
 
   <%= f.input :password %>
 
+  <div class="form-group">
+    <%= recaptcha_tags theme: :dark %>
+  </div>
+
   <%= f.submit class: 'btn btn-primary' %>
+
+  <%= link_to t('.reset_password'), %i[new password_recovery], class: 'btn btn-link float-right' %>
 <% end %>
