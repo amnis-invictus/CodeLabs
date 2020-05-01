@@ -24,6 +24,8 @@
       <% end %>
     <% end %>
 
-    <p class="card-text"><small class="text-muted">Last update <%= Time.at(Time.zone.now - worker.updated_at).gmtime.strftime("%H:%M:%S") %> ago</small></p>
+    <p class="card-text"><small class="text-muted">
+      Last update at <%= l worker.updated_at %> (<%= time_ago_in_words worker.updated_at, include_seconds: true %> ago)
+    </small></p>
   </div>
 <% end %>
