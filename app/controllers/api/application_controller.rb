@@ -8,7 +8,13 @@ class Api::ApplicationController < ApplicationController
   private
 
   def authenticate!
-    head 401 unless ActiveSupport::SecurityUtils.secure_compare params[:access_token] || '', ENV['API_ACCESS_TOKEN']
+    head 401 unless BCrypt::Password.valid_hash?(params[:access_token]) && valid_access_token?
+  end
+
+  def valid_access_token?
+    password = BCrypt::Password.new params[:access_token]
+
+    password.is_password?(ENV['API_ACCESS_TOKEN']) && $redis_workers.set(password.salt, nil, nx: true, ex: 24.hours.seconds)
   end
 
   def current_user
