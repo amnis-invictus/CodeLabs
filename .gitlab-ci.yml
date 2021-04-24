@@ -10,6 +10,7 @@ variables:
   SMTP_FROM: "codelabs@codelabs.local"
 
 test:
+  image: ruby:2.7
   environment: test
   stage: test
   script:
@@ -29,7 +30,7 @@ test:
 
 
 deploy_staging:
-  image: ruby:alpine
+  image: ruby:2.7-alpine
   environment: development
   stage: deploy
   script:
@@ -42,7 +43,7 @@ deploy_staging:
     - master
 
 deploy_production:
-  image: ruby:alpine
+  image: ruby:2.7-alpine
   environment: production
   stage: deploy
   script:
