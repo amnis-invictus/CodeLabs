@@ -13,6 +13,12 @@ RSpec.describe Api::TestLibsController, type: :controller do
 
   it_behaves_like :show, format: :json, unauthorized: true, anonymous: true, params: { version: 'latest' }
 
+  pending { should route(:post, '/api/test_libs').to(action: :create) }
+
+  it { should route(:get, '/api/test_libs/1.0.7784.34987').to(action: :show, version: '1.0.7784.34987') }
+
+  it { should route(:get, '/api/test_libs/latest').to(action: :show, version: 'latest') }
+
   describe '#resource' do
     context do
       before { subject.instance_variable_set :@resource, :resource }
