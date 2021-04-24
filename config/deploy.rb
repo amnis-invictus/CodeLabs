@@ -4,7 +4,7 @@ set :repo_url, 'git@gitlab.com:kostyanf14/CodeLabs.git'
 
 set :rails_env, :production
 
-set :default_env, { path: "$HOME/.rubies/current/bin:$PATH" }
+set :default_env, { path: '$HOME/.rubies/current/bin:$PATH' }
 
 append :linked_files, '.env', 'config/master.key'
 

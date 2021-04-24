@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
 
   private
 
-  alias_method :resource, :current_user
+  alias resource current_user
 
   def resource_params
     params.require(:user).permit(:username, :name, :password, :password_confirmation, :skills, :city, :institution)

@@ -9,25 +9,25 @@ RSpec.describe ResultPolicy do
     context do
       let(:test_state) { :pending }
 
-      it { should_not permit nil, resource  }
+      it { should_not permit nil, resource }
     end
 
     context do
       let(:test_state) { :in_progress }
 
-      it { should permit nil, resource  }
+      it { should permit nil, resource }
     end
 
     context do
       let(:test_state) { :done }
 
-      it { should_not permit nil, resource  }
+      it { should_not permit nil, resource }
     end
 
     context do
       let(:test_state) { :failed }
 
-      it { should_not permit nil, resource  }
+      it { should_not permit nil, resource }
     end
   end
 end

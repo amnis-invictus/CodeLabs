@@ -5,7 +5,7 @@ class Worker < ApplicationRecord
 
   validates :webhook_supported, inclusion: { in: [true, false] }
 
-  enum api_type: { HTTP: 0, WS: 1, }
+  enum api_type: { HTTP: 0, WS: 1 }
 
   enum status: { disabled: 0, ok: 1, failed: 2, stale: 3, stopped: 4 }
 

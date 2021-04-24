@@ -40,6 +40,7 @@ class User < ApplicationRecord
   end
 
   private
+
   def send_email
     UserMailer.email(self).deliver_later
   end

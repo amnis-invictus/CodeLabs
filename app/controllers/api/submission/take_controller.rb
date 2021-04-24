@@ -13,7 +13,7 @@ class Api::Submission::TakeController < Api::ApplicationController
     @parent ||= Submission.lock.find params[:submission_id]
   end
 
-  def wrap_in_transaction
-    ActiveRecord::Base.transaction { yield }
+  def wrap_in_transaction &block
+    ActiveRecord::Base.transaction &block
   end
 end

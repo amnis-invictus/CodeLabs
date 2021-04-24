@@ -19,7 +19,7 @@ RSpec.describe Constants do
         'runtime_error' => 10,
         'memory_limit_exceded' => 14,
         'time_limit_exceded' => 15,
-        'partilly_correct' => 16
+        'partilly_correct' => 16,
       },
       submission_test_states: { 'pending' => 0, 'in_progress' => 1, 'done' => 2, 'failed' => 3 },
       submission_test_results: { 'ok' => 0, 'compiler_error' => 1 },

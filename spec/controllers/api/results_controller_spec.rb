@@ -25,7 +25,7 @@ RSpec.describe Api::ResultsController, type: :controller do
         memory: 109.42,
         time: 98.24,
         test_id: 12,
-        submission_id: 5
+        submission_id: 5,
       }
     end
 

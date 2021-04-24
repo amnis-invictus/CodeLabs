@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   fixtures :users
 
-  subject { users(:one) }
+  subject { users :one }
 
   it { should validate_presence_of :email }
 

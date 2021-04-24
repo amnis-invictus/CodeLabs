@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::ApplicationController, type: :controller do
   its(:current_user) { should be_nil }
 
-  its(:default_url_options) { should eq Hash.new }
+  its(:default_url_options) { should eq({}) }
 
   describe '#authenticate!' do
     let(:uuid) { SecureRandom.uuid }

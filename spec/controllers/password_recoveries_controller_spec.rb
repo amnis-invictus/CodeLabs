@@ -9,7 +9,7 @@ RSpec.describe PasswordRecoveriesController, type: :controller do
     it_behaves_like :create, anonymous: true do
       let(:success) { -> { should render_template :create } }
 
-      let(:failure) { -> {  should render_template :create } }
+      let(:failure) { -> { should render_template :create } }
 
       before { expect(subject).to receive(:verify_recaptcha).and_return(true) }
     end
@@ -50,7 +50,7 @@ RSpec.describe PasswordRecoveriesController, type: :controller do
 
     before { expect(PasswordRecovery).to receive(:new).with(:resource_params).and_return(:resource) }
 
-    before { subject.send :build_resource}
+    before { subject.send :build_resource }
 
     its(:resource) { should eq :resource }
   end
@@ -58,7 +58,7 @@ RSpec.describe PasswordRecoveriesController, type: :controller do
   describe '#initialize_resource' do
     before { expect(PasswordRecovery).to receive(:new).with(no_args).and_return(:resource) }
 
-    before { subject.send :initialize_resource}
+    before { subject.send :initialize_resource }
 
     its(:resource) { should eq :resource }
   end

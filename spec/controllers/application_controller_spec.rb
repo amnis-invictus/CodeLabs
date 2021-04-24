@@ -7,7 +7,7 @@ RSpec.describe ApplicationController, type: :controller do
     before { allow(subject).to receive_message_chain(:cookies, :encrypted, :[]).with(:auth_token).and_return(auth_token) }
 
     context do
-      let (:auth_token) { nil }
+      let(:auth_token) { nil }
 
       its(:current_user) { should be_nil }
     end
@@ -92,7 +92,7 @@ RSpec.describe ApplicationController, type: :controller do
     end
 
     context do
-      let(:params) { { } }
+      let(:params) { {} }
 
       it { expect(I18n.locale).to eq(:en) }
     end
