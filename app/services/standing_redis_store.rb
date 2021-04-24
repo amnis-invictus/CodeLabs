@@ -6,13 +6,13 @@ class StandingRedisStore
   end
 
   def get
-    $redis_standings.set @key, score_from_database unless $redis_standings.exists @key
+    $redis_standings.set @key, score_from_database unless $redis_standings.exists? @key
 
     $redis_standings.get @key
   end
 
   def update_if_exists
-    $redis_standings.set @key, score_from_database if $redis_standings.exists @key
+    $redis_standings.set @key, score_from_database if $redis_standings.exists? @key
   end
 
   private
