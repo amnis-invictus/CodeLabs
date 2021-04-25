@@ -15,9 +15,9 @@ class Api::TestLibsController < Api::ApplicationController
     return @resource if defined? @resource
 
     if params[:version] == 'latest'
-      @resource = TestLib.order(version: :desc).first
+      @resource = TestLib.order(version: :desc).first!
     else
-      @resource = TestLib.find_by version: VersionAdapter.string_to_array(params[:version])
+      @resource = TestLib.find_by! version: VersionAdapter.string_to_array(params[:version])
     end
   end
 

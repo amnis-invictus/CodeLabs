@@ -29,7 +29,7 @@ RSpec.describe Api::TestLibsController, type: :controller do
     context do
       before { allow(subject).to receive(:params).and_return(version: '1.0.7784.34987') }
 
-      before { expect(TestLib).to receive(:find_by).with(version: [1, 0, 7_784, 34_987]).and_return(:resource) }
+      before { expect(TestLib).to receive(:find_by!).with(version: [1, 0, 7_784, 34_987]).and_return(:resource) }
 
       its(:resource) { should eq :resource }
     end
@@ -39,10 +39,10 @@ RSpec.describe Api::TestLibsController, type: :controller do
 
       before do
         #
-        # TestLib.order(version: :desc).first -> :resource
+        # TestLib.order(version: :desc).first! -> :resource
         #
         expect(TestLib).to receive(:order).with(version: :desc) do
-          double.tap { expect(_1).to receive(:first).and_return(:resource) }
+          double.tap { expect(_1).to receive(:first!).and_return(:resource) }
         end
       end
 
