@@ -1,2 +1,4 @@
+ruby '~> 2.7'
+
 gem 'capistrano', require: false
 gem 'capistrano-rails', require: false
