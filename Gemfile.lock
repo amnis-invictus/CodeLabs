@@ -66,8 +66,6 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    airbrussh (1.4.0)
-      sshkit (>= 1.6.1, != 1.7.0)
     arel (9.0.0)
     ast (2.4.2)
     autoprefixer-rails (10.2.4.0)
@@ -85,16 +83,6 @@ GEM
     bullet (6.1.4)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
-    capistrano (3.16.0)
-      airbrussh (>= 1.0.0)
-      i18n
-      rake (>= 10.0.0)
-      sshkit (>= 1.9.0)
-    capistrano-bundler (2.0.1)
-      capistrano (~> 3.1)
-    capistrano-rails (1.6.1)
-      capistrano (~> 3.1)
-      capistrano-bundler (>= 1.1, < 3)
     cocoon (1.2.15)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
@@ -168,14 +156,10 @@ GEM
       libv8-node (~> 15.14.0.0)
     minitest (5.14.4)
     msgpack (1.4.2)
-    net-scp (3.0.0)
-      net-ssh (>= 2.6.5, < 7.0.0)
-    net-ssh (6.1.0)
     nio4r (2.5.7)
     nokogiri (1.11.3)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    parallel (1.20.1)
     parser (3.0.1.0)
       ast (~> 2.4.1)
     pg (1.2.3)
@@ -229,10 +213,8 @@ GEM
     redis (4.2.5)
     redis-namespace (1.8.1)
       redis (>= 3.0.4)
-    regexp_parser (2.1.1)
     request_store (1.5.0)
       rack (>= 1.4)
-    rexml (3.2.5)
     rspec-activemodel-mocks (1.1.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -257,28 +239,6 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rubocop (1.13.0)
-      parallel (~> 1.10)
-      parser (>= 3.0.0.0)
-      rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.8, < 3.0)
-      rexml
-      rubocop-ast (>= 1.2.0, < 2.0)
-      ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.4.1)
-      parser (>= 2.7.1.5)
-    rubocop-performance (1.11.0)
-      rubocop (>= 1.7.0, < 2.0)
-      rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.9.1)
-      activesupport (>= 4.2.0)
-      rack (>= 1.1)
-      rubocop (>= 0.90.0, < 2.0)
-    rubocop-rspec (2.2.0)
-      rubocop (~> 1.0)
-      rubocop-ast (>= 1.1.0)
-    ruby-progressbar (1.11.0)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
     russian (0.6.0)
@@ -307,9 +267,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.21.2)
-      net-scp (>= 1.1.2)
-      net-ssh (>= 2.8.0)
     terminal-table (3.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (1.1.0)
@@ -343,8 +300,6 @@ DEPENDENCIES
   bootsnap
   bootstrap
   bullet
-  capistrano
-  capistrano-rails
   cocoon
   dotenv-rails
   draper
@@ -371,10 +326,6 @@ DEPENDENCIES
   rspec-activemodel-mocks
   rspec-its
   rspec-rails
-  rubocop
-  rubocop-performance
-  rubocop-rails
-  rubocop-rspec
   rubyzip
   russian
   sassc-rails

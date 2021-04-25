@@ -1,0 +1,2 @@
+gem 'capistrano', require: false
+gem 'capistrano-rails', require: false
