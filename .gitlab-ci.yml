@@ -1,5 +1,6 @@
 stages:
   - test
+  - lint
   - deploy
 
 variables:
@@ -9,35 +10,58 @@ variables:
   APPLICATION_URL: "http://localhost/"
   SMTP_FROM: "codelabs@codelabs.local"
 
+cache:
+  key: "$CI_JOB_STAGE"
+  paths:
+    - vendor/ruby
+
 test:
   environment: test
   stage: test
+  variables:
+    RAILS_ENV: test
   script:
     - gem update --system
     - gem update bundler --force
-    - bundle config set path 'vendor/ruby'
-    - bundle install
-    - RAILS_ENV=test bundle exec rake db:create
-    - RAILS_ENV=test bundle exec rake db:schema:load
-    - bundle exec rake
-  cache:
-    paths:
-      - vendor/ruby
+    - bin/bundle config set path 'vendor/ruby'
+    - bin/bundle install
+    - bin/rake db:create
+    - bin/rake db:schema:load
+    - bin/rspec
   services:
     - postgres
     - redis
 
+lint:
+  image: ruby:alpine
+  environment: development
+  stage: lint
+  variables:
+    BUNDLE_GEMFILE: Gemfile.lint
+  script:
+    - gem update --system
+    - gem update bundler --force
+    - bin/bundle config set path 'vendor/ruby'
+    - bin/bundle install
+    - bin/rubocop --parallel
+  only:
+    - master
 
 deploy_staging:
   image: ruby:alpine
   environment: development
   stage: deploy
+  variables:
+    BUNDLE_GEMFILE: Gemfile.deploy
   script:
     - apk add openssh-client
     - eval $(ssh-agent -s)
     - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
-    - gem install capistrano capistrano-rails
-    - cap staging deploy
+    - gem update --system
+    - gem update bundler --force
+    - bin/bundle config set path 'vendor/ruby'
+    - bin/bundle install
+    - bin/cap staging deploy
   only:
     - master
 
@@ -45,11 +69,16 @@ deploy_production:
   image: ruby:alpine
   environment: production
   stage: deploy
+  variables:
+    BUNDLE_GEMFILE: Gemfile.deploy
   script:
     - apk add openssh-client
     - eval $(ssh-agent -s)
     - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
-    - gem install capistrano capistrano-rails
-    - cap production deploy
+    - gem update --system
+    - gem update bundler --force
+    - bin/bundle config set path 'vendor/ruby'
+    - bin/bundle install
+    - bin/cap production deploy
   only:
     - production
