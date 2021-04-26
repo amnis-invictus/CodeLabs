@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationFactory do
-  let(:described_class) do
+  let :described_class do
     Class.new ApplicationFactory do
       def initialize *args; end
     end

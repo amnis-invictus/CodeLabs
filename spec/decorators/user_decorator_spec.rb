@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UserDecorator do
   fixtures :users
 
-  let(:resource) { users(:one) }
+  let(:resource) { users :one }
 
   subject { resource.decorate }
 

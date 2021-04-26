@@ -1,7 +1,7 @@
 class CompilerDecorator < Draper::Decorator
   delegate_all
 
-  def as_json *args
+  def as_json *_args
     {
       id: id,
       name: name,
@@ -9,7 +9,7 @@ class CompilerDecorator < Draper::Decorator
       memory_a: memory_a,
       memory_b: memory_b,
       time_a: time_a,
-      time_b: time_b
+      time_b: time_b,
     }
   end
 end

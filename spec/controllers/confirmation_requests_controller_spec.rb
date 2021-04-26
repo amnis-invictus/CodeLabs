@@ -55,7 +55,7 @@ RSpec.describe ConfirmationRequestsController, type: :controller do
 
     before { expect(ConfirmationRequest).to receive(:new).with(user: :current_user).and_return(:resource) }
 
-    before  { subject.send :build_resource }
+    before { subject.send :build_resource }
 
     its(:resource) { should eq :resource }
   end

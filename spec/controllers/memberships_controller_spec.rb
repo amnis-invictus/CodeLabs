@@ -43,7 +43,7 @@ RSpec.describe MembershipsController, type: :controller do
     end
 
     context do
-      before { expect(subject).to receive(:params).and_return(Hash.new) }
+      before { expect(subject).to receive(:params).and_return({}) }
 
       before { expect(Group).to_not receive(:find) }
 

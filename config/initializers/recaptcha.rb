@@ -6,12 +6,8 @@ Recaptcha.configure do |config|
   config.hostname = ENV['RECAPTCHA_HOSTNAME']
 end
 
-module Recaptcha
-  module Adapters
-    module ControllerMethods
-      def recaptcha_flash_supported?
-        true
-      end
-    end
+module Recaptcha::Adapters::ControllerMethods
+  def recaptcha_flash_supported?
+    true
   end
 end

@@ -1,11 +1,11 @@
-ENV["RAILS_ENV"] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
 
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'pundit/rspec'
 require 'aasm/rspec'
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.mock_with :rspec
@@ -24,7 +24,7 @@ RSpec.configure do |config|
 
   config.include ActiveSupport::Testing::TimeHelpers
 
-  [:controller, :view, :request].each do |type|
+  %i[controller view request].each do |type|
     config.include Rails::Controller::Testing::TestProcess, type: type
 
     config.include Rails::Controller::Testing::TemplateAssertions, type: type

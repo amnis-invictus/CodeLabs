@@ -12,7 +12,7 @@ class Archive::TranslationParser
       caption: @xml[:caption],
       author: @xml[:author],
       text: text,
-      technical_text: technical_text
+      technical_text: technical_text,
     }.compact
   end
 

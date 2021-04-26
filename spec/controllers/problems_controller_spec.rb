@@ -68,7 +68,7 @@ RSpec.describe ProblemsController, type: :controller do
         checker_compiler_id: '1',
         checker_source: '',
         private: '0',
-        tag_ids: ['1', '2'],
+        tag_ids: %w[1 2],
         examples_attributes: [{ id: '1', input: '', answer: '', _destroy: '' }],
         tests_attributes: [{ id: '2', num: 'b', point: '10', input: '', answer: '', _destroy: '' }],
         translations_attributes: [{
@@ -79,8 +79,8 @@ RSpec.describe ProblemsController, type: :controller do
           text: 'Just solve it',
           technical_text: '$$ f(x, z) = x^2 + z^2 $$',
           default: '1',
-          _destroy: ''
-        }]
+          _destroy: '',
+        }],
       }
     end
 

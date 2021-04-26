@@ -5,5 +5,5 @@ RSpec.describe TagDecorator do
 
   subject { resource.decorate }
 
-  its(:as_json) { should eq  value: 5, text: 'Simple Problem' }
+  its(:as_json) { should eq value: 5, text: 'Simple Problem' }
 end

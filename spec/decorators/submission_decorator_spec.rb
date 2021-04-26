@@ -19,14 +19,14 @@ RSpec.describe SubmissionDecorator do
 
   its(:memory_limit) { should eq 3148.792 }
 
-  its(:time_limit) { should eq 14303.14 }
+  its(:time_limit) { should eq 14_303.14 }
 
   describe '#as_json' do
     before { expect(subject).to receive(:source_url).and_return(:source_url) }
 
     its :as_json do
       should eq id: 125, compiler_id: 3, problem: problem, source_url: :source_url, test_state: 0,
-        fails_count: 2, memory_limit: 3148.792, time_limit: 14303.14
+        fails_count: 2, memory_limit: 3148.792, time_limit: 14_303.14
     end
   end
 

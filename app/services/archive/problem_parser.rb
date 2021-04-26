@@ -15,7 +15,7 @@ class Archive::ProblemParser
       examples_attributes: examples_attributes,
       tests_attributes: tests_attributes,
       translations_attributes: translations_attributes,
-      submissions_attributes: submissions_attributes
+      submissions_attributes: submissions_attributes,
     }.compact
   end
 

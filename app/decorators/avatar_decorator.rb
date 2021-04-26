@@ -1,7 +1,7 @@
 class AvatarDecorator < Draper::Decorator
   delegate_all
 
-  def as_json *args
+  def as_json *_args
     { url: url }
   end
 

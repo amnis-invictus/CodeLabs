@@ -34,7 +34,7 @@ RSpec.describe ProfilesController, type: :controller do
         password_confirmation: 'password',
         skills: 'lighting rod, electro ball',
         city: 'Vinnytsia',
-        institution: 'VTL'
+        institution: 'VTL',
       }
     end
 
