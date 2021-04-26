@@ -45,8 +45,6 @@ lint:
     - bin/bundle config set path 'vendor/ruby'
     - bin/bundle install
     - bin/rubocop --parallel
-  only:
-    - master
 
 deploy_staging:
   image: ruby:2.7-alpine
