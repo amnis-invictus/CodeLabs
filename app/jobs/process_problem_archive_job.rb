@@ -11,7 +11,9 @@ class ProcessProblemArchiveJob < ApplicationJob
     xml.xpath('problems/problem').each do |problem_xml|
       log 'Looking for the problem or creating a new one..'
 
-      problem = Problem.find_or_initialize_by(id: problem_xml[:id]) { _1.user = user }
+      problem = Problem.find_or_initialize_by id: problem_xml[:id] do
+        _1.user = user
+      end
 
       log 'Parsing attributes..'
 
