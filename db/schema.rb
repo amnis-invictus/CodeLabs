@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_03_134959) do
+ActiveRecord::Schema.define(version: 2021_04_24_180252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -192,6 +192,13 @@ ActiveRecord::Schema.define(version: 2019_11_03_134959) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "problems_count", default: 0, null: false
+  end
+
+  create_table "test_libs", force: :cascade do |t|
+    t.integer "version", null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["version"], name: "index_test_libs_on_version", unique: true
   end
 
   create_table "tests", force: :cascade do |t|
