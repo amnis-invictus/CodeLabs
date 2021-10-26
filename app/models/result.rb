@@ -19,7 +19,7 @@ class Result < ApplicationRecord
     runtime_error: 10,
     memory_limit_exceded: 14,
     time_limit_exceded: 15,
-    partilly_correct: 16
+    partilly_correct: 16,
   }
 
   delegate :num, to: :test, prefix: true, allow_nil: true

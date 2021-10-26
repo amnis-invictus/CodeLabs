@@ -45,7 +45,7 @@ RSpec.describe PasswordsController, type: :controller do
     end
 
     context do
-      before { expect(subject).to receive(:params).and_return(Hash.new) }
+      before { expect(subject).to receive(:params).and_return({}) }
 
       its(:resource) { should eq nil }
     end

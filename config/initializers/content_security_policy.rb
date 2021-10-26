@@ -9,5 +9,5 @@ if Rails.env.production?
     policy.connect_src :self, :https, :wss
   end
 
-  Rails.application.config.content_security_policy_nonce_generator = -> request { SecureRandom.base64(16) }
+  Rails.application.config.content_security_policy_nonce_generator = -> (_request) { SecureRandom.base64 16 }
 end

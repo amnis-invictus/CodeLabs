@@ -9,7 +9,7 @@ class SubmissionDecorator < Draper::Decorator
 
   delegate :caption, to: :problem, prefix: true
 
-  def as_json *args
+  def as_json *_args
     {
       id: id,
       compiler_id: compiler_id,
@@ -18,7 +18,7 @@ class SubmissionDecorator < Draper::Decorator
       test_state: Submission.test_states[test_state],
       fails_count: fails_count,
       memory_limit: memory_limit,
-      time_limit: time_limit
+      time_limit: time_limit,
     }
   end
 

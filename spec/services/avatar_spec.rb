@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Avatar, type: :model do
   let(:user) { double }
 
-  let(:file) { double open: :open, original_filename: 'avatar.jpg', content_type: 'image/jpeg'  }
+  let(:file) { double open: :open, original_filename: 'avatar.jpg', content_type: 'image/jpeg' }
 
   subject { described_class.new user: user, file: file }
 
@@ -115,7 +115,7 @@ RSpec.describe Avatar, type: :model do
     context do
       before { expect(subject).to receive(:blob).and_return(double byte_size: 3.megabytes) }
 
-      it { expect(&call).to change(&errors).to(file: [{ error: :too_long, count: 2097152 }]) }
+      it { expect(&call).to change(&errors).to(file: [{ error: :too_long, count: 2_097_152 }]) }
     end
   end
 end

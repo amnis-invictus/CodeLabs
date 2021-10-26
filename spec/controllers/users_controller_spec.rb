@@ -9,7 +9,7 @@ RSpec.describe UsersController, type: :controller do
     it_behaves_like :create, anonymous: true do
       let(:success) { -> { should redirect_to %i[new session] } }
 
-      let(:failure) { -> {  should render_template :new } }
+      let(:failure) { -> { should render_template :new } }
 
       before { expect(subject).to receive(:verify_recaptcha).and_return(true) }
     end

@@ -3,13 +3,13 @@ class ProblemDecorator < Draper::Decorator
 
   delegate :caption, :author, :text, :technical_text, to: :translation, allow_nil: true
 
-  def as_json *args
+  def as_json *_args
     case context
     when :submission
       {
         id: id,
         updated_at: updated_at,
-        checker_compiler_id: checker_compiler_id
+        checker_compiler_id: checker_compiler_id,
       }
     else
       {
@@ -17,7 +17,7 @@ class ProblemDecorator < Draper::Decorator
         updated_at: updated_at,
         checker_compiler_id: checker_compiler_id,
         checker_source_url: checker_source_url,
-        tests: tests
+        tests: tests,
       }
     end
   end
@@ -31,6 +31,6 @@ class ProblemDecorator < Draper::Decorator
   end
 
   def language
-    translation.language.to_sym if translation
+    translation&.language&.to_sym
   end
 end

@@ -7,7 +7,7 @@ RSpec.describe TagsController, type: :controller do
 
   describe '#collection' do
     context do
-      before { subject.instance_variable_set :@collection , :collection }
+      before { subject.instance_variable_set :@collection, :collection }
 
       its(:collection) { should eq :collection }
     end

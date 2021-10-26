@@ -9,6 +9,6 @@ Rails.application.configure do
     user_name: ENV['SMTP_USER_NAME'],
     password: ENV['SMTP_PASSWORD'],
     authentication: :login,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
   }
 end
