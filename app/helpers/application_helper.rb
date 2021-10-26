@@ -1,5 +1,5 @@
 module ApplicationHelper
-  ALLOWED_TAGS = %w[b br em i p span strong sub sup table tbody td th thead tr img ul ol li].freeze
+  ALLOWED_TAGS = %w[b br em i u p span strong sub sup table tbody td th thead tr img ul ol li].freeze
 
   ALLOWED_ATTRIBUTES = %w[class src alt].freeze
 
