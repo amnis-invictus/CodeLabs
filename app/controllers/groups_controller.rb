@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
   end
 
   def resource_params
-    params.require(:group).permit(:name, :visibility, :description)
+    params.require(:group).permit(:name, :visibility, :description, :starts_at, :ends_at)
   end
 
   def initialize_resource
