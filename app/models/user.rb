@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  GROUP_OPEN_CONDITION = <<-SQL.squish.freeze
+    (groups.starts_at IS NULL OR groups.starts_at <= NOW()) AND (groups.ends_at IS NULL OR groups.ends_at >= NOW())
+  SQL
+
   validates :email, presence: true, email: true, uniqueness: { case_sensitive: false }
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
@@ -25,7 +29,7 @@ class User < ApplicationRecord
 
   has_many :sharings, through: :accepted_groups
 
-  has_many :shared_problems, class_name: 'Problem', through: :sharings, source: :problem
+  has_many :shared_problems, -> { where GROUP_OPEN_CONDITION }, class_name: 'Problem', through: :sharings, source: :problem
 
   has_secure_password
 
