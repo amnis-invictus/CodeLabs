@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_27_221150) do
+ActiveRecord::Schema.define(version: 2021_10_27_225406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -84,8 +84,10 @@ ActiveRecord::Schema.define(version: 2021_10_27_221150) do
     t.text "description"
     t.datetime "starts_at"
     t.datetime "ends_at"
+    t.index ["ends_at"], name: "index_groups_on_ends_at"
     t.index ["name"], name: "index_groups_on_name"
     t.index ["owner_id"], name: "index_groups_on_owner_id"
+    t.index ["starts_at"], name: "index_groups_on_starts_at"
   end
 
   create_table "logs", force: :cascade do |t|
