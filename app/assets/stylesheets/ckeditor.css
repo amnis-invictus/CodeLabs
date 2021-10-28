@@ -1,3 +1,7 @@
 .ck-content {
   list-style-position: inside;
 }
+
+.ck-content li {
+  margin-left: 1em;
+}
