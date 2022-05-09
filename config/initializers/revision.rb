@@ -1,6 +1,4 @@
-REVISION = \
-  if Rails.env.production? && ENV.key?('REVISION_FILE') && File.exist?(ENV['REVISION_FILE'])
-    IO.readlines(ENV['REVISION_FILE']).last.strip
-  else
-    ''
-  end.freeze
+if Rails.env.production?
+  path = ENV.fetch 'REVISION_FILE'
+  REVISION = File.readlines(path).last.strip.freeze if File.exist? path
+end

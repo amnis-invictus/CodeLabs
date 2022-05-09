@@ -312,7 +312,7 @@ SimpleForm.setup do |config|
   end
 
   config.wrappers :custom_range, tag: 'div', class: 'form-group', error_class: 'form-group-invalid',
-  valid_class: 'form-group-valid' do |b|
+    valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :readonly
@@ -324,7 +324,7 @@ SimpleForm.setup do |config|
   end
 
   config.wrappers :input_group, tag: 'div', class: 'form-group', error_class: 'form-group-invalid',
-  valid_class: 'form-group-valid' do |b|
+    valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -343,7 +343,7 @@ SimpleForm.setup do |config|
   end
 
   config.wrappers :floating_labels_form, tag: 'div', class: 'form-label-group', error_class: 'form-group-invalid',
-  valid_class: 'form-group-valid' do |b|
+    valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -358,7 +358,7 @@ SimpleForm.setup do |config|
   end
 
   config.wrappers :floating_labels_select, tag: 'div', class: 'form-label-group', error_class: 'form-group-invalid',
-  valid_class: 'form-group-valid' do |b|
+    valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.optional :readonly
     b.use :input, class: 'custom-select custom-select-lg', error_class: 'is-invalid'

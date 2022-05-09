@@ -27,11 +27,11 @@ class SubmissionDecorator < Draper::Decorator
   end
 
   def memory_limit
-    problem.memory_limit * compiler.memory_a + compiler.memory_b
+    (problem.memory_limit * compiler.memory_a) + compiler.memory_b
   end
 
   def time_limit
-    problem.time_limit * compiler.time_a + compiler.time_b
+    (problem.time_limit * compiler.time_a) + compiler.time_b
   end
 
   def state
