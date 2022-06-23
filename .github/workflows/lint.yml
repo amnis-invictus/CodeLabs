@@ -10,7 +10,7 @@ jobs:
     env:
       BUNDLE_GEMFILE: Gemfile.lint
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Ruby 2.7.3
         uses: ruby/setup-ruby@v1
         with:
