@@ -1,5 +1,7 @@
 class Api::ApplicationController < ApplicationController
-  skip_before_action :verify_authenticity_token # lgtm[rb/csrf-protection-disabled]
+  # lgtm[rb/csrf-protection-disabled]
+  skip_before_action :verify_authenticity_token
+  # ; lgtm
 
   before_action -> { response.status = 201 }, only: :create
 
