@@ -1,6 +1,6 @@
 set :application, 'CodeLabs'
 
-set :repo_url, 'git@gitlab.com:kostyanf14/CodeLabs.git'
+set :repo_url, 'https://github.com/amnis-invictus/CodeLabs.git'
 
 set :rails_env, :production
 
