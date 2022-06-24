@@ -3,13 +3,13 @@
   After = network.service
 
 [Service]
-  User = user
-  Group = user
+  User = arch-user
+  Group = arch-user
   WorkingDirectory = /opt/ai/application/current
   Environment = 'RAILS_ENV=production'
   Environment = 'SOCKET=unix:///opt/ai/application/current/tmp/sockets/server.sock'
   Environment = 'PID=/opt/ai/application/current/tmp/pids/server.pid'
-  Environment = 'PATH=/home/user/.rubies/current/bin:/bin:/usr/bin:/usr/local/bin'
+  Environment = 'PATH=/home/arch-user/.rubies/current/bin:/bin:/usr/bin:/usr/local/bin'
   ExecStart = /usr/bin/env bundle exec puma --config /opt/ai/application/current/config/puma.rb
   Restart = always
 
