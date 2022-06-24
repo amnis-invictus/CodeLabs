@@ -1,0 +1,16 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    brakeman (5.2.3)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  brakeman
+
+RUBY VERSION
+   ruby 2.7.0p0
+
+BUNDLED WITH
+   2.3.13
