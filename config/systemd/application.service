@@ -1,5 +1,5 @@
 [Unit]
-  Description = Codelabs Application
+  Description = CodeLabs Application
   After = network.service
 
 [Service]
