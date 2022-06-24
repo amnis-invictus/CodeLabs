@@ -4,7 +4,7 @@ set :repo_url, 'https://github.com/amnis-invictus/CodeLabs.git'
 
 set :rails_env, :production
 
-set :default_env, { path: '$HOME/.rubies/current/bin:$PATH' }
+set :default_env, { path: '$HOME/.rbenv/shims:$PATH' }
 
 append :linked_files, '.env', 'config/master.key'
 
