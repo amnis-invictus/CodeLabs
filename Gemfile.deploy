@@ -2,5 +2,7 @@ ruby '~> 2.7'
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{ repo }.git" }
 
+gem 'bcrypt_pbkdf', require: false
 gem 'capistrano', require: false
 gem 'capistrano-rails', require: false
+gem 'ed25519', require: false
