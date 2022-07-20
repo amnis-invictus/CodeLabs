@@ -6,7 +6,7 @@ gem 'aasm'
 gem 'bcrypt'
 gem 'bitmask_attributes'
 gem 'bootsnap', require: false
-gem 'bootstrap', '~> 4.6'
+gem 'bootstrap', '~> 5.2'
 gem 'cocoon'
 gem 'dotenv-rails'
 gem 'draper'
