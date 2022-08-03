@@ -51,9 +51,11 @@ end
 
 group :test do
   gem 'brakeman'
+  gem 'capybara'
   gem 'rails-controller-testing'
   gem 'rspec-activemodel-mocks'
   gem 'rspec-its'
+  gem 'selenium-webdriver'
   gem 'shoulda-callback-matchers', github: 'just806me/shoulda-callback-matchers'
   gem 'shoulda-matchers'
 end
