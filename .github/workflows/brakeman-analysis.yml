@@ -8,8 +8,6 @@ jobs:
   brakeman-scan:
     name: Brakeman Scan
     runs-on: ubuntu-latest
-    env:
-      BUNDLE_GEMFILE: Gemfile.brakeman
     steps:
       - uses: actions/checkout@v3
 

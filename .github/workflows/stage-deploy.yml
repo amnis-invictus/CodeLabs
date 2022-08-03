@@ -10,8 +10,6 @@ jobs:
     environment:
       name: test
       url: https://stage.codelabs.site
-    env:
-      BUNDLE_GEMFILE: Gemfile.deploy
     steps:
       - uses: webfactory/ssh-agent@v0.5.4
         with:

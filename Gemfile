@@ -50,9 +50,25 @@ group :development do
 end
 
 group :test do
+  gem 'brakeman'
   gem 'rails-controller-testing'
   gem 'rspec-activemodel-mocks'
   gem 'rspec-its'
   gem 'shoulda-callback-matchers', github: 'just806me/shoulda-callback-matchers'
   gem 'shoulda-matchers'
+end
+
+group :lint do
+  gem 'code-scanning-rubocop'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
+end
+
+group :deploy do
+  gem 'bcrypt_pbkdf', require: false
+  gem 'capistrano', require: false
+  gem 'capistrano-rails', require: false
+  gem 'ed25519', require: false
 end
