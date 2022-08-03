@@ -52,6 +52,7 @@ end
 group :test do
   gem 'brakeman'
   gem 'capybara'
+  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'rspec-activemodel-mocks'
   gem 'rspec-its'

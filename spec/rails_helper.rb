@@ -33,6 +33,8 @@ RSpec.configure do |config|
     config.include Rails::Controller::Testing::Integration, type: type
   end
 
+  config.include FactoryBot::Syntax::Methods
+
   config.before { freeze_time }
 end
 
