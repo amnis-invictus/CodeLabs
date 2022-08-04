@@ -20,5 +20,14 @@ RSpec.describe 'Login', type: :feature, ui: true do
 
       it('redirect to profile page') { expect(page).to have_current_path(profile_path) }
     end
+
+    context 'with wrong email' do
+      let(:params) { attributes_for :user, email: 'judy.doe@codelabs.test' }
+
+      before { click_button 'commit' }
+
+      it('redirect to login page') { expect(page).to have_current_path(login_path) }
+      it { expect(page).to have_text('Email is invalid') }
+    end
   end
 end
