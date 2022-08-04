@@ -29,5 +29,14 @@ RSpec.describe 'Login', type: :feature, ui: true do
       it('redirect to login page') { expect(page).to have_current_path(login_path) }
       it { expect(page).to have_text('Email is invalid') }
     end
+
+    context 'with wrong password' do
+      let(:params) { attributes_for :user, password: SecureRandom.base36 }
+
+      before { click_button 'commit' }
+
+      it('redirect to login page') { expect(page).to have_current_path(login_path) }
+      it { expect(page).to have_text('Password is invalid') }
+    end
   end
 end
