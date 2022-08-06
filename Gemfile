@@ -37,6 +37,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'uglifier'
 
 group :development, :test do
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
 end
 
@@ -53,7 +54,6 @@ group :test do
   gem 'brakeman'
   gem 'capybara'
   gem 'database_cleaner-active_record'
-  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'rspec-activemodel-mocks'
   gem 'rspec-its'
