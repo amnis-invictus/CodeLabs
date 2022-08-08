@@ -21,7 +21,7 @@ gem 'pg'
 gem 'puma'
 gem 'pundit'
 gem 'rails', '~> 6.0.5'
-gem 'rails-assets-sweetalert2', '7.29.1', source: 'https://rails-assets.org'
+gem 'rails-assets-sweetalert2', '11.4.26', source: 'https://rails-assets.org'
 gem 'rails-i18n'
 gem 'recaptcha'
 gem 'redis', require: %w[redis redis/connection/hiredis]
