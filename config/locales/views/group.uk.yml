@@ -16,6 +16,7 @@ uk:
       create_sharing: Додати задачу
       description: Опис
       edit: Редагувати інформацію про групу
+      destroy: Видалити групу
       members: Учасники
       membership_list: Список запрошень
       new_membership: Запросити

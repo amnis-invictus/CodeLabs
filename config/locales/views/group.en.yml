@@ -16,6 +16,7 @@ en:
       create_sharing: Add a problem
       description: Description
       edit: Edit group information
+      destroy: Delete group
       members: Members
       membership_list: Invitation list
       new_membership: Invite

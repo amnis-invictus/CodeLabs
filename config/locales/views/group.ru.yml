@@ -16,6 +16,7 @@ ru:
       create_sharing: Добавить задачу
       description: Описание
       edit: Редагтировать информацию про группу
+      destroy: Удалить группу
       members: Участники
       membership_list: Список приглашений
       new_membership: Пригласить

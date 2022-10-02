@@ -52,6 +52,9 @@
       <%= link_to t('group.show.create_sharing'), [:new, resource, :sharing], class: 'btn btn-primary btn-block' \
         if policy(resource).new_sharing? %>
 
+      <%= link_to t('group.show.destroy'), resource, method: :delete, class: 'btn btn-primary btn-block' \
+        if policy(resource).destroy? %>
+
       <%= link_to t('group.show.submission_list'), [resource, :submissions], class: 'btn btn-link btn-block' %>
 
       <%= link_to t('group.show.problem_list'), [resource, :problems], class: 'btn btn-link btn-block' %>
