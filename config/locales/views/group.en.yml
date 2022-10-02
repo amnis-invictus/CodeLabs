@@ -24,6 +24,7 @@ en:
       problem_list: Group problems
       standings: Standings
       submission_list: Group submissions
+    shared:
       visibility:
         moderated: Users can send participation requests
         private: Only group owner can add users

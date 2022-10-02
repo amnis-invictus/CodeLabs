@@ -5,7 +5,7 @@
     <div class="alert alert-info">
       <%= resource.visibility_icon %>
 
-      <%= t resource.visibility, scope: 'group.show.visibility' %>
+      <%= t resource.visibility, scope: 'group.shared.visibility' %>
     </div>
   </div>
 
@@ -62,7 +62,7 @@
     <div class="col-12">
       <div class="alert alert-warning">
         <%= t 'group.show.pending_member' %>
-        
+
         <%= link_to resource.current_user_membership, method: :delete, remote: true, class: 'badge badge-danger ml-3' do %>
           <i class="fas fa-times"></i>
         <% end %>

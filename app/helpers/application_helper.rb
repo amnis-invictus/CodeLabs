@@ -18,4 +18,8 @@ module ApplicationHelper
   def sanitize_for_problem text
     sanitize text, tags: ALLOWED_TAGS, attributes: ALLOWED_ATTRIBUTES
   end
+
+  def group_visibility_select_options
+    Group.visibilities.keys.map { [_1, data: { subtext: translate(_1, scope: 'group.shared.visibility') }] }
+  end
 end
