@@ -7,6 +7,7 @@ gem 'bcrypt'
 gem 'bitmask_attributes'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 4.6'
+gem 'bootstrap-select-rails'
 gem 'cocoon'
 gem 'dotenv-rails'
 gem 'draper'
