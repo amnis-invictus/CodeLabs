@@ -1,12 +1,12 @@
 class TestDecorator < Draper::Decorator
   delegate_all
 
-  def as_json *args
+  def as_json *_args
     {
       id: id,
       num: num,
       input_url: input_url,
-      answer_url: answer_url
+      answer_url: answer_url,
     }
   end
 

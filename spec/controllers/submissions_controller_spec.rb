@@ -35,7 +35,8 @@ RSpec.describe SubmissionsController, type: :controller do
 
       before do
         #
-        # subject.submissions.includes(:compiler, :user, problem: :user).order(created_at: :desc).page(params[:page]) -> :collection
+        # subject.submissions.includes(:compiler, :user, problem: :user).
+        #   order(created_at: :desc).page(params[:page]) -> :collection
         #
         expect(subject).to receive_message_chain(:submissions, :includes).with(:compiler, :user, problem: :user) do
           double.tap do |a|

@@ -15,19 +15,19 @@ RSpec.describe ConfirmationRequestPolicy do
     end
 
     context do
-      let(:user) { users(:one) }
+      let(:user) { users :one }
 
       it { should_not permit user, resource }
     end
 
     context do
-      let(:user) { users(:two) }
+      let(:user) { users :two }
 
       it { should_not permit user, resource }
     end
 
     context do
-      let(:user) { users(:three) }
+      let(:user) { users :three }
 
       it { should permit user, resource }
     end

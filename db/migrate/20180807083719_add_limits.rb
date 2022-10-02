@@ -20,7 +20,7 @@ class AddLimits < ActiveRecord::Migration[5.2]
 
     change_column_null :compilers, :time_b, false, 0
 
-    change_column_null :problems, :memory_limit, false, 32*1024
+    change_column_null :problems, :memory_limit, false, 32 * 1024
 
     change_column_null :problems, :time_limit, false, 100
   end

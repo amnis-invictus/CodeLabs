@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe PasswordRecoveryMailer, type: :mailer do
   let(:user) { stub_model User, username: 'test', email: 'user@codelabs.site', password_recovery_token: SecureRandom.uuid }
@@ -7,7 +7,7 @@ RSpec.describe PasswordRecoveryMailer, type: :mailer do
 
   its(:subject) { should eq 'Password recovery at CodeLabs' }
 
-  its(:from) { should eq [ENV['SMTP_FROM']] }
+  its(:from) { should eq [ENV.fetch('SMTP_FROM')] }
 
   its(:to) { should eq ['user@codelabs.site'] }
 end

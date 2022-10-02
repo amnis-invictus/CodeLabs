@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::ApplicationController, type: :controller do
   its(:current_user) { should be_nil }
 
-  its(:default_url_options) { should eq Hash.new }
+  its(:default_url_options) { should eq({}) }
 
   describe '#authenticate!' do
     let(:hash) { '$2a$12$P9FY1uI4pexijYtWXIW2pufjvBs/Om4uz9Gf4lDbuj8E8oUrFZ/OG' }

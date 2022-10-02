@@ -1,5 +1,7 @@
-redis_connection = Redis.new
+$redis_standings = ConnectionPool.new do
+  Redis::Namespace.new "#{ Rails.env }_standings", redis: Redis.new(driver: :hiredis)
+end
 
-$redis_standings = Redis::Namespace.new "#{ Rails.env }_standings", redis: redis_connection
-
-$redis_workers = Redis::Namespace.new "#{ Rails.env }_workers", redis: redis_connection
+$redis_workers = ConnectionPool.new do
+  Redis::Namespace.new "#{ Rails.env }_workers", redis: Redis.new(driver: :hiredis)
+end

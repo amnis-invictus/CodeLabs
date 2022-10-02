@@ -13,7 +13,7 @@ RSpec.describe Membership, type: :model do
 
   describe '#user_must_not_be_group_owner' do
     fixtures :users
-    
+
     subject { stub_model described_class, group: group, user: users(:two) }
 
     before { subject.valid? }

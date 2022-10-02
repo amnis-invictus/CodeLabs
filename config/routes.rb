@@ -67,5 +67,7 @@ Rails.application.routes.draw do
     resources :compilers, :constants, only: :index
 
     resources :workers, only: %i[create update]
+
+    resources :test_libs, only: %i[show create], param: :version, constraints: { version: /((\d+)(\.\d+)*|latest)/ }
   end
 end

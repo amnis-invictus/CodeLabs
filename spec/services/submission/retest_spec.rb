@@ -16,7 +16,7 @@ RSpec.describe Submission::Retest do
 
     before do
       expect(submission).to receive(:update).
-        with(test_state: :pending,  fails_count: 0, score: nil, test_result: nil, max_score: nil).and_return(:result)
+        with(test_state: :pending, fails_count: 0, score: nil, test_result: nil, max_score: nil).and_return(:result)
     end
 
     its(:save) { should eq :result }

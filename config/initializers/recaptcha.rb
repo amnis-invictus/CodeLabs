@@ -1,17 +1,13 @@
 Recaptcha.configure do |config|
-  config.site_key = ENV['RECAPTCHA_SITE_KEY']
+  config.site_key = ENV.fetch 'RECAPTCHA_SITE_KEY', nil
 
-  config.secret_key = ENV['RECAPTCHA_SECRET_KEY']
+  config.secret_key = ENV.fetch 'RECAPTCHA_SECRET_KEY', nil
 
-  config.hostname = ENV['RECAPTCHA_HOSTNAME']
+  config.hostname = ENV.fetch 'RECAPTCHA_HOSTNAME', nil
 end
 
-module Recaptcha
-  module Adapters
-    module ControllerMethods
-      def recaptcha_flash_supported?
-        true
-      end
-    end
+module Recaptcha::Adapters::ControllerMethods
+  def recaptcha_flash_supported?
+    true
   end
 end

@@ -45,7 +45,7 @@ RSpec.describe Api::WorkersController, type: :controller do
         status: 1,
         webhook_supported: false,
         ips: ['127.0.0.1', '192.168.0.1'],
-        task_status: ['Slot 1: Running', 'Slot 2: Stopped']
+        task_status: ['Slot 1: Running', 'Slot 2: Stopped'],
       }
     end
 

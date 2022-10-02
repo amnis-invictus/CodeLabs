@@ -14,7 +14,7 @@ class Api::ApplicationController < ApplicationController
   def valid_access_token?
     password = BCrypt::Password.new params[:access_token]
 
-    password.is_password?(ENV['API_ACCESS_TOKEN']) && $redis_workers.set(password.salt, nil, nx: true, ex: 24.hours.seconds)
+    password.is_password?(ENV['API_ACCESS_TOKEN']) && $redis_workers.with { _1.set password.salt, nil, nx: true, ex: 24.hours.seconds }
   end
 
   def current_user

@@ -1,7 +1,7 @@
 class UserDecorator < Draper::Decorator
   delegate_all
 
-  def as_json *args
+  def as_json *_args
     { id: id, name: name, search_suggestion: search_suggestion }
   end
 
