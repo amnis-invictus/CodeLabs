@@ -168,8 +168,8 @@ GEM
     globalid (1.0.0)
       activesupport (>= 5.0)
     highline (2.0.3)
-    hiredis-client (0.9.0)
-      redis-client (= 0.9.0)
+    hiredis-client (0.10.0)
+      redis-client (= 0.10.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     i18n-tasks (1.0.12)
@@ -282,7 +282,7 @@ GEM
       json
     redis (5.0.5)
       redis-client (>= 0.9.0)
-    redis-client (0.9.0)
+    redis-client (0.10.0)
       connection_pool
     redis-namespace (1.9.0)
       redis (>= 4)
