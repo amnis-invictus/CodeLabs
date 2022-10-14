@@ -32,10 +32,10 @@ gem 'russian'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'sweet-alert2-rails', github: 'just806me/sweet-alert2-rails'
+gem 'terser'
 gem 'turbolinks'
 gem 'turbolinks_render'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'uglifier'
 
 group :development, :test do
   gem 'factory_bot_rails'
