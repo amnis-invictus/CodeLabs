@@ -16,6 +16,7 @@ ru:
       create_sharing: Добавить задачу
       description: Описание
       edit: Редагтировать информацию про группу
+      destroy: Удалить группу
       members: Участники
       membership_list: Список приглашений
       new_membership: Пригласить
@@ -24,6 +25,7 @@ ru:
       problem_list: Задачи группы
       standings: Положение
       submission_list: Отправленные решения участников группы
+    shared:
       visibility:
         moderated: Пользователи могут отправлять запросы на добавление в группу
         private: Только владелец группы может добавлять пользователей

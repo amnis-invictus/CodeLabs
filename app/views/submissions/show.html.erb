@@ -30,9 +30,11 @@
         <%= link_to t('submissions.show.results'), '#results', class: 'nav-link active', 'data-toggle': 'tab' %>
       </li>
 
-      <li class="nav-item">
-        <%= link_to t('submissions.show.compiler_log'), '#compiler-log', class: 'nav-link', 'data-toggle': 'tab' %>
-      </li>
+      <% if resource.logs.present? %>
+        <li class="nav-item">
+          <%= link_to t('submissions.show.compiler_log'), '#compiler-log', class: 'nav-link', 'data-toggle': 'tab' %>
+        </li>
+      <% end %>
 
       <li class="nav-item">
         <%= link_to t('submissions.show.source'), '#source', class: 'nav-link', 'data-toggle': 'tab' %>
@@ -68,7 +70,9 @@
         <% end %>
       </div>
 
-      <div class="tab-pane fade" id="compiler-log"><%= render 'compiler_log' %></div>
+      <% if resource.logs.present? %>
+        <div class="tab-pane fade" id="compiler-log"><%= render 'compiler_log' %></div>
+      <% end %>
 
       <div class="tab-pane fade" id="source"><%= render 'source' %></div>
     </div>

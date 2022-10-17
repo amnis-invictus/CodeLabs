@@ -50,7 +50,7 @@ class MembershipsController < ApplicationController
   end
 
   def policy record
-    policy = PolicyFinder.new(record).policy!
+    policy = Pundit::PolicyFinder.new(record).policy!
 
     policy == MembershipPolicy ? MembershipPolicy.new(current_user, record, parent: parent) : super
   end
