@@ -9,9 +9,9 @@ threads threads_count, threads_count
 environment rails_env
 
 if rails_env == 'production'
-  bind ENV['SOCKET']
+  bind ENV.fetch('SOCKET')
 
-  pidfile ENV['PID']
+  pidfile ENV.fetch('PID')
 else
   port ENV.fetch 'PORT', 3000
 end

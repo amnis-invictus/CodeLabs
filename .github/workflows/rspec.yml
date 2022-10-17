@@ -1,0 +1,118 @@
+name: RSpec tests
+
+on:
+  pull_request:
+    branches: [ master, production ]
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgresql://postgres:postgres@localhost/codelabs_test"
+      REDIS_URL: "redis://localhost/"
+      APPLICATION_URL: "http://localhost/"
+      SMTP_FROM: "codelabs@codelabs.local"
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: codelabs_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby 2.7.3
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.3
+          bundler-cache: true
+
+      - name: Setup Database
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
+
+      - name: Run RSpec tests
+        run: bundle exec rspec --tag ~ui
+
+  ui-test:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgresql://postgres:postgres@localhost/codelabs_test"
+      REDIS_URL: "redis://localhost/"
+      APPLICATION_URL: "http://localhost/"
+      SMTP_FROM: "codelabs@codelabs.local"
+    strategy:
+      matrix:
+        ui_test_engine: [chrome, firefox]
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: codelabs_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+      - name: Setup Ruby 2.7.3
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.3
+          bundler-cache: true
+
+      - name: Setup node deps
+        run: yarn install --frozen-lockfile
+
+      - name: Setup Database
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
+
+      - name: Run RSpec tests (UI group)
+        run: bundle exec rspec --tag ui
+        env:
+          UI_TEST_ENGINE: ${{ matrix.ui_test_engine }}

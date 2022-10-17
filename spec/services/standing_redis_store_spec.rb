@@ -8,7 +8,7 @@ RSpec.describe StandingRedisStore do
   context do
     let(:key) { subject.instance_variable_get :@key }
 
-    after { $redis_standings.del key }
+    after { $redis_standings.with { _1.del key } }
 
     describe '#get' do
       context do
@@ -18,7 +18,7 @@ RSpec.describe StandingRedisStore do
       end
 
       context do
-        before { $redis_standings.set key, 50 }
+        before { $redis_standings.with { _1.set key, 50 } }
 
         before { expect(subject).to_not receive(:score_from_database) }
 
@@ -32,17 +32,17 @@ RSpec.describe StandingRedisStore do
 
         before { subject.update_if_exists }
 
-        it { expect($redis_standings.get key).to be_nil }
+        it { expect($redis_standings.with { _1.get key }).to be_nil }
       end
 
       context do
-        before { $redis_standings.set key, 50 }
+        before { $redis_standings.with { _1.set key, 50 } }
 
         before { expect(subject).to receive(:score_from_database).and_return(100) }
 
         before { subject.update_if_exists }
 
-        it { expect($redis_standings.get key).to eq('100') }
+        it { expect($redis_standings.with { _1.get key }).to eq('100') }
       end
     end
 

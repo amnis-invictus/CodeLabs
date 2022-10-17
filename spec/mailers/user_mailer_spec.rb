@@ -7,7 +7,7 @@ RSpec.describe UserMailer, type: :mailer do
 
   its(:subject) { should eq 'Successful registration at CodeLabs' }
 
-  its(:from) { should eq [ENV['SMTP_FROM']] }
+  its(:from) { should eq [ENV.fetch('SMTP_FROM')] }
 
   its(:to) { should eq ['user@codelabs.site'] }
 end

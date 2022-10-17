@@ -8,7 +8,7 @@ class Api::ApplicationController < ApplicationController
   private
 
   def authenticate!
-    head 401 unless ActiveSupport::SecurityUtils.secure_compare params[:access_token] || '', ENV['API_ACCESS_TOKEN']
+    head 401 unless ActiveSupport::SecurityUtils.secure_compare params[:access_token] || '', ENV.fetch('API_ACCESS_TOKEN')
   end
 
   def current_user

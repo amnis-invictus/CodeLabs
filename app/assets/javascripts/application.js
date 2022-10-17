@@ -11,6 +11,7 @@
 //= require bootstrap-tagsinput.min.js
 //= require typeahead.min.js
 //= require bs-custom-file-input/dist/bs-custom-file-input.min.js
+//= require bootstrap-select
 //= require_tree .
 
 $(function () {
