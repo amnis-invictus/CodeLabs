@@ -36,7 +36,7 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe '#sanitize_for_problem' do
-    let(:tags) { %w[b br em i p span strong sub sup table tbody td th thead tr img ul ol li] }
+    let(:tags) { %w[b br em i u p span strong sub sup table tbody td th thead tr img ul ol li] }
 
     let(:attributes) { %w[class src alt] }
 

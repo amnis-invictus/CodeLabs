@@ -82,8 +82,12 @@ ActiveRecord::Schema.define(version: 2022_06_24_151239) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.index ["ends_at"], name: "index_groups_on_ends_at"
     t.index ["name"], name: "index_groups_on_name"
     t.index ["owner_id"], name: "index_groups_on_owner_id"
+    t.index ["starts_at"], name: "index_groups_on_starts_at"
   end
 
   create_table "logs", force: :cascade do |t|
