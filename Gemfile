@@ -9,6 +9,7 @@ gem 'bootsnap', require: false
 gem 'bootstrap', '~> 4.6'
 gem 'bootstrap-select-rails'
 gem 'cocoon'
+gem 'connection_pool'
 gem 'dotenv-rails'
 gem 'draper'
 gem 'email_validator'
@@ -25,7 +26,7 @@ gem 'rails', '~> 6.0.6'
 gem 'rails-assets-sweetalert2', '7.29.1', source: 'https://rails-assets.org'
 gem 'rails-i18n'
 gem 'recaptcha'
-gem 'redis', require: %w[redis redis/connection/hiredis]
+gem 'redis', '< 5', require: %w[redis redis/connection/hiredis]
 gem 'redis-namespace'
 gem 'rubyzip', require: 'zip'
 gem 'russian'
