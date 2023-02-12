@@ -38,7 +38,7 @@ RSpec.describe Api::WorkersController, type: :controller do
   describe '#resource_params' do
     let :params do
       acp worker: {
-        alive_at: Date.today,
+        alive_at: Time.zone.today,
         api_type: 0,
         api_version: 1,
         name: 'First Worker',

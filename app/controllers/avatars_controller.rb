@@ -1,12 +1,12 @@
 class AvatarsController < ApplicationController
   def create
-    render :errors, status: 422 and return unless resource.save
+    render :errors, status: :unprocessable_entity and return unless resource.save
   end
 
   def destroy
     resource.destroy
 
-    head 204
+    head :no_content
   end
 
   private

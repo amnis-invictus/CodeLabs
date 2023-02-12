@@ -4,7 +4,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    !user.present?
+    user.blank?
   end
 
   def show?
