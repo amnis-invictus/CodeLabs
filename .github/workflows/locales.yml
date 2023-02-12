@@ -1,0 +1,19 @@
+name: Locales missing test
+
+on:
+  pull_request:
+    branches: [ master, production ]
+
+jobs:
+  locales:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby 3.0.5
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.5
+          bundler-cache: true
+
+      - name: Run Locales missing test script
+        run: bash scripts/check_locales.sh
