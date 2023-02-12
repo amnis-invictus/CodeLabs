@@ -13,7 +13,7 @@ RSpec.describe MembershipFactory do
     before { expect(subject).to receive(:state).and_return(:state) }
 
     before do
-      expect(Membership).to receive(:new).with(user: :user, group: :group, state: :state).and_return(:membership)
+      expect(Membership).to receive(:new).with({ group: :group, user: :user, state: :state }).and_return(:membership)
     end
 
     its(:build) { should eq :membership }
