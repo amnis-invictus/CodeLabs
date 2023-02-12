@@ -11,15 +11,15 @@ jobs:
       name: test
       url: https://stage.codelabs.site
     steps:
-      - uses: webfactory/ssh-agent@v0.5.4
+      - uses: webfactory/ssh-agent@v0.7.0
         with:
             ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - uses: actions/checkout@v3
-      - name: Set up Ruby 2.7.3
+      - name: Set up Ruby 3.0.5
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7.3
+          ruby-version: 3.0.5
           bundler-cache: true
 
       - name: Deploy

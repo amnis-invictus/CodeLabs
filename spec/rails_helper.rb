@@ -7,7 +7,7 @@ require 'aasm/rspec'
 require 'capybara/rspec'
 require 'database_cleaner/active_record'
 
-Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.mock_with :rspec

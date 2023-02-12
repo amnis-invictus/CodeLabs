@@ -3,12 +3,14 @@ class Api::ApplicationController < ApplicationController
 
   before_action -> { response.status = 201 }, only: :create
 
-  rescue_from(Pundit::NotAuthorizedError) { head 403 }
+  rescue_from(Pundit::NotAuthorizedError) { head :forbidden }
 
   private
 
   def authenticate!
-    head 401 unless ActiveSupport::SecurityUtils.secure_compare params[:access_token] || '', ENV.fetch('API_ACCESS_TOKEN')
+    return if ActiveSupport::SecurityUtils.secure_compare params[:access_token] || '', ENV.fetch('API_ACCESS_TOKEN')
+
+    head :unauthorized
   end
 
   def current_user

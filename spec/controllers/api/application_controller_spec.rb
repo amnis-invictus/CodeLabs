@@ -15,13 +15,13 @@ RSpec.describe Api::ApplicationController, type: :controller do
     context do
       before { expect(subject).to receive(:params).and_return({}) }
 
-      it { expect(subject).to receive(:head).with(401) }
+      it { expect(subject).to receive(:head).with(:unauthorized) }
     end
 
     context do
       before { expect(subject).to receive(:params).and_return(access_token: 'invalid') }
 
-      it { expect(subject).to receive(:head).with(401) }
+      it { expect(subject).to receive(:head).with(:unauthorized) }
     end
 
     context do

@@ -1,4 +1,4 @@
-ruby '~> 2.7'
+ruby '~> 3.0'
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{ repo }.git" }
 
@@ -9,10 +9,11 @@ gem 'bootsnap', require: false
 gem 'bootstrap', '~> 4.6'
 gem 'bootstrap-select-rails'
 gem 'cocoon'
+gem 'connection_pool'
 gem 'dotenv-rails'
 gem 'draper'
 gem 'email_validator'
-gem 'hiredis-client'
+gem 'hiredis'
 gem 'image_processing'
 gem 'jquery-rails'
 gem 'kaminari'
@@ -25,7 +26,7 @@ gem 'rails', '~> 6.0.6'
 gem 'rails-assets-sweetalert2', '7.29.1', source: 'https://rails-assets.org'
 gem 'rails-i18n'
 gem 'recaptcha'
-gem 'redis'
+gem 'redis', '< 5', require: %w[redis redis/connection/hiredis]
 gem 'redis-namespace'
 gem 'rubyzip', require: 'zip'
 gem 'russian'

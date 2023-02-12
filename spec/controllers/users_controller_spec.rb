@@ -51,7 +51,7 @@ RSpec.describe UsersController, type: :controller do
         #
         # UserSearcher.search(User, name: 'John', page: '28').page('28') -> :collection
         #
-        expect(UserSearcher).to receive(:search).with(User, name: 'John', page: '28') do
+        expect(UserSearcher).to receive(:search).with(User, { name: 'John', page: '28' }) do
           double.tap { |a| expect(a).to receive(:page).with('28').and_return(:collection) }
         end
       end

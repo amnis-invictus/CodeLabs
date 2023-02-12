@@ -9,12 +9,12 @@ class Membership < ApplicationRecord
 
   belongs_to :group
 
-  enum state: %i[requested invited accepted], _prefix: true
+  enum state: { requested: 0, invited: 1, accepted: 2 }, _prefix: true
 
   private
 
   def user_must_not_be_group_owner
-    return unless group.present?
+    return if group.blank?
 
     errors.add :user, :taken if user == group.owner
   end

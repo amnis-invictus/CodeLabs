@@ -28,7 +28,7 @@ class Archive::ProblemParser
   def tag_ids
     return if @xml.xpath('tags').blank?
 
-    @xml.xpath('tags/tag').map { |tag_xml| tag_xml[:id] }.compact
+    @xml.xpath('tags/tag').filter_map { |tag_xml| tag_xml[:id] }
   end
 
   def examples_attributes

@@ -2,7 +2,7 @@ class ArchivesController < ApplicationController
   def create
     render :new, turbolinks: true and return unless resource.save
 
-    head 204
+    head :no_content
   end
 
   private

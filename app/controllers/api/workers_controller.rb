@@ -1,12 +1,12 @@
 class Api::WorkersController < Api::ApplicationController
   def create
-    render :errors, status: 422 and return unless resource.save
+    render :errors, status: :unprocessable_entity and return unless resource.save
   end
 
   def update
-    render :errors, status: 422 and return unless resource.update resource_params
+    render :errors, status: :unprocessable_entity and return unless resource.update resource_params
 
-    head 204
+    head :no_content
   end
 
   private

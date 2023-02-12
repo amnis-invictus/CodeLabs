@@ -1,6 +1,6 @@
 class SessionPolicy < ApplicationPolicy
   def create?
-    !user.present?
+    user.blank?
   end
 
   def destroy?
