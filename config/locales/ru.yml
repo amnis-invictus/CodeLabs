@@ -25,7 +25,7 @@ ru:
         update: Обновить профиль
       password_recovery:
         create: Восстановить пароль
-      password_recovery:
+      password:
         create: Сохранить новый пароль
   language: Русский
   number:

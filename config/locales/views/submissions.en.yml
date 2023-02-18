@@ -5,7 +5,7 @@ en:
       compiler: Compiler
       id: ID
       problem: Problem
-      state: State
+      state: Status
       title: Submissions
       user: User
     new:
@@ -16,7 +16,7 @@ en:
       problem: Problem
       results: Results
       source: Source code
-      state: State
+      state: Status
       test_result_compiler_error: Compilation failed
       test_state_failed: Testing failed
       time_limit: Time limit
