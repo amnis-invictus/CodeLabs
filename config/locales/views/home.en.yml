@@ -5,10 +5,10 @@ en:
       sections:
         first:
           list:
-            '0': It works? Show!
-            '1': Using GoTo and the code is still readable? Show!
-            '2': Copypasting other's code and no one knows? Show!
-            '3': "??? No, please don't show!"
+            '0': It works? Show it!
+            '1': Using GoTo and the code is still readable? Show it!
+            '2': Copypasting other's code and no one knows? Show it!
+            '3': Have a boner on your code? No, please don't show it!
           subtitle: The world should know its heroes.
           title: Prove to everybody that your code is cooler!
         second:

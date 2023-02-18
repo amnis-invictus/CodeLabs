@@ -4,4 +4,4 @@ uk:
     attributes:
       submission:
         compiler_id: Компілятор
-        source: Код програми
+        source: Вихідний код
