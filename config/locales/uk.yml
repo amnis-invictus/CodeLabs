@@ -15,7 +15,7 @@ uk:
   helpers:
     submit:
       problem:
-        create: Зберегти
+        create: Завантажити архів
       session:
         create: Вхід
       submission:
@@ -25,14 +25,14 @@ uk:
         update: Оновити профіль
       password_recovery:
         create: Відновити пароль
-      password_recovery:
+      password:
         create: Зберегти новий пароль
   language: Українська
   number:
     errors:
       messages:
         restrict_dependent_destroy:
-          has_many: 'Неможливо видалити записи, так як існують залежності: %{record}'
+          has_many: 'Неможливо видалити запис, так як існують залежності: %{record}'
           has_one: 'Неможливо видалити запис, так як існує залежність: %{record}'
     human:
       storage_units:
