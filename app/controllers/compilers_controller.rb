@@ -38,7 +38,7 @@ class CompilersController < ApplicationController
   end
 
   def resource_params
-    params.require(:compiler).permit(:name, :version, :time_a, :time_b, :memory_a, :memory_b, :status)
+    params.require(:compiler).permit(:name, :version, :time_a, :time_b, :memory_a, :memory_b, :status, :config)
   end
 
   def initialize_resource
