@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_24_151239) do
+ActiveRecord::Schema.define(version: 2023_03_14_131214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2022_06_24_151239) do
     t.float "time_a", null: false
     t.float "time_b", null: false
     t.integer "status", default: 0
+    t.text "config"
     t.index ["name"], name: "index_compilers_on_name"
   end
 

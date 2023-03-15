@@ -93,7 +93,14 @@ RSpec.describe CompilersController, type: :controller do
   describe '#resource_params' do
     let :params do
       acp compiler: {
-        name: 'gcc', version: '6.4', time_a: '100', time_b: '1', memory_a: '0', memory_b: '3', status: 'public'
+        name: 'gcc',
+        version: '6.4',
+        time_a: '100',
+        time_b: '1',
+        memory_a: '0',
+        memory_b: '3',
+        status: 'public',
+        config: '<xml>data</xml>',
       }
     end
 
