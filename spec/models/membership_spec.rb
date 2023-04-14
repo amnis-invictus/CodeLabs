@@ -21,19 +21,19 @@ RSpec.describe Membership, type: :model do
     context do
       let(:group) { nil }
 
-      its('errors.details') { should_not include :user }
+      its('errors.details.to_h') { should_not include :user }
     end
 
     context do
       let(:group) { stub_model Group, owner: users(:one) }
 
-      its('errors.details') { should_not include :user }
+      its('errors.details.to_h') { should_not include :user }
     end
 
     context do
       let(:group) { stub_model Group, owner: users(:two) }
 
-      its('errors.details') { should include user: [error: :taken] }
+      its('errors.details.to_h') { should include user: [error: :taken] }
     end
   end
 end

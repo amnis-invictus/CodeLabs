@@ -28,6 +28,6 @@ RSpec.describe ByteSizeValidator do
 
     its(:errors) { should_not be_empty }
 
-    its('errors.details') { should eq source: [{ count: 1024, error: :too_long }] }
+    its('errors.details.to_h') { should eq source: [{ count: 1024, error: :too_long }] }
   end
 end

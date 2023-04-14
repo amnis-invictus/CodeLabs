@@ -57,13 +57,13 @@ RSpec.describe Submission, type: :model do
     context do
       let(:source) { double attached?: true }
 
-      it { expect(&call).to_not change { subject.errors.details } }
+      it { expect(&call).to_not change { subject.errors.details.to_h } }
     end
 
     context do
       let(:source) { double attached?: false }
 
-      it { expect(&call).to change { subject.errors.details[:source] }.to [{ error: :blank }] }
+      it { expect(&call).to change { subject.errors.details.to_h[:source] }.to [{ error: :blank }] }
     end
   end
 

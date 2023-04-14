@@ -70,7 +70,7 @@ RSpec.describe Avatar, type: :model do
   describe '#blob_must_be_variable' do
     let(:call) { -> { subject.send :blob_must_be_variable } }
 
-    let(:errors) { -> { subject.errors.details } }
+    let(:errors) { -> { subject.errors.details.to_h } }
 
     context do
       let(:file) { nil }
@@ -96,7 +96,7 @@ RSpec.describe Avatar, type: :model do
   describe '#blob_size_must_not_be_greater_that_2_megabytes' do
     let(:call) { -> { subject.send :blob_size_must_not_be_greater_that_2_megabytes } }
 
-    let(:errors) { -> { subject.errors.details } }
+    let(:errors) { -> { subject.errors.details.to_h } }
 
     context do
       let(:file) { nil }
