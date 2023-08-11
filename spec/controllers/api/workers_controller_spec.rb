@@ -41,11 +41,14 @@ RSpec.describe Api::WorkersController, type: :controller do
         alive_at: Time.zone.today,
         api_type: 0,
         api_version: 1,
+        version: '1.1.0.2',
         name: 'First Worker',
         status: 1,
         webhook_supported: false,
         ips: ['127.0.0.1', '192.168.0.1'],
         task_status: ['Slot 1: Running', 'Slot 2: Stopped'],
+        active_compilers: [1, 2, 3],
+        ignored_compilers: [128],
       }
     end
 

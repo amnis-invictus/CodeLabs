@@ -72,7 +72,7 @@ RSpec.describe Session, type: :model do
   describe '#user_must_be_present' do
     let(:call) { -> { subject.send :user_must_be_present } }
 
-    let(:errors) { -> { subject.errors.details } }
+    let(:errors) { -> { subject.errors.details.to_h } }
 
     context do
       subject { described_class.new }
@@ -96,7 +96,7 @@ RSpec.describe Session, type: :model do
   describe '#password_must_pass_authentication' do
     let(:call) { -> { subject.send :password_must_pass_authentication } }
 
-    let(:errors) { -> { subject.errors.details } }
+    let(:errors) { -> { subject.errors.details.to_h } }
 
     let(:user) { double }
 

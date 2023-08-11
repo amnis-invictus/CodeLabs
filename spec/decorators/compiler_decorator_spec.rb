@@ -7,7 +7,7 @@ RSpec.describe CompilerDecorator do
 
   subject { resource.decorate }
 
-  its :as_json  do
+  its :as_json do
     should eq  id: 128, name: 'Visual C++', version: '14.0.12', memory_a: 1, memory_b: 0, time_a: 1, time_b: 0
   end
 end

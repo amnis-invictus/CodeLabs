@@ -65,7 +65,7 @@ RSpec.describe PasswordRecovery, type: :model do
   describe '#user_must_be_present' do
     let(:call) { -> { subject.send :user_must_be_present } }
 
-    let(:errors) { -> { subject.errors.details } }
+    let(:errors) { -> { subject.errors.details.to_h } }
 
     context do
       subject { described_class.new }

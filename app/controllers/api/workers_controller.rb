@@ -22,9 +22,12 @@ class Api::WorkersController < Api::ApplicationController
       :api_version,
       :name,
       :status,
+      :version,
       :webhook_supported,
       ips: [],
-      task_status: []
+      task_status: [],
+      active_compilers: [],
+      ignored_compilers: []
   end
 
   def build_resource

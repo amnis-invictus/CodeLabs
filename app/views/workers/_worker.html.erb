@@ -8,12 +8,22 @@
   </div>
 
   <div class="card-body">
+    <p class><b>Version:</b> <%= worker.version %></p>
+
     <p class><b>IPs:</b> <%= worker.ips.to_sentence(two_words_connector: ', ', last_word_connector: ', ') %></h5>
 
     <p class="card-text">
       <%= worker.api_type %> api version <%= worker.api_version %>
 
       <%= worker.webhook_supported ? 'with' : 'without' %> webhook support
+    </p>
+
+    <p class="card-text">
+      <p class="card-title"><b>Compilers:</b></p>
+
+      <p class="card-text">Active compilers: <%= worker.active_compilers.to_sentence %></p>
+
+      <p class="card-text">Ignored compilers: <%= worker.ignored_compilers.to_sentence %></p>
     </p>
 
     <% if worker.task_status? %>
