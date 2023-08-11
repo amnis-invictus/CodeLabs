@@ -8,6 +8,6 @@ class AvatarDecorator < Draper::Decorator
   def url
     return unless user.avatar.attached?
 
-    helpers.url_for user.avatar.variant combine_options: { resize: '300x400^', crop: '300x400+0+0', gravity: 'center' }
+    helpers.url_for user.avatar.variant(resize: '300x400', crop: '300x400+0+0', gravity: 'center')
   end
 end
