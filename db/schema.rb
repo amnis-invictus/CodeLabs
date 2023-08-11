@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_14_172913) do
+ActiveRecord::Schema.define(version: 2023_08_11_171636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -255,6 +255,7 @@ ActiveRecord::Schema.define(version: 2023_04_14_172913) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "alive_at", null: false
+    t.string "version", null: false
     t.index ["alive_at"], name: "index_workers_on_alive_at"
   end
 

@@ -1,5 +1,5 @@
 class Worker < ApplicationRecord
-  validates :name, :ips, :status, :api_type, :alive_at, presence: true
+  validates :name, :ips, :status, :version, :api_type, :alive_at, presence: true
 
   validates :api_version, presence: true, numericality: { only_integer: true }
 

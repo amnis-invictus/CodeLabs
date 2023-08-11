@@ -41,6 +41,7 @@ RSpec.describe Api::WorkersController, type: :controller do
         alive_at: Time.zone.today,
         api_type: 0,
         api_version: 1,
+        version: '1.1.0.2',
         name: 'First Worker',
         status: 1,
         webhook_supported: false,
