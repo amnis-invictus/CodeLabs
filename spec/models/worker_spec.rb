@@ -7,6 +7,8 @@ RSpec.describe Worker, type: :model do
 
   it { should validate_presence_of :status }
 
+  it { should validate_presence_of :version }
+
   it { should validate_presence_of :api_type }
 
   it { should validate_presence_of :alive_at }
