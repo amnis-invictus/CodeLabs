@@ -23,9 +23,9 @@ RSpec.describe AvatarDecorator do
     context do
       let(:avatar) { double attached?: true }
 
-      let(:options) { { resize: '300x400^', crop: '300x400+0+0', gravity: 'center' } }
+      let(:options) { { resize: '300x400', crop: '300x400+0+0', gravity: 'center' } }
 
-      before { expect(avatar).to receive(:variant).with(combine_options: options).and_return(:variant) }
+      before { expect(avatar).to receive(:variant).with(options).and_return(:variant) }
 
       before { expect(subject).to receive_message_chain(:helpers, :url_for).with(:variant).and_return(:url) }
 
