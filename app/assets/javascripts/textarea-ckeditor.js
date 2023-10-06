@@ -1,7 +1,18 @@
 (function () {
   function replaceTextareas() {
+    const ckConfig = {
+      htmlSupport: {
+        allow: [
+          {
+            name: /.*/,
+            classes: true,
+          }
+        ],
+      }
+    }
+
     $('[data-textarea="ckeditor"]').each(function () {
-      ClassicEditor.create(this).catch(function (err) { console.error(err.stack) });
+      ClassicEditor.create(this, ckConfig).catch(function (err) { console.error(err.stack) });
 
       $(this).attr('data-textarea', 'replaced');
     })
