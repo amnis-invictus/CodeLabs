@@ -22,5 +22,9 @@ jobs:
           ruby-version: 3.0.5
           bundler-cache: true
 
+      - name: Add hosts to /etc/hosts
+        run: |
+            echo "${SERVER_HOST_IP}" | sudo tee -a /etc/hosts
+
       - name: Deploy
         run: bundle exec cap staging deploy
