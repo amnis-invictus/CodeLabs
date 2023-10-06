@@ -247,7 +247,7 @@ GEM
     parser (3.2.2.4)
       ast (~> 2.4.1)
       racc
-    pg (1.5.3)
+    pg (1.5.4)
     popper_js (1.16.1)
     public_suffix (5.0.1)
     puma (6.4.0)
