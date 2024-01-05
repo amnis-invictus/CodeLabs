@@ -112,7 +112,7 @@ GEM
     bootstrap-select-rails (1.13.8)
     brakeman (6.0.1)
     builder (3.2.4)
-    bullet (7.1.0)
+    bullet (7.1.5)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     capistrano (3.18.0)
