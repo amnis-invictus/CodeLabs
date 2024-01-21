@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resource :avatar, only: %i[create destroy]
 
     resources :users, only: %i[index create] do
-      resources :problems, only: :index
+      resources :problems, only: :index do
+        resources :submissions, only: :index
+      end
 
       resources :submissions, only: :index
     end

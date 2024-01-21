@@ -11,6 +11,8 @@ RSpec.describe SubmissionsController, type: :controller do
 
   it_behaves_like :index, anonymous: true, params: { user_id: 7 }
 
+  it_behaves_like :index, anonymous: true, params: { user_id: 7, problem_id: 7 }
+
   it_behaves_like :create, params: { problem_id: 7 } do
     let(:resource) { stub_model Submission }
 
@@ -52,50 +54,21 @@ RSpec.describe SubmissionsController, type: :controller do
   end
 
   describe '#submissions' do
-    before { allow(subject).to receive(:parent).and_return(parent) }
+    before { allow(subject).to receive(:params).and_return(params) }
 
     context do
-      let(:parent) { double submissions: :submissions }
+      let(:params) { acp group_id: 1, problem_id: 2, user_id: 3 }
 
-      its(:submissions) { should eq :submissions }
+      its :submissions do
+        conditions = { memberships: { group_id: 1 }, problem_id: 2, user_id: 3 }
+        should eq Submission.joins(user: :accepted_memberships).where(conditions)
+      end
     end
 
     context do
-      let(:parent) { nil }
+      let(:params) { acp({}) }
 
       its(:submissions) { should eq Submission.all }
-    end
-  end
-
-  describe '#parent' do
-    context do
-      before { subject.instance_variable_set :@parent, :parent }
-
-      its(:parent) { should eq :parent }
-    end
-
-    context do
-      before { allow(subject).to receive(:params).and_return(problem_id: 89) }
-
-      before { expect(Problem).to receive(:find).with(89).and_return(:parent) }
-
-      its(:parent) { should eq :parent }
-    end
-
-    context do
-      before { allow(subject).to receive(:params).and_return(group_id: 89) }
-
-      before { expect(Group).to receive(:find).with(89).and_return(:parent) }
-
-      its(:parent) { should eq :parent }
-    end
-
-    context do
-      before { allow(subject).to receive(:params).and_return(user_id: 89) }
-
-      before { expect(User).to receive(:find).with(89).and_return(:parent) }
-
-      its(:parent) { should eq :parent }
     end
   end
 
@@ -133,11 +106,15 @@ RSpec.describe SubmissionsController, type: :controller do
   end
 
   describe '#build_resource' do
+    let(:problem) { stub_model Problem }
+
     before { expect(subject).to receive(:resource_params).and_return(:resource_params) }
 
-    before do
-      expect(subject).to receive_message_chain(:parent, :submissions, :new).with(:resource_params).and_return(:resource)
-    end
+    before { expect(subject).to receive(:params).and_return(problem_id: 7) }
+
+    before { expect(Problem).to receive(:find).with(7).and_return(problem) }
+
+    before { expect(problem).to receive_message_chain(:submissions, :new).with(:resource_params).and_return(:resource) }
 
     before { subject.send :build_resource }
 

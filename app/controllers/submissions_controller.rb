@@ -20,19 +20,7 @@ class SubmissionsController < ApplicationController
   end
 
   def submissions
-    parent ? parent.submissions : Submission.all
-  end
-
-  def parent
-    @parent ||= \
-      case
-      when params[:group_id]
-        Group.find params[:group_id]
-      when params[:problem_id]
-        Problem.find params[:problem_id]
-      when params[:user_id]
-        User.find params[:user_id]
-      end
+    SubmissionSearcher.search Submission.all, params.permit(:group_id, :problem_id, :user_id)
   end
 
   def resource
@@ -44,6 +32,6 @@ class SubmissionsController < ApplicationController
   end
 
   def build_resource
-    @resource = parent.submissions.new resource_params
+    @resource = Problem.find(params[:problem_id]).submissions.new(resource_params)
   end
 end
