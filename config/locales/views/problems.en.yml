@@ -26,4 +26,5 @@ en:
       missing_translation: Translation for selected language is missing, problem is displayed in %{language}.
       select_file: Select file
       submissions: Submitted solutions for this problem
+      my_submissions: My solutions for this problem
       technical_text: Specifications
