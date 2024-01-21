@@ -20,7 +20,7 @@ class Avatar
   end
 
   def save
-    user.avatar = blob if valid?
+    avatar.attach blob if valid?
   end
 
   def destroy
