@@ -53,4 +53,16 @@ class Submission < ApplicationRecord
   def update_standings
     StandingRedisStore.update_if_exists user_id, problem_id
   end
+
+  class << self
+    def for_group group
+      relation = where problem: group.problems.reorder(nil)
+
+      relation = relation.where 'created_at >= ?', group.starts_at if group.starts_at
+
+      relation = relation.where 'created_at <= ?', group.ends_at if group.ends_at
+
+      relation
+    end
+  end
 end

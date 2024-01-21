@@ -17,7 +17,7 @@ class Group < ApplicationRecord
 
   has_many :accepted_users, through: :accepted_memberships, source: :user, class_name: 'User'
 
-  has_many :submissions, through: :accepted_users
+  has_many :submissions, -> (group) { for_group group }, through: :accepted_users
 
   enum visibility: { private: 0, moderated: 1, public: 2 }, _prefix: true
 end
