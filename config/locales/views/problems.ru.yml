@@ -26,4 +26,5 @@ ru:
       missing_translation: Перевод на выбраном языке отсутствует, условия отображены на %{language} языке.
       select_file: Выберите файл
       submissions: Отправленые решения для этой задачи
+      my_submissions: Мои решения для этой задачи
       technical_text: Технические условия

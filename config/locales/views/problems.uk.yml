@@ -26,4 +26,5 @@ uk:
       missing_translation: Переклад обраною мовою відсутній, умову відображено %{language} мовою.
       select_file: Оберіть файл
       submissions: Відправлені розв'язки для цієї задачі
+      my_submissions: Мої розв'язки для цієї задачі
       technical_text: Технічні умови

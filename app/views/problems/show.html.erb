@@ -77,5 +77,7 @@
 
   <div class="section section--striped">
     <%= link_to t('problems.show.submissions'), [resource, :submissions], class: 'btn btn-block btn-link' %>
+
+    <%= link_to t('problems.show.my_submissions'), [current_user, resource, :submissions], class: 'btn btn-block btn-link' %>
   </div>
 </div>
