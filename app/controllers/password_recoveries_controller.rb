@@ -4,7 +4,7 @@ class PasswordRecoveriesController < ApplicationController
   skip_before_action :authenticate!, only: %i[new create]
 
   def create
-    if verify_recaptcha
+    if verify_recaptcha(skip_remote_ip: true)
       resource.save
 
       render :create, turbolinks: true

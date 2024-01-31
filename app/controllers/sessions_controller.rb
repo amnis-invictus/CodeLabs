@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate!, only: %i[new create]
 
   def create
-    render :new, turbolinks: true and return unless verify_recaptcha && resource.save
+    render :new, turbolinks: true and return unless verify_recaptcha(skip_remote_ip: true) && resource.save
 
     cookies.encrypted[:auth_token] = resource.auth_token.id
 

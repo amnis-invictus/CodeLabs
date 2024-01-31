@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate!, only: %i[new create]
 
   def create
-    render :new, turbolinks: true and return unless verify_recaptcha && resource.save
+    render :new, turbolinks: true and return unless verify_recaptcha(skip_remote_ip: true) && resource.save
 
     redirect_to %i[new session]
   end
