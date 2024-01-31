@@ -4,6 +4,8 @@ Recaptcha.configure do |config|
   config.secret_key = ENV.fetch 'RECAPTCHA_SECRET_KEY', nil
 
   config.hostname = ENV.fetch 'RECAPTCHA_HOSTNAME', nil
+
+  config.handle_timeouts_gracefully = false
 end
 
 module Recaptcha::Adapters::ControllerMethods
