@@ -50,4 +50,14 @@ class ApplicationController < ActionController::Base
   def default_url_options
     { language: I18n.locale }
   end
+
+  def verify_recaptcha_and_log
+    if verify_recaptcha(skip_remote_ip: true)
+      true
+    else
+      Rails.logger.debug { "Recaptcha verification failed: #{recaptcha_reply.inspect}" }
+
+      false
+    end
+  end
 end
