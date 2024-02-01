@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_recaptcha_and_log
-    if verify_recaptcha skip_remote_ip: true
+    if verify_recaptcha
       true
     else
       Rails.logger.debug { "Recaptcha verification failed: #{ recaptcha_reply.inspect }" }
