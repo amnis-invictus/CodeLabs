@@ -5,10 +5,10 @@ ru:
       default_message: 'Пожалуйста, просмотрите приведенные ниже проблемы:'
     'no': Нет
     placeholders:
-      defaults:
-        email: one@users.com
       contest:
         name: Введите название соревнования
+      defaults:
+        email: one@users.com
       problem:
         memory_limit: Допустимые затраты памяти
         real_time_limit: Время до смерти

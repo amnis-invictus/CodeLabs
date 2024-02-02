@@ -2,8 +2,8 @@
 uk:
   membership:
     index:
-      created_at: Дата створення
       contest_name: Змагання
+      created_at: Дата створення
       state: Тип
       user_name: Користувач
     new:

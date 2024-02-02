@@ -4,10 +4,10 @@ ru:
     index:
       difficulty: Сложность
       name: Название
-      number: "№"
-      title: Задачи
       new: Создать новую задачу
       new_archive: Загрузить задачу из архива
+      number: "№"
+      title: Задачи
     new:
       tabs:
         basic: Основная информация
@@ -24,7 +24,7 @@ ru:
         en: английском
         uk: украинском
       missing_translation: Перевод на выбраном языке отсутствует, условия отображены на %{language} языке.
+      my_submissions: Мои решения для этой задачи
       select_file: Выберите файл
       submissions: Отправленые решения для этой задачи
-      my_submissions: Мои решения для этой задачи
       technical_text: Технические условия

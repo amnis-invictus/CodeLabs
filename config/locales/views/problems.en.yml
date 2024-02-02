@@ -4,10 +4,10 @@ en:
     index:
       difficulty: Difficulty
       name: Name
-      number: "#"
-      title: Problems
       new: Create a new problem
       new_archive: Create a new problem from archive
+      number: "#"
+      title: Problems
     new:
       tabs:
         basic: Basic information
@@ -24,7 +24,7 @@ en:
         ru: russian
         uk: ukrainian
       missing_translation: Translation for selected language is missing, problem is displayed in %{language}.
+      my_submissions: My solutions for this problem
       select_file: Select file
       submissions: Submitted solutions for this problem
-      my_submissions: My solutions for this problem
       technical_text: Specifications

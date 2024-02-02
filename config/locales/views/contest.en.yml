@@ -6,17 +6,22 @@ en:
     index:
       created_at: Creation date
       name: Name
+      new: Create a new contest
       owner: Owner
       title: Contests
       visibility: Visibility
-      new: Create a new contest
     new:
       title: Create a new contest
+    shared:
+      visibility:
+        moderated: Users can send participation requests
+        private: Only contest owner can add users
+        public: Every member can join and invite others to the contest
     show:
       create_sharing: Add a problem
       description: Description
-      edit: Edit contest information
       destroy: Delete contest
+      edit: Edit contest information
       members: Members
       membership_list: Invitation list
       new_membership: Invite
@@ -25,8 +30,3 @@ en:
       problem_list: Contest problems
       standings: Standings
       submission_list: Contest submissions
-    shared:
-      visibility:
-        moderated: Users can send participation requests
-        private: Only contest owner can add users
-        public: Every member can join and invite others to the contest
