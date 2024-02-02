@@ -3,16 +3,18 @@ uk:
   submissions:
     index:
       compiler: Компілятор
+      created_at: Дата надсилання
       id: ІД
       problem: Задача
       state: Статус
       title: Відправлені розв'язки
       user: Користувач
-      created_at: Дата надсилання
     new:
       title: Відправити рішення задачі "%{problem_caption}"
     show:
+      compiler: Компілятор
       compiler_log: Лог компіляції
+      created_at: Дата надсилання
       memory_limit: Ліміт пам'яті
       problem: Задача
       results: Результати
@@ -23,5 +25,3 @@ uk:
       time_limit: Ліміт часу
       title: Розв'язок №%{id}
       user: Користувач
-      created_at: Дата надсилання
-      compiler: Компілятор

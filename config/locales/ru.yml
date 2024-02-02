@@ -14,6 +14,10 @@ ru:
       required: не может отсутствовать
   helpers:
     submit:
+      password:
+        create: Сохранить новый пароль
+      password_recovery:
+        create: Восстановить пароль
       problem:
         create: Загрузить архив
       session:
@@ -23,10 +27,6 @@ ru:
       user:
         create: Регистрация
         update: Обновить профиль
-      password_recovery:
-        create: Восстановить пароль
-      password:
-        create: Сохранить новый пароль
   language: Русский
   number:
     errors:

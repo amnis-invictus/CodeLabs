@@ -4,10 +4,10 @@ uk:
     index:
       difficulty: Складність
       name: Назва
-      number: "№"
-      title: Задачі
       new: Створити нову задачу
       new_archive: Завантажити задачу з архіву
+      number: "№"
+      title: Задачі
     new:
       tabs:
         basic: Основна інформація
@@ -24,7 +24,7 @@ uk:
         en: англійською
         ru: російською
       missing_translation: Переклад обраною мовою відсутній, умову відображено %{language} мовою.
+      my_submissions: Мої розв'язки для цієї задачі
       select_file: Оберіть файл
       submissions: Відправлені розв'язки для цієї задачі
-      my_submissions: Мої розв'язки для цієї задачі
       technical_text: Технічні умови

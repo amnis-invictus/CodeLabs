@@ -3,16 +3,18 @@ en:
   submissions:
     index:
       compiler: Compiler
+      created_at: Submission date
       id: ID
       problem: Problem
       state: Status
       title: Submissions
       user: User
-      created_at: Submission date
     new:
       title: Submit a solution for the "%{problem_caption}" problem
     show:
+      compiler: Compiler
       compiler_log: Compiler log
+      created_at: Submission date
       memory_limit: Memory limit
       problem: Problem
       results: Results
@@ -23,5 +25,3 @@ en:
       time_limit: Time limit
       title: 'Submission #%{id}'
       user: User
-      created_at: Submission date
-      compiler: Compiler

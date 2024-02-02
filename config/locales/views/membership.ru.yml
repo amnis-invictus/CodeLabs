@@ -2,8 +2,8 @@
 ru:
   membership:
     index:
-      created_at: Дата создания
       contest_name: Соревнование
+      created_at: Дата создания
       state: Тип
       user_name: Пользователь
     new:
