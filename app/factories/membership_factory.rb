@@ -4,7 +4,7 @@ class MembershipFactory < ApplicationFactory
   end
 
   def build
-    Membership.new @params.slice(:group).merge(user: user, state: state)
+    Membership.new @params.slice(:contest).merge(user: user, state: state)
   end
 
   private
@@ -19,12 +19,12 @@ class MembershipFactory < ApplicationFactory
   end
 
   def state
-    return unless @params[:group]
+    return unless @params[:contest]
 
     case @params[:type]
     when 'invite' then :invited
     when 'request'
-      case @params[:group].visibility
+      case @params[:contest].visibility
       when 'moderated' then :requested
       when 'public'    then :accepted
       end

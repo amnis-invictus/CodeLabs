@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MembershipPolicy do
   subject { described_class }
 
-  fixtures :users, :groups, :memberships
+  fixtures :users, :contests, :memberships
 
   permissions :destroy? do
     it { should_not permit nil, double }
@@ -19,13 +19,13 @@ RSpec.describe MembershipPolicy do
     it { should_not permit nil, double }
 
     context do
-      let(:resource) { stub_model Membership, group: stub_model(Group), user: stub_model(User) }
+      let(:resource) { stub_model Membership, contest: stub_model(Contest), user: stub_model(User) }
 
       it { should permit double, resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: stub_model(Group), state: :requested }
+      let(:resource) { stub_model Membership, contest: stub_model(Contest), state: :requested }
 
       it { should permit double, resource }
     end
@@ -37,95 +37,95 @@ RSpec.describe MembershipPolicy do
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: stub_model(User), state: :invited }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: stub_model(User), state: :invited }
 
       it { should permit users(:one), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: stub_model(User), state: :invited }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: stub_model(User), state: :invited }
 
-      before { resource.group.visibility = :public }
+      before { resource.contest.visibility = :public }
 
       it { should permit users(:two), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: stub_model(User), state: :invited }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: stub_model(User), state: :invited }
 
-      before { resource.group.visibility = :private }
-
-      it { should_not permit users(:two), resource }
-    end
-
-    context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: stub_model(User), state: :invited }
-
-      before { resource.group.visibility = :moderated }
+      before { resource.contest.visibility = :private }
 
       it { should_not permit users(:two), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:one), state: :requested }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: stub_model(User), state: :invited }
 
-      before { resource.group.visibility = :moderated }
+      before { resource.contest.visibility = :moderated }
+
+      it { should_not permit users(:two), resource }
+    end
+
+    context do
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:one), state: :requested }
+
+      before { resource.contest.visibility = :moderated }
 
       it { should permit users(:one), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:one), state: :requested }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:one), state: :requested }
 
-      before { resource.group.visibility = :moderated }
+      before { resource.contest.visibility = :moderated }
 
       it { should_not permit users(:two), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:one), state: :requested }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:one), state: :requested }
 
-      before { resource.group.visibility = :private }
-
-      it { should_not permit users(:one), resource }
-    end
-
-    context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:one), state: :requested }
-
-      before { resource.group.visibility = :public }
+      before { resource.contest.visibility = :private }
 
       it { should_not permit users(:one), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:one), state: :accepted }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:one), state: :requested }
 
-      before { resource.group.visibility = :public }
+      before { resource.contest.visibility = :public }
+
+      it { should_not permit users(:one), resource }
+    end
+
+    context do
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:one), state: :accepted }
+
+      before { resource.contest.visibility = :public }
 
       it { should permit users(:one), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:one), state: :accepted }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:one), state: :accepted }
 
-      before { resource.group.visibility = :public }
+      before { resource.contest.visibility = :public }
 
       it { should_not permit users(:two), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:one), state: :accepted }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:one), state: :accepted }
 
-      before { resource.group.visibility = :private }
+      before { resource.contest.visibility = :private }
 
       it { should_not permit users(:one), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:one), state: :accepted }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:one), state: :accepted }
 
-      before { resource.group.visibility = :moderated }
+      before { resource.contest.visibility = :moderated }
 
       it { should_not permit users(:one), resource }
     end
@@ -135,25 +135,25 @@ RSpec.describe MembershipPolicy do
     it { should_not permit nil, double }
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:three), state: :requested }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:three), state: :requested }
 
       it { should permit users(:one), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:three), state: :requested }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:three), state: :requested }
 
       it { should_not permit users(:three), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:three), state: :invited }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:three), state: :invited }
 
       it { should permit users(:three), resource }
     end
 
     context do
-      let(:resource) { stub_model Membership, group: groups(:one), user: users(:three), state: :invited }
+      let(:resource) { stub_model Membership, contest: contests(:one), user: users(:three), state: :invited }
 
       it { should_not permit users(:one), resource }
     end
@@ -167,13 +167,13 @@ RSpec.describe MembershipPolicy do
     end
 
     context do
-      subject { described_class.new users(:one), memberships(:one), parent: groups(:one) }
+      subject { described_class.new users(:one), memberships(:one), parent: contests(:one) }
 
       its(:index?) { should be true }
     end
 
     context do
-      subject { described_class.new users(:two), memberships(:one), parent: groups(:one) }
+      subject { described_class.new users(:two), memberships(:one), parent: contests(:one) }
 
       its(:index?) { should be false }
     end

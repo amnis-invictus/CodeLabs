@@ -10,15 +10,15 @@ class SharingsController < ApplicationController
   attr_reader :resource
 
   def parent
-    @parent ||= Group.find params[:group_id]
+    @parent ||= Contest.find params[:contest_id]
   end
 
   def resource_params
-    params.require(:sharing).permit(:problem_id).merge(group: parent)
+    params.require(:sharing).permit(:problem_id).merge(contest: parent)
   end
 
   def initialize_resource
-    @resource = Sharing.new group: parent
+    @resource = Sharing.new contest: parent
   end
 
   def build_resource

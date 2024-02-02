@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  GROUP_OPEN_CONDITION = <<-SQL.squish.freeze
-    (groups.starts_at IS NULL OR groups.starts_at <= NOW()) AND (groups.ends_at IS NULL OR groups.ends_at >= NOW())
+  CONTEST_OPEN_CONDITION = <<-SQL.squish.freeze
+    (contests.starts_at IS NULL OR contests.starts_at <= NOW()) AND (contests.ends_at IS NULL OR contests.ends_at >= NOW())
   SQL
 
   validates :email, presence: true, email: true, uniqueness: { case_sensitive: false }
@@ -17,19 +17,19 @@ class User < ApplicationRecord
 
   has_many :submissions, dependent: :destroy
 
-  has_many :owned_groups, class_name: 'Group', foreign_key: :owner_id, dependent: :destroy
+  has_many :owned_contests, class_name: 'Contest', foreign_key: :owner_id, dependent: :destroy
 
   has_many :pending_memberships, -> { where.not state: :accepted }, class_name: 'Membership', dependent: :destroy
 
   has_many :accepted_memberships, -> { where state: :accepted }, class_name: 'Membership', dependent: :destroy
 
-  has_many :pending_groups, through: :pending_memberships, source: :group, class_name: 'Group'
+  has_many :pending_contests, through: :pending_memberships, source: :contest, class_name: 'Contest'
 
-  has_many :accepted_groups, through: :accepted_memberships, source: :group, class_name: 'Group'
+  has_many :accepted_contests, through: :accepted_memberships, source: :contest, class_name: 'Contest'
 
-  has_many :sharings, through: :accepted_groups
+  has_many :sharings, through: :accepted_contests
 
-  has_many :shared_problems, -> { where GROUP_OPEN_CONDITION }, class_name: 'Problem', through: :sharings, source: :problem
+  has_many :shared_problems, -> { where CONTEST_OPEN_CONDITION }, class_name: 'Problem', through: :sharings, source: :problem
 
   has_secure_password
 

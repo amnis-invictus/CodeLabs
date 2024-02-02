@@ -23,17 +23,17 @@ RSpec.describe User, type: :model do
 
   it { should have_many(:submissions).dependent(:destroy) }
 
-  it { should have_many(:owned_groups).class_name('Group').with_foreign_key(:owner_id).dependent(:destroy) }
+  it { should have_many(:owned_contests).class_name('Contest').with_foreign_key(:owner_id).dependent(:destroy) }
 
   it { should have_many(:pending_memberships).class_name('Membership').dependent(:destroy) }
 
   it { should have_many(:accepted_memberships).conditions(state: :accepted).class_name('Membership').dependent(:destroy) }
 
-  it { should have_many(:pending_groups).through(:pending_memberships).source(:group).class_name('Group') }
+  it { should have_many(:pending_contests).through(:pending_memberships).source(:contest).class_name('Contest') }
 
-  it { should have_many(:accepted_groups).through(:accepted_memberships).source(:group).class_name('Group') }
+  it { should have_many(:accepted_contests).through(:accepted_memberships).source(:contest).class_name('Contest') }
 
-  it { should have_many(:sharings).through(:accepted_groups) }
+  it { should have_many(:sharings).through(:accepted_contests) }
 
   it { should have_many(:shared_problems).through(:sharings).source(:problem).class_name('Problem') }
 

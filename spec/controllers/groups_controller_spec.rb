@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe GroupsController, type: :controller do
+RSpec.describe ContestsController, type: :controller do
   it_behaves_like :index
 
   it_behaves_like :show
@@ -10,7 +10,7 @@ RSpec.describe GroupsController, type: :controller do
   it_behaves_like :edit
 
   it_behaves_like :create do
-    let(:resource) { stub_model Group }
+    let(:resource) { stub_model Contest }
 
     let(:success) { -> { should redirect_to resource } }
 
@@ -18,7 +18,7 @@ RSpec.describe GroupsController, type: :controller do
   end
 
   it_behaves_like :update do
-    let(:resource) { stub_model Group }
+    let(:resource) { stub_model Contest }
 
     let(:success) { -> { should redirect_to resource } }
 
@@ -26,7 +26,7 @@ RSpec.describe GroupsController, type: :controller do
   end
 
   it_behaves_like :destroy do
-    let(:success) { -> { should redirect_to :groups } }
+    let(:success) { -> { should redirect_to :contests } }
   end
 
   describe '#resource' do
@@ -41,9 +41,9 @@ RSpec.describe GroupsController, type: :controller do
 
       before do
         #
-        # Group.find(18).decorate -> :resource
+        # Contest.find(18).decorate -> :resource
         #
-        expect(Group).to receive(:find).with(18) do
+        expect(Contest).to receive(:find).with(18) do
           double.tap { |a| expect(a).to receive(:decorate).and_return(:resource) }
         end
       end
@@ -64,9 +64,9 @@ RSpec.describe GroupsController, type: :controller do
 
       before do
         #
-        # Group.includes(:owner).order(:name).page(22) -> :collection
+        # Contest.includes(:owner).order(:name).page(22) -> :collection
         #
-        expect(Group).to receive(:includes).with(:owner) do
+        expect(Contest).to receive(:includes).with(:owner) do
           double.tap do |a|
             expect(a).to receive(:order).with(:name) do
               double.tap { |b| expect(b).to receive(:page).with(22).and_return(:collection) }
@@ -80,15 +80,15 @@ RSpec.describe GroupsController, type: :controller do
   end
 
   describe '#resource_params' do
-    let(:params) { acp group: { name: '', visibility: '', description: '' } }
+    let(:params) { acp contest: { name: '', visibility: '', description: '' } }
 
     before { expect(subject).to receive(:params).and_return(params) }
 
-    its(:resource_params) { should eq params[:group].permit! }
+    its(:resource_params) { should eq params[:contest].permit! }
   end
 
   describe '#initialize_resource' do
-    before { expect(subject).to receive_message_chain(:current_user, :owned_groups, :new).and_return(:resource) }
+    before { expect(subject).to receive_message_chain(:current_user, :owned_contests, :new).and_return(:resource) }
 
     before { subject.send :initialize_resource }
 
@@ -99,7 +99,7 @@ RSpec.describe GroupsController, type: :controller do
     before { expect(subject).to receive(:resource_params).and_return(:params) }
 
     before do
-      expect(subject).to receive_message_chain(:current_user, :owned_groups, :new).with(:params).and_return(:resource)
+      expect(subject).to receive_message_chain(:current_user, :owned_contests, :new).with(:params).and_return(:resource)
     end
 
     before { subject.send :build_resource }

@@ -1,4 +1,4 @@
-class GroupDecorator < Draper::Decorator
+class ContestDecorator < Draper::Decorator
   delegate_all
 
   decorates_associations :owner, :accepted_users, :problems

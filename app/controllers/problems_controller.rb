@@ -48,8 +48,8 @@ class ProblemsController < ApplicationController
         Tag.find params[:tag_id]
       when params[:user_id]
         User.find params[:user_id]
-      when params[:group_id]
-        Group.find params[:group_id]
+      when params[:contest_id]
+        Contest.find params[:contest_id]
       end
   end
 

@@ -3,9 +3,9 @@ ru:
   membership:
     index:
       created_at: Дата создания
-      group_name: Группа
+      contest_name: Соревнование
       state: Тип
       user_name: Пользователь
     new:
-      invite: Пригласить в группу
-      request: Присоединиться к группе
+      invite: Пригласить в соревнование
+      request: Присоединиться к соревнованию

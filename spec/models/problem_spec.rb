@@ -41,7 +41,7 @@ RSpec.describe Problem, type: :model do
 
   it { should have_many(:problems_tags).dependent(:destroy) }
 
-  it { should have_many(:groups).through(:sharings) }
+  it { should have_many(:contests).through(:sharings) }
 
   it { should have_many(:tags).through(:problems_tags) }
 

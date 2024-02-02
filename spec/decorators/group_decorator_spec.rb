@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe GroupDecorator do
+RSpec.describe ContestDecorator do
   let(:owner) { stub_model User }
 
-  let(:resource) { stub_model Group, visibility: :moderated, owner: owner }
+  let(:resource) { stub_model Contest, visibility: :moderated, owner: owner }
 
   subject { resource.decorate }
 
@@ -33,13 +33,13 @@ RSpec.describe GroupDecorator do
     its(:visibility_icon_class) { should eq 'mr-3 fas fa-lock' }
 
     context do
-      let(:resource) { stub_model Group, visibility: :private }
+      let(:resource) { stub_model Contest, visibility: :private }
 
       its(:visibility_icon_class) { should eq 'mr-3 fas fa-lock' }
     end
 
     context do
-      let(:resource) { stub_model Group, visibility: :public }
+      let(:resource) { stub_model Contest, visibility: :public }
 
       its(:visibility_icon_class) { should eq 'mr-3 fas fa-unlock' }
     end

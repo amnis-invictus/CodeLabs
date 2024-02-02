@@ -1,21 +1,21 @@
 class Membership < ApplicationRecord
   validates :state, presence: true
 
-  validates :user, uniqueness: { scope: :group }
+  validates :user, uniqueness: { scope: :contest }
 
-  validate :user_must_not_be_group_owner
+  validate :user_must_not_be_contest_owner
 
   belongs_to :user
 
-  belongs_to :group
+  belongs_to :contest
 
   enum state: { requested: 0, invited: 1, accepted: 2 }, _prefix: true
 
   private
 
-  def user_must_not_be_group_owner
-    return if group.blank?
+  def user_must_not_be_contest_owner
+    return if contest.blank?
 
-    errors.add :user, :taken if user == group.owner
+    errors.add :user, :taken if user == contest.owner
   end
 end

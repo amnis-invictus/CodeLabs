@@ -1,4 +1,4 @@
-class GroupPolicy < ApplicationPolicy
+class ContestPolicy < ApplicationPolicy
   def index?
     user.present?
   end

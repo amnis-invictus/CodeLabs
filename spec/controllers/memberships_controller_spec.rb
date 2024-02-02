@@ -3,31 +3,31 @@ require 'rails_helper'
 RSpec.describe MembershipsController, type: :controller do
   it_behaves_like :index
 
-  it_behaves_like :index, params: { group_id: 3 }
+  it_behaves_like :index, params: { contest_id: 3 }
 
-  it_behaves_like :new, params: { group_id: 3 }
+  it_behaves_like :new, params: { contest_id: 3 }
 
-  it_behaves_like :create, params: { group_id: 4 } do
-    let(:group) { stub_model Group }
+  it_behaves_like :create, params: { contest_id: 4 } do
+    let(:contest) { stub_model Contest }
 
-    let(:resource) { double group: group }
+    let(:resource) { double contest: contest }
 
-    let(:success) { -> { should redirect_to group } }
+    let(:success) { -> { should redirect_to contest } }
 
     let(:failure) { -> { should render_template :new } }
   end
 
   it_behaves_like :destroy do
-    let(:group) { stub_model Group }
+    let(:contest) { stub_model Contest }
 
-    let(:resource) { double group: group }
+    let(:resource) { double contest: contest }
 
-    let(:success) { -> { should redirect_to group } }
+    let(:success) { -> { should redirect_to contest } }
   end
 
   describe '#parent' do
     context do
-      before { expect(subject).to receive(:params).and_return(group_id: 17) }
+      before { expect(subject).to receive(:params).and_return(contest_id: 17) }
 
       before { subject.instance_variable_set :@parent, :parent }
 
@@ -35,9 +35,9 @@ RSpec.describe MembershipsController, type: :controller do
     end
 
     context do
-      before { expect(subject).to receive(:params).twice.and_return(group_id: 17) }
+      before { expect(subject).to receive(:params).twice.and_return(contest_id: 17) }
 
-      before { expect(Group).to receive(:find).with(17).and_return(:parent) }
+      before { expect(Contest).to receive(:find).with(17).and_return(:parent) }
 
       its(:parent) { should eq :parent }
     end
@@ -45,7 +45,7 @@ RSpec.describe MembershipsController, type: :controller do
     context do
       before { expect(subject).to receive(:params).and_return({}) }
 
-      before { expect(Group).to_not receive(:find) }
+      before { expect(Contest).to_not receive(:find) }
 
       its(:parent) { should be_nil }
     end
@@ -116,7 +116,7 @@ RSpec.describe MembershipsController, type: :controller do
 
     before { expect(subject).to receive(:parent).and_return(:parent) }
 
-    its(:create_resource_params) { should eq params[:membership].permit!.merge(group: :parent) }
+    its(:create_resource_params) { should eq params[:membership].permit!.merge(contest: :parent) }
   end
 
   describe '#initialize_resource' do

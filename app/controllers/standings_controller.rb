@@ -2,6 +2,6 @@ class StandingsController < ApplicationController
   private
 
   def resource
-    @resource ||= Group.find(params[:group_id]).decorate
+    @resource ||= Contest.find(params[:contest_id]).decorate
   end
 end

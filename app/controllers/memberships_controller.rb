@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
   def create
     if resource.save
-      redirect_to resource.group
+      redirect_to resource.contest
     else
       render :new, turbolinks: true
     end
@@ -10,19 +10,19 @@ class MembershipsController < ApplicationController
   def update
     resource.update resource_params
 
-    redirect_back fallback_location: resource.group
+    redirect_back fallback_location: resource.contest
   end
 
   def destroy
     resource.destroy
 
-    redirect_back fallback_location: resource.group
+    redirect_back fallback_location: resource.contest
   end
 
   private
 
   def parent
-    @parent ||= Group.find params[:group_id] if params[:group_id]
+    @parent ||= Contest.find params[:contest_id] if params[:contest_id]
   end
 
   def collection
@@ -38,7 +38,7 @@ class MembershipsController < ApplicationController
   end
 
   def create_resource_params
-    params.require(:membership).permit(:user_id, :type).merge(group: parent)
+    params.require(:membership).permit(:user_id, :type).merge(contest: parent)
   end
 
   def initialize_resource

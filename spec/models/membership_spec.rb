@@ -3,35 +3,35 @@ require 'rails_helper'
 RSpec.describe Membership, type: :model do
   it { should validate_presence_of :state }
 
-  pending { should validate_uniqueness_of(:user).scoped_to(:group) }
+  pending { should validate_uniqueness_of(:user).scoped_to(:contest) }
 
   it { should belong_to(:user).required }
 
-  it { should belong_to(:group).required }
+  it { should belong_to(:contest).required }
 
   it { should define_enum_for(:state).with_values(%i[requested invited accepted]).with_prefix }
 
-  describe '#user_must_not_be_group_owner' do
+  describe '#user_must_not_be_contest_owner' do
     fixtures :users
 
-    subject { stub_model described_class, group: group, user: users(:two) }
+    subject { stub_model described_class, contest: contest, user: users(:two) }
 
     before { subject.valid? }
 
     context do
-      let(:group) { nil }
+      let(:contest) { nil }
 
       its('errors.details.to_h') { should_not include :user }
     end
 
     context do
-      let(:group) { stub_model Group, owner: users(:one) }
+      let(:contest) { stub_model Contest, owner: users(:one) }
 
       its('errors.details.to_h') { should_not include :user }
     end
 
     context do
-      let(:group) { stub_model Group, owner: users(:two) }
+      let(:contest) { stub_model Contest, owner: users(:two) }
 
       its('errors.details.to_h') { should include user: [error: :taken] }
     end
