@@ -1,0 +1,15 @@
+<tr>
+  <td><%= contest.owner_name %></td>
+
+  <td>
+    <% if policy(contest).show? %>
+      <%= link_to contest.name, contest %>
+    <% else %>
+      <%= contest.name %>
+    <% end %>
+  </td>
+
+  <td><%= contest.visibility.humanize %></td>
+
+  <td><%= l contest.created_at, format: :long %></td>
+</tr>

@@ -5,19 +5,19 @@
     <div class="alert alert-info">
       <%= resource.visibility_icon %>
 
-      <%= t resource.visibility, scope: 'group.shared.visibility' %>
+      <%= t resource.visibility, scope: 'contest.shared.visibility' %>
     </div>
   </div>
 
   <div class="col-8">
-    <h3><%= t 'group.show.description' %></h3>
+    <h3><%= t 'contest.show.description' %></h3>
 
     <%= simple_format resource.description %>
   </div>
 
   <% if current_user == resource.owner || resource.current_user_membership_state_accepted? %>
     <div class="col-4">
-      <h3 class="text-center"><%= t 'group.show.members' %></h3>
+      <h3 class="text-center"><%= t 'contest.show.members' %></h3>
 
       <div class="list-group mb-2">
         <div class="member-list">
@@ -37,34 +37,34 @@
         </div>
 
         <div class="member-list-actions">
-          <%= link_to t('group.show.new_membership'), [:new, resource, :membership],
+          <%= link_to t('contest.show.new_membership'), [:new, resource, :membership],
             class: 'list-group-item btn btn-outline-primary btn-sm btn-block' if policy(resource).new_invite? %>
 
-          <%= link_to t('group.show.membership_list'), [resource, :memberships],
+          <%= link_to t('contest.show.membership_list'), [resource, :memberships],
             class: 'list-group-item btn btn-outline-primary btn-sm btn-block mt-0' if policy(resource).index_memberships? %>
         </div>
       </div>
     </div>
 
     <div class="col-12">
-      <%= link_to t('group.show.edit'), [:edit, resource], class: 'btn btn-primary btn-block' if policy(resource).edit? %>
+      <%= link_to t('contest.show.edit'), [:edit, resource], class: 'btn btn-primary btn-block' if policy(resource).edit? %>
 
-      <%= link_to t('group.show.create_sharing'), [:new, resource, :sharing], class: 'btn btn-primary btn-block' \
+      <%= link_to t('contest.show.create_sharing'), [:new, resource, :sharing], class: 'btn btn-primary btn-block' \
         if policy(resource).new_sharing? %>
 
-      <%= link_to t('group.show.destroy'), resource, method: :delete, class: 'btn btn-primary btn-block' \
+      <%= link_to t('contest.show.destroy'), resource, method: :delete, class: 'btn btn-primary btn-block' \
         if policy(resource).destroy? %>
 
-      <%= link_to t('group.show.submission_list'), [resource, :submissions], class: 'btn btn-link btn-block' %>
+      <%= link_to t('contest.show.submission_list'), [resource, :submissions], class: 'btn btn-link btn-block' %>
 
-      <%= link_to t('group.show.problem_list'), [resource, :problems], class: 'btn btn-link btn-block' %>
+      <%= link_to t('contest.show.problem_list'), [resource, :problems], class: 'btn btn-link btn-block' %>
 
-      <%= link_to t('group.show.standings'), [resource, :standing], class: 'btn btn-link btn-block' %>
+      <%= link_to t('contest.show.standings'), [resource, :standing], class: 'btn btn-link btn-block' %>
     </div>
   <% elsif resource.current_user_membership_state_requested? || resource.current_user_membership_state_invited? %>
     <div class="col-12">
       <div class="alert alert-warning">
-        <%= t 'group.show.pending_member' %>
+        <%= t 'contest.show.pending_member' %>
 
         <%= link_to resource.current_user_membership, method: :delete, remote: true, class: 'badge badge-danger ml-3' do %>
           <i class="fas fa-times"></i>
@@ -73,7 +73,7 @@
     </div>
   <% else %>
     <div class="col-12">
-      <div class="alert alert-warning"><%= t 'group.show.not_a_member' %></div>
+      <div class="alert alert-warning"><%= t 'contest.show.not_a_member' %></div>
 
       <%= render 'memberships/request_form', parent: resource, resource: Membership.new %>
     </div>

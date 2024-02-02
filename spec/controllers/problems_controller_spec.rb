@@ -156,9 +156,9 @@ RSpec.describe ProblemsController, type: :controller do
     end
 
     context do
-      before { allow(subject).to receive(:params).and_return(group_id: 5) }
+      before { allow(subject).to receive(:params).and_return(contest_id: 5) }
 
-      before { expect(Group).to receive(:find).with(5).and_return(:parent) }
+      before { expect(Contest).to receive(:find).with(5).and_return(:parent) }
 
       its(:parent) { should eq :parent }
     end

@@ -7,8 +7,8 @@ en:
     placeholders:
       defaults:
         email: one@users.com
-      group:
-        name: Enter group name
+      contest:
+        name: Enter contest name
       problem:
         memory_limit: Memory limit
         real_time_limit: Time to death

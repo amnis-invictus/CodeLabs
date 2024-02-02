@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe StandingsController, type: :controller do
-  it_behaves_like :show, params: { group_id: 1 }
+  it_behaves_like :show, params: { contest_id: 1 }
 
   describe '#resource' do
     context do
@@ -11,13 +11,13 @@ RSpec.describe StandingsController, type: :controller do
     end
 
     context do
-      before { expect(subject).to receive(:params).and_return(group_id: 49) }
+      before { expect(subject).to receive(:params).and_return(contest_id: 49) }
 
       before do
         #
-        # Group.find(49).decorate -> :resource
+        # Contest.find(49).decorate -> :resource
         #
-        expect(Group).to receive(:find).with(49) do
+        expect(Contest).to receive(:find).with(49) do
           double.tap { |a| expect(a).to receive(:decorate).and_return(:resource) }
         end
       end

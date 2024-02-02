@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe GroupPolicy do
+RSpec.describe ContestPolicy do
   subject { described_class }
 
   let(:resource) { double }
@@ -33,13 +33,13 @@ RSpec.describe GroupPolicy do
     end
 
     context do
-      let(:resource) { stub_model Group, owner: stub_model(User) }
+      let(:resource) { stub_model Contest, owner: stub_model(User) }
 
       it { should_not permit user, resource }
     end
 
     context do
-      let(:resource) { stub_model Group, owner: user }
+      let(:resource) { stub_model Contest, owner: user }
 
       it { should permit user, resource }
     end
@@ -49,7 +49,7 @@ RSpec.describe GroupPolicy do
     it { should_not permit nil, resource }
 
     context do
-      let(:resource) { stub_model Group, visibility: :private, owner: stub_model(User) }
+      let(:resource) { stub_model Contest, visibility: :private, owner: stub_model(User) }
 
       before { expect(resource).to receive(:accepted_users).and_return([stub_model(User)]) }
 
@@ -57,7 +57,7 @@ RSpec.describe GroupPolicy do
     end
 
     context do
-      let(:resource) { stub_model Group, visibility: :private, owner: stub_model(User) }
+      let(:resource) { stub_model Contest, visibility: :private, owner: stub_model(User) }
 
       before { expect(resource).to receive(:accepted_users).and_return([stub_model(User), user]) }
 
@@ -65,71 +65,71 @@ RSpec.describe GroupPolicy do
     end
 
     context do
-      let(:resource) { stub_model Group, visibility: :private, owner: user }
+      let(:resource) { stub_model Contest, visibility: :private, owner: user }
 
       it { should permit user, resource }
     end
 
     context do
-      let(:resource) { stub_model Group, visibility: :moderated }
+      let(:resource) { stub_model Contest, visibility: :moderated }
 
       it { should permit user, resource }
     end
 
     context do
-      let(:resource) { stub_model Group, visibility: :public }
+      let(:resource) { stub_model Contest, visibility: :public }
 
       it { should permit user, resource }
     end
   end
 
   permissions :new_sharing?, :index_memberships? do
-    fixtures :users, :groups
+    fixtures :users, :contests
 
     it { should_not permit nil, resource }
 
-    it { should permit users(:one), groups(:one) }
+    it { should permit users(:one), contests(:one) }
 
-    it { should_not permit users(:two), groups(:one) }
+    it { should_not permit users(:two), contests(:one) }
 
-    it { should_not permit users(:three), groups(:one) }
+    it { should_not permit users(:three), contests(:one) }
   end
 
   permissions :new_invite? do
-    fixtures :users, :groups, :memberships
+    fixtures :users, :contests, :memberships
 
     it { should_not permit nil, resource }
 
-    it { should permit users(:one), groups(:one) }
+    it { should permit users(:one), contests(:one) }
 
     context do
-      let(:resource) { groups :one }
+      let(:resource) { contests :one }
 
       before { resource.visibility = :public }
 
-      it { should permit users(:two), groups(:one) }
+      it { should permit users(:two), contests(:one) }
 
-      it { should_not permit users(:three), groups(:one) }
+      it { should_not permit users(:three), contests(:one) }
     end
 
     context do
-      let(:resource) { groups :one }
+      let(:resource) { contests :one }
 
       before { resource.visibility = :private }
 
-      it { should_not permit users(:two), groups(:one) }
+      it { should_not permit users(:two), contests(:one) }
 
-      it { should_not permit users(:three), groups(:one) }
+      it { should_not permit users(:three), contests(:one) }
     end
 
     context do
-      let(:resource) { groups :one }
+      let(:resource) { contests :one }
 
       before { resource.visibility = :moderated }
 
-      it { should_not permit users(:two), groups(:one) }
+      it { should_not permit users(:two), contests(:one) }
 
-      it { should_not permit users(:three), groups(:one) }
+      it { should_not permit users(:three), contests(:one) }
     end
   end
 end

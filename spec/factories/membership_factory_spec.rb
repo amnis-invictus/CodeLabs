@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MembershipFactory do
   subject { described_class.new :current_user, params }
 
-  let(:params) { { user_id: :user_id, group: :group, type: :type } }
+  let(:params) { { user_id: :user_id, contest: :contest, type: :type } }
 
   it { should be_an ApplicationFactory }
 
@@ -13,7 +13,7 @@ RSpec.describe MembershipFactory do
     before { expect(subject).to receive(:state).and_return(:state) }
 
     before do
-      expect(Membership).to receive(:new).with({ group: :group, user: :user, state: :state }).and_return(:membership)
+      expect(Membership).to receive(:new).with({ contest: :contest, user: :user, state: :state }).and_return(:membership)
     end
 
     its(:build) { should eq :membership }
@@ -47,35 +47,35 @@ RSpec.describe MembershipFactory do
 
   describe '#state' do
     context do
-      let(:params) { { type: 'invite', group: :group } }
+      let(:params) { { type: 'invite', contest: :contest } }
 
       its(:state) { should eq :invited }
     end
 
     context do
-      let(:params) { { type: 'request', group: group } }
+      let(:params) { { type: 'request', contest: contest } }
 
       context do
-        let(:group) { stub_model Group, visibility: :public }
+        let(:contest) { stub_model Contest, visibility: :public }
 
         its(:state) { should eq :accepted }
       end
 
       context do
-        let(:group) { stub_model Group, visibility: :moderated }
+        let(:contest) { stub_model Contest, visibility: :moderated }
 
         its(:state) { should eq :requested }
       end
 
       context do
-        let(:group) { stub_model Group, visibility: :private }
+        let(:contest) { stub_model Contest, visibility: :private }
 
         its(:state) { should be_nil }
       end
     end
 
     context do
-      let(:params) { { type: 'unknown', group: :group } }
+      let(:params) { { type: 'unknown', contest: :contest } }
 
       its(:state) { should be_nil }
     end

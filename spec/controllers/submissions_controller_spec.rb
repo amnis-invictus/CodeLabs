@@ -7,7 +7,7 @@ RSpec.describe SubmissionsController, type: :controller do
 
   it_behaves_like :index, anonymous: true, params: { problem_id: 7 }
 
-  it_behaves_like :index, anonymous: true, params: { group_id: 7 }
+  it_behaves_like :index, anonymous: true, params: { contest_id: 7 }
 
   it_behaves_like :index, anonymous: true, params: { user_id: 7 }
 
@@ -57,10 +57,10 @@ RSpec.describe SubmissionsController, type: :controller do
     before { allow(subject).to receive(:params).and_return(params) }
 
     context do
-      let(:params) { acp group_id: 1, problem_id: 2, user_id: 3 }
+      let(:params) { acp contest_id: 1, problem_id: 2, user_id: 3 }
 
       its :submissions do
-        conditions = { memberships: { group_id: 1 }, problem_id: 2, user_id: 3 }
+        conditions = { memberships: { contest_id: 1 }, problem_id: 2, user_id: 3 }
         should eq Submission.joins(user: :accepted_memberships).where(conditions)
       end
     end

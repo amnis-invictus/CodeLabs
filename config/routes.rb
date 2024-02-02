@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
     resources :workers, only: %i[index destroy]
 
-    resources :groups do
+    resources :contests do
       resources :memberships, except: %i[show edit], shallow: true
 
       resources :sharings, only: %i[new create]

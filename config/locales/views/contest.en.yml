@@ -1,32 +1,32 @@
 ---
 en:
-  group:
+  contest:
     edit:
-      title: Edit group
+      title: Edit contest
     index:
       created_at: Creation date
       name: Name
       owner: Owner
-      title: Groups
+      title: Contests
       visibility: Visibility
-      new: Create a new group
+      new: Create a new contest
     new:
-      title: Create a new group
+      title: Create a new contest
     show:
       create_sharing: Add a problem
       description: Description
-      edit: Edit group information
-      destroy: Delete group
+      edit: Edit contest information
+      destroy: Delete contest
       members: Members
       membership_list: Invitation list
       new_membership: Invite
-      not_a_member: You are not a group member
+      not_a_member: You are not a contest member
       pending_member: Participation request has been sent
-      problem_list: Group problems
+      problem_list: Contest problems
       standings: Standings
-      submission_list: Group submissions
+      submission_list: Contest submissions
     shared:
       visibility:
         moderated: Users can send participation requests
-        private: Only group owner can add users
-        public: Every member can join and invite others to the group
+        private: Only contest owner can add users
+        public: Every member can join and invite others to the contest

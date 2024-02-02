@@ -6,7 +6,7 @@ RSpec.describe SharingPolicy do
   fixtures :users
 
   permissions :new? do
-    let(:resource) { stub_model Sharing, group: stub_model(Group, owner: users(:one)) }
+    let(:resource) { stub_model Sharing, contest: stub_model(Contest, owner: users(:one)) }
 
     it { should permit users(:one), resource }
 
@@ -20,10 +20,10 @@ RSpec.describe SharingPolicy do
   permissions :create? do
     it { should_not permit nil, double }
 
-    let(:resource) { stub_model Sharing, group: group, problem: problem }
+    let(:resource) { stub_model Sharing, contest: contest, problem: problem }
 
     context do
-      let(:group) { stub_model Group, owner: users(:one) }
+      let(:contest) { stub_model Contest, owner: users(:one) }
 
       let(:problem) { stub_model Problem, user: users(:three) }
 
@@ -35,7 +35,7 @@ RSpec.describe SharingPolicy do
     end
 
     context do
-      let(:group) { stub_model Group, owner: users(:one) }
+      let(:contest) { stub_model Contest, owner: users(:one) }
 
       let(:problem) { stub_model Problem, user: users(:one) }
 

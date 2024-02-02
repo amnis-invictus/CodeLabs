@@ -3,9 +3,9 @@ uk:
   membership:
     index:
       created_at: Дата створення
-      group_name: Група
+      contest_name: Змагання
       state: Тип
       user_name: Користувач
     new:
-      invite: Запросити до групи
-      request: Приєднатись до групи
+      invite: Запросити до змагання
+      request: Приєднатись до змагання
