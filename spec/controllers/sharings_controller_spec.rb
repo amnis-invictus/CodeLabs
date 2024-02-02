@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe SharingsController, type: :controller do
-  it_behaves_like :create, params: { group_id: 24 } do
+  it_behaves_like :create, params: { contest_id: 24 } do
     let(:resource) { double }
 
-    let(:parent) { stub_model Group }
+    let(:parent) { stub_model Contest }
 
     before { allow(subject).to receive(:parent).and_return(parent) }
 
@@ -27,9 +27,9 @@ RSpec.describe SharingsController, type: :controller do
     end
 
     context do
-      before { expect(subject).to receive(:params).and_return(group_id: 28) }
+      before { expect(subject).to receive(:params).and_return(contest_id: 28) }
 
-      before { expect(Group).to receive(:find).with(28).and_return(:parent) }
+      before { expect(Contest).to receive(:find).with(28).and_return(:parent) }
 
       its(:parent) { should eq :parent }
     end
@@ -42,13 +42,13 @@ RSpec.describe SharingsController, type: :controller do
 
     before { expect(subject).to receive(:parent).and_return(:parent) }
 
-    its(:resource_params) { should eq params[:sharing].permit!.merge(group: :parent) }
+    its(:resource_params) { should eq params[:sharing].permit!.merge(contest: :parent) }
   end
 
   describe '#initialize_resource' do
     before { expect(subject).to receive(:parent).and_return(:parent) }
 
-    before { expect(Sharing).to receive(:new).with(group: :parent).and_return(:resource) }
+    before { expect(Sharing).to receive(:new).with(contest: :parent).and_return(:resource) }
 
     before { subject.send :initialize_resource }
 

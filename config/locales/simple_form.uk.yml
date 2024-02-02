@@ -7,8 +7,8 @@ uk:
     placeholders:
       defaults:
         email: one@users.com
-      group:
-        name: Введіть назву групи
+      contest:
+        name: Введіть назву змагання
       problem:
         memory_limit: Допустимі затрати пам'яті
         real_time_limit: Час до смерті

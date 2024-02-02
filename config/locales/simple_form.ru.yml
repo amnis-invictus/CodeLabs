@@ -7,8 +7,8 @@ ru:
     placeholders:
       defaults:
         email: one@users.com
-      group:
-        name: Введите название группы
+      contest:
+        name: Введите название соревнования
       problem:
         memory_limit: Допустимые затраты памяти
         real_time_limit: Время до смерти

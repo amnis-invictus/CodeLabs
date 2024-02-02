@@ -3,9 +3,9 @@ en:
   membership:
     index:
       created_at: Creation date
-      group_name: Group
+      contest_name: Contest
       state: Type
       user_name: User
     new:
-      invite: Invite to the group
-      request: Join the group
+      invite: Invite to the contest
+      request: Join the contest

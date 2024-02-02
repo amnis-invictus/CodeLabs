@@ -20,7 +20,7 @@ class SubmissionsController < ApplicationController
   end
 
   def submissions
-    SubmissionSearcher.search Submission.all, params.permit(:group_id, :problem_id, :user_id)
+    SubmissionSearcher.search Submission.all, params.permit(:contest_id, :problem_id, :user_id)
   end
 
   def resource

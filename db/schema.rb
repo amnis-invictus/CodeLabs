@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_11_174131) do
+ActiveRecord::Schema.define(version: 2024_02_02_114312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2023_08_11_174131) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "auth_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "auth_tokens", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,16 +74,7 @@ ActiveRecord::Schema.define(version: 2023_08_11_174131) do
     t.index ["user_id"], name: "index_confirmation_requests_on_user_id"
   end
 
-  create_table "examples", force: :cascade do |t|
-    t.string "input"
-    t.string "answer"
-    t.bigint "problem_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["problem_id"], name: "index_examples_on_problem_id"
-  end
-
-  create_table "groups", force: :cascade do |t|
+  create_table "contests", force: :cascade do |t|
     t.string "name", null: false
     t.integer "visibility", default: 0, null: false
     t.bigint "owner_id", null: false
@@ -92,10 +83,19 @@ ActiveRecord::Schema.define(version: 2023_08_11_174131) do
     t.text "description"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.index ["ends_at"], name: "index_groups_on_ends_at"
-    t.index ["name"], name: "index_groups_on_name"
-    t.index ["owner_id"], name: "index_groups_on_owner_id"
-    t.index ["starts_at"], name: "index_groups_on_starts_at"
+    t.index ["ends_at"], name: "index_contests_on_ends_at"
+    t.index ["name"], name: "index_contests_on_name"
+    t.index ["owner_id"], name: "index_contests_on_owner_id"
+    t.index ["starts_at"], name: "index_contests_on_starts_at"
+  end
+
+  create_table "examples", force: :cascade do |t|
+    t.string "input"
+    t.string "answer"
+    t.bigint "problem_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["problem_id"], name: "index_examples_on_problem_id"
   end
 
   create_table "logs", force: :cascade do |t|
@@ -109,11 +109,11 @@ ActiveRecord::Schema.define(version: 2023_08_11_174131) do
 
   create_table "memberships", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "group_id"
+    t.bigint "contest_id"
     t.integer "state", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_memberships_on_group_id"
+    t.index ["contest_id"], name: "index_memberships_on_contest_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
@@ -166,11 +166,11 @@ ActiveRecord::Schema.define(version: 2023_08_11_174131) do
   end
 
   create_table "sharings", force: :cascade do |t|
-    t.bigint "group_id", null: false
+    t.bigint "contest_id", null: false
     t.bigint "problem_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_sharings_on_group_id"
+    t.index ["contest_id"], name: "index_sharings_on_contest_id"
     t.index ["problem_id"], name: "index_sharings_on_problem_id"
   end
 
@@ -244,7 +244,7 @@ ActiveRecord::Schema.define(version: 2023_08_11_174131) do
     t.index ["username"], name: "index_users_on_username", opclass: :gist_trgm_ops, using: :gist
   end
 
-  create_table "workers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "workers", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "ips", default: [], null: false, array: true
     t.integer "api_version", null: false
@@ -265,16 +265,16 @@ ActiveRecord::Schema.define(version: 2023_08_11_174131) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "auth_tokens", "users"
   add_foreign_key "confirmation_requests", "users"
+  add_foreign_key "contests", "users", column: "owner_id"
   add_foreign_key "examples", "problems"
-  add_foreign_key "groups", "users", column: "owner_id"
-  add_foreign_key "memberships", "groups"
+  add_foreign_key "memberships", "contests"
   add_foreign_key "memberships", "users"
   add_foreign_key "problem_translations", "problems"
   add_foreign_key "problems", "compilers", column: "checker_compiler_id"
   add_foreign_key "problems", "users"
   add_foreign_key "problems_tags", "problems"
   add_foreign_key "problems_tags", "tags"
-  add_foreign_key "sharings", "groups"
+  add_foreign_key "sharings", "contests"
   add_foreign_key "sharings", "problems"
   add_foreign_key "submissions", "compilers"
   add_foreign_key "submissions", "problems"

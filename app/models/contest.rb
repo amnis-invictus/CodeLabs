@@ -1,4 +1,4 @@
-class Group < ApplicationRecord
+class Contest < ApplicationRecord
   validates :name, :visibility, presence: true
 
   belongs_to :owner, class_name: 'User'
