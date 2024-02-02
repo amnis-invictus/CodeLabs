@@ -23,3 +23,4 @@ uk:
       time_limit: Ліміт часу
       title: Розв'язок №%{id}
       user: Користувач
+      created_at: Дата надсилання

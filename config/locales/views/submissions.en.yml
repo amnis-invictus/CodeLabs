@@ -23,3 +23,4 @@ en:
       time_limit: Time limit
       title: 'Submission #%{id}'
       user: User
+      created_at: Submission date
