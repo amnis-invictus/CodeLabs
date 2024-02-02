@@ -24,3 +24,4 @@ en:
       title: 'Submission #%{id}'
       user: User
       created_at: Submission date
+      compiler: Compiler
