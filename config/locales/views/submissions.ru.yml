@@ -8,6 +8,7 @@ ru:
       state: Статус
       title: Попытки
       user: Пользователь
+      created_at: Дата отправки
     new:
       title: Отправить решение задачи "%{problem_caption}"
     show:

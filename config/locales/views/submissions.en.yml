@@ -8,6 +8,7 @@ en:
       state: Status
       title: Submissions
       user: User
+      created_at: Submission date
     new:
       title: Submit a solution for the "%{problem_caption}" problem
     show:
