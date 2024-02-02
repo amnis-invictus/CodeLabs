@@ -24,3 +24,4 @@ uk:
       title: Розв'язок №%{id}
       user: Користувач
       created_at: Дата надсилання
+      compiler: Компілятор
