@@ -5,10 +5,10 @@ en:
       default_message: 'Please review the problems below:'
     'no': 'No'
     placeholders:
-      defaults:
-        email: one@users.com
       contest:
         name: Enter contest name
+      defaults:
+        email: one@users.com
       problem:
         memory_limit: Memory limit
         real_time_limit: Time to death

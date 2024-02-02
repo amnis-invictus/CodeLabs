@@ -3,16 +3,18 @@ ru:
   submissions:
     index:
       compiler: Компилятор
+      created_at: Дата отправки
       id: ИД
       problem: Задача
       state: Статус
       title: Попытки
       user: Пользователь
-      created_at: Дата отправки
     new:
       title: Отправить решение задачи "%{problem_caption}"
     show:
+      compiler: Компилятор
       compiler_log: Лог компиляции
+      created_at: Дата отправки
       memory_limit: Лимит памяти
       problem: Задача
       results: Результаты
@@ -23,5 +25,3 @@ ru:
       time_limit: Лимит времени
       title: Попытка №%{id}
       user: Пользователь
-      created_at: Дата отправки
-      compiler: Компилятор

@@ -14,6 +14,10 @@ uk:
       required: не може бути відсутнім
   helpers:
     submit:
+      password:
+        create: Зберегти новий пароль
+      password_recovery:
+        create: Відновити пароль
       problem:
         create: Завантажити архів
       session:
@@ -23,10 +27,6 @@ uk:
       user:
         create: Реєстрація
         update: Оновити профіль
-      password_recovery:
-        create: Відновити пароль
-      password:
-        create: Зберегти новий пароль
   language: Українська
   number:
     errors:

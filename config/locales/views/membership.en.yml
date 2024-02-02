@@ -2,8 +2,8 @@
 en:
   membership:
     index:
-      created_at: Creation date
       contest_name: Contest
+      created_at: Creation date
       state: Type
       user_name: User
     new:
