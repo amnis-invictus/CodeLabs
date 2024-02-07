@@ -10,7 +10,7 @@ uk:
       title: Відправлені розв'язки
       user: Користувач
     new:
-      title: Надіслати рішення для задачі "%{problem_caption}"
+      title: Надіслати розв'язок для задачі "%{problem_caption}"
     show:
       compiler: Компілятор
       compiler_log: Лог компіляції
