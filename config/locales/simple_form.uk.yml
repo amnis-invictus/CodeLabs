@@ -2,7 +2,7 @@
 uk:
   simple_form:
     error_notification:
-      default_message: 'Будь ласка, продивіться наведені нижче проблеми:'
+      default_message: 'Будь ласка, перегляньте наведені нижче проблеми:'
     'no': Ні
     placeholders:
       contest:
@@ -10,10 +10,10 @@ uk:
       defaults:
         email: one@users.com
       problem:
-        memory_limit: Допустимі затрати пам'яті
+        memory_limit: Обмеження пам'яті
         real_time_limit: Час до смерті
         time_limit: Час на виконання
     required:
       mark: "*"
-      text: обов'язково
+      text: обов'язкове
     'yes': Так

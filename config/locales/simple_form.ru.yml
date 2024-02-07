@@ -2,7 +2,7 @@
 ru:
   simple_form:
     error_notification:
-      default_message: 'Пожалуйста, просмотрите приведенные ниже проблемы:'
+      default_message: 'Пожалуйста, проверьте приведенные ниже проблемы:'
     'no': Нет
     placeholders:
       contest:
@@ -10,7 +10,7 @@ ru:
       defaults:
         email: one@users.com
       problem:
-        memory_limit: Допустимые затраты памяти
+        memory_limit: Ограничение памяти
         real_time_limit: Время до смерти
         time_limit: Время на выполнение
     required:

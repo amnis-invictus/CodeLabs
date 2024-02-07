@@ -3,11 +3,11 @@ ru:
   header:
     administration: Администрирование
     compilers: Компиляторы
-    confirmation_requests: Запросы на подтверджение
+    confirmation_requests: Запросы на подтверждение
     contests: Соревнования
     problems: Задачи
     problems_all: Все задачи
-    problems_tags: Класификация
+    problems_tags: Классификация
     signin: Войти
     signout: Выйти
     submissions: Отправленные решения

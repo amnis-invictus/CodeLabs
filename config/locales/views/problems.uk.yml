@@ -17,14 +17,14 @@ uk:
       title: Створити задачу
     show:
       download: Завантажити
-      example_input: Введення
-      example_output: Виведення
+      example_input: Вхідні дані
+      example_output: Вихідні дані
       examples: Приклади
       languages:
         en: англійською
         ru: російською
       missing_translation: Переклад обраною мовою відсутній, умову відображено %{language} мовою.
-      my_submissions: Мої розв'язки для цієї задачі
-      select_file: Оберіть файл
-      submissions: Відправлені розв'язки для цієї задачі
+      my_submissions: Мої рішення для цієї задачі
+      select_file: Виберіть файл
+      submissions: Надіслані рішення для цієї задачі
       technical_text: Технічні умови

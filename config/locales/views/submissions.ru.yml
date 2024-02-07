@@ -7,21 +7,21 @@ ru:
       id: ИД
       problem: Задача
       state: Статус
-      title: Попытки
+      title: Отправленные решения
       user: Пользователь
     new:
-      title: Отправить решение задачи "%{problem_caption}"
+      title: Отправить решение для задачи "%{problem_caption}"
     show:
       compiler: Компилятор
       compiler_log: Лог компиляции
       created_at: Дата отправки
-      memory_limit: Лимит памяти
+      memory_limit: Ограничение по памяти
       problem: Задача
       results: Результаты
       source: Исходный код
       state: Статус
       test_result_compiler_error: Ошибка компиляции решения
       test_state_failed: Ошибка тестирования решения
-      time_limit: Лимит времени
-      title: Попытка №%{id}
+      time_limit: Ограничение по времени
+      title: Решение №%{id}
       user: Пользователь
