@@ -7,6 +7,6 @@ ru:
         name: Фамилия, Имя
         password: Пароль
         password_confirmation: Подтверждение пароля
-        score: Балы
+        score: Баллы
         skills: Навыки
         username: Ник

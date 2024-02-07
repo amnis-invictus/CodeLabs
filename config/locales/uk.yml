@@ -32,8 +32,8 @@ uk:
     errors:
       messages:
         restrict_dependent_destroy:
-          has_many: 'Неможливо видалити запис, так як існують залежності: %{record}'
-          has_one: 'Неможливо видалити запис, так як існує залежність: %{record}'
+          has_many: 'Неможливо видалити запис, тому що є залежності: %{record}'
+          has_one: 'Неможливо видалити запис, тому що є залежність: %{record}'
     human:
       storage_units:
         units:
