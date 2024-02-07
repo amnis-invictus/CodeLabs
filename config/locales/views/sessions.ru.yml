@@ -2,4 +2,4 @@
 ru:
   sessions:
     form:
-      reset_password: Восстановление пароля
+      reset_password: Забыли пароль?

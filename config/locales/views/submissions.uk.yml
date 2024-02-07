@@ -10,18 +10,18 @@ uk:
       title: Відправлені розв'язки
       user: Користувач
     new:
-      title: Відправити рішення задачі "%{problem_caption}"
+      title: Надіслати рішення для задачі "%{problem_caption}"
     show:
       compiler: Компілятор
       compiler_log: Лог компіляції
       created_at: Дата надсилання
-      memory_limit: Ліміт пам'яті
+      memory_limit: Обмеження пам'яті
       problem: Задача
       results: Результати
-      source: Код програми
+      source: Вихідний код
       state: Статус
-      test_result_compiler_error: Помилка компіляції рішення
-      test_state_failed: Помилка тестування рішення
-      time_limit: Ліміт часу
+      test_result_compiler_error: Помилка компіляції розв'язку
+      test_state_failed: Помилка тестування розв'язку
+      time_limit: Обмеження часу
       title: Розв'язок №%{id}
       user: Користувач

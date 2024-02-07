@@ -6,9 +6,9 @@ uk:
     confirmation_requests: Запити на підтвердження
     contests: Змагання
     problems: Задачі
-    problems_all: Усі задачі
+    problems_all: Всі задачі
     problems_tags: Класифікація
-    signin: Вхід
-    signout: Вихід
+    signin: Увійти
+    signout: Вийти
     submissions: Відправлені розв'язки
     workers: Воркери
