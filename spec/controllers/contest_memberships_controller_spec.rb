@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MembershipsController, type: :controller do
+RSpec.describe ContestMembershipsController, type: :controller do
   it_behaves_like :index
 
   it_behaves_like :index, params: { contest_id: 3 }
@@ -10,7 +10,7 @@ RSpec.describe MembershipsController, type: :controller do
   it_behaves_like :create, params: { contest_id: 4 } do
     let(:contest) { stub_model Contest }
 
-    let(:resource) { double contest: contest }
+    let(:resource) { double membershipable: contest }
 
     let(:success) { -> { should redirect_to contest } }
 
@@ -20,7 +20,7 @@ RSpec.describe MembershipsController, type: :controller do
   it_behaves_like :destroy do
     let(:contest) { stub_model Contest }
 
-    let(:resource) { double contest: contest }
+    let(:resource) { double membershipable: contest }
 
     let(:success) { -> { should redirect_to contest } }
   end
@@ -110,13 +110,13 @@ RSpec.describe MembershipsController, type: :controller do
   its(:resource_params) { should eq state: :accepted }
 
   describe '#create_resource_params' do
-    let(:params) { acp membership: { user_id: '', type: '' } }
+    let(:params) { acp contest_membership: { user_id: '', type: '' } }
 
     before { expect(subject).to receive(:params).and_return(params) }
 
     before { expect(subject).to receive(:parent).and_return(:parent) }
 
-    its(:create_resource_params) { should eq params[:membership].permit!.merge(contest: :parent) }
+    its(:create_resource_params) { should eq params[:contest_membership].permit!.merge(contest: :parent) }
   end
 
   describe '#initialize_resource' do
@@ -134,7 +134,7 @@ RSpec.describe MembershipsController, type: :controller do
 
     before { expect(subject).to receive(:current_user).and_return(:current_user) }
 
-    before { expect(MembershipFactory).to receive(:build).with(:current_user, :params).and_return(:resource) }
+    before { expect(ContestMembershipFactory).to receive(:build).with(:current_user, :params).and_return(:resource) }
 
     before { subject.send :build_resource }
 
@@ -149,13 +149,13 @@ RSpec.describe MembershipsController, type: :controller do
     end
 
     context do
-      let(:record) { stub_model Membership }
+      let(:record) { stub_model ContestMembership }
 
       before { expect(subject).to receive(:current_user).and_return(:current_user) }
 
       before { expect(subject).to receive(:parent).and_return(:parent) }
 
-      before { expect(MembershipPolicy).to receive(:new).with(:current_user, record, parent: :parent).and_return(:policy) }
+      before { expect(ContestMembershipPolicy).to receive(:new).with(:current_user, record, parent: :parent).and_return(:policy) }
 
       it { expect(subject.send :policy, record).to eq(:policy) }
     end

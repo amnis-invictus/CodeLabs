@@ -2,7 +2,7 @@
 en:
   membership:
     index:
-      contest_name: Contest
+      membershipable_name: Membership
       created_at: Creation date
       state: Type
       user_name: User

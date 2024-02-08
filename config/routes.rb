@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :workers, only: %i[index destroy]
 
     resources :contests do
-      resources :memberships, except: %i[show edit], shallow: true
+      resources :contest_memberships, except: %i[show edit], shallow: true
 
       resources :sharings, only: %i[new create]
 
@@ -47,6 +47,8 @@ Rails.application.routes.draw do
     resources :confirmation_requests, only: %i[index create] do
       resource :reject, :accept, only: :create, module: :confirmation_request
     end
+
+    resources :contest_memberships, only: :index
 
     resources :memberships, only: :index
 

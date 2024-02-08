@@ -29,9 +29,9 @@ RSpec.describe User, type: :model do
 
   it { should have_many(:accepted_memberships).conditions(state: :accepted).class_name('Membership').dependent(:destroy) }
 
-  it { should have_many(:pending_contests).through(:pending_memberships).source(:contest).class_name('Contest') }
+  it { should have_many(:pending_contests).through(:pending_memberships).source(:membershipable).class_name('Contest') }
 
-  it { should have_many(:accepted_contests).through(:accepted_memberships).source(:contest).class_name('Contest') }
+  it { should have_many(:accepted_contests).through(:accepted_memberships).source(:membershipable).class_name('Contest') }
 
   it { should have_many(:sharings).through(:accepted_contests) }
 

@@ -1,19 +1,19 @@
 <tr>
   <td><%= membership.user_name %></td>
 
-  <td><%= membership.contest_name %></td>
+  <td><%= membership.membershipable_name %></td>
 
   <td><%= membership.state.humanize %></td>
 
   <td><%= l membership.created_at, format: :long %></td>
 
   <td>
-    <%= link_to membership, method: :patch, remote: true, class: 'btn btn-sm btn-success' do %>
+    <%= link_to membership.object, method: :patch, remote: true, class: 'btn btn-sm btn-success' do %>
       <i class="fas fa-check"></i>
-    <% end if policy(membership).update? %>
+    <% end if policy(membership.object).update? %>
 
-    <%= link_to membership, method: :delete, remote: true, class: 'btn btn-sm btn-danger' do %>
+    <%= link_to membership.object, method: :delete, remote: true, class: 'btn btn-sm btn-danger' do %>
       <i class="fas fa-times"></i>
-    <% end if policy(membership).destroy? %>
+    <% end if policy(membership.object).destroy? %>
   </td>
 </tr>

@@ -11,9 +11,9 @@ RSpec.describe Contest, type: :model do
 
   it { should have_many(:memberships).dependent(:destroy) }
 
-  it { should have_many(:pending_memberships).class_name('Membership') }
+  it { should have_many(:pending_memberships).class_name('ContestMembership') }
 
-  it { should have_many(:accepted_memberships).conditions(state: :accepted).class_name('Membership') }
+  it { should have_many(:accepted_memberships).conditions(state: :accepted).class_name('ContestMembership') }
 
   it { should have_many(:problems).through(:sharings).order(:id) }
 

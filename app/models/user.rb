@@ -23,9 +23,9 @@ class User < ApplicationRecord
 
   has_many :accepted_memberships, -> { where state: :accepted }, class_name: 'Membership', dependent: :destroy
 
-  has_many :pending_contests, through: :pending_memberships, source: :contest, class_name: 'Contest'
+  has_many :pending_contests, through: :pending_memberships, source: :membershipable, source_type: 'Contest'
 
-  has_many :accepted_contests, through: :accepted_memberships, source: :contest, class_name: 'Contest'
+  has_many :accepted_contests, through: :accepted_memberships, source: :membershipable, source_type: 'Contest'
 
   has_many :sharings, through: :accepted_contests
 

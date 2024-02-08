@@ -8,6 +8,6 @@ class SubmissionSearcher < ApplicationSearcher
   end
 
   def search_by_contest_id contest_id
-    relation.joins(user: :accepted_memberships).where(memberships: { contest_id: contest_id })
+    relation.joins(user: :accepted_memberships).where(memberships: { membershipable_id: contest_id, membershipable_type: 'Contest' })
   end
 end

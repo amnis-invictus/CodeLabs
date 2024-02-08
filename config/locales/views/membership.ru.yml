@@ -2,7 +2,7 @@
 ru:
   membership:
     index:
-      contest_name: Соревнование
+      membershipable_name: Приглашение
       created_at: Дата создания
       state: Тип
       user_name: Пользователь

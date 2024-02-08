@@ -2,7 +2,7 @@
 uk:
   membership:
     index:
-      contest_name: Змагання
+      membershipable_name: Запрошення
       created_at: Дата створення
       state: Тип
       user_name: Користувач
