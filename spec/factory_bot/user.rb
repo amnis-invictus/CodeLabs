@@ -15,5 +15,12 @@ FactoryBot.define do
       email { 'admin.john.doe@codelabs.test' }
       roles { %i[confirmed moderator administrator] }
     end
+
+    trait :confirmed do
+      name { 'John Doe Confirm' }
+      username { 'conf.John.Doe' }
+      email { 'conf.john.doe@codelabs.test' }
+      roles { %i[confirmed] }
+    end
   end
 end
