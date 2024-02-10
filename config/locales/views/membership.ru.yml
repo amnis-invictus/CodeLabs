@@ -2,10 +2,15 @@
 ru:
   membership:
     index:
-      membershipable_name: Приглашение
       created_at: Дата создания
+      membershipable_name: Приглашение
       state: Тип
       user_name: Пользователь
+  membershipable:
+    contest:
+      display_type: соревнование
+    group:
+      display_type: группа
     new:
-      invite: Пригласить в соревнование
-      request: Присоединиться к соревнованию
+      invite: Пригласить
+      request: Присоединиться

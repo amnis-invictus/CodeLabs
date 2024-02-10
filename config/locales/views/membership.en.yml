@@ -2,10 +2,15 @@
 en:
   membership:
     index:
-      membershipable_name: Membership
       created_at: Creation date
+      membershipable_name: Membership
       state: Type
       user_name: User
+  membershipable:
+    contest:
+      display_type: contest
+    group:
+      display_type: group
     new:
-      invite: Invite to the contest
-      request: Join the contest
+      invite: Invite
+      request: Join

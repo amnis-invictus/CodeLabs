@@ -1,0 +1,30 @@
+<div class="page row bg-light">
+  <div class="col-12 mb-4">
+    <h1>
+      <%= t 'group.index.title' %>
+
+      <%= link_to t('group.index.new'), %i(new group), class: 'btn btn-primary float-right',
+          style: 'margin-right: 1rem' if policy(Contest).new? %>
+    </h1>
+  </div>
+
+  <div class="col-12">
+    <table class="table table-custom">
+      <thead class="thead-dark">
+        <tr>
+          <th><%= t 'group.index.name' %></th>
+
+          <th><%= t 'group.index.visibility' %></th>
+
+          <th><%= t 'group.index.created_at' %></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= render collection.decorate %>
+      </tbody>
+    </table>
+
+    <%= paginate collection %>
+  </div>
+</div>

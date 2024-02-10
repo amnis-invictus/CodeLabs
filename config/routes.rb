@@ -44,11 +44,19 @@ Rails.application.routes.draw do
       resource :standing, only: :show
     end
 
+    resources :groups do
+      resources :group_memberships, except: %i[show edit], shallow: true
+
+      resources :submissions, only: :index
+    end
+
     resources :confirmation_requests, only: %i[index create] do
       resource :reject, :accept, only: :create, module: :confirmation_request
     end
 
     resources :contest_memberships, only: :index
+
+    resources :group_memberships, only: :index
 
     resources :memberships, only: :index
 

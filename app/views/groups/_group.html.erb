@@ -1,0 +1,13 @@
+<tr>
+  <td>
+    <% if policy(group).show? %>
+      <%= link_to group.name, group %>
+    <% else %>
+      <%= group.name %>
+    <% end %>
+  </td>
+
+  <td><%= group.visibility.humanize %></td>
+
+  <td><%= l group.created_at, format: :long %></td>
+</tr>

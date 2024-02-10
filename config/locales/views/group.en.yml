@@ -1,0 +1,28 @@
+---
+en:
+  group:
+    edit:
+      title: Edit group
+    index:
+      created_at: Creation date
+      name: Name
+      new: Create a new group
+      title: Groups
+      visibility: Visibility
+    new:
+      title: Create a new group
+    shared:
+      visibility:
+        moderated: Users can send participation requests
+        private: Only group owners can add users
+        public: Every member can join and invite others to the group
+    show:
+      description: Description
+      destroy: Delete group
+      edit: Edit group information
+      members: Group members
+      membership_list: Invitation list
+      new_membership: Invite
+      not_a_member: You are not a group member
+      pending_member: Participation request has been sent
+      submission_list: Group submissions

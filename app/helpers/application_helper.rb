@@ -22,4 +22,8 @@ module ApplicationHelper
   def contest_visibility_select_options
     Contest.visibilities.keys.map { [_1, data: { subtext: translate(_1, scope: 'contest.shared.visibility') }] }
   end
+
+  def group_visibility_select_options
+    Group.visibilities.keys.map { [_1, data: { subtext: translate(_1, scope: 'group.shared.visibility') }] }
+  end
 end

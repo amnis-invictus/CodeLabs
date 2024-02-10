@@ -1,9 +1,8 @@
-class ContestDecorator < Draper::Decorator
+class GroupDecorator < Draper::Decorator
   delegate_all
 
-  decorates_associations :owner, :accepted_users, :problems
-
-  delegate :name, to: :owner, prefix: true
+  # :owner,
+  decorates_associations :accepted_users, :problems
 
   delegate :state_requested?, :state_invited?, :state_accepted?, to: :current_user_membership, prefix: true, allow_nil: true
 
@@ -17,7 +16,7 @@ class ContestDecorator < Draper::Decorator
   end
 
   def display_type
-    I18n.t 'membershipable.contest.display_type'
+    I18n.t 'membershipable.group.display_type'
   end
 
   private
