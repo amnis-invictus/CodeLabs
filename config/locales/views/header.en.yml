@@ -5,6 +5,7 @@ en:
     compilers: Compilers
     confirmation_requests: Confirmation requests
     contests: Contests
+    groups: Groups
     problems: Problems
     problems_all: All problems
     problems_tags: Classification

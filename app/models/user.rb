@@ -27,6 +27,14 @@ class User < ApplicationRecord
 
   has_many :accepted_contests, through: :accepted_memberships, source: :membershipable, source_type: 'Contest'
 
+  has_many :pending_groups, through: :pending_memberships, source: :membershipable, source_type: 'Group'
+
+  has_many :accepted_groups, through: :accepted_memberships, source: :membershipable, source_type: 'Group'
+
+  has_many :owned_groups_memberships, -> { where state: :accepted, role: :owner }, class_name: 'GroupMembership'
+
+  has_many :owned_groups, through: :owned_groups_memberships, source: :membershipable, source_type: 'Group'
+
   has_many :sharings, through: :accepted_contests
 
   has_many :shared_problems, -> { where CONTEST_OPEN_CONDITION }, class_name: 'Problem', through: :sharings, source: :problem

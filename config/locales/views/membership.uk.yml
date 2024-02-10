@@ -2,10 +2,15 @@
 uk:
   membership:
     index:
-      membershipable_name: Запрошення
       created_at: Дата створення
+      membershipable_name: Запрошення
       state: Тип
       user_name: Користувач
     new:
-      invite: Запросити до змагання
-      request: Приєднатися до змагання
+      invite: Запросити
+      request: Приєднатися
+  membershipable:
+    contest:
+      display_type: змагання
+    group:
+      display_type: група

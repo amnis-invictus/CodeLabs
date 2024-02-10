@@ -18,7 +18,7 @@ RSpec.describe SubmissionSearcher do
   end
 
   describe '#search_by_contest_id' do
-    let(:params) { acp contest_id: 7, membershipable_type: 'Contest' }
+    let(:params) { acp contest_id: 7 }
 
     it {
       should eq Submission.joins(user: :accepted_memberships).where(memberships: { membershipable_id: 7,

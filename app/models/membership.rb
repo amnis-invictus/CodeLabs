@@ -8,4 +8,6 @@ class Membership < ApplicationRecord
   belongs_to :membershipable, polymorphic: true
 
   enum state: { requested: 0, invited: 1, accepted: 2 }, _prefix: true
+
+  enum role: { user: 0, owner: 1 }, _prefix: true
 end
