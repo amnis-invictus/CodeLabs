@@ -155,7 +155,9 @@ RSpec.describe ContestMembershipsController, type: :controller do
 
       before { expect(subject).to receive(:parent).and_return(:parent) }
 
-      before { expect(ContestMembershipPolicy).to receive(:new).with(:current_user, record, parent: :parent).and_return(:policy) }
+      before do
+        expect(ContestMembershipPolicy).to receive(:new).with(:current_user, record, parent: :parent).and_return(:policy)
+      end
 
       it { expect(subject.send :policy, record).to eq(:policy) }
     end
