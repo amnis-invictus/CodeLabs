@@ -8,11 +8,11 @@
   <td><%= l membership.created_at, format: :long %></td>
 
   <td>
-    <%= link_to membership.object, method: :patch, remote: true, class: 'btn btn-sm btn-success' do %>
+    <%= link_to membership.object, method: :patch, remote: true, class: 'btn btn-sm btn-success', title: 'accept' do %>
       <i class="fas fa-check"></i>
     <% end if policy(membership.object).update? %>
 
-    <%= link_to membership.object, method: :delete, remote: true, class: 'btn btn-sm btn-danger' do %>
+    <%= link_to membership.object, method: :delete, remote: true, class: 'btn btn-sm btn-danger', title: 'decline' do %>
       <i class="fas fa-times"></i>
     <% end if policy(membership.object).destroy? %>
   </td>
