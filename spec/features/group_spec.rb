@@ -110,8 +110,10 @@ RSpec.describe 'Group', type: :feature, ui: true do
         it 'can accept pending join request' do
           visit "#{ groups_path }/#{ group.id }/group_memberships"
           expect(page).to have_text(member.name)
-          expect { click_link 'accept' }.to change { membership.reload.state }.from('requested').to('accepted')
-          expect(page).to have_no_text(member.name)
+          expect do
+            click_link 'accept'
+            expect(page).to have_no_text(member.name)
+          end.to change { membership.reload.state }.from('requested').to('accepted')
         end
       end
     end
@@ -129,8 +131,10 @@ RSpec.describe 'Group', type: :feature, ui: true do
       expect(page).to have_current_path(new_groups_path)
       fill_inputs 'group', group_attributes.slice(:name, :description)
       fill_selects 'group', group_attributes.slice(:visibility)
-      expect { click_button 'commit' }.to change { Group.count }.from(0).to(1)
-      expect(page).to have_current_path(group_last_path)
+      expect do
+        click_button 'commit'
+        expect(page).to have_current_path(group_last_path)
+      end.to change { Group.count }.from(0).to(1)
       click_link 'Sign out'
 
       perform_login member.email, member.password
@@ -138,16 +142,20 @@ RSpec.describe 'Group', type: :feature, ui: true do
       expect(page).to have_text(group_attributes[:name])
       click_link group_attributes[:name]
       expect(page).to have_text('You are not a group member')
-      expect { click_button 'commit' }.to change { Membership.count }.from(1).to(2)
-      expect(page).to have_text('Participation request has been sent')
+      expect do
+        click_button 'commit'
+        expect(page).to have_text('Participation request has been sent')
+      end.to change { Membership.count }.from(1).to(2)
       expect(page).to have_no_link('Group submissions')
       click_link 'Sign out'
 
       perform_login owner.email, owner.password
       visit "#{ group_last_path }/group_memberships"
       expect(page).to have_text(member.name)
-      expect { click_link 'accept' }.to change { Membership.last.state }.from('requested').to('accepted')
-      expect(page).to have_no_text(member.name)
+      expect do
+        click_link 'accept'
+        expect(page).to have_no_text(member.name)
+      end.to change { Membership.last.state }.from('requested').to('accepted')
       click_link 'Sign out'
 
       perform_login member.email, member.password
