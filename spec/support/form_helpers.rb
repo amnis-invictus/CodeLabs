@@ -10,7 +10,8 @@ module FormHelpers
   def fill_selects prefix, params
     within 'form' do
       params.each do |name, value|
-        select value, from: "#{ prefix }_#{ name }" if value.present?
+        find(".dropdown-toggle[data-id='#{ prefix }_#{ name }']").click if value.present?
+        find('.dropdown-item', text: value).click if value.present?
       end
     end
   end
