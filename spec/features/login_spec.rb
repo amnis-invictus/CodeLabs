@@ -7,14 +7,14 @@ RSpec.describe 'Login', type: :feature, ui: true do
   before { visit login_path }
 
   describe 'as a standard user' do
-    before { create :user }
+    let(:user) { create :user }
 
     before do
       fill_inputs 'session', params.slice(:email, :password)
     end
 
     context 'with everything valid' do
-      let(:params) { attributes_for :user }
+      let(:params) { { email: user.email, password: user.password } }
 
       before { click_button 'commit' }
 
@@ -31,7 +31,7 @@ RSpec.describe 'Login', type: :feature, ui: true do
     end
 
     context 'with wrong password' do
-      let(:params) { attributes_for :user, password: SecureRandom.base36 }
+      let(:params) { { email: user.email, password: SecureRandom.base36 } }
 
       before { click_button 'commit' }
 
@@ -41,14 +41,14 @@ RSpec.describe 'Login', type: :feature, ui: true do
   end
 
   describe 'as an admin user' do
-    before { create :user, :admin }
+    let(:admin_user) { create :user, :admin }
 
     before do
       fill_inputs 'session', params.slice(:email, :password)
     end
 
     context 'with everything valid' do
-      let(:params) { attributes_for :user, :admin }
+      let(:params) { { email: admin_user.email, password: admin_user.password } }
 
       before { click_button 'commit' }
 
