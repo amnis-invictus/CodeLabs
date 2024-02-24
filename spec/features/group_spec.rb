@@ -73,16 +73,12 @@ RSpec.describe 'Group', type: :feature, ui: true do
     context 'with private group' do
       let(:group) { attributes_for :group, :private }
 
-      before { visit new_groups_path }
-
-      before do
+      it 'can create group' do
+        visit new_groups_path
         fill_inputs 'group', group.slice(:name, :description)
         fill_selects 'group', group.slice(:visibility)
-      end
-
-      before { click_button 'commit' }
-
-      it 'can see group details' do
+        click_button 'commit'
+        
         expect(page).to have_current_path(group_last_path)
         expect(page).to have_text(group[:name])
         expect(page).to have_text(group[:description])
