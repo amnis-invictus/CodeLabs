@@ -78,7 +78,7 @@ RSpec.describe 'Group', type: :feature, ui: true do
         fill_inputs 'group', group.slice(:name, :description)
         fill_selects 'group', group.slice(:visibility)
         click_button 'commit'
-        
+
         expect(page).to have_current_path(group_last_path)
         expect(page).to have_text(group[:name])
         expect(page).to have_text(group[:description])
