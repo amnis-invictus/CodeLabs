@@ -11,7 +11,7 @@
       <%= f.full_error :user, class: 'invalid-feedback' %>
     </div>
 
-    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :user_id, id: 'membership_user_id' %>
 
     <%= f.submit t('membership.new.invite'), class: 'btn btn-primary btn-block' %>
   <% end %>

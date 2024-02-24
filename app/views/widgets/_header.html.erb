@@ -22,6 +22,10 @@
       <%= link_to t('header.contests'), :contests %>
     <% end if policy(Contest).index? %>
 
+    <%= content_tag :div, class: 'header-section__item' do %>
+      <%= link_to t('header.groups'), :groups %>
+    <% end if policy(Group).index? %>
+
     <%= content_tag :div, class: 'header-section__item dropdown show' do %>
       <a data-toggle="dropdown" class="dropdown-toggle"><%= t 'header.administration' %></a>
 

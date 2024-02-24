@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_02_114312) do
+ActiveRecord::Schema.define(version: 2024_02_08_170050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -98,6 +98,14 @@ ActiveRecord::Schema.define(version: 2024_02_02_114312) do
     t.index ["problem_id"], name: "index_examples_on_problem_id"
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.integer "visibility", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "logs", force: :cascade do |t|
     t.text "data", null: false
     t.integer "type", null: false
@@ -109,11 +117,14 @@ ActiveRecord::Schema.define(version: 2024_02_02_114312) do
 
   create_table "memberships", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "contest_id"
+    t.bigint "membershipable_id"
     t.integer "state", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contest_id"], name: "index_memberships_on_contest_id"
+    t.string "type", null: false
+    t.string "membershipable_type", null: false
+    t.bigint "role", default: 0
+    t.index ["membershipable_id", "membershipable_type"], name: "index_memberships_on_membershipable_id_and_membershipable_type"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
@@ -267,7 +278,6 @@ ActiveRecord::Schema.define(version: 2024_02_02_114312) do
   add_foreign_key "confirmation_requests", "users"
   add_foreign_key "contests", "users", column: "owner_id"
   add_foreign_key "examples", "problems"
-  add_foreign_key "memberships", "contests"
   add_foreign_key "memberships", "users"
   add_foreign_key "problem_translations", "problems"
   add_foreign_key "problems", "compilers", column: "checker_compiler_id"

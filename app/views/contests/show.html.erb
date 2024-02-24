@@ -37,10 +37,10 @@
         </div>
 
         <div class="member-list-actions">
-          <%= link_to t('contest.show.new_membership'), [:new, resource, :membership],
+          <%= link_to t('contest.show.new_membership'), [:new, resource, :contest_membership],
             class: 'list-group-item btn btn-outline-primary btn-sm btn-block' if policy(resource).new_invite? %>
 
-          <%= link_to t('contest.show.membership_list'), [resource, :memberships],
+          <%= link_to t('contest.show.membership_list'), [resource, :contest_memberships],
             class: 'list-group-item btn btn-outline-primary btn-sm btn-block mt-0' if policy(resource).index_memberships? %>
         </div>
       </div>
@@ -75,7 +75,7 @@
     <div class="col-12">
       <div class="alert alert-warning"><%= t 'contest.show.not_a_member' %></div>
 
-      <%= render 'memberships/request_form', parent: resource, resource: Membership.new %>
+      <%= render 'memberships/request_form', parent: resource, resource: ContestMembership.new %>
     </div>
   <% end %>
 </div>

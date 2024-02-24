@@ -16,7 +16,11 @@ class SubmissionPolicy < ApplicationPolicy
   def show?
     return false if user.blank?
 
-    user.administrator? || user == resource.user || user == resource.problem_user
+    return true if user.administrator? || user == resource.user || user == resource.problem_user
+
+    owned_groups_ids = user.owned_groups_memberships.select :membershipable_id
+    Membership.exists? user: resource.user, state: :accepted, membershipable_type: 'Group',
+      membershipable_id: owned_groups_ids
   end
 
   def destroy?

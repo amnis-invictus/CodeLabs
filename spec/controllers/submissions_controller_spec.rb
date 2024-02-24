@@ -60,7 +60,7 @@ RSpec.describe SubmissionsController, type: :controller do
       let(:params) { acp contest_id: 1, problem_id: 2, user_id: 3 }
 
       its :submissions do
-        conditions = { memberships: { contest_id: 1 }, problem_id: 2, user_id: 3 }
+        conditions = { memberships: { membershipable_id: 1, membershipable_type: 'Contest' }, problem_id: 2, user_id: 3 }
         should eq Submission.joins(user: :accepted_memberships).where(conditions)
       end
     end

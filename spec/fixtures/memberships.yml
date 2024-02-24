@@ -1,8 +1,10 @@
 one:
   user: one
-  contest: one
+  membershipable: one (Contest)
   state: 2
+  type: ContestMembership
 two:
   user: two
-  contest: one
+  membershipable: one (Contest)
   state: 2
+  type: ContestMembership
