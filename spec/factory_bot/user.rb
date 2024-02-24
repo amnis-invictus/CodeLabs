@@ -10,16 +10,10 @@ FactoryBot.define do
     skills { 'Chicago, Doe, Regional' }
 
     trait :admin do
-      name { 'John Doe Admin' }
-      username { 'admin.John.Doe' }
-      email { 'admin.john.doe@codelabs.test' }
       roles { %i[confirmed moderator administrator] }
     end
 
     trait :confirmed do
-      name { 'John Doe Confirmed' }
-      username { 'conf.John.Doe' }
-      email { 'conf.john.doe@codelabs.test' }
       roles { %i[confirmed] }
     end
   end
