@@ -41,10 +41,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Ruby 3.0.5
+      - name: Set up Ruby 3.3.0
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.5
+          ruby-version: 3.3.0
           bundler-cache: true
 
       - name: Setup Database
@@ -98,10 +98,10 @@ jobs:
         with:
           node-version: 16
           cache: 'yarn'
-      - name: Setup Ruby 3.0.5
+      - name: Setup Ruby 3.3.0
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.5
+          ruby-version: 3.3.0
           bundler-cache: true
 
       - name: Setup node deps
