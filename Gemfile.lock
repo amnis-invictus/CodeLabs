@@ -14,7 +14,7 @@ GIT
 GEM
   remote: https://rails-assets.org/
   specs:
-    rails-assets-sweetalert2 (7.29.1)
+    rails-assets-sweetalert2 (11.10.6)
 
 GEM
   remote: https://rubygems.org/
@@ -465,7 +465,7 @@ DEPENDENCIES
   puma
   pundit
   rails (~> 6.1.7)
-  rails-assets-sweetalert2 (= 7.29.1)!
+  rails-assets-sweetalert2 (= 11.10.6)!
   rails-controller-testing
   rails-i18n
   recaptcha
