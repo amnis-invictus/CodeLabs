@@ -37,10 +37,11 @@ RSpec.describe SubmissionsController, type: :controller do
 
       before do
         #
-        # subject.submissions.includes(:compiler, :user, problem: :user).
+        # subject.filter.submissions.includes(:compiler, :user, problem: :user).
         #   order(created_at: :desc).page(params[:page]) -> :collection
         #
-        expect(subject).to receive_message_chain(:submissions, :includes).with(:compiler, :user, problem: :user) do
+        expect(subject).to receive_message_chain(:filter, :submissions, :includes).
+          with(:compiler, :user, problem: :user) do
           double.tap do |a|
             expect(a).to receive(:order).with(created_at: :desc) do
               double.tap { |b| expect(b).to receive(:page).with(41).and_return(:collection) }
@@ -53,22 +54,21 @@ RSpec.describe SubmissionsController, type: :controller do
     end
   end
 
-  describe '#submissions' do
-    before { allow(subject).to receive(:params).and_return(params) }
-
+  describe '#filter' do
     context do
-      let(:params) { acp contest_id: 1, problem_id: 2, user_id: 3 }
+      before { subject.instance_variable_set :@filter, :filter }
 
-      its :submissions do
-        conditions = { memberships: { membershipable_id: 1, membershipable_type: 'Contest' }, problem_id: 2, user_id: 3 }
-        should eq Submission.joins(user: :accepted_memberships).where(conditions)
-      end
+      its(:filter) { should eq :filter }
     end
 
     context do
-      let(:params) { acp({}) }
+      let(:params) { acp contest_id: '1', group_id: '4', problem_id: '2', user_id: '3' }
 
-      its(:submissions) { should eq Submission.all }
+      before { expect(subject).to receive(:params).and_return(params) }
+
+      before { expect(SubmissionFilter).to receive(:new).with(params.permit!).and_return(:filter) }
+
+      its(:filter) { should eq :filter }
     end
   end
 
