@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProblemDecorator do
-  let(:translation) { stub_model ProblemTranslation, language: 'ru' }
+  let(:translation) { stub_model ProblemTranslation, language: 'en', caption: 'caption' }
 
   let(:default_translation) { stub_model ProblemTranslation, language: 'uk', default: true }
 
@@ -23,6 +23,8 @@ RSpec.describe ProblemDecorator do
 
   describe '#as_json' do
     context do
+      subject { resource.decorate context: :api }
+
       before { expect(subject).to receive(:checker_source_url).and_return(:checker_source_url) }
 
       before { expect(subject).to receive(:tests).and_return(:tests) }
@@ -37,6 +39,10 @@ RSpec.describe ProblemDecorator do
       subject { resource.decorate context: :submission }
 
       its(:as_json) { should eq id: 24, updated_at: Time.zone.now, checker_compiler_id: 1 }
+    end
+
+    context do
+      its(:as_json) { should eq id: 24, search_suggestion: '<div>caption</div>' }
     end
   end
 
@@ -72,7 +78,7 @@ RSpec.describe ProblemDecorator do
   end
 
   describe '#language' do
-    its(:language) { should eq :ru }
+    its(:language) { should eq :en }
 
     context do
       let(:translation) { nil }
