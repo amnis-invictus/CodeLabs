@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ApplicationSearcher do
   let(:relation) { double }
 
-  let(:params) { acp name: 'John', age: '19' }
+  let(:params) { acpp name: 'John', age: '19' }
 
   subject { described_class.new relation, params }
 

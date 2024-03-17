@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe UserSearcher do
   let(:relation) { double }
 
-  subject { UserSearcher.search relation, params }
+  subject { described_class.search relation, params }
 
   describe '#search_by_query' do
     context do
-      let(:params) { acp query: 'John' }
+      let(:params) { acpp query: 'John' }
 
       let(:sql) { 'username ILIKE :query OR name ILIKE :query' }
 
@@ -17,7 +17,7 @@ RSpec.describe UserSearcher do
     end
 
     context do
-      let(:params) { acp query: '' }
+      let(:params) { acpp query: '' }
 
       before { expect(relation).to_not receive(:where) }
 
