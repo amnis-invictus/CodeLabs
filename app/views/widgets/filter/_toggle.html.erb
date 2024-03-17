@@ -1,0 +1,11 @@
+<% if disabled %>
+  <th><%= label %></th>
+<% else %>
+  <th class="cursor-pointer dropdown-toggle" data-toggle="dropdown" data-target="#<%= param %>-filter-dropdown">
+    <% if filter.applied? param %>
+      <i class="fas fa-filter mr-1"></i>
+    <% end %>
+
+    <%= label %>
+  </th>
+<% end %>
