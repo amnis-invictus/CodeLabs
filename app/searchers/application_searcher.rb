@@ -10,7 +10,9 @@ class ApplicationSearcher
   def search
     return relation unless params
 
-    conditions = params.to_unsafe_hash.map do |attribute, value|
+    conditions = params.to_h.map do |attribute, value|
+      next if value.blank?
+
       method_name = :"search_by_#{ attribute }"
 
       send method_name, value if respond_to? method_name, true

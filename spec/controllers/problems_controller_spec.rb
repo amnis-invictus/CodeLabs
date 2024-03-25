@@ -117,56 +117,22 @@ RSpec.describe ProblemsController, type: :controller do
   end
 
   describe '#problems' do
-    before { allow(subject).to receive(:parent).and_return(parent) }
+    before { expect(subject).to receive(:params).and_return(params) }
 
     context do
-      let(:parent) { double problems: :problems }
+      let(:params) { acp user_id: '1', tag_id: '2', contest_id: '3', query: 'query' }
 
-      its(:problems) { should eq :problems }
+      its :problems do
+        by_translation = ProblemTranslation.where('caption ILIKE ?', '%query%').select(:problem_id)
+        conditions = { user_id: 1, problems_tags: { tag_id: 2 }, sharings: { contest_id: 3 }, id: by_translation }
+        should eq Problem.joins(:problems_tags, :sharings).where(conditions)
+      end
     end
 
     context do
-      let(:parent) { nil }
+      let(:params) { acp({}) }
 
       its(:problems) { should eq Problem.all }
-    end
-  end
-
-  describe '#parent' do
-    context do
-      before { subject.instance_variable_set :@parent, :parent }
-
-      its(:parent) { should eq :parent }
-    end
-
-    context do
-      before { allow(subject).to receive(:params).and_return(tag_id: 5) }
-
-      before { expect(Tag).to receive(:find).with(5).and_return(:parent) }
-
-      its(:parent) { should eq :parent }
-    end
-
-    context do
-      before { allow(subject).to receive(:params).and_return(user_id: 5) }
-
-      before { expect(User).to receive(:find).with(5).and_return(:parent) }
-
-      its(:parent) { should eq :parent }
-    end
-
-    context do
-      before { allow(subject).to receive(:params).and_return(contest_id: 5) }
-
-      before { expect(Contest).to receive(:find).with(5).and_return(:parent) }
-
-      its(:parent) { should eq :parent }
-    end
-
-    context do
-      before { allow(subject).to receive(:params).and_return({}) }
-
-      its(:parent) { should be_nil }
     end
   end
 

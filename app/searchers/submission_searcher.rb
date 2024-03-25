@@ -1,19 +1,17 @@
 class SubmissionSearcher < ApplicationSearcher
-  def search_by_problem_id problem_id
-    relation.where problem_id: problem_id
+  def search_by_problem problem
+    relation.where problem:
   end
 
-  def search_by_user_id user_id
-    relation.where user_id: user_id
+  def search_by_user user
+    relation.where user:
   end
 
-  def search_by_contest_id contest_id
-    relation.joins(user: :accepted_memberships).where(memberships: { membershipable_id: contest_id,
-                                                                     membershipable_type: 'Contest' })
+  def search_by_contest contest
+    relation.joins(user: :accepted_memberships).where(memberships: { membershipable: contest })
   end
 
-  def search_by_group_id group_id
-    relation.joins(user: :accepted_memberships).where(memberships: { membershipable_id: group_id,
-                                                                     membershipable_type: 'Group' })
+  def search_by_group group
+    relation.joins(user: :accepted_memberships).where(memberships: { membershipable: group })
   end
 end

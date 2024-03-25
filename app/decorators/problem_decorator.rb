@@ -7,17 +7,22 @@ class ProblemDecorator < Draper::Decorator
     case context
     when :submission
       {
-        id: id,
-        updated_at: updated_at,
-        checker_compiler_id: checker_compiler_id,
+        id:,
+        updated_at:,
+        checker_compiler_id:,
+      }
+    when :api
+      {
+        id:,
+        updated_at:,
+        checker_compiler_id:,
+        checker_source_url:,
+        tests:,
       }
     else
       {
-        id: id,
-        updated_at: updated_at,
-        checker_compiler_id: checker_compiler_id,
-        checker_source_url: checker_source_url,
-        tests: tests,
+        id:,
+        search_suggestion: h.tag.div(caption),
       }
     end
   end

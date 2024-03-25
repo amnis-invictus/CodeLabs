@@ -13,11 +13,17 @@ RSpec.describe Api::ProblemsController, type: :controller do
     end
 
     context do
+      let(:problem) { stub_model Problem }
+
       before { expect(subject).to receive(:params).and_return(id: 52) }
 
-      before { expect(Problem).to receive(:find).with(52).and_return(:resource) }
+      before { expect(Problem).to receive(:find).with(52).and_return(problem) }
 
-      its(:resource) { should eq :resource }
+      its(:resource) { should eq problem }
+
+      its(:resource) { should be_decorated_with ProblemDecorator }
+
+      its('resource.context') { should eq :api }
     end
   end
 end

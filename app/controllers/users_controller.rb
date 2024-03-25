@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   attr_reader :resource
 
   def collection
-    @collection ||= UserSearcher.search(User, params).page(params[:page])
+    @collection ||= UserSearcher.search(User, params.permit(:query)).page(params[:page])
   end
 
   def resource_params

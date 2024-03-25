@@ -45,13 +45,15 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context do
-      before { expect(subject).to receive(:params).and_return(name: 'John', page: '28').twice }
+      let(:params) { acp query: 'John', page: '28' }
+
+      before { expect(subject).to receive(:params).and_return(params).twice }
 
       before do
         #
-        # UserSearcher.search(User, name: 'John', page: '28').page('28') -> :collection
+        # UserSearcher.search(User, query: 'John', page: '28').page('28') -> :collection
         #
-        expect(UserSearcher).to receive(:search).with(User, { name: 'John', page: '28' }) do
+        expect(UserSearcher).to receive(:search).with(User, acpp(query: 'John')) do
           double.tap { |a| expect(a).to receive(:page).with('28').and_return(:collection) }
         end
       end

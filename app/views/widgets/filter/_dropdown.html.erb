@@ -1,0 +1,23 @@
+<div id="<%= param %>-filter-dropdown" data-role="filter" data-url="<%= url %>">
+  <div class="dropdown-menu">
+    <h6 class="dropdown-header px-2"><%= header %></h6>
+
+    <%= form.hidden_field hidden_field, data: { target: :id } %>
+
+    <div class="input-group px-2">
+      <%= form.text_field query_field, name: nil, class: 'form-control', data: { target: :query } %>
+
+      <% if filter.applied? param %>
+        <div class="input-group-append">
+          <button data-target="clear" type="button" class="btn btn-outline-secondary">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="dropdown-divider"></div>
+
+    <div data-target="suggestions"></div>
+  </div>
+</div>
