@@ -47,7 +47,7 @@ group :development do
   gem 'bullet'
   gem 'faker', require: false
   gem 'i18n-tasks'
-  gem 'listen', '~> 3.2'
+  gem 'listen', '~> 3.9'
   gem 'spring'
   gem 'spring-watcher-listen'
 end

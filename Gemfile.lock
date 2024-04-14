@@ -170,7 +170,7 @@ GEM
       railties (>= 5.0.0)
     faker (3.2.3)
       i18n (>= 1.8.11, < 2)
-    ffi (1.15.5)
+    ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
     highline (2.1.0)
@@ -209,7 +209,7 @@ GEM
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
-    listen (3.8.0)
+    listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.22.0)
@@ -464,7 +464,7 @@ DEPENDENCIES
   image_processing
   jquery-rails
   kaminari
-  listen (~> 3.2)
+  listen (~> 3.9)
   mini_magick
   nokogiri
   pg
