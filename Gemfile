@@ -1,4 +1,4 @@
-ruby '~> 3.0'
+ruby '~> 3.3.0'
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{ repo }.git" }
 
@@ -47,7 +47,7 @@ group :development do
   gem 'bullet'
   gem 'faker', require: false
   gem 'i18n-tasks'
-  gem 'listen', '~> 3.2'
+  gem 'listen', '~> 3.9'
   gem 'spring'
   gem 'spring-watcher-listen'
 end

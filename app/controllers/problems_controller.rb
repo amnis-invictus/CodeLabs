@@ -38,19 +38,7 @@ class ProblemsController < ApplicationController
   end
 
   def problems
-    parent ? parent.problems : Problem.all
-  end
-
-  def parent
-    @parent ||= \
-      case
-      when params[:tag_id]
-        Tag.find params[:tag_id]
-      when params[:user_id]
-        User.find params[:user_id]
-      when params[:contest_id]
-        Contest.find params[:contest_id]
-      end
+    ProblemSearcher.search Problem.all, params.permit(:user_id, :tag_id, :contest_id, :query)
   end
 
   def resource

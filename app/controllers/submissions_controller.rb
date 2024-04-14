@@ -1,6 +1,8 @@
 class SubmissionsController < ApplicationController
   skip_before_action :authenticate!, only: :index
 
+  helper_method :filter
+
   def create
     render :new and return unless resource.save
 
@@ -16,11 +18,12 @@ class SubmissionsController < ApplicationController
   private
 
   def collection
-    @collection ||= submissions.includes(:compiler, :user, problem: :user).order(created_at: :desc).page(params[:page])
+    @collection ||= filter.submissions.includes(:compiler, :user, problem: :user).
+      order(created_at: :desc).page(params[:page])
   end
 
-  def submissions
-    SubmissionSearcher.search Submission.all, params.permit(:contest_id, :group_id, :problem_id, :user_id)
+  def filter
+    @filter ||= SubmissionFilter.new params.permit(:contest_id, :group_id, :problem_id, :user_id)
   end
 
   def resource

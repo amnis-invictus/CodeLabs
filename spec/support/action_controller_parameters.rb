@@ -1,5 +1,9 @@
 module ActionControllerParameters
-  def acp params
-    ActionController::Parameters.new params
+  def acp(...)
+    ActionController::Parameters.new(...)
+  end
+
+  def acpp(...)
+    ActionController::Parameters.new(...).permit!
   end
 end
