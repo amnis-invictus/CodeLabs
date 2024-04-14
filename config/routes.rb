@@ -8,15 +8,15 @@ Rails.application.routes.draw do
 
     resource :avatar, only: %i[create destroy]
 
-    resources :users, only: %i[index create] do
-      resources :problems, only: :index do
+    resources :users, only: %i[index create], constraints: { id: /\d+/ } do
+      resources :problems, only: :index, constraints: { id: /\d+[\-\w]*/ } do
         resources :submissions, only: :index
       end
 
       resources :submissions, only: :index
     end
 
-    resources :problems do
+    resources :problems, constraints: { id: /\d+[\-\w]*/ } do
       resources :submissions, only: %i[index create]
     end
 
