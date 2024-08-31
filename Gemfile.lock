@@ -103,7 +103,7 @@ GEM
       popper_js (>= 1.16.1, < 2)
       sassc-rails (>= 2.0.0)
     bootstrap-select-rails (1.13.8)
-    brakeman (6.1.2)
+    brakeman (6.2.1)
       racc
     builder (3.2.4)
     bullet (7.1.6)
