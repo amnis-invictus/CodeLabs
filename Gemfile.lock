@@ -86,7 +86,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
-    airbrussh (1.5.2)
+    airbrussh (1.5.3)
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.2)
     autoprefixer-rails (10.4.7.0)
@@ -109,7 +109,7 @@ GEM
     bullet (7.1.6)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
-    capistrano (3.18.1)
+    capistrano (3.19.1)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -220,7 +220,6 @@ GEM
     mini_portile2 (2.8.6)
     minitest (5.25.1)
     msgpack (1.7.2)
-    mutex_m (0.2.0)
     net-imap (0.4.10)
       date
       net-protocol
@@ -385,9 +384,8 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sshkit (1.22.1)
+    sshkit (1.23.0)
       base64
-      mutex_m
       net-scp (>= 1.1.2)
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
