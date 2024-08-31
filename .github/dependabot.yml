@@ -6,6 +6,25 @@ updates:
       interval: "daily"
     target-branch: "master"
     open-pull-requests-limit: 10
+    groups:
+      rubocop:
+        patterns:
+          - "rubocop*"
+      rails:
+        patterns:
+          - "actioncable"
+          - "actionmailbox"
+          - "actionmailer"
+          - "actionpack"
+          - "actiontext"
+          - "actionview"
+          - "activejob"
+          - "activemodel"
+          - "activerecord"
+          - "activestorage"
+          - "activesupport"
+          - "rails"
+          - "railties"
 
   - package-ecosystem: "npm"
     directory: "/"
