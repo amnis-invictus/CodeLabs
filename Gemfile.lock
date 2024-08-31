@@ -93,7 +93,7 @@ GEM
       execjs (~> 2)
     base64 (0.2.0)
     bcrypt (3.1.20)
-    bcrypt_pbkdf (1.1.0)
+    bcrypt_pbkdf (1.1.1)
     bitmask_attributes (1.0.0)
       activerecord (>= 3.1)
     bootsnap (1.18.3)
